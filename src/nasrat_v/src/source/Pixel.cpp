@@ -27,6 +27,13 @@ void        Pixel::setColors(const Pixel::t_rgb &colors)
     _colors._blue = colors._blue;
 }
 
+void Pixel::setColors(uint8_t red, uint8_t green, uint8_t blue)
+{
+    _colors._red = red;
+    _colors._green = green;
+    _colors._blue = blue;
+}
+
 // operator < overload to allow the class to be used as Key in a Map
 bool        Pixel::t_rgb::operator<(const Pixel::t_rgb &color) const
 {

@@ -22,24 +22,42 @@ void            ImageAnalyser::setImage(const Image &image)
     _image = image;
 }
 
+bool            ImageAnalyser::isPattern(const Pixel &pixel)
+{
+    Pixel::t_rgb    rgb = pixel.getColors();
+
+    return (rgb._red >= MIN_RED && rgb._red <= MAX_RED &&
+            rgb._green >= MIN_GREEN && rgb._green <= MAX_GREEN &&
+            rgb._blue >= MIN_BLUE && rgb._blue <= MAX_BLUE);
+}
+
+void            ImageAnalyser::printPixel(const Pixel &pixel)
+{
+    Pixel::t_rgb    rgb = pixel.getColors();
+
+    std::cout << "red: " << (int)rgb._red << std::endl;
+    std::cout << "green: " << (int)rgb._green << std::endl;
+    std::cout << "blue: " << (int)rgb._blue << std::endl << std::endl;
+}
+
+void            ImageAnalyser::defineZone()
+{
+}
+
 void            ImageAnalyser::Analyse()
 {
-    uint8_t     red;
-    uint8_t     green;
-    uint8_t     blue;
-    uint8_t     *pixel;
+    Pixel       pixel;
+    uint8_t     *pixels;
     cv::Mat     img = _image.getOpencvImage();
 
     for (int i = 0; i < img.rows; ++i)
     {
-        pixel = img.ptr<uint8_t>(i);
+        pixels = img.ptr<uint8_t>(i);
         for (int j = 0; j < img.cols; ++j)
         {
-            blue = *pixel++;
-            green = *pixel++;
-            red = *pixel++;
-            std::cout << "red: " << (int)red << std::endl << "green: " << (int)green << std::endl << "blue: " << (int)blue << std::endl << std::endl;
-            if (red >= MIN_RED && red <= MAX_RED && green >= MIN_GREEN && green <= MAX_GREEN && blue >= MIN_BLUE && blue <= MAX_BLUE)
+            pixel.setColors(*pixels++, *pixels++, *pixels++);
+            /* printPixel(pixel); */
+            if (isPattern(pixel))
             {
                 std::cout << "[OK] Fire detected" << std::endl;
                 return;

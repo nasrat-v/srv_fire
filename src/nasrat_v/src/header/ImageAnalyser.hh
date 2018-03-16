@@ -26,6 +26,12 @@ public:
     void            Analyse();
 
 private:
+    /* Methods */
+    void            defineZone();
+    bool            isPattern(const Pixel &pixel);
+    void            printPixel(const Pixel &pixel);
+
+    /* Attributes */
     Image           _image;
     ZoneAnalyser    _zoneAnalyser;
 };

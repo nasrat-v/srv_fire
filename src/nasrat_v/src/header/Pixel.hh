@@ -23,6 +23,7 @@ public:
 
     const t_rgb     &getColors() const;
     void            setColors(const t_rgb &colors);
+    void            setColors(uint8_t red, uint8_t green, uint8_t blue);
 
 private:
     t_rgb           _colors;
