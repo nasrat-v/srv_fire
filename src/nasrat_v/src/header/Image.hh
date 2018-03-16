@@ -24,7 +24,7 @@ public:
     const cv::Mat                       &getOpencvImage() const;
     void                                addPixel(const Pixel &pixel);
     void                                addColorToPalette(const Pixel::t_rgb &color, const TEMP &temp);
-    void                                createOpencvImage(int height, int width, uint8_t **data);
+    void                                setOpencvImage(const cv::Mat &image);
 
 private:
     cv::Mat                             _opencvImage;

@@ -37,8 +37,7 @@ void        Image::addColorToPalette(const Pixel::t_rgb &color, const Image::TEM
     _colorsPalette.insert(std::make_pair(color, temp));
 }
 
-void        Image::createOpencvImage(int height, int width, uint8_t **data)
+void        Image::setOpencvImage(const cv::Mat &image)
 {
-    // Ne fonctionne pas, Probleme de mise en place des données dans le tableau
-    _opencvImage = cv::Mat(cv::Size(width, height), CV_8UC3, data);
+    _opencvImage = image;
 }

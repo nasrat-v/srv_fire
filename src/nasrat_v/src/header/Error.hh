@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <map>
 
 # define LOGFILE_PATH   "ErrorLog.txt"
 
@@ -15,18 +16,18 @@ class Error
 public:
     enum class      ErrorType
     {
-        OPEN_IMG,
-        UNKNOWN_ERROR
+        UNKNOWN_ERROR,
+        OPEN_IMG
     };
 
-    static void         logError(const ErrorType &type);
-    static void         logError(const ErrorType &type, const std::string &complementary_msg);
+    static void         logError(const ErrorType &type, const std::string &complementary_msg = "");
 
 private:
+    /* Methods */
     Error();
     ~Error();
-    static const std::string   getMessage(const ErrorType &type);
-    static const std::string   getTime();
+    static const std::string    getTime();
+    static const std::string    getMessage(const ErrorType &type);
 };
 
 #endif /* !__OPENCV_TEST_ERROR_HH__ */
