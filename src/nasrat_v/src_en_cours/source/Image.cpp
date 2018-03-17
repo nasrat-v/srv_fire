@@ -12,9 +12,9 @@ Image::~Image()
 {
 }
 
-const std::list<Pixel>  &Image::getPixelsList() const
+const std::map<Pixel::t_pos, Pixel>     &Image::getPixelsPosMap() const
 {
-    return (_pixelsList);
+    return (_pixelsPosMap);
 }
 
 const std::map<Pixel::t_rgb, Image::TEMP>   &Image::getColorsPalette() const
@@ -29,7 +29,7 @@ const cv::Mat   &Image::getOpencvImage() const
 
 void        Image::addPixel(const Pixel &pixel)
 {
-    _pixelsList.push_back(pixel);
+    _pixelsPosMap.insert(std::make_pair(pixel.getPos(), pixel));
 }
 
 void        Image::addColorToPalette(const Pixel::t_rgb &color, const Image::TEMP &temp)

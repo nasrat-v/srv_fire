@@ -58,3 +58,9 @@ bool        Pixel::t_rgb::operator<(const Pixel::t_rgb &color) const
 {
     return ((_red + _green + _blue) < (color._red + color._green + color._blue));
 }
+
+// operator < overload to allow the class to be used as Key in a Map
+bool        Pixel::s_pos::operator<(const Pixel::t_pos &pos) const
+{
+    return ((_y + _x) < (pos._y + pos._x));
+}

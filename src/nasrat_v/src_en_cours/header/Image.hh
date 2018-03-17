@@ -6,11 +6,12 @@
 # define __OPENCV_TEST_IMAGE_HH__
 
 #include <iostream>
-#include <list>
 #include <map>
 #include <opencv2/opencv.hpp>
 #include "Packet.hh"
 #include "Pixel.hh"
+
+class Pixel;
 
 class Image : public Packet
 {
@@ -19,7 +20,7 @@ public:
     virtual ~Image();
     typedef float                       TEMP;
 
-    const std::list<Pixel>              &getPixelsList() const;
+    const std::map<Pixel::t_pos, Pixel> &getPixelsPosMap() const;
     const std::map<Pixel::t_rgb, TEMP>  &getColorsPalette() const;
     const cv::Mat                       &getOpencvImage() const;
     void                                addPixel(const Pixel &pixel);
@@ -28,7 +29,7 @@ public:
 
 private:
     cv::Mat                             _opencvImage;
-    std::list<Pixel>                    _pixelsList;
+    std::map<Pixel::s_pos, Pixel>       _pixelsPosMap;
     std::map<Pixel::t_rgb, TEMP>        _colorsPalette;
 };
 

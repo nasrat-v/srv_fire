@@ -12,16 +12,16 @@ class Pixel
 public:
     Pixel();
     ~Pixel();
-    class   t_rgb
+    typedef struct  s_rgb
     {
-    public:
-        bool        operator<(const t_rgb &color) const; // operator < overload to allow the class to be used as Key in a Map
+        bool        operator<(const s_rgb &color) const; // operator < overload to allow the class to be used as Key in a Map
         uint8_t     _red;
         uint8_t     _green;
         uint8_t     _blue;
-    };
+    }               t_rgb;
     typedef struct  s_pos
     {
+        bool        operator<(const s_pos &pos) const; // operator < overload to allow the class to be used as Key in a Map
         int         _y;
         int         _x;
     }               t_pos;

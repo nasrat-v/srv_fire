@@ -35,30 +35,25 @@ void            ZoneAnalyser::createNewZone(const Pixel &pixel)
     addZone(zone);
 }
 
-void            ZoneAnalyser::addPixelToZone(const Pixel &pixel, int id_zone)
+void            ZoneAnalyser::addPixelToZone(Pixel &pixel, int id_zone)
 {
     _zones[id_zone].addPixel(pixel);
 }
 
+// Possibility to improve the speed by keeping a pointer of its zone on each pixel.
+// We recover the pixel on the map with its position to have its area.
 int             ZoneAnalyser::findZoneByPixelPos(int y, int x)
 {
     int                                 id_zone = 0;
-    Pixel::t_pos                        pos;
-    std::list<Pixel>                    pixels;
-    std::list<Pixel>::const_iterator    pixel_it;
+    Pixel::t_pos                        pos { y, x };
+    std::map<Pixel::t_pos, Pixel>       pixels;
     std::vector<Zone>::iterator         zone_it = _zones.begin();
 
     while (zone_it < _zones.end())
     {
-        pixels = zone_it->getPixelsList();
-        pixel_it = pixels.begin();
-        while (pixel_it != pixels.end())
-        {
-            pos = pixel_it->getPos();
-            if (pos._y == y && pos._x == x)
-                return (id_zone);
-            ++pixel_it;
-        }
+        pixels = zone_it->getPixelsPosMap();
+        if (pixels.find(pos) != pixels.end())
+            return (id_zone);
         ++zone_it;
         id_zone++;
     }
