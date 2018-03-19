@@ -1,0 +1,47 @@
+//
+//  Packet.cpp
+//  srv-fire
+//
+//  Created by Alexandre Bouvier on 13/03/2018.
+//  Copyright © 2018 Alexandre Bouvier. All rights reserved.
+//
+
+#include "../Include/PacketHandler.h"
+
+PacketHandler::PacketHandler(int Socket): _thread(&PacketHandler::readPacket, this)
+{
+    _embededSocket = Socket;
+}
+
+PacketHandler::~PacketHandler()
+{
+    close(_embededSocket);
+    _thread.detach();
+}
+
+std::string  PacketHandler::getPacket()
+{
+    std::string     retour = "";
+
+    if (_stack.size() > 0) {
+        retour = _stack.at(_stack.size() - 1);
+        _stack.erase(_stack.begin() + _stack.size() - 1);
+    }
+    return (retour);
+}
+
+void    PacketHandler::sendPacket(std::string toSend)
+{
+    write(_embededSocket, std::string(toSend + "\n").c_str(), toSend.size() + 1);
+}
+
+void    PacketHandler::readPacket()
+{
+    char    buffer[4096];
+    ssize_t     size;
+    
+    while ((size = read(_embededSocket, buffer, 4096)) > 0){
+        buffer[size - 1] = 0;
+        _stack.push_back(buffer);
+    }
+}
