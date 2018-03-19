@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+
+#define	SIZE_PHOTO 8
 
 enum CodeChecker
 {
@@ -20,16 +23,24 @@ enum CodeChecker
 	P_ALERT
 };
 
+struct Packet
+{
+	int	c;
+	char	*str;
+};
+
 class IntegrityPacketChecker
 {
 public:
 	IntegrityPacketChecker();
 	~IntegrityPacketChecker();
-	void	setState(CodeChecker state);
-	CodeChecker		getState();
-	void	stateTrigerrer();
-	bool	isPhotoPacketOk();
+	bool	stateTrigerrer(CodeChecker State, struct Packet packet);
+	bool	isPhotoPacketOk(struct Packet packet);
 	bool	isPalettePacketOk();
-private:
-	CodeChecker	State;
+	bool	isCLEPacketOk();
+	bool	isCLGPacketOk();
+	bool	isDInfoOk();
+	bool	isDTypeOk();
+	bool	isAnomalyOk();
+	bool	isAlertOk();
 };
