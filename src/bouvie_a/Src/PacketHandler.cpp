@@ -24,8 +24,8 @@ std::string  PacketHandler::getPacket()
     std::string     retour = "";
 
     if (_stack.size() > 0) {
-        retour = _stack.at(_stack.size() - 1);
-        _stack.erase(_stack.begin() + _stack.size() - 1);
+        retour = _stack.at(0);
+        _stack.erase(_stack.begin());
     }
     return (retour);
 }
