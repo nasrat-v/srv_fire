@@ -12,6 +12,19 @@ class Zone : public Image
 public:
     Zone();
     ~Zone();
+    void                setLeftTopPos(const Pixel::t_pos &pos);
+    void                setRightBottomPos(const Pixel::t_pos &pos);
+    void                setLowerY(int y);
+    void                setLowerX(int x);
+    void                setBiggerY(int y);
+    void                setBiggerX(int x);
+    const Pixel::t_pos  &getLeftTopPos() const;
+    const Pixel::t_pos  &getRightBottomPos() const;
+
+private:
+    Pixel::t_pos        _leftTopPos;
+    Pixel::t_pos        _rightBottomPos;
+
 };
 
 #endif /* !__OPENCV_TEST_ZONE_HH__ */
