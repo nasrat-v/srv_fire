@@ -64,6 +64,7 @@ void            ImageAnalyser::defineZone()
         }
     }
     std::cout << _zoneAnalyser.getNbZone() << std::endl;
+    _zoneAnalyser.printBorderOnZone(img);
 }
 
 void            ImageAnalyser::Analyse()
