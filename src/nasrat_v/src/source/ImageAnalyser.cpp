@@ -24,11 +24,13 @@ void            ImageAnalyser::setImage(const Image &image)
 
 bool            ImageAnalyser::isPattern(const Pixel &pixel)
 {
-    Pixel::t_rgb    rgb = pixel.getColors();
+    //Pixel::t_rgb    rgb = pixel.getColors();
+    Pixel::TEMP       temp = pixel.getTemp();
 
-    return (rgb._red >= MIN_RED && rgb._red <= MAX_RED &&
-            rgb._green >= MIN_GREEN && rgb._green <= MAX_GREEN &&
-            rgb._blue >= MIN_BLUE && rgb._blue <= MAX_BLUE);
+    return (temp >= TEMP_FIRE);
+    //return (rgb._red >= MIN_RED && rgb._red <= MAX_RED &&
+    //        rgb._green >= MIN_GREEN && rgb._green <= MAX_GREEN &&
+    //        rgb._blue >= MIN_BLUE && rgb._blue <= MAX_BLUE);
 }
 
 void            ImageAnalyser::printPixel(const Pixel &pixel)
@@ -42,21 +44,41 @@ void            ImageAnalyser::printPixel(const Pixel &pixel)
 
 void            ImageAnalyser::defineZone()
 {
-}
-
-void            ImageAnalyser::Analyse()
-{
     Pixel       pixel;
+    int         id_zone;
     uint8_t     *pixels;
     cv::Mat     img = _image.getOpencvImage();
 
-    for (int i = 0; i < img.rows; ++i)
+    for (int y = 0; y < img.rows; ++y)
     {
-        pixels = img.ptr<uint8_t>(i);
-        for (int j = 0; j < img.cols; ++j)
+        pixels = img.ptr<uint8_t>(y);
+        for (int x = 0; x < img.cols; ++x)
         {
             pixel.setColors(*pixels++, *pixels++, *pixels++);
-            /* printPixel(pixel); */
+            pixel.setPosition(y, x);
+            if (isPattern(pixel))
+            {
+                if ((id_zone = _zoneAnalyser.findExistingZone(pixel)) == ZONE_NOT_FIND)
+                    _zoneAnalyser.createNewZone(pixel);
+                else
+                    _zoneAnalyser.addPixelToZone(pixel, id_zone);
+            }
+        }
+    }
+    std::cout << _zoneAnalyser.getNbZone() << std::endl;
+    _zoneAnalyser.printBorderOnZone(img);
+}
+
+void            ImageAnalyser::Analyse(int y, int x, float *palette)
+{
+    //defineZone();
+    Pixel       pixel;
+
+    for (int i = 0; i < y; ++i)
+    {
+        for (int j = 0; j < x; ++j)
+        {
+            pixel.setTemp(palette[(i * x) + j]);
             if (isPattern(pixel))
             {
                 std::cout << "[OK] Fire detected" << std::endl;

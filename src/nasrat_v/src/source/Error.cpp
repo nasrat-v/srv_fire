@@ -34,8 +34,11 @@ const std::string   Error::getTime()
 
 void                Error::logError(const Error::ErrorType &type, const std::string &complementary_msg)
 {
+    std::string     msg;
     std::fstream    file(LOGFILE_PATH, std::fstream::out | std::fstream::app);
 
-    file << "[" << getTime() << "\t" << getMessage(type) << " : " << complementary_msg << "]" << std::endl << std::endl;
+    msg = ("[" + getTime() + "\t" + getMessage(type) + " " + complementary_msg + "]");
+    file << msg << std::endl << std::endl;
+    std::cerr << msg << std::endl;
     file.close();
 }

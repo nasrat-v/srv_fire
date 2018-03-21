@@ -11,6 +11,7 @@
 # define MIN_BLUE   0
 # define MAX_GREEN  200
 # define MIN_GREEN  0
+# define TEMP_FIRE  60
 
 #include "Image.hh"
 #include "ZoneAnalyser.hh"
@@ -23,7 +24,7 @@ public:
 
     const Image     &getImage() const;
     void            setImage(const Image &image);
-    void            Analyse();
+    void            Analyse(int y, int x, float *palette);
 
 private:
     /* Methods */

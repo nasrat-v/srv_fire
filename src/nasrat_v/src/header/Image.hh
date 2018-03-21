@@ -6,30 +6,27 @@
 # define __OPENCV_TEST_IMAGE_HH__
 
 #include <iostream>
-#include <list>
 #include <map>
 #include <opencv2/opencv.hpp>
 #include "Packet.hh"
 #include "Pixel.hh"
+
+class Pixel;
 
 class Image : public Packet
 {
 public:
     Image();
     virtual ~Image();
-    typedef float                       TEMP;
 
-    const std::list<Pixel>              &getPixelsList() const;
-    const std::map<Pixel::t_rgb, TEMP>  &getColorsPalette() const;
+    const std::map<Pixel::t_pos, Pixel> &getPixelsPosMap() const;
     const cv::Mat                       &getOpencvImage() const;
     void                                addPixel(const Pixel &pixel);
-    void                                addColorToPalette(const Pixel::t_rgb &color, const TEMP &temp);
     void                                setOpencvImage(const cv::Mat &image);
 
 private:
     cv::Mat                             _opencvImage;
-    std::list<Pixel>                    _pixelsList;
-    std::map<Pixel::t_rgb, TEMP>        _colorsPalette;
+    std::map<Pixel::s_pos, Pixel>       _pixelsPosMap;
 };
 
 #endif /* !__OPENCV_TEST_IMAGE_HH__ */
