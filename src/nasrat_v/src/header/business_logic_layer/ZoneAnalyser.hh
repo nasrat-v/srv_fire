@@ -6,9 +6,8 @@
 # define __OPENCV_TEST_ZONEANALYSER_HH__
 
 # define ZONE_NOT_FIND          (-1)
-# define DEEPNESS_SONAR         15       // Deepness for sonar algorithm, bigger is more precise but slower
+# define DEEPNESS_SONAR         20       // Deepness for sonar algorithm, bigger is slower. Depends on the image resolution
 # define COLOR_SCALAR_BORDER    cv::Scalar(0, 255, 0)
-# define FILE_PATH              "../input/image/test02.jpg"
 
 #include "../data_transfert_object/Zone.hh"
 #include "../output_static_object/Error.hh"
@@ -25,7 +24,7 @@ public:
     void                    addPixelToZone(Pixel &pixel, int id_zone);
     int                     findExistingZone(const Pixel &pixel);
     size_t                  getNbZone() const;
-    void                    printBorderOnZone(const cv::Mat &source_image);
+    void                    printBorderOnZone(const cv::Mat &opencv_image_loaded, const std::string &base_image_path);
     void                    Analyse();
 
 private:

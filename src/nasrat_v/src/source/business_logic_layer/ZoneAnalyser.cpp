@@ -56,11 +56,11 @@ void            ZoneAnalyser::findBorderOfRectangle(cv::Point &point_top_left, c
  * We recreate a color image and a black/white image
  * @param source_image The color image we analysed
  */
-void            ZoneAnalyser::printBorderOnZone(const cv::Mat &source_image)
+void            ZoneAnalyser::printBorderOnZone(const cv::Mat &opencv_image_loaded, const std::string &base_image_path)
 {
     int                                 id_zone = 0;
-    cv::Mat                             neg_dest_image = source_image;
-    cv::Mat                             dest_image = cv::imread(FILE_PATH);
+    cv::Mat                             neg_dest_image = opencv_image_loaded;
+    cv::Mat                             dest_image = cv::imread(base_image_path);
     std::vector<Zone>::iterator         zone_it = _zones.begin();
     cv::Point                           point_top_left;
     cv::Point                           point_bottom_right;

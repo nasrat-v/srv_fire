@@ -16,6 +16,7 @@ public:
     {
         UNKNOWN_ERROR,
         OPEN_IMG,
+        OPEN_DIR,
         TRUNCATED_IMG
     };
 

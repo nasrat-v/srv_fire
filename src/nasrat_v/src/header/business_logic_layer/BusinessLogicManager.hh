@@ -5,6 +5,8 @@
 #ifndef __OPENCV_TEST_BUSINESSLOGICMANAGER_HH__
 # define __OPENCV_TEST_BUSINESSLOGICMANAGER_HH__
 
+# define DIR_PATH   "../input/image/"
+
 #include <vector>
 #include "dirent.h"
 #include "ImageAnalyser.hh"
@@ -18,8 +20,9 @@ public:
     void                run();
 
 private:
-    ImageAnalyser       _imageAnalyser;
-    ImageAnalyser       _imageAnalyser2;
+    /* Methods */
+    void                analyseAllFiles();
+    void                analyse(const std::string &file_path);
 };
 
 #endif /* !__OPENCV_TEST_BUSINESSLOGICMANAGER_HH__ */

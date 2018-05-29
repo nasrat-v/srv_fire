@@ -23,12 +23,15 @@ public:
     const std::map<Pixel::t_pos, Pixel> &getPixelsPosMap() const;
     const std::map<Pixel::t_rgb, TEMP>  &getColorsPalette() const;
     const cv::Mat                       &getOpencvImage() const;
+    const std::string                   &getImagePath() const;
     void                                addPixel(const Pixel &pixel);
     void                                addColorToPalette(const Pixel::t_rgb &color, const TEMP &temp);
     void                                setOpencvImage(const cv::Mat &image);
+    void                                setImagePath(const std::string &path);
 
 private:
     cv::Mat                             _opencvImage;
+    std::string                         _imagePath;
     std::map<Pixel::s_pos, Pixel>       _pixelsPosMap;
     std::map<Pixel::t_rgb, TEMP>        _colorsPalette;
 };

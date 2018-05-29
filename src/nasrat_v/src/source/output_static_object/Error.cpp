@@ -25,6 +25,8 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Unknown error");
         case (ErrorType::OPEN_IMG):
             return ("Could not open image");
+        case (ErrorType::OPEN_DIR):
+            return ("Could not open directory");
         case (ErrorType::TRUNCATED_IMG):
             return ("Image is truncated, could not analyse it");
     };

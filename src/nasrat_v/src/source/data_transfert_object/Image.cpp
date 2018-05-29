@@ -27,6 +27,11 @@ const cv::Mat   &Image::getOpencvImage() const
     return (_opencvImage);
 }
 
+const std::string   &Image::getImagePath() const
+{
+    return (_imagePath);
+}
+
 void        Image::addPixel(const Pixel &pixel)
 {
     _pixelsPosMap.insert(std::make_pair(pixel.getPos(), pixel));
@@ -40,4 +45,9 @@ void        Image::addColorToPalette(const Pixel::t_rgb &color, const Image::TEM
 void        Image::setOpencvImage(const cv::Mat &image)
 {
     _opencvImage = image;
+}
+
+void        Image::setImagePath(const std::string &path)
+{
+    _imagePath = path;
 }

@@ -78,7 +78,7 @@ void            ImageAnalyser::defineZone(cv::Mat neg_img)
         }
     }
     Log::logSomething("Number of fire's zone detected: " + std::to_string(_zoneAnalyser.getNbZone()));
-    _zoneAnalyser.printBorderOnZone(_image.getOpencvImage());
+    _zoneAnalyser.printBorderOnZone(_image.getOpencvImage(), _image.getImagePath());
 }
 
 /**

@@ -27,7 +27,7 @@ set(SOURCE_FILES
         src/header/data_transfert_object/Zone.hh
         src/source/business_logic_layer/ZoneAnalyser.cpp
         src/header/business_logic_layer/ZoneAnalyser.hh
-	src/source/output_static_object/Log.cpp
-	src/header/output_static_object/Log.hh)
+        src/source/output_static_object/Log.cpp
+        src/header/output_static_object/Log.hh)
 
 add_executable(opencv_srv ${SOURCE_FILES})

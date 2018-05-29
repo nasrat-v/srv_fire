@@ -67,3 +67,6 @@
 [Tue May 29 22:12:47 2018
 	Image is truncated, could not analyse it ../input/image/test02.jpg]
 
+[Wed May 30 00:53:27 2018
+	Could not open directory ]
+
