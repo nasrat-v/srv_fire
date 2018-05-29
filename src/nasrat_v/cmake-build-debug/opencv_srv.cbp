@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="opencv_srv"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="opencv_srv">
+				<Option output="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/opencv_srv" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 opencv_srv"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="opencv_srv/fast">
+				<Option output="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/opencv_srv" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/../../../../include/c++/7.3.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 opencv_srv/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/business_logic_layer/BusinessLogicManager.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/business_logic_layer/ImageAnalyser.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/business_logic_layer/ZoneAnalyser.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/data_transfert_object/Image.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/data_transfert_object/Packet.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/data_transfert_object/Pixel.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/data_transfert_object/Request.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/data_transfert_object/Zone.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/output_static_object/Error.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/header/output_static_object/Log.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/Main.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/BusinessLogicManager.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ImageAnalyser.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ZoneAnalyser.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Image.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Packet.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Pixel.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Request.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Zone.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Error.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Log.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/tek3/C++/opencv_srv/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
