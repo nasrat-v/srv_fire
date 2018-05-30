@@ -322,3 +322,117 @@
 [Wed May 30 01:32:23 2018
 	Number of fire's zone detected: 3]
 
+[Wed May 30 01:54:20 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 01:54:28 2018
+	Number of fire's zone detected: 5]
+
+[Wed May 30 01:54:32 2018
+	Number of fire's zone detected: 1]
+
+[Wed May 30 01:54:34 2018
+	Number of fire's zone detected: 2]
+
+[Wed May 30 01:54:36 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 01:54:39 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 01:57:23 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 01:58:00 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 01:59:02 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 02:03:08 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 02:03:15 2018
+	Number of fire's zone detected: 5]
+
+[Wed May 30 02:03:19 2018
+	Number of fire's zone detected: 1]
+
+[Wed May 30 02:03:22 2018
+	Number of fire's zone detected: 2]
+
+[Wed May 30 02:03:27 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:03:31 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:07:01 2018
+	Number of fire's zone detected: 14]
+
+[Wed May 30 02:07:07 2018
+	Number of fire's zone detected: 9]
+
+[Wed May 30 02:07:09 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:07:13 2018
+	Number of fire's zone detected: 4]
+
+[Wed May 30 02:07:15 2018
+	Number of fire's zone detected: 4]
+
+[Wed May 30 02:07:17 2018
+	Number of fire's zone detected: 5]
+
+[Wed May 30 02:10:39 2018
+	Number of fire's zone detected: 4]
+
+[Wed May 30 02:10:42 2018
+	Number of fire's zone detected: 7]
+
+[Wed May 30 02:10:57 2018
+	Number of fire's zone detected: 4]
+
+[Wed May 30 02:10:59 2018
+	Number of fire's zone detected: 7]
+
+[Wed May 30 02:11:00 2018
+	Number of fire's zone detected: 1]
+
+[Wed May 30 02:11:53 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 02:12:02 2018
+	Number of fire's zone detected: 5]
+
+[Wed May 30 02:12:04 2018
+	Number of fire's zone detected: 1]
+
+[Wed May 30 02:12:07 2018
+	Number of fire's zone detected: 2]
+
+[Wed May 30 02:12:10 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:12:13 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:13:11 2018
+	Number of fire's zone detected: 10]
+
+[Wed May 30 02:13:16 2018
+	Number of fire's zone detected: 5]
+
+[Wed May 30 02:13:17 2018
+	Number of fire's zone detected: 1]
+
+[Wed May 30 02:13:19 2018
+	Number of fire's zone detected: 2]
+
+[Wed May 30 02:13:21 2018
+	Number of fire's zone detected: 3]
+
+[Wed May 30 02:13:24 2018
+	Number of fire's zone detected: 3]
+

@@ -5,12 +5,9 @@
 #ifndef __OPENCV_TEST_IMAGEANALYSER_HH__
 # define __OPENCV_TEST_IMAGEANALYSER_HH__
 
-# define MAX_RED            50
-# define MIN_RED            0
-# define MAX_BLUE           50
-# define MIN_BLUE           0
-# define MAX_GREEN          50
-# define MIN_GREEN          0
+# define MAX_RED            0
+# define MAX_BLUE           0
+# define MAX_GREEN          0
 # define NEGATIVE_FILE_PATH "../output/image/negative.png"
 
 #include "../data_transfert_object/Image.hh"

@@ -44,9 +44,9 @@ bool            ImageAnalyser::isPattern(const Pixel &pixel)
 {
     Pixel::t_rgb    rgb = pixel.getColors();
 
-    return ((/*rgb._red > MIN_RED &&*/ rgb._red <= MAX_RED) &&
-            (/*rgb._green > MIN_GREEN &&*/ rgb._green <= MAX_GREEN) &&
-            (/*rgb._blue > MIN_BLUE &&*/ rgb._blue <= MAX_BLUE));
+    return ((rgb._red == MAX_RED) &&
+            (rgb._green == MAX_GREEN) &&
+            (rgb._blue == MAX_BLUE));
 }
 
 /**
@@ -88,6 +88,7 @@ void            ImageAnalyser::defineZone(cv::Mat neg_img)
  */
 cv::Mat         ImageAnalyser::transformToNegative(cv::Mat img)
 {
+    cv::threshold(img, img, 200, 255, cv::THRESH_BINARY);
     for (int i = 0; i < img.rows; i++)
     {
         for (int j = 0; j < img.cols; j++)

@@ -59,7 +59,7 @@ void            ZoneAnalyser::findBorderOfRectangle(cv::Point &point_top_left, c
 void            ZoneAnalyser::printBorderOnZone(const cv::Mat &opencv_image_loaded, const std::string &base_image_path)
 {
     int                                 id_zone = 0;
-    cv::Mat                             neg_dest_image = opencv_image_loaded;
+    //cv::Mat                             neg_dest_image = opencv_image_loaded;
     cv::Mat                             dest_image = cv::imread(base_image_path);
     std::vector<Zone>::iterator         zone_it = _zones.begin();
     cv::Point                           point_top_left;
@@ -69,13 +69,13 @@ void            ZoneAnalyser::printBorderOnZone(const cv::Mat &opencv_image_load
     {
         findBorderOfRectangle(point_top_left, point_bottom_right, zone_it->getLeftTopPos(), zone_it->getRightBottomPos());
         cv::rectangle(dest_image, point_top_left, point_bottom_right, COLOR_SCALAR_BORDER, 2);
-        cv::rectangle(neg_dest_image, point_top_left, point_bottom_right, COLOR_SCALAR_BORDER, 2);
+        //cv::rectangle(neg_dest_image, point_top_left, point_bottom_right, COLOR_SCALAR_BORDER, 2);
         //std::cout << "id_zone: " << id_zone << "\tx: " << zone_it->getLeftTopPos()._x << "\ty: " << zone_it->getLeftTopPos()._y;
         //std::cout << "\t to -> \tx: " << zone_it->getRightBottomPos()._x << "\ty: " << zone_it->getRightBottomPos()._y << std::endl << std::endl;
         ++zone_it;
         id_zone++;
     }
-    cv::imshow("negative_test", neg_dest_image);
+    //cv::imshow("negative_test", neg_dest_image);
     cv::imshow("test", dest_image);
     cv::waitKey(0);
 }
