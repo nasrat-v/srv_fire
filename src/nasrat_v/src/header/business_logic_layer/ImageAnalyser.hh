@@ -24,7 +24,8 @@
 # define TRANSFORM_TO_COLOR 255
 # define BINARY_FILE_PATH   "../output/image/binary.png"
 
-#include <string.h>
+#include <ctime>
+#include <string>
 #include "../data_transfert_object/Image.hh"
 #include "ZoneAnalyser.hh"
 
@@ -34,20 +35,27 @@ public:
     ImageAnalyser();
     ~ImageAnalyser();
 
-    const Image     &getImage() const;
-    void            setImage(const Image &image);
-    void            Analyse();
+    enum class          typeAnalysis
+    {
+        SIMPLE,
+        TRIPLE
+    };
+
+    const Image         &getImage() const;
+    void                setImage(const Image &image);
+    void                Analyse(const typeAnalysis &type_analysis);
 
 private:
     /* Methods */
-    void            transformToBinary(cv::Mat &img);
-    void            defineZone(cv::Mat neg_img);
-    bool            isPattern(Pixel &pixel);
-    void            printPixel(const Pixel &pixel);
+    void                transformToBinary(cv::Mat &img);
+    double              defineZone(cv::Mat neg_img);
+    bool                isPattern(Pixel &pixel);
+    void                printPixel(const Pixel &pixel);
+    const char          *getTypeAnalysisString(const typeAnalysis &type) const;
 
     /* Attributes */
-    Image           _image;
-    ZoneAnalyser    _zoneAnalyser;
+    Image               _image;
+    ZoneAnalyser        _zoneAnalyser;
 };
 
 #endif /* !__OPENCV_TEST_IMAGEANALYSER_HH__ */

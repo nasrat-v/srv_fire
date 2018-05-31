@@ -55,7 +55,7 @@ void            ZoneAnalyser::findBorderOfRectangle(cv::Point &point_top_left, c
  * Thanks to the border of each fire zone, we recreate an image with the border in color.
  * The color of the border is defined by the macro COLOR_SCALAR_BORDER.
  * We recreate a color image and a black/white image
- * @param source_image The color image we analysed
+ * @param base_image_path Unmodified base image path we analysed
  */
 void            ZoneAnalyser::printBorderOnZone(const std::string &base_image_path)
 {
@@ -76,25 +76,26 @@ void            ZoneAnalyser::printBorderOnZone(const std::string &base_image_pa
             if (zone_it->getTypeZone() == Pixel::typeTemp::FLAME)
             {
                 cv::rectangle(dest_image, point_top_left, point_bottom_right, FLAME_COLOR_SCALAR_BORDER, 2);
-                cv::putText(dest_image, "FLAME", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX,
-                            0.4, FLAME_COLOR_SCALAR_BORDER, 1, 8);
+                cv::putText(dest_image, "FLAME", {point_top_left.x, (point_top_left.y - 2)},
+                            CV_FONT_HERSHEY_SIMPLEX, 0.4, FLAME_COLOR_SCALAR_BORDER, 1, 8);
             }
             else if (zone_it->getTypeZone() == Pixel::typeTemp::VERY_HOT)
             {
                 cv::rectangle(dest_image, point_top_left, point_bottom_right, VERY_HOT_COLOR_SCALAR_BORDER, 2);
-                cv::putText(dest_image, "VERY HOT", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX,
-                            0.4, VERY_HOT_COLOR_SCALAR_BORDER, 1, 8);
+                cv::putText(dest_image, "VERY HOT", {point_top_left.x, (point_top_left.y - 2)},
+                            CV_FONT_HERSHEY_SIMPLEX, 0.4, VERY_HOT_COLOR_SCALAR_BORDER, 1, 8);
             }
             else if (zone_it->getTypeZone() == Pixel::typeTemp::HOT)
             {
                 cv::rectangle(dest_image, point_top_left, point_bottom_right, HOT_COLOR_SCALAR_BORDER, 2);
-                cv::putText(dest_image, "HOT", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX, 0.4,
-                            HOT_COLOR_SCALAR_BORDER, 1, 8);
+                cv::putText(dest_image, "HOT", {point_top_left.x, (point_top_left.y - 2)},
+                            CV_FONT_HERSHEY_SIMPLEX, 0.4, HOT_COLOR_SCALAR_BORDER, 1, 8);
             }
         }
         ++zone_it;
         id_zone++;
     }
+    //cv::threshold(dest_image, dest_image, 200, 255, cv::THRESH_BINARY);
     cv::imshow("test", dest_image);
     cv::waitKey(0);
 }
@@ -121,6 +122,7 @@ void            ZoneAnalyser::findBorderOfPixel(int id_zone, int y, int x)
  * Find the fire zone to which the pixel belongs with it's position
  * @param y Y position of the pixel to check
  * @param x X position of the pixel to check
+ * @param type Temperature type of the area. Can be FLAME, VERY HOT or HOT
  * @return If the pixel belongs to a fire zone we return the zone's ID. If not we return the macro ZONE_NOT_FIND
  * @todo Possibility to improve the speed by keeping a pointer of its zone on each pixel. We recover the pixel on the map with its position to have its area.
  */

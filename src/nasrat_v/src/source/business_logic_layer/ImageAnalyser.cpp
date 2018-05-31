@@ -4,12 +4,23 @@
 
 #include "../../header/business_logic_layer/ImageAnalyser.hh"
 
+static const char   *_typeAnalysisStrings[] =
+        {
+                "Simple",
+                "Triple"
+        };
+
 ImageAnalyser::ImageAnalyser()
 {
 }
 
 ImageAnalyser::~ImageAnalyser()
 {
+}
+
+const char      *ImageAnalyser::getTypeAnalysisString(const typeAnalysis &type) const
+{
+    return (_typeAnalysisStrings[(int)type]);
 }
 
 const Image     &ImageAnalyser::getImage() const
@@ -72,8 +83,9 @@ bool            ImageAnalyser::isPattern(Pixel &pixel)
  *  If a pixel correspond to the fire pattern color,
  *  we check all pixel around it with a sonar algorithm and then we add it to a fire zone
  * @param neg_img Image to analyse in negative
+ * @return Time elapsed during the analysis
  */
-void            ImageAnalyser::defineZone(cv::Mat neg_img)
+double          ImageAnalyser::defineZone(cv::Mat neg_img)
 {
     Pixel       pixel;
     int         id_zone;
@@ -95,8 +107,7 @@ void            ImageAnalyser::defineZone(cv::Mat neg_img)
             }
         }
     }
-    Log::logSomething("Number of fire's zone detected: " + std::to_string(_zoneAnalyser.getNbZone()));
-    _zoneAnalyser.printBorderOnZone(_image.getImagePath());
+    return (std::clock());
 }
 
 /**
@@ -112,11 +123,18 @@ void            ImageAnalyser::transformToBinary(cv::Mat &img)
 
 /**
  * Entry point of the class. Launch the analysis
+ * @param type_analysis Analysis type to do
  */
-void            ImageAnalyser::Analyse()
+void            ImageAnalyser::Analyse(const typeAnalysis &type_analysis)
 {
-    cv::Mat     img = _image.getOpencvImage();
+    double          time;
+    std::clock_t    start = std::clock();
+    cv::Mat         img = _image.getOpencvImage();
 
     transformToBinary(img);
-    defineZone(img);
+    time = defineZone(img);
+    Log::logSomething(std::string(getTypeAnalysisString(type_analysis)) + " analyse terminated in " +
+                      std::to_string((time - start) / (double)CLOCKS_PER_SEC)
+                      + "seconds\n\t\tNumber of fire's zone detected: " + std::to_string(_zoneAnalyser.getNbZone()));
+    _zoneAnalyser.printBorderOnZone(_image.getImagePath());
 }

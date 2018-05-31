@@ -22,7 +22,7 @@ public:
 private:
     /* Methods */
     void                analyseAllFiles();
-    void                analyse(const std::string &file_path);
+    void                analyse(const std::string &file_path, const ImageAnalyser::typeAnalysis &type_of_analysis);
 };
 
 #endif /* !__OPENCV_TEST_BUSINESSLOGICMANAGER_HH__ */

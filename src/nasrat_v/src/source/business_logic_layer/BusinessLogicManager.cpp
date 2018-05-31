@@ -30,7 +30,10 @@ void        BusinessLogicManager::analyseAllFiles()
         {
             path = DIR_PATH;
             if (strncmp(entry->d_name, ".", 1) && strncmp(entry->d_name, "..", 2))
-                analyse(path + entry->d_name);
+            {
+                analyse(path + entry->d_name, ImageAnalyser::typeAnalysis::SIMPLE);
+                //analyse(path + entry->d_name, ImageAnalyser::typeAnalysis::TRIPLE);
+            }
         }
         closedir(dir);
     }
@@ -39,14 +42,18 @@ void        BusinessLogicManager::analyseAllFiles()
 /**
  * We load an image and then we analyse it
  * @param file_path Path of the image to analyse
+ * @param type_analysis Analysis type to do. SIMPLE for quick analysis, TRIPLE for deep analysis
  */
-void        BusinessLogicManager::analyse(const std::string &file_path)
+void        BusinessLogicManager::analyse(const std::string &file_path, const ImageAnalyser::typeAnalysis &type_analysis)
 {
     Image           image;
     cv::Mat         img;
     ImageAnalyser   imageAnalyser;
 
-    img = cv::imread(file_path, CV_LOAD_IMAGE_COLOR);
+    if (type_analysis == ImageAnalyser::typeAnalysis::SIMPLE)
+        img = cv::imread(file_path, CV_LOAD_IMAGE_GRAYSCALE);
+    else if (type_analysis == ImageAnalyser::typeAnalysis::TRIPLE)
+        img = cv::imread(file_path, CV_LOAD_IMAGE_COLOR);
     if (img.empty())
         Error::logError(Error::ErrorType::OPEN_IMG, file_path);
     else
@@ -54,7 +61,7 @@ void        BusinessLogicManager::analyse(const std::string &file_path)
         image.setImagePath(file_path);
         image.setOpencvImage(img);
         imageAnalyser.setImage(image);
-        imageAnalyser.Analyse();
+        imageAnalyser.Analyse(type_analysis);
     }
 }
 
