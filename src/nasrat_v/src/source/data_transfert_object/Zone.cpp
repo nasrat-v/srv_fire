@@ -48,6 +48,11 @@ void        Zone::setBiggerX(int x)
     _rightBottomPos._x = x;
 }
 
+void        Zone::setTypeZone(const Pixel::typeTemp &type)
+{
+    _typeZone = type;
+}
+
 const Pixel::t_pos  &Zone::getLeftTopPos() const
 {
     return (_leftTopPos);
@@ -56,4 +61,9 @@ const Pixel::t_pos  &Zone::getLeftTopPos() const
 const Pixel::t_pos  &Zone::getRightBottomPos() const
 {
     return (_rightBottomPos);
+}
+
+const Pixel::typeTemp    &Zone::getTypeZone() const
+{
+    return (_typeZone);
 }

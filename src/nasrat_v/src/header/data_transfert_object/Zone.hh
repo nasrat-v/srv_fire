@@ -12,18 +12,22 @@ class Zone : public Image
 public:
     Zone();
     ~Zone();
+
     void                setLeftTopPos(const Pixel::t_pos &pos);
     void                setRightBottomPos(const Pixel::t_pos &pos);
     void                setLowerY(int y);
     void                setLowerX(int x);
     void                setBiggerY(int y);
     void                setBiggerX(int x);
+    void                setTypeZone(const Pixel::typeTemp &type);
     const Pixel::t_pos  &getLeftTopPos() const;
     const Pixel::t_pos  &getRightBottomPos() const;
+    const Pixel::typeTemp  &getTypeZone() const;
 
 private:
     Pixel::t_pos        _leftTopPos;
     Pixel::t_pos        _rightBottomPos;
+    Pixel::typeTemp     _typeZone;
 
 };
 

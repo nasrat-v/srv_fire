@@ -31,6 +31,7 @@ void            ZoneAnalyser::createNewZone(const Pixel &pixel)
 {
     Zone        zone;
 
+    zone.setTypeZone(pixel.getTypePixel());
     zone.addPixel(pixel);
     addZone(zone);
 }
@@ -56,10 +57,9 @@ void            ZoneAnalyser::findBorderOfRectangle(cv::Point &point_top_left, c
  * We recreate a color image and a black/white image
  * @param source_image The color image we analysed
  */
-void            ZoneAnalyser::printBorderOnZone(const cv::Mat &opencv_image_loaded, const std::string &base_image_path)
+void            ZoneAnalyser::printBorderOnZone(const std::string &base_image_path)
 {
     int                                 id_zone = 0;
-    //cv::Mat                             neg_dest_image = opencv_image_loaded;
     cv::Mat                             dest_image = cv::imread(base_image_path);
     std::vector<Zone>::iterator         zone_it = _zones.begin();
     cv::Point                           point_top_left;
@@ -67,15 +67,34 @@ void            ZoneAnalyser::printBorderOnZone(const cv::Mat &opencv_image_load
 
     while (zone_it < _zones.end())
     {
-        findBorderOfRectangle(point_top_left, point_bottom_right, zone_it->getLeftTopPos(), zone_it->getRightBottomPos());
-        cv::rectangle(dest_image, point_top_left, point_bottom_right, COLOR_SCALAR_BORDER, 2);
-        //cv::rectangle(neg_dest_image, point_top_left, point_bottom_right, COLOR_SCALAR_BORDER, 2);
-        //std::cout << "id_zone: " << id_zone << "\tx: " << zone_it->getLeftTopPos()._x << "\ty: " << zone_it->getLeftTopPos()._y;
-        //std::cout << "\t to -> \tx: " << zone_it->getRightBottomPos()._x << "\ty: " << zone_it->getRightBottomPos()._y << std::endl << std::endl;
+        // BEUGUE DU CARRE QUI PREND TOUT L'ECRAN, IL Y A UNE ZONE EN TROP DE CREE
+        if (zone_it->getLeftTopPos()._y != 1920 && zone_it->getLeftTopPos()._x != 1080 &&
+            zone_it->getRightBottomPos()._y != 0 && zone_it->getRightBottomPos()._x != 0)
+        {
+            findBorderOfRectangle(point_top_left, point_bottom_right, zone_it->getLeftTopPos(),
+                                  zone_it->getRightBottomPos());
+            if (zone_it->getTypeZone() == Pixel::typeTemp::FLAME)
+            {
+                cv::rectangle(dest_image, point_top_left, point_bottom_right, FLAME_COLOR_SCALAR_BORDER, 2);
+                cv::putText(dest_image, "FLAME", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX,
+                            0.4, FLAME_COLOR_SCALAR_BORDER, 1, 8);
+            }
+            else if (zone_it->getTypeZone() == Pixel::typeTemp::VERY_HOT)
+            {
+                cv::rectangle(dest_image, point_top_left, point_bottom_right, VERY_HOT_COLOR_SCALAR_BORDER, 2);
+                cv::putText(dest_image, "VERY HOT", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX,
+                            0.4, VERY_HOT_COLOR_SCALAR_BORDER, 1, 8);
+            }
+            else if (zone_it->getTypeZone() == Pixel::typeTemp::HOT)
+            {
+                cv::rectangle(dest_image, point_top_left, point_bottom_right, HOT_COLOR_SCALAR_BORDER, 2);
+                cv::putText(dest_image, "HOT", {point_top_left.x, (point_top_left.y - 2)}, CV_FONT_HERSHEY_SIMPLEX, 0.4,
+                            HOT_COLOR_SCALAR_BORDER, 1, 8);
+            }
+        }
         ++zone_it;
         id_zone++;
     }
-    //cv::imshow("negative_test", neg_dest_image);
     cv::imshow("test", dest_image);
     cv::waitKey(0);
 }
@@ -105,7 +124,7 @@ void            ZoneAnalyser::findBorderOfPixel(int id_zone, int y, int x)
  * @return If the pixel belongs to a fire zone we return the zone's ID. If not we return the macro ZONE_NOT_FIND
  * @todo Possibility to improve the speed by keeping a pointer of its zone on each pixel. We recover the pixel on the map with its position to have its area.
  */
-int             ZoneAnalyser::findZoneByPixelPos(int y, int x)
+int             ZoneAnalyser::findZoneByPixelPos(int y, int x, const Pixel::typeTemp &type)
 {
     int                                 id_zone = 0;
     Pixel::t_pos                        pos { y, x };
@@ -114,9 +133,12 @@ int             ZoneAnalyser::findZoneByPixelPos(int y, int x)
 
     while (zone_it < _zones.end())
     {
-        pixels = zone_it->getPixelsPosMap();
-        if (pixels.find(pos) != pixels.end())
-            return (id_zone);
+        if (zone_it->getTypeZone() == type)
+        {
+            pixels = zone_it->getPixelsPosMap();
+            if (pixels.find(pos) != pixels.end())
+                return (id_zone);
+        }
         ++zone_it;
         id_zone++;
     }
@@ -143,7 +165,7 @@ int             ZoneAnalyser::findExistingZone(const Pixel &pixel)
         while (n <= (pos._x + DEEPNESS_SONAR))
         {
             if ((i >= 0 && n >= 0) &&
-                    (id_zone = findZoneByPixelPos(i, n)) != ZONE_NOT_FIND)
+                    (id_zone = findZoneByPixelPos(i, n, pixel.getTypePixel())) != ZONE_NOT_FIND)
             {
                 findBorderOfPixel(id_zone, pos._y, pos._x);
                 return (id_zone);

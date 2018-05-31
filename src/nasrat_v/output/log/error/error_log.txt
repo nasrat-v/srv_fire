@@ -70,3 +70,21 @@
 [Wed May 30 00:53:27 2018
 	Could not open directory ]
 
+[Thu May 31 18:43:11 2018
+	Could not open image ../input/image/autre image]
+
+[Thu May 31 18:44:34 2018
+	Could not open image ../input/image/autre image]
+
+[Thu May 31 18:45:18 2018
+	Could not open image ../input/image/autre image]
+
+[Thu May 31 18:46:02 2018
+	Could not open image ../input/image/autre image]
+
+[Thu May 31 18:50:31 2018
+	Could not open image ../input/image/autre image]
+
+[Thu May 31 18:51:22 2018
+	Could not open image ../input/image/autre image]
+

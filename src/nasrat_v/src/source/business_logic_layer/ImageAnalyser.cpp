@@ -40,13 +40,31 @@ void            ImageAnalyser::printPixel(const Pixel &pixel)
  * @param pixel The pixel to check
  * @return True if pixel is fire, False if not
  */
-bool            ImageAnalyser::isPattern(const Pixel &pixel)
+bool            ImageAnalyser::isPattern(Pixel &pixel)
 {
     Pixel::t_rgb    rgb = pixel.getColors();
 
-    return ((rgb._red == MAX_RED) &&
-            (rgb._green == MAX_GREEN) &&
-            (rgb._blue == MAX_BLUE));
+    if ((rgb._red == FLAME_RED) && (rgb._green == FLAME_GREEN) && (rgb._blue == FLAME_BLUE))
+    {
+        pixel.setTypePixel(Pixel::typeTemp::FLAME);
+        return (true);
+    }
+    else if ((rgb._red >= VERY_HOT_MIN_RED && rgb._red <= VERY_HOT_MAX_RED) &&
+             (rgb._green >= VERY_HOT_MIN_GREEN && rgb._green <= VERY_HOT_MAX_GREEN) &&
+             (rgb._blue >= VERY_HOT_MIN_BLUE && rgb._blue <= VERY_HOT_MAX_BLUE))
+    {
+        pixel.setTypePixel(Pixel::typeTemp::VERY_HOT);
+        return (true);
+    }
+    else if ((rgb._red >= HOT_MIN_RED && rgb._red <= HOT_MAX_RED) &&
+             (rgb._green >= HOT_MIN_GREEN && rgb._green <= HOT_MAX_GREEN) &&
+             (rgb._blue >= HOT_MIN_BLUE && rgb._blue <= HOT_MAX_BLUE))
+    {
+        pixel.setTypePixel(Pixel::typeTemp::HOT);
+        return (true);
+    }
+    pixel.setTypePixel(Pixel::typeTemp::NO_TYPE);
+    return (false);
 }
 
 /**
@@ -78,25 +96,18 @@ void            ImageAnalyser::defineZone(cv::Mat neg_img)
         }
     }
     Log::logSomething("Number of fire's zone detected: " + std::to_string(_zoneAnalyser.getNbZone()));
-    _zoneAnalyser.printBorderOnZone(_image.getOpencvImage(), _image.getImagePath());
+    _zoneAnalyser.printBorderOnZone(_image.getImagePath());
 }
 
 /**
- * Transform an (A)RGB image into it's negative form
+ * Transform an (A)RGB image into it's binary form
  * @param img The image source
- * @return The negative image
  */
-cv::Mat         ImageAnalyser::transformToNegative(cv::Mat img)
+void            ImageAnalyser::transformToBinary(cv::Mat &img)
 {
-    cv::threshold(img, img, 200, 255, cv::THRESH_BINARY);
-    for (int i = 0; i < img.rows; i++)
-    {
-        for (int j = 0; j < img.cols; j++)
-            img.at<uchar>(i, j) = ((uchar)255 - img.at<uchar>(i, j));
-    }
-    cv::imwrite(NEGATIVE_FILE_PATH, img);
-    img = cv::imread(NEGATIVE_FILE_PATH, CV_LOAD_IMAGE_COLOR);
-    return (img);
+    cv::threshold(img, img, SENSIBILITY_COLOR, TRANSFORM_TO_COLOR, cv::THRESH_BINARY);
+    cv::imwrite(BINARY_FILE_PATH, img);
+    img = cv::imread(BINARY_FILE_PATH, CV_LOAD_IMAGE_COLOR);
 }
 
 /**
@@ -106,6 +117,6 @@ void            ImageAnalyser::Analyse()
 {
     cv::Mat     img = _image.getOpencvImage();
 
-    img = transformToNegative(img);
+    transformToBinary(img);
     defineZone(img);
 }

@@ -46,7 +46,7 @@ void        BusinessLogicManager::analyse(const std::string &file_path)
     cv::Mat         img;
     ImageAnalyser   imageAnalyser;
 
-    img = cv::imread(file_path, CV_LOAD_IMAGE_GRAYSCALE);
+    img = cv::imread(file_path, CV_LOAD_IMAGE_COLOR);
     if (img.empty())
         Error::logError(Error::ErrorType::OPEN_IMG, file_path);
     else

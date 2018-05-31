@@ -27,6 +27,11 @@ const Pixel::t_pos  &Pixel::getPos() const
     return (_pos);
 }
 
+const       Pixel::typeTemp &Pixel::getTypePixel() const
+{
+    return (_typePixel);
+}
+
 void        Pixel::setColors(const Pixel::t_rgb &colors)
 {
     _colors._red = colors._red;
@@ -51,6 +56,11 @@ void        Pixel::setPosition(const Pixel::t_pos &pos)
 {
     _pos._y = pos._y;
     _pos._x = pos._x;
+}
+
+void        Pixel::setTypePixel(const Pixel::typeTemp &type)
+{
+    _typePixel = type;
 }
 
 // operator < overload to allow the class to be used as Key in a Map
