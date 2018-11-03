@@ -24,13 +24,13 @@ void Frame::setSecondImg(const cv::Mat &img)
     _secondImg = img;
 }
 
-void Frame::setAllContours(std::vector<std::vector<cv::Point>> contours)
+void Frame::setAllContours(const std::vector<std::vector<cv::Point>> &contours)
 {
     _allContours = contours;
     _readyForAnalyse += 1;
 }
 
-void Frame::setAllConvexHulls(std::vector<std::vector<cv::Point>> convexHulls)
+void Frame::setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls)
 {
     _allConvexHulls = convexHulls;
     _readyForAnalyse += 1;
@@ -46,9 +46,9 @@ const cv::Mat   &Frame::getSecondImg() const
     return (_secondImg);
 }
 
-const std::vector<Entity>   &Frame::getEntity()
+const std::vector<Entity>   &Frame::getEntities() const
 {
-    return (_blobs);
+    return (_entities);
 }
 
 const std::vector<std::vector<cv::Point>>   &Frame::getAllContours() const
@@ -59,6 +59,11 @@ const std::vector<std::vector<cv::Point>>   &Frame::getAllContours() const
 const std::vector<std::vector<cv::Point>>   &Frame::getAllConvexHulls() const
 {
     return (_allConvexHulls);
+}
+
+void Frame::clearEntities()
+{
+    _entities.clear();
 }
 
 void Frame::analyseInfos()
@@ -72,7 +77,7 @@ void Frame::analyseInfos()
             possibleBlob.getCurrentBoundingRect().height > 20 && possibleBlob.getCurrentDiagonalSize() > 30.0 &&
             (cv::contourArea(possibleBlob.getContour()) / (double)possibleBlob.getCurrentBoundingRect().area()) > 0.40)
         {
-            _blobs.push_back(possibleBlob);
+            _entities.push_back(possibleBlob);
         }
     }
     //drawAndShowContours(_imgThresh.size(), _blobs, "imgCurrentFrameBlobs");

@@ -17,26 +17,27 @@ public:
 
     void                                        setFirstImg(const cv::Mat &img);
     void                                        setSecondImg(const cv::Mat &img);
-    void                                        setAllContours(std::vector<std::vector<cv::Point>> contours);
-    void                                        setAllConvexHulls(std::vector<std::vector<cv::Point>> convexHulls);
+    void                                        setAllContours(const std::vector<std::vector<cv::Point>> &contours);
+    void                                        setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls);
     const cv::Mat                               &getFirstImg() const;
     const cv::Mat                               &getSecondImg() const;
-    const std::vector<Entity>                   &getEntity();
+    const std::vector<Entity>                   &getEntities() const;
     const std::vector<std::vector<cv::Point>>   &getAllContours() const;
     const std::vector<std::vector<cv::Point>>   &getAllConvexHulls() const;
     void                                        findEntitiesWithInfos();
+    void                                        clearEntities();
 
 private:
     /* Methods*/
     void                                        analyseInfos();
 
     /* Attributes */
-    char                                _readyForAnalyse;
-    cv::Mat                             _firstImg;
-    cv::Mat                             _secondImg;
-    std::vector<Entity>                 _blobs;
-    std::vector<std::vector<cv::Point>> _allContours;
-    std::vector<std::vector<cv::Point>> _allConvexHulls;
+    char                                        _readyForAnalyse;
+    cv::Mat                                     _firstImg;
+    cv::Mat                                     _secondImg;
+    std::vector<Entity>                         _entities;
+    std::vector<std::vector<cv::Point>>         _allContours;
+    std::vector<std::vector<cv::Point>>         _allConvexHulls;
 };
 
 

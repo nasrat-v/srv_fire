@@ -10,7 +10,7 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     initCurrentAttributes();
     initCenterPosition();
     _stillBeingTracked = true;
-    _currentMatchFoundOrNewBlob = true;
+    _currentMatchFoundOrNewEntity = true;
     _numOfConsecutiveFramesWithoutMatch = 0;
 }
 
@@ -34,29 +34,84 @@ void Entity::initCenterPosition()
     _centerPositions.push_back(currentCenter);
 }
 
-const double    &Entity::getCurrentAspectRatio()
+double Entity::getCurrentAspectRatio() const
 {
     return (_currentAspectRatio);
 }
 
-const double    &Entity::getCurrentDiagonalSize()
+double Entity::getCurrentDiagonalSize() const
 {
     return (_currentDiagonalSize);
 }
 
-const cv::Rect  &Entity::getCurrentBoundingRect()
+const cv::Rect &Entity::getCurrentBoundingRect() const
 {
     return (_currentBoundingRect);
 }
 
-const std::vector<cv::Point>    &Entity::getContour()
+const cv::Point &Entity::getPredictedNextPosition() const
+{
+    return (_predictedNextPosition);
+}
+
+const std::vector<cv::Point> &Entity::getContour() const
 {
     return (_contour);
 }
 
-const bool Entity::getStillBeingTracked()
+const std::vector<cv::Point> &Entity::getCenterPositions() const
+{
+    return (_centerPositions);
+}
+
+bool Entity::getStillBeingTracked() const
 {
     return (_stillBeingTracked);
+}
+
+bool Entity::getCurrentMatchFoundOrNewEntity() const
+{
+    return (_currentMatchFoundOrNewEntity);
+}
+
+int Entity::getNumOfConsecutiveFramesWithoutMatch() const
+{
+    return (_numOfConsecutiveFramesWithoutMatch);
+}
+
+void Entity::setCurrentBoundingRect(const cv::Rect &rect)
+{
+    _currentBoundingRect = rect;
+}
+
+void Entity::setContour(const std::vector<cv::Point> &contour)
+{
+    _contour = contour;
+}
+
+void Entity::addCenterPosition(const cv::Point &centerPosition)
+{
+    _centerPositions.push_back(centerPosition);
+}
+
+void Entity::setCurrentAspectRatio(double val)
+{
+    _currentAspectRatio = val;
+}
+
+void Entity::setCurrentDiagonalSize(double val)
+{
+    _currentDiagonalSize = val;
+}
+
+void Entity::setCurrentMatchFoundOrNewEntity(bool val)
+{
+    _currentMatchFoundOrNewEntity = val;
+}
+
+void Entity::setStillBeingTracked(bool val)
+{
+    _stillBeingTracked = val;
 }
 
 void Entity::predictNextPosition()

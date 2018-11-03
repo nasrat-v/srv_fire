@@ -26,8 +26,8 @@ private:
     void            convexHullsImg(Frame &frame);
 
     /* Attributes */
-    cv::Mat _imgThresh;
-    cv::Mat _imgDifference;
+    cv::Mat         _imgThresh;
+    cv::Mat         _imgDifference;
 };
 
 

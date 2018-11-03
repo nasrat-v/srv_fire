@@ -18,26 +18,33 @@
 #include "FrameAddition.h"
 
 
-class StreamAnalyser
+class FrameAnalyser
 {
 public:
-    StreamAnalyser();
-    ~StreamAnalyser();
+    FrameAnalyser();
+    ~FrameAnalyser();
 
     void    initAnalyser(const std::string &videoPath);
-    void    analyseVideo(cv::VideoCapture &capVideo);
+    void    analyseFrame(cv::VideoCapture &capVideo);
 
 private:
     /* Methods */
     void    openVideo(const std::string &videoPath);
     void    readFrame();
+    void    initSavedEntities();
+    void    matchFrameEntitiesToSavedEntities();
+    void    setSavedEntityToFrameEntity(const Entity &frameEntity, int &intIndex);
+    void    addNewSavedEntity(Entity &frameEntity);
+    double  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
 
     /* Attributes */
     FrameSubstraction   _frameSubstracter;
     FrameAddition       _frameAdditionner;
     cv::VideoCapture    _capVideo;
+    std::vector<Entity> _savedEntities;
     Frame               _frame;
     int                 _frameCnt;
+    bool                _firstFrame;
 };
 
 

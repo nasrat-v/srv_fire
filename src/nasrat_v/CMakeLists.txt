@@ -14,6 +14,6 @@ set(SOURCE_FILES
         src/source/output_static_object/Log.cpp
         src/header/output_static_object/Log.hh
         src/source/Entity.cpp
-        src/header/Entity.h src/source/FrameSubstraction.cpp src/header/FrameSubstraction.h src/source/StreamAnalyser.cpp src/header/StreamAnalyser.h src/source/FrameAddition.cpp src/header/FrameAddition.h src/source/Frame.cpp src/header/Frame.h)
+        src/header/Entity.h src/source/FrameSubstraction.cpp src/header/FrameSubstraction.h src/source/FrameAnalyser.cpp src/header/FrameAnalyser.h src/source/FrameAddition.cpp src/header/FrameAddition.h src/source/Frame.cpp src/header/Frame.h)
 
 add_executable(opencv_srv ${SOURCE_FILES})
