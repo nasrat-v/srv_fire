@@ -48,10 +48,10 @@ RM = /home/nasrat_v/clion-2018.1.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nasrat_v/Dev/tek3/C++/opencv_srv
+CMAKE_SOURCE_DIR = /home/nasrat_v/Dev/srv_fire/src/nasrat_v
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug
+CMAKE_BINARY_DIR = /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,114 @@ opencv_srv/fast:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/build
 .PHONY : opencv_srv/fast
 
+src/source/Entity.o: src/source/Entity.cpp.o
+
+.PHONY : src/source/Entity.o
+
+# target to build an object file
+src/source/Entity.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o
+.PHONY : src/source/Entity.cpp.o
+
+src/source/Entity.i: src/source/Entity.cpp.i
+
+.PHONY : src/source/Entity.i
+
+# target to preprocess a source file
+src/source/Entity.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.i
+.PHONY : src/source/Entity.cpp.i
+
+src/source/Entity.s: src/source/Entity.cpp.s
+
+.PHONY : src/source/Entity.s
+
+# target to generate assembly for a file
+src/source/Entity.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.s
+.PHONY : src/source/Entity.cpp.s
+
+src/source/Frame.o: src/source/Frame.cpp.o
+
+.PHONY : src/source/Frame.o
+
+# target to build an object file
+src/source/Frame.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o
+.PHONY : src/source/Frame.cpp.o
+
+src/source/Frame.i: src/source/Frame.cpp.i
+
+.PHONY : src/source/Frame.i
+
+# target to preprocess a source file
+src/source/Frame.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.i
+.PHONY : src/source/Frame.cpp.i
+
+src/source/Frame.s: src/source/Frame.cpp.s
+
+.PHONY : src/source/Frame.s
+
+# target to generate assembly for a file
+src/source/Frame.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.s
+.PHONY : src/source/Frame.cpp.s
+
+src/source/FrameAddition.o: src/source/FrameAddition.cpp.o
+
+.PHONY : src/source/FrameAddition.o
+
+# target to build an object file
+src/source/FrameAddition.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o
+.PHONY : src/source/FrameAddition.cpp.o
+
+src/source/FrameAddition.i: src/source/FrameAddition.cpp.i
+
+.PHONY : src/source/FrameAddition.i
+
+# target to preprocess a source file
+src/source/FrameAddition.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.i
+.PHONY : src/source/FrameAddition.cpp.i
+
+src/source/FrameAddition.s: src/source/FrameAddition.cpp.s
+
+.PHONY : src/source/FrameAddition.s
+
+# target to generate assembly for a file
+src/source/FrameAddition.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.s
+.PHONY : src/source/FrameAddition.cpp.s
+
+src/source/FrameSubstraction.o: src/source/FrameSubstraction.cpp.o
+
+.PHONY : src/source/FrameSubstraction.o
+
+# target to build an object file
+src/source/FrameSubstraction.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o
+.PHONY : src/source/FrameSubstraction.cpp.o
+
+src/source/FrameSubstraction.i: src/source/FrameSubstraction.cpp.i
+
+.PHONY : src/source/FrameSubstraction.i
+
+# target to preprocess a source file
+src/source/FrameSubstraction.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.i
+.PHONY : src/source/FrameSubstraction.cpp.i
+
+src/source/FrameSubstraction.s: src/source/FrameSubstraction.cpp.s
+
+.PHONY : src/source/FrameSubstraction.s
+
+# target to generate assembly for a file
+src/source/FrameSubstraction.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.s
+.PHONY : src/source/FrameSubstraction.cpp.s
+
 src/source/Main.o: src/source/Main.cpp.o
 
 .PHONY : src/source/Main.o
@@ -150,221 +258,32 @@ src/source/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s
 .PHONY : src/source/Main.cpp.s
 
-src/source/business_logic_layer/BusinessLogicManager.o: src/source/business_logic_layer/BusinessLogicManager.cpp.o
+src/source/StreamAnalyser.o: src/source/StreamAnalyser.cpp.o
 
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.o
-
-# target to build an object file
-src/source/business_logic_layer/BusinessLogicManager.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.cpp.o
-
-src/source/business_logic_layer/BusinessLogicManager.i: src/source/business_logic_layer/BusinessLogicManager.cpp.i
-
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.i
-
-# target to preprocess a source file
-src/source/business_logic_layer/BusinessLogicManager.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.i
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.cpp.i
-
-src/source/business_logic_layer/BusinessLogicManager.s: src/source/business_logic_layer/BusinessLogicManager.cpp.s
-
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.s
-
-# target to generate assembly for a file
-src/source/business_logic_layer/BusinessLogicManager.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.s
-.PHONY : src/source/business_logic_layer/BusinessLogicManager.cpp.s
-
-src/source/business_logic_layer/ImageAnalyser.o: src/source/business_logic_layer/ImageAnalyser.cpp.o
-
-.PHONY : src/source/business_logic_layer/ImageAnalyser.o
+.PHONY : src/source/StreamAnalyser.o
 
 # target to build an object file
-src/source/business_logic_layer/ImageAnalyser.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o
-.PHONY : src/source/business_logic_layer/ImageAnalyser.cpp.o
+src/source/StreamAnalyser.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o
+.PHONY : src/source/StreamAnalyser.cpp.o
 
-src/source/business_logic_layer/ImageAnalyser.i: src/source/business_logic_layer/ImageAnalyser.cpp.i
+src/source/StreamAnalyser.i: src/source/StreamAnalyser.cpp.i
 
-.PHONY : src/source/business_logic_layer/ImageAnalyser.i
-
-# target to preprocess a source file
-src/source/business_logic_layer/ImageAnalyser.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.i
-.PHONY : src/source/business_logic_layer/ImageAnalyser.cpp.i
-
-src/source/business_logic_layer/ImageAnalyser.s: src/source/business_logic_layer/ImageAnalyser.cpp.s
-
-.PHONY : src/source/business_logic_layer/ImageAnalyser.s
-
-# target to generate assembly for a file
-src/source/business_logic_layer/ImageAnalyser.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.s
-.PHONY : src/source/business_logic_layer/ImageAnalyser.cpp.s
-
-src/source/business_logic_layer/ZoneAnalyser.o: src/source/business_logic_layer/ZoneAnalyser.cpp.o
-
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.o
-
-# target to build an object file
-src/source/business_logic_layer/ZoneAnalyser.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.cpp.o
-
-src/source/business_logic_layer/ZoneAnalyser.i: src/source/business_logic_layer/ZoneAnalyser.cpp.i
-
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.i
+.PHONY : src/source/StreamAnalyser.i
 
 # target to preprocess a source file
-src/source/business_logic_layer/ZoneAnalyser.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.i
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.cpp.i
+src/source/StreamAnalyser.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.i
+.PHONY : src/source/StreamAnalyser.cpp.i
 
-src/source/business_logic_layer/ZoneAnalyser.s: src/source/business_logic_layer/ZoneAnalyser.cpp.s
+src/source/StreamAnalyser.s: src/source/StreamAnalyser.cpp.s
 
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.s
-
-# target to generate assembly for a file
-src/source/business_logic_layer/ZoneAnalyser.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.s
-.PHONY : src/source/business_logic_layer/ZoneAnalyser.cpp.s
-
-src/source/data_transfert_object/Image.o: src/source/data_transfert_object/Image.cpp.o
-
-.PHONY : src/source/data_transfert_object/Image.o
-
-# target to build an object file
-src/source/data_transfert_object/Image.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o
-.PHONY : src/source/data_transfert_object/Image.cpp.o
-
-src/source/data_transfert_object/Image.i: src/source/data_transfert_object/Image.cpp.i
-
-.PHONY : src/source/data_transfert_object/Image.i
-
-# target to preprocess a source file
-src/source/data_transfert_object/Image.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.i
-.PHONY : src/source/data_transfert_object/Image.cpp.i
-
-src/source/data_transfert_object/Image.s: src/source/data_transfert_object/Image.cpp.s
-
-.PHONY : src/source/data_transfert_object/Image.s
+.PHONY : src/source/StreamAnalyser.s
 
 # target to generate assembly for a file
-src/source/data_transfert_object/Image.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.s
-.PHONY : src/source/data_transfert_object/Image.cpp.s
-
-src/source/data_transfert_object/Packet.o: src/source/data_transfert_object/Packet.cpp.o
-
-.PHONY : src/source/data_transfert_object/Packet.o
-
-# target to build an object file
-src/source/data_transfert_object/Packet.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o
-.PHONY : src/source/data_transfert_object/Packet.cpp.o
-
-src/source/data_transfert_object/Packet.i: src/source/data_transfert_object/Packet.cpp.i
-
-.PHONY : src/source/data_transfert_object/Packet.i
-
-# target to preprocess a source file
-src/source/data_transfert_object/Packet.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.i
-.PHONY : src/source/data_transfert_object/Packet.cpp.i
-
-src/source/data_transfert_object/Packet.s: src/source/data_transfert_object/Packet.cpp.s
-
-.PHONY : src/source/data_transfert_object/Packet.s
-
-# target to generate assembly for a file
-src/source/data_transfert_object/Packet.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.s
-.PHONY : src/source/data_transfert_object/Packet.cpp.s
-
-src/source/data_transfert_object/Pixel.o: src/source/data_transfert_object/Pixel.cpp.o
-
-.PHONY : src/source/data_transfert_object/Pixel.o
-
-# target to build an object file
-src/source/data_transfert_object/Pixel.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o
-.PHONY : src/source/data_transfert_object/Pixel.cpp.o
-
-src/source/data_transfert_object/Pixel.i: src/source/data_transfert_object/Pixel.cpp.i
-
-.PHONY : src/source/data_transfert_object/Pixel.i
-
-# target to preprocess a source file
-src/source/data_transfert_object/Pixel.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.i
-.PHONY : src/source/data_transfert_object/Pixel.cpp.i
-
-src/source/data_transfert_object/Pixel.s: src/source/data_transfert_object/Pixel.cpp.s
-
-.PHONY : src/source/data_transfert_object/Pixel.s
-
-# target to generate assembly for a file
-src/source/data_transfert_object/Pixel.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.s
-.PHONY : src/source/data_transfert_object/Pixel.cpp.s
-
-src/source/data_transfert_object/Request.o: src/source/data_transfert_object/Request.cpp.o
-
-.PHONY : src/source/data_transfert_object/Request.o
-
-# target to build an object file
-src/source/data_transfert_object/Request.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o
-.PHONY : src/source/data_transfert_object/Request.cpp.o
-
-src/source/data_transfert_object/Request.i: src/source/data_transfert_object/Request.cpp.i
-
-.PHONY : src/source/data_transfert_object/Request.i
-
-# target to preprocess a source file
-src/source/data_transfert_object/Request.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.i
-.PHONY : src/source/data_transfert_object/Request.cpp.i
-
-src/source/data_transfert_object/Request.s: src/source/data_transfert_object/Request.cpp.s
-
-.PHONY : src/source/data_transfert_object/Request.s
-
-# target to generate assembly for a file
-src/source/data_transfert_object/Request.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.s
-.PHONY : src/source/data_transfert_object/Request.cpp.s
-
-src/source/data_transfert_object/Zone.o: src/source/data_transfert_object/Zone.cpp.o
-
-.PHONY : src/source/data_transfert_object/Zone.o
-
-# target to build an object file
-src/source/data_transfert_object/Zone.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o
-.PHONY : src/source/data_transfert_object/Zone.cpp.o
-
-src/source/data_transfert_object/Zone.i: src/source/data_transfert_object/Zone.cpp.i
-
-.PHONY : src/source/data_transfert_object/Zone.i
-
-# target to preprocess a source file
-src/source/data_transfert_object/Zone.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.i
-.PHONY : src/source/data_transfert_object/Zone.cpp.i
-
-src/source/data_transfert_object/Zone.s: src/source/data_transfert_object/Zone.cpp.s
-
-.PHONY : src/source/data_transfert_object/Zone.s
-
-# target to generate assembly for a file
-src/source/data_transfert_object/Zone.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.s
-.PHONY : src/source/data_transfert_object/Zone.cpp.s
+src/source/StreamAnalyser.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.s
+.PHONY : src/source/StreamAnalyser.cpp.s
 
 src/source/output_static_object/Error.o: src/source/output_static_object/Error.cpp.o
 
@@ -429,33 +348,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opencv_srv"
+	@echo "... src/source/Entity.o"
+	@echo "... src/source/Entity.i"
+	@echo "... src/source/Entity.s"
+	@echo "... src/source/Frame.o"
+	@echo "... src/source/Frame.i"
+	@echo "... src/source/Frame.s"
+	@echo "... src/source/FrameAddition.o"
+	@echo "... src/source/FrameAddition.i"
+	@echo "... src/source/FrameAddition.s"
+	@echo "... src/source/FrameSubstraction.o"
+	@echo "... src/source/FrameSubstraction.i"
+	@echo "... src/source/FrameSubstraction.s"
 	@echo "... src/source/Main.o"
 	@echo "... src/source/Main.i"
 	@echo "... src/source/Main.s"
-	@echo "... src/source/business_logic_layer/BusinessLogicManager.o"
-	@echo "... src/source/business_logic_layer/BusinessLogicManager.i"
-	@echo "... src/source/business_logic_layer/BusinessLogicManager.s"
-	@echo "... src/source/business_logic_layer/ImageAnalyser.o"
-	@echo "... src/source/business_logic_layer/ImageAnalyser.i"
-	@echo "... src/source/business_logic_layer/ImageAnalyser.s"
-	@echo "... src/source/business_logic_layer/ZoneAnalyser.o"
-	@echo "... src/source/business_logic_layer/ZoneAnalyser.i"
-	@echo "... src/source/business_logic_layer/ZoneAnalyser.s"
-	@echo "... src/source/data_transfert_object/Image.o"
-	@echo "... src/source/data_transfert_object/Image.i"
-	@echo "... src/source/data_transfert_object/Image.s"
-	@echo "... src/source/data_transfert_object/Packet.o"
-	@echo "... src/source/data_transfert_object/Packet.i"
-	@echo "... src/source/data_transfert_object/Packet.s"
-	@echo "... src/source/data_transfert_object/Pixel.o"
-	@echo "... src/source/data_transfert_object/Pixel.i"
-	@echo "... src/source/data_transfert_object/Pixel.s"
-	@echo "... src/source/data_transfert_object/Request.o"
-	@echo "... src/source/data_transfert_object/Request.i"
-	@echo "... src/source/data_transfert_object/Request.s"
-	@echo "... src/source/data_transfert_object/Zone.o"
-	@echo "... src/source/data_transfert_object/Zone.i"
-	@echo "... src/source/data_transfert_object/Zone.s"
+	@echo "... src/source/StreamAnalyser.o"
+	@echo "... src/source/StreamAnalyser.i"
+	@echo "... src/source/StreamAnalyser.s"
 	@echo "... src/source/output_static_object/Error.o"
 	@echo "... src/source/output_static_object/Error.i"
 	@echo "... src/source/output_static_object/Error.s"

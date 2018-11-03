@@ -18,3 +18,23 @@
 	Simple analyse terminated in 0.125236seconds
 		Number of fire's zone detected: 3]
 
+[Sat Nov  3 06:39:27 2018
+	Simple analyse terminated in 0.052172seconds
+		Number of fire's zone detected: 1]
+
+[Sat Nov  3 06:39:33 2018
+	Simple analyse terminated in 0.804121seconds
+		Number of fire's zone detected: 2]
+
+[Sat Nov  3 06:39:37 2018
+	Simple analyse terminated in 0.114402seconds
+		Number of fire's zone detected: 3]
+
+[Sat Nov  3 06:39:40 2018
+	Simple analyse terminated in 0.118270seconds
+		Number of fire's zone detected: 3]
+
+[Sat Nov  3 06:39:49 2018
+	Simple analyse terminated in 5.619038seconds
+		Number of fire's zone detected: 10]
+

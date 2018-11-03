@@ -43,10 +43,10 @@ RM = /home/nasrat_v/clion-2018.1.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nasrat_v/Dev/tek3/C++/opencv_srv
+CMAKE_SOURCE_DIR = /home/nasrat_v/Dev/srv_fire/src/nasrat_v
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug
+CMAKE_BINARY_DIR = /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/opencv_srv.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/opencv_srv.dir/flags.make
 
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/source/Main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/Main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/Main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/Main.cpp > CMakeFiles/opencv_srv.dir/src/source/Main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp > CMakeFiles/opencv_srv.dir/src/source/Main.cpp.i
 
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/Main.cpp -o CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp -o CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s
 
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o.requires:
 
@@ -81,42 +81,18 @@ CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o.provides: CMakeFiles/opencv_srv.
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o
 
 
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o: ../src/source/business_logic_layer/BusinessLogicManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/BusinessLogicManager.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/BusinessLogicManager.cpp > CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/BusinessLogicManager.cpp -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o
-
-
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o: ../src/source/output_static_object/Error.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Error.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Error.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Error.cpp > CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Error.cpp > CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.i
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Error.cpp -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Error.cpp -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.s
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o.requires:
 
@@ -129,186 +105,18 @@ CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o.provides: 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o
 
 
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o: ../src/source/data_transfert_object/Image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Image.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Image.cpp > CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Image.cpp -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o: ../src/source/business_logic_layer/ImageAnalyser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ImageAnalyser.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ImageAnalyser.cpp > CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ImageAnalyser.cpp -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o: ../src/source/data_transfert_object/Packet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Packet.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Packet.cpp > CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Packet.cpp -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o: ../src/source/data_transfert_object/Pixel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Pixel.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Pixel.cpp > CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Pixel.cpp -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o: ../src/source/data_transfert_object/Request.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Request.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Request.cpp > CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Request.cpp -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o: ../src/source/data_transfert_object/Zone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Zone.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Zone.cpp > CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/data_transfert_object/Zone.cpp -o CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o
-
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o: ../src/source/business_logic_layer/ZoneAnalyser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ZoneAnalyser.cpp
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ZoneAnalyser.cpp > CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.i
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/business_logic_layer/ZoneAnalyser.cpp -o CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.s
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.requires:
-
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.requires
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.requires
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.provides.build
-.PHONY : CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.provides
-
-CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o
-
-
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o: ../src/source/output_static_object/Log.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o -c /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Log.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Log.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Log.cpp > CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Log.cpp > CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.i
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/output_static_object/Log.cpp -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Log.cpp -o CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.s
 
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o.requires:
 
@@ -321,37 +129,151 @@ CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o.provides: CM
 CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o
 
 
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o: ../src/source/Entity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Entity.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Entity.cpp > CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.i
+
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Entity.cpp -o CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.s
+
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.requires:
+
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.requires
+
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.requires
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.provides.build
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.provides
+
+CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o
+
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o: ../src/source/FrameSubstraction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameSubstraction.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameSubstraction.cpp > CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.i
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameSubstraction.cpp -o CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.s
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.requires:
+
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.requires
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.requires
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.provides.build
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.provides
+
+CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o
+
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o: ../src/source/StreamAnalyser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/StreamAnalyser.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/StreamAnalyser.cpp > CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.i
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/StreamAnalyser.cpp -o CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.s
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.requires:
+
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.requires
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.requires
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.provides.build
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.provides
+
+CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o
+
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o: ../src/source/FrameAddition.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAddition.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAddition.cpp > CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.i
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAddition.cpp -o CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.s
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.requires:
+
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.requires
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.requires
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.provides.build
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.provides
+
+CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o
+
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: CMakeFiles/opencv_srv.dir/flags.make
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/source/Frame.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.cpp > CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.i
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.cpp -o CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.s
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.requires:
+
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.requires
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.provides: CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.requires
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.provides.build
+.PHONY : CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.provides
+
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.provides.build: CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o
+
+
 # Object files for target opencv_srv
 opencv_srv_OBJECTS = \
 "CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o" \
 "CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o" \
-"CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o"
+"CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" \
+"CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o" \
+"CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o" \
+"CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o" \
+"CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o" \
+"CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o"
 
 # External object files for target opencv_srv
 opencv_srv_EXTERNAL_OBJECTS =
 
 opencv_srv: CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o
 opencv_srv: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o
-opencv_srv: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o
 opencv_srv: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o
+opencv_srv: CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o
+opencv_srv: CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o
+opencv_srv: CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o
+opencv_srv: CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o
+opencv_srv: CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o
 opencv_srv: CMakeFiles/opencv_srv.dir/build.make
 opencv_srv: CMakeFiles/opencv_srv.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable opencv_srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable opencv_srv"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/opencv_srv.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -360,16 +282,13 @@ CMakeFiles/opencv_srv.dir/build: opencv_srv
 .PHONY : CMakeFiles/opencv_srv.dir/build
 
 CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/BusinessLogicManager.cpp.o.requires
 CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Image.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ImageAnalyser.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Packet.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Pixel.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Request.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/data_transfert_object/Zone.cpp.o.requires
-CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/business_logic_layer/ZoneAnalyser.cpp.o.requires
 CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o.requires
+CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o.requires
+CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o.requires
+CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o.requires
+CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o.requires
+CMakeFiles/opencv_srv.dir/requires: CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o.requires
 
 .PHONY : CMakeFiles/opencv_srv.dir/requires
 
@@ -378,6 +297,6 @@ CMakeFiles/opencv_srv.dir/clean:
 .PHONY : CMakeFiles/opencv_srv.dir/clean
 
 CMakeFiles/opencv_srv.dir/depend:
-	cd /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nasrat_v/Dev/tek3/C++/opencv_srv /home/nasrat_v/Dev/tek3/C++/opencv_srv /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug /home/nasrat_v/Dev/tek3/C++/opencv_srv/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nasrat_v/Dev/srv_fire/src/nasrat_v /home/nasrat_v/Dev/srv_fire/src/nasrat_v /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/opencv_srv.dir/depend
 

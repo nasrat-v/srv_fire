@@ -9,25 +9,11 @@ set(CMAKE_CXX_FLAGS
 
 set(SOURCE_FILES
         src/source/Main.cpp
-        src/source/business_logic_layer/BusinessLogicManager.cpp
-        src/header/business_logic_layer/BusinessLogicManager.hh
         src/source/output_static_object/Error.cpp
         src/header/output_static_object/Error.hh
-        src/source/data_transfert_object/Image.cpp
-        src/header/data_transfert_object/Image.hh
-        src/source/business_logic_layer/ImageAnalyser.cpp
-        src/header/business_logic_layer/ImageAnalyser.hh
-        src/source/data_transfert_object/Packet.cpp
-        src/header/data_transfert_object/Packet.hh
-        src/source/data_transfert_object/Pixel.cpp
-        src/header/data_transfert_object/Pixel.hh
-        src/source/data_transfert_object/Request.cpp
-        src/header/data_transfert_object/Request.hh
-        src/source/data_transfert_object/Zone.cpp
-        src/header/data_transfert_object/Zone.hh
-        src/source/business_logic_layer/ZoneAnalyser.cpp
-        src/header/business_logic_layer/ZoneAnalyser.hh
         src/source/output_static_object/Log.cpp
-        src/header/output_static_object/Log.hh)
+        src/header/output_static_object/Log.hh
+        src/source/Entity.cpp
+        src/header/Entity.h src/source/FrameSubstraction.cpp src/header/FrameSubstraction.h src/source/StreamAnalyser.cpp src/header/StreamAnalyser.h src/source/FrameAddition.cpp src/header/FrameAddition.h src/source/Frame.cpp src/header/Frame.h)
 
 add_executable(opencv_srv ${SOURCE_FILES})

@@ -5,9 +5,10 @@
 #ifndef __OPENCV_TEST_ERROR_HH__
 # define __OPENCV_TEST_ERROR_HH__
 
-#include "Log.hh"
+# define ERROR_LOGFILE_PATH     "../output/log/error/error_log.txt"
+# define MIN_FRAME_VID          2
 
-# define ERROR_LOGFILE_PATH   "../output/log/error/error_log.txt"
+#include "Log.hh"
 
 class Error
 {
@@ -15,12 +16,14 @@ public:
     enum class      ErrorType
     {
         UNKNOWN_ERROR,
-        OPEN_IMG,
+        OPEN_VID,
         OPEN_DIR,
-        TRUNCATED_IMG
+        TRUNCATED_VID,
+        MISSING_FRAME_INFOS
     };
 
     static void                 logError(const ErrorType &type, const std::string &complementary_msg = "");
+    static void                 logErrorAbort(const ErrorType &type, const std::string &complementary_msg = "");
 
 private:
     /* Methods */

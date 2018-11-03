@@ -5,11 +5,11 @@
 #ifndef __OPENCV_SRV_LOG_HH__
 # define __OPENCV_SRV_LOG_HH__
 
+# define LOGFILE_PATH   "../output/log/log.txt"
+
 #include <iostream>
 #include <fstream>
 #include <chrono>
-
-# define LOGFILE_PATH   "../output/log/log.txt"
 
 class Log
 {

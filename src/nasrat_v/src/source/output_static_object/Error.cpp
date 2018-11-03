@@ -23,15 +23,31 @@ const std::string   Error::getMessage(const ErrorType &type)
     {
         case (ErrorType::UNKNOWN_ERROR):
             return ("Unknown error");
-        case (ErrorType::OPEN_IMG):
-            return ("Could not open image");
+        case (ErrorType::OPEN_VID):
+            return ("Could not open video");
         case (ErrorType::OPEN_DIR):
             return ("Could not open directory");
-        case (ErrorType::TRUNCATED_IMG):
-            return ("Image is truncated, could not analyse it");
+        case (ErrorType::TRUNCATED_VID):
+            return ("Video must contain a minimum of " + std::to_string(MIN_FRAME_VID) + " frames");
+        case (ErrorType::MISSING_FRAME_INFOS):
+            return ("Missing frame infos. Frame need to be initialized before being analyzed");
     };
     return ("");
 }
+
+/**
+ * Static function, can be called everywhere.
+ * Log an error in the error log file and then abort the program.
+ * The log file path is defined by the macro ERROR_LOGFILE_PATH
+ * @param type Enum type of the error
+ * @param complementary_msg Additional error message
+ */
+void                Error::logErrorAbort(const Error::ErrorType &type, const std::string &complementary_msg)
+{
+    logError(type, complementary_msg);
+    abort();
+}
+
 
 /**
  * Static function, can be called everywhere.
