@@ -13,13 +13,18 @@
 
 #include "Entity.h"
 
+#include <cv.hpp>
+
 class FrameAddition
 {
 public:
     FrameAddition();
     ~FrameAddition();
 
-    void drawAndShowContours(cv::Size imageSize, std::vector<Entity> blobs, std::string strImageName);
+    void drawAndShowContours(cv::Size imageSize, std::vector<Entity> entities, std::string strImageName);
+    void drawAndShowContours(cv::Size imageSize, std::vector<std::vector<cv::Point>> contours, std::string strImageName);
+    void drawTrackEntitiesOnImage(std::vector<Entity> &entities, cv::Mat &imgFrame);
+    void drawNumberEntitiesOnImage(std::vector<Entity> &entities, cv::Mat &imgFrame);
 };
 
 

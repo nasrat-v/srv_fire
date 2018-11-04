@@ -3,7 +3,7 @@
 //
 
 #ifndef OPENCV_SRV_FRAME_H
-#define OPENCV_SRV_FRAME_H
+# define OPENCV_SRV_FRAME_H
 
 #include <opencv2/core/mat.hpp>
 
@@ -19,6 +19,7 @@ public:
     void                                        setSecondImg(const cv::Mat &img);
     void                                        setAllContours(const std::vector<std::vector<cv::Point>> &contours);
     void                                        setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls);
+    void                                        setCurrentMatchFoundOrNewEntity(int index, bool val);
     const cv::Mat                               &getFirstImg() const;
     const cv::Mat                               &getSecondImg() const;
     const std::vector<Entity>                   &getEntities() const;
@@ -32,7 +33,7 @@ private:
     void                                        analyseInfos();
 
     /* Attributes */
-    char                                        _readyForAnalyse;
+    short                                       _readyForAnalyse;
     cv::Mat                                     _firstImg;
     cv::Mat                                     _secondImg;
     std::vector<Entity>                         _entities;

@@ -37,5 +37,6 @@ void                Log::logSomething(const std::string &complementary_msg, cons
     std::fstream    file(file_path, std::fstream::out | std::fstream::app);
 
     file << ("[" + getTime() + "\t" + complementary_msg + "]") << std::endl << std::endl;
+    std::cout << "[" << complementary_msg << "]" << std::endl;
     file.close();
 }

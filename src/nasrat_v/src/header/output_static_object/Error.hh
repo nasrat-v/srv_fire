@@ -17,7 +17,6 @@ public:
     {
         UNKNOWN_ERROR,
         OPEN_VID,
-        OPEN_DIR,
         TRUNCATED_VID,
         MISSING_FRAME_INFOS
     };

@@ -31,7 +31,6 @@ public:
     // function prototypes ////////////////////////////////////////////////////////////////////////
     Blob(std::vector<cv::Point> _contour);
     void predictNextPosition(void);
-
 };
 
 #endif    // MY_BLOB

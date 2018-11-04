@@ -2,7 +2,9 @@
 // Created by nasrat_v on 11/3/18.
 //
 
+#include <iostream>
 #include "../header/Entity.h"
+#include "../header/output_static_object/Log.hh"
 
 Entity::Entity(const std::vector<cv::Point> &contour)
 {
@@ -114,40 +116,47 @@ void Entity::setStillBeingTracked(bool val)
     _stillBeingTracked = val;
 }
 
+void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
+{
+    _numOfConsecutiveFramesWithoutMatch = val;
+}
+
 void Entity::predictNextPosition()
 {
-    int deltaX;
-    int deltaY;
-    int n = 0;
-    int sumOfChanges[2];
-    auto numPositions = (int)_centerPositions.size();
-    int i = numPositions;
+    short deltaX;
+    short deltaY;
+    t_sumOfChanges sumOfChanges;
+    short numPositions = (short)_centerPositions.size();
+    sumOfChanges.posX = 0;
+    sumOfChanges.posY = 0;
+    sumOfChanges.changesLeft = numPositions;
+    sumOfChanges.nbChanges = 0;
 
     if (numPositions == 1)
     {
         _predictedNextPosition.x = _centerPositions.back().x;
         _predictedNextPosition.y = _centerPositions.back().y;
     }
-    else if (numPositions > 1 && numPositions < 5)
+    else if (numPositions > 1 && numPositions < NB_FRAME_MOVE_PREDICTION)
     {
-        while ((i - 2) >= 0)
-            calculateSumOfChanges(sumOfChanges, &i, &n);
+        while ((sumOfChanges.changesLeft - 2) >= 0)
+            calculateSumOfChanges(sumOfChanges);
     }
     else
     {
-        while (i > (numPositions - (5 - 1)))
-            calculateSumOfChanges(sumOfChanges, &i, &n);
+        while (sumOfChanges.changesLeft > (numPositions - (NB_FRAME_MOVE_PREDICTION - 1)))
+            calculateSumOfChanges(sumOfChanges);
     }
-    deltaX = (int)std::round((float)sumOfChanges[0] / ((n * 2) - 1));
-    deltaY = (int)std::round((float)sumOfChanges[1] / ((n * 2) - 1));
+    deltaX = (short)std::round((float)sumOfChanges.posX / ((sumOfChanges.nbChanges * 2) - 1));
+    deltaY = (short)std::round((float)sumOfChanges.posY / ((sumOfChanges.nbChanges * 2) - 1));
     _predictedNextPosition.x = (_centerPositions.back().x + deltaX);
     _predictedNextPosition.y = (_centerPositions.back().y + deltaY);
 }
 
-void Entity::calculateSumOfChanges(int *sumOfChanges, int *i, int *n)
+void Entity::calculateSumOfChanges(t_sumOfChanges &sumOfChanges)
 {
-    sumOfChanges[0] += ((_centerPositions[(*i) - 2].x - _centerPositions[(*i) - 1].x) * (*n));
-    sumOfChanges[1] += ((_centerPositions[(*i) - 2].y - _centerPositions[(*i) - 1].y) * (*n));
-    i -= 1;
-    n += 1;
+    sumOfChanges.posX += ((_centerPositions[sumOfChanges.changesLeft - 2].x - _centerPositions[sumOfChanges.changesLeft - 1].x) * sumOfChanges.nbChanges);
+    sumOfChanges.posY += ((_centerPositions[sumOfChanges.changesLeft - 2].y - _centerPositions[sumOfChanges.changesLeft - 1].y) * sumOfChanges.nbChanges);
+    sumOfChanges.changesLeft -= 1;
+    sumOfChanges.nbChanges += 1;
 }

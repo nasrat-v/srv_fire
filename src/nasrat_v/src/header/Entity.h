@@ -3,7 +3,9 @@
 //
 
 #ifndef OPENCV_SRV_ENTITY_H
-#define OPENCV_SRV_ENTITY_H
+# define OPENCV_SRV_ENTITY_H
+
+# define NB_FRAME_MOVE_PREDICTION    5
 
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core/types.hpp>
@@ -31,13 +33,9 @@ public:
     void                            addCenterPosition(const cv::Point &centerPosition);
     void                            setCurrentMatchFoundOrNewEntity(bool val);
     void                            setStillBeingTracked(bool val);
+    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
 
 private:
-    /* Methods */
-    void                            initCenterPosition();
-    void                            initCurrentAttributes();
-    void                            calculateSumOfChanges(int *sumOfChanges, int *i, int *n);
-
     /* Attributes */
     int                             _numOfConsecutiveFramesWithoutMatch;
     bool                            _stillBeingTracked;
@@ -48,6 +46,19 @@ private:
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
     std::vector<cv::Point>          _contour;
+
+    typedef struct                  s_sumOfChanges
+    {
+        short                       posX;
+        short                       posY;
+        short                       changesLeft;
+        short                       nbChanges;
+    }                               t_sumOfChanges;
+
+    /* Methods */
+    void                            initCenterPosition();
+    void                            initCurrentAttributes();
+    void                            calculateSumOfChanges(t_sumOfChanges &sumOfChanges);
 };
 
 

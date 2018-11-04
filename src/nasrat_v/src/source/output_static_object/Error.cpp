@@ -25,8 +25,6 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Unknown error");
         case (ErrorType::OPEN_VID):
             return ("Could not open video");
-        case (ErrorType::OPEN_DIR):
-            return ("Could not open directory");
         case (ErrorType::TRUNCATED_VID):
             return ("Video must contain a minimum of " + std::to_string(MIN_FRAME_VID) + " frames");
         case (ErrorType::MISSING_FRAME_INFOS):
@@ -61,5 +59,5 @@ void                Error::logError(const Error::ErrorType &type, const std::str
     std::string     msg = (getMessage(type) + " " + complementary_msg);
 
     Log::logSomething(msg, ERROR_LOGFILE_PATH);
-    std::cerr << "[" << msg << "]" << std::endl;
+    std::cerr << "[ " << msg << "]" << std::endl;
 }

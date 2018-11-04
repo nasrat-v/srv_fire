@@ -82,16 +82,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAddition.h">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameSubstraction.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/StreamAnalyser.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameProcessing.h">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Error.hh">
@@ -100,25 +106,25 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Log.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/DebugManager.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Entity.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.h">
-			<Option target="opencv_srv"/>
-		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAddition.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameSubstraction.cpp">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAnalyser.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameProcessing.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp">
-			<Option target="opencv_srv"/>
-		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/StreamAnalyser.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Error.cpp">

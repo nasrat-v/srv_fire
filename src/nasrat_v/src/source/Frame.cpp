@@ -36,27 +36,32 @@ void Frame::setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexH
     _readyForAnalyse += 1;
 }
 
-const cv::Mat   &Frame::getFirstImg() const
+void Frame::setCurrentMatchFoundOrNewEntity(int index, bool val)
 {
-    return (_firstImg;
+    _entities[index].setCurrentMatchFoundOrNewEntity(val);
 }
 
-const cv::Mat   &Frame::getSecondImg() const
+const cv::Mat &Frame::getFirstImg() const
+{
+    return (_firstImg);
+}
+
+const cv::Mat &Frame::getSecondImg() const
 {
     return (_secondImg);
 }
 
-const std::vector<Entity>   &Frame::getEntities() const
+const std::vector<Entity> &Frame::getEntities() const
 {
     return (_entities);
 }
 
-const std::vector<std::vector<cv::Point>>   &Frame::getAllContours() const
+const std::vector<std::vector<cv::Point>> &Frame::getAllContours() const
 {
     return (_allContours);
 }
 
-const std::vector<std::vector<cv::Point>>   &Frame::getAllConvexHulls() const
+const std::vector<std::vector<cv::Point>> &Frame::getAllConvexHulls() const
 {
     return (_allConvexHulls);
 }
@@ -86,7 +91,10 @@ void Frame::analyseInfos()
 void Frame::findEntitiesWithInfos()
 {
     if (_readyForAnalyse > 1)
+    {
         analyseInfos();
+        _readyForAnalyse = 0;
+    }
     else
         Error::logError(Error::ErrorType::MISSING_FRAME_INFOS);
 }

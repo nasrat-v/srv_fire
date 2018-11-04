@@ -11,58 +11,145 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbeecc0e-6650-4f5a-b383-04d0c22c1917" name="Default" comment="" />
+    <list default="true" id="fbeecc0e-6650-4f5a-b383-04d0c22c1917" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/header/DebugManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/source/DebugManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/opencv_srv.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/opencv_srv.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.h" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/error/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/error/error_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Frame.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Frame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/FrameAddition.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameAddition.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/FrameAnalyser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameAnalyser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/FrameSubstraction.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameProcessing.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/output_static_object/Error.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/output_static_object/Error.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/output_static_object/Log.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/output_static_object/Log.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Frame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Frame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/FrameAddition.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameAddition.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/FrameSubstraction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameProcessing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/output_static_object/Log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/output_static_object/Log.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/fire_and_smoke_detection_bad_result_2018-05-29.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/fire_detection_good_result_2018-05-29.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/fire_detection_triple_type_2018-05-31.mp4" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FUSProjectUsageTrigger">
+    <session id="1940879667">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cpp" value="5696" />
+          <entry key="h" value="1879" />
+          <entry key="hh" value="514" />
+          <entry key="txt" value="18" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CMakeLists.txt" value="18" />
+          <entry key="ObjectiveC" value="8089" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cpp" value="12" />
+          <entry key="h" value="15" />
+          <entry key="hh" value="3" />
+          <entry key="txt" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CMakeLists.txt" value="2" />
+          <entry key="ObjectiveC" value="30" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="FrameAnalyser.cpp" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/source/FrameAnalyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="109" column="43" lean-forward="true" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
+            <state relative-caret-position="400">
+              <caret line="177" column="56" selection-start-line="177" selection-start-column="56" selection-end-line="177" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrameAnalyser.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.h">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Log.hh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+            <state relative-caret-position="315">
+              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
               <folding>
-                <element signature="e#155#185#0" expanded="true" />
+                <element signature="e#154#173#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="FrameAddition.h" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/header/FrameAddition.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+            <state relative-caret-position="442">
+              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+              <folding>
+                <element signature="e#378#397#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrameSubstraction.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/FrameSubstraction.h">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/FrameProcessing.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state relative-caret-position="383">
+              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
               <folding>
                 <element signature="e#121#138#0" expanded="true" />
               </folding>
@@ -70,82 +157,107 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entity.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/Entity.h">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="53" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="53" />
+            <state relative-caret-position="306">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="43" />
               <folding>
-                <element signature="e#100#130#0" expanded="true" />
+                <element signature="e#43#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entity.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/source/FrameAddition.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1210">
-              <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+            <state relative-caret-position="969">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrameSubstraction.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/FrameSubstraction.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/source/FrameProcessing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="16" column="69" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="69" />
+            <state relative-caret-position="43">
+              <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Frame.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/Frame.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/source/DebugManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+            <state relative-caret-position="94">
+              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
               <folding>
-                <element signature="e#42#70#0" expanded="true" />
+                <element signature="e#42#60#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Frame.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/Frame.h">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
+            <state relative-caret-position="162">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="52" />
               <folding>
-                <element signature="e#97#128#0" expanded="true" />
+                <element signature="e#106#123#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Error.hh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>substractInfos</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/source/output_static_object/StreamAnalyser.cpp" />
-        <option value="$PROJECT_DIR$/src/header/output_static_object/Log.hh" />
         <option value="$PROJECT_DIR$/src/header/StreamAnalyser.h" />
         <option value="$PROJECT_DIR$/src/source/StreamAnalyser.cpp" />
-        <option value="$PROJECT_DIR$/src/header/output_static_object/Error.hh" />
-        <option value="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" />
-        <option value="$PROJECT_DIR$/src/source/FrameAddition.cpp" />
-        <option value="$PROJECT_DIR$/src/header/FrameAddition.h" />
+        <option value="$PROJECT_DIR$/src/header/FrameSubstraction.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/source/FrameSubstraction.cpp" />
         <option value="$PROJECT_DIR$/src/source/Frame.cpp" />
         <option value="$PROJECT_DIR$/src/header/Frame.h" />
-        <option value="$PROJECT_DIR$/src/header/FrameSubstraction.h" />
-        <option value="$PROJECT_DIR$/src/header/FrameAnalyser.h" />
         <option value="$PROJECT_DIR$/src/header/Entity.h" />
         <option value="$PROJECT_DIR$/src/source/Entity.cpp" />
+        <option value="$PROJECT_DIR$/src/source/output_static_object/Log.cpp" />
+        <option value="$PROJECT_DIR$/src/header/output_static_object/Error.hh" />
+        <option value="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" />
+        <option value="$PROJECT_DIR$/src/source/DebugMode.cpp" />
+        <option value="$PROJECT_DIR$/src/header/DebugMode.h" />
+        <option value="$PROJECT_DIR$/src/header/FrameAnalyser.h" />
+        <option value="$PROJECT_DIR$/src/header/FrameProcessing.h" />
+        <option value="$PROJECT_DIR$/src/header/FrameAddition.h" />
+        <option value="$PROJECT_DIR$/src/source/FrameAddition.cpp" />
+        <option value="$PROJECT_DIR$/src/header/output_static_object/Log.hh" />
+        <option value="$PROJECT_DIR$/src/header/DebugManager.h" />
         <option value="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" />
+        <option value="$PROJECT_DIR$/src/source/FrameProcessing.cpp" />
+        <option value="$PROJECT_DIR$/src/source/DebugManager.cpp" />
+        <option value="$PROJECT_DIR$/src/source/Main.cpp" />
       </list>
     </option>
   </component>
@@ -155,21 +267,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="107" />
     <option name="y" value="81" />
     <option name="width" value="1400" />
     <option name="height" value="998" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -212,6 +321,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,6 +334,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/header" />
+      <recent name="$PROJECT_DIR$/video" />
       <recent name="$PROJECT_DIR$/src/source" />
     </key>
   </component>
@@ -240,8 +351,16 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.opencv_srv">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
-    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv" />
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--debug --track" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.opencv_srv" />
@@ -257,35 +376,40 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541223481593</updated>
-      <workItem from="1541223483040" duration="24788000" />
+      <workItem from="1541223483040" duration="24828000" />
+      <workItem from="1541314827238" duration="214000" />
+      <workItem from="1541315129904" duration="86000" />
+      <workItem from="1541315268393" duration="23559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24788000" />
+    <option name="totallyTimeSpent" value="48687000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18229167" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.49928573" weight="0.32921347" />
-      <window_info anchor="bottom" id="CMake" weight="0.3286638" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5007143" side_tool="true" weight="0.32921347" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24784483" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18663101" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24722838" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991131" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49928573" weight="0.32815966" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007143" side_tool="true" weight="0.32921347" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.3286638" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,162 +419,164 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Image.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Packet.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Pixel.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Request.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ImageAnalyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="105" column="65" selection-start-line="105" selection-start-column="65" selection-end-line="105" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ZoneAnalyser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1938" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/BusinessLogicManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-473" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Zone.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-405" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Log.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Log.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-          <folding>
-            <element signature="e#105#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Error.hh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Error.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/FrameAddition.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="1" selection-start-line="27" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="e#42#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Image.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Packet.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Pixel.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Request.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ImageAnalyser.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ZoneAnalyser.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/BusinessLogicManager.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Zone.cpp" />
     <entry file="file://$PROJECT_DIR$/src/source/Frame.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        <state relative-caret-position="589">
+          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
           <folding>
             <element signature="e#42#70#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/FrameSubstraction.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="16" column="69" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="69" />
+        <state relative-caret-position="419">
+          <caret line="152" column="68" selection-start-line="152" selection-start-column="68" selection-end-line="152" selection-end-column="68" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Log.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Error.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Entity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/header/Frame.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
-          <folding>
-            <element signature="e#97#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/FrameAddition.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/FrameSubstraction.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-          <folding>
-            <element signature="e#121#138#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+        <state relative-caret-position="685">
+          <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
           <folding>
             <element signature="e#155#185#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Entity.h">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="53" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="53" />
+        <state relative-caret-position="323">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/FrameProcessing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
           <folding>
-            <element signature="e#100#130#0" expanded="true" />
+            <element signature="e#121#138#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp">
+    <entry file="file://$PROJECT_DIR$/src/header/FrameAddition.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+        <state relative-caret-position="442">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <element signature="e#378#397#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Log.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="e#154#173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <element signature="e#106#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Error.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/FrameAddition.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/FrameProcessing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/source/FrameAnalyser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="109" column="43" lean-forward="true" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
+        <state relative-caret-position="400">
+          <caret line="177" column="56" selection-start-line="177" selection-start-column="56" selection-end-line="177" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/DebugManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#42#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="43" />
+          <folding>
+            <element signature="e#43#79#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

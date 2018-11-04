@@ -65,9 +65,10 @@ void Blob::predictNextPosition(void)
 	    n += 1;
 	}
     }
-    std::cout << "nb positions =\t" << numPositions << "\titeration =\t" << n << std::endl;
     deltaX = (int)std::round((float)sumOfXChanges / ((n * 2) - 1));
     deltaY = (int)std::round((float)sumOfYChanges / ((n * 2) - 1));
     predictedNextPosition.x = centerPositions.back().x + deltaX;
     predictedNextPosition.y = centerPositions.back().y + deltaY;
+    std::cout << "predicted X =\n" << predictedNextPosition.x << std::endl;
+    std::cout << "predicted Y =\n" << predictedNextPosition.y << std::endl;
 }

@@ -3,10 +3,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o"
-  "CMakeFiles/opencv_srv.dir/src/source/FrameSubstraction.cpp.o"
-  "CMakeFiles/opencv_srv.dir/src/source/StreamAnalyser.cpp.o"
+  "CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o"
+  "CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o"
+  "CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o"
   "opencv_srv.pdb"
   "opencv_srv"
 )
