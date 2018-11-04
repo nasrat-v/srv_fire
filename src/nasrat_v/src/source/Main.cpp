@@ -16,7 +16,7 @@ int         main(int ac, const char **av)
         if (strncmp("--debug", av[1], strlen("--debug")) == 0)
             mode = debugManager.findDebugMode(av);
     }
-    core.initAnalyser("../video/768x576.avi", mode);
+    core.initAnalyser("../video/video_test_camp_fire.mp4", mode);
     if (core.analyseFrame() != 0)
     {
         Error::logError(Error::ErrorType::UNKNOWN_ERROR, "Something went wrong with the analyse");

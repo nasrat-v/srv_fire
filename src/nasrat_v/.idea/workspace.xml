@@ -12,55 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbeecc0e-6650-4f5a-b383-04d0c22c1917" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/header/DebugManager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/source/DebugManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/opencv_srv.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/opencv_srv.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.h" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/Blob.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/exemple/OpenCV_3_Multiple_Object_Tracking_by_Image_Subtraction_Cpp-master/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/error/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/error/error_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/log/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Entity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/Frame.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Frame.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/FrameAddition.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameAddition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/FrameAnalyser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameAnalyser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/FrameSubstraction.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/FrameProcessing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/output_static_object/Error.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/output_static_object/Error.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header/output_static_object/Log.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/output_static_object/Log.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Entity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/Frame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Frame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/FrameAddition.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameAddition.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/FrameSubstraction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/FrameProcessing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/source/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/output_static_object/Error.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/output_static_object/Log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/output_static_object/Log.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/fire_and_smoke_detection_bad_result_2018-05-29.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/fire_detection_good_result_2018-05-29.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/fire_detection_triple_type_2018-05-31.mp4" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,7 +39,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="5696" />
+          <entry key="cpp" value="5764" />
           <entry key="h" value="1879" />
           <entry key="hh" value="514" />
           <entry key="txt" value="18" />
@@ -91,7 +48,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="18" />
-          <entry key="ObjectiveC" value="8089" />
+          <entry key="ObjectiveC" value="8157" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -157,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="43" />
+            <state relative-caret-position="391">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
               <folding>
                 <element signature="e#43#79#0" expanded="true" />
               </folding>
@@ -181,7 +138,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/source/FrameProcessing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
+            <state relative-caret-position="572">
               <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
             </state>
           </provider>
@@ -199,11 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="52" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#106#123#0" expanded="true" />
               </folding>
@@ -255,8 +212,8 @@
         <option value="$PROJECT_DIR$/src/header/output_static_object/Log.hh" />
         <option value="$PROJECT_DIR$/src/header/DebugManager.h" />
         <option value="$PROJECT_DIR$/src/source/FrameAnalyser.cpp" />
-        <option value="$PROJECT_DIR$/src/source/FrameProcessing.cpp" />
         <option value="$PROJECT_DIR$/src/source/DebugManager.cpp" />
+        <option value="$PROJECT_DIR$/src/source/FrameProcessing.cpp" />
         <option value="$PROJECT_DIR$/src/source/Main.cpp" />
       </list>
     </option>
@@ -356,7 +313,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--debug --track" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
+    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--debug --thresh --convexhulls --track --difference --number --output-prediction" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -379,15 +336,15 @@
       <workItem from="1541223483040" duration="24828000" />
       <workItem from="1541314827238" duration="214000" />
       <workItem from="1541315129904" duration="86000" />
-      <workItem from="1541315268393" duration="23559000" />
+      <workItem from="1541315268393" duration="26199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48687000" />
+    <option name="totallyTimeSpent" value="51327000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1038" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18663101" />
@@ -395,7 +352,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24722838" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24833703" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991131" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -522,16 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="52" />
-          <folding>
-            <element signature="e#106#123#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Error.hh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -543,13 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/FrameProcessing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -570,12 +510,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/FrameProcessing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="43" />
+        <state relative-caret-position="391">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding>
             <element signature="e#43#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#106#123#0" expanded="true" />
           </folding>
         </state>
       </provider>

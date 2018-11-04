@@ -74,6 +74,10 @@ fstream
 chrono
 -
 
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameProcessing.cpp
+../header/FrameProcessing.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameProcessing.h
+
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp
 ../header/FrameAnalyser.h
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
