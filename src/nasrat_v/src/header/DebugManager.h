@@ -16,8 +16,16 @@
 # define WATIKEY_ARG            "--waitkey"
 # define OUTPUTPREDICTION_ARG   "--output-prediction"
 # define NOORIGINALVIDEO_ARG    "--no-video"
+# define PALETTE_ARG            "--palette"
+# define HUEMAX                 179
+# define SATMAX                 255
+# define VALMAX                 255
 
+#include <iostream>
+#include <opencv2/opencv.hpp>
 #include <vector>
+#include "stdio.h"
+
 #include "output_static_object/Log.hh"
 
 class DebugManager

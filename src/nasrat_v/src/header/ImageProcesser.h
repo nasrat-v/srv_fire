@@ -12,6 +12,7 @@
 #include "Frame.h"
 #include "ImageAdditionner.h"
 #include "output_static_object/Log.hh"
+#include "output_static_object/Error.hh"
 
 class ImageProcesser
 {
@@ -19,7 +20,7 @@ public:
     ImageProcesser();
     ~ImageProcesser();
 
-    cv::Mat                             differenceImg(cv::Mat firstImg, cv::Mat secondImg);
+    cv::Mat                             differenceImg(cv::Mat firstImg, cv::Mat secondImg, const Entity::entityType &type);
     cv::Mat                             threshImg(const cv::Mat &img);
     std::vector<std::vector<cv::Point>> findContoursFromImg(const cv::Mat &img);
     std::vector<std::vector<cv::Point>> findConvexHullsFromContours(const std::vector<std::vector<cv::Point>> &contours);

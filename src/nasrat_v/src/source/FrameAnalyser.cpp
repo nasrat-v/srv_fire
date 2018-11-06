@@ -42,8 +42,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
         end = true;
     while (!end)
     {
-        _imageService.substractInfos(_frame);
-        if ((error = _frame.findEntitiesWithInfos()) != Error::ErrorType::NO_ERROR)
+        if ((error = findEntities()) != Error::ErrorType::NO_ERROR)
             return (error);
         if (_firstFrame)
             initSavedEntities();
@@ -55,6 +54,19 @@ Error::ErrorType FrameAnalyser::analyseFrame()
             end = true;
         cv::waitKey(1);
     }
+    return (Error::ErrorType::NO_ERROR);
+}
+
+Error::ErrorType FrameAnalyser::findEntities()
+{
+    Error::ErrorType error;
+
+    _imageService.substractInfos(_frame, Entity::entityType::FIRE);
+    if ((error = _frame.findEntitiesWithInfos(Entity::entityType::FIRE)) != Error::ErrorType::NO_ERROR)
+        return (error);
+    _imageService.substractInfos(_frame, Entity::entityType::HUMAN);
+    if ((error = _frame.findEntitiesWithInfos(Entity::entityType::HUMAN)) != Error::ErrorType::NO_ERROR)
+        return (error);
     return (Error::ErrorType::NO_ERROR);
 }
 
@@ -95,7 +107,7 @@ void FrameAnalyser::findClosestFrameEntityForSavedEntity(const Entity &frameEnti
 
     for (auto &savedEntity : _savedEntities)
     {
-        if (savedEntity.getStillBeingTracked())
+        if (savedEntity.getStillBeingTracked() && (savedEntity.getType() == frameEntity.getType()))
         {
             dist = distanceBetweenPoints(frameEntity.getCenterPositions().back(), savedEntity.getPredictedNextPosition());
             if (dist < distance->leastDistance)
@@ -127,6 +139,7 @@ void FrameAnalyser::setSavedEntityToFrameEntity(const Entity &frameEntity, size_
     _savedEntities[index].setCurrentDiagonalSize(frameEntity.getCurrentDiagonalSize());
     _savedEntities[index].setCurrentAspectRatio(frameEntity.getCurrentAspectRatio());
     _savedEntities[index].setCurrentMatchFoundOrNewEntity(true);
+    _savedEntities[index].setType(frameEntity.getType());
     debugPredictedPosition(frameEntity, _savedEntities[index]);
 }
 

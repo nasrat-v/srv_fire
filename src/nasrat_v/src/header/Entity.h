@@ -19,6 +19,12 @@ public:
     explicit Entity(const std::vector<cv::Point> &contour);
     ~Entity();
 
+    enum class  entityType
+    {
+        FIRE,
+        HUMAN
+    };
+
     void                            predictNextPosition();
     double                          getCurrentAspectRatio() const;
     double                          getCurrentDiagonalSize() const;
@@ -29,6 +35,7 @@ public:
     bool                            getStillBeingTracked() const;
     bool                            getCurrentMatchFoundOrNewEntity() const;
     int                             getNumOfConsecutiveFramesWithoutMatch() const;
+    const entityType                &getType() const;
     void                            setCurrentAspectRatio(double val);
     void                            setCurrentDiagonalSize(double val);
     void                            setCurrentBoundingRect(const cv::Rect &rect);
@@ -37,6 +44,7 @@ public:
     void                            setCurrentMatchFoundOrNewEntity(bool val);
     void                            setStillBeingTracked(bool val);
     void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
+    void                            setType(const entityType &type);
 
 private:
     /* Attributes */
@@ -49,6 +57,7 @@ private:
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
     std::vector<cv::Point>          _contour;
+    entityType                      _type;
 
     typedef struct                  s_sumOfChanges
     {

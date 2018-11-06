@@ -3,18 +3,27 @@
 //
 
 #include "../header/ImageProcesser.h"
-#include "../header/output_static_object/Error.hh"
 
 ImageProcesser::ImageProcesser() = default;
 
 ImageProcesser::~ImageProcesser() = default;
 
-cv::Mat ImageProcesser::differenceImg(cv::Mat firstImg, cv::Mat secondImg)
+cv::Mat ImageProcesser::differenceImg(cv::Mat firstImg, cv::Mat secondImg, const Entity::entityType &type)
 {
     cv::Mat imgDifference;
 
-    cv::cvtColor(firstImg, firstImg, CV_BGR2GRAY);
-    cv::cvtColor(secondImg, secondImg, CV_BGR2GRAY);
+    if (type == Entity::entityType::FIRE)
+    {
+        cv::cvtColor(firstImg, firstImg, CV_BGR2HSV);
+        cv::inRange(firstImg, cv::Scalar(0, 180, 180), cv::Scalar(20, 255, 255), firstImg);
+        cv::cvtColor(secondImg, secondImg, CV_BGR2HSV);
+        cv::inRange(secondImg, cv::Scalar(0, 160, 160), cv::Scalar(30, 255, 255), secondImg);
+    }
+    else
+    {
+        cv::cvtColor(firstImg, firstImg, CV_BGR2GRAY);
+        cv::cvtColor(secondImg, secondImg, CV_BGR2GRAY);
+    }
     cv::GaussianBlur(firstImg, firstImg, cv::Size(5, 5), 0);
     cv::GaussianBlur(secondImg, secondImg, cv::Size(5, 5), 0);
     cv::absdiff(firstImg, secondImg, imgDifference);

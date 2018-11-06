@@ -36,7 +36,12 @@ void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &entit
     for (auto &entity : entities)
     {
         if (entity.getStillBeingTracked())
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
+        {
+            if (entity.getType() == Entity::entityType::FIRE)
+                cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
+            else
+                cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
+        }
     }
 }
 
@@ -52,7 +57,10 @@ void ImageAdditionner::drawNumberEntitiesOnImage(const std::vector<Entity> &enti
         {
             fontScale = (entity.getCurrentDiagonalSize() / 60.0);
             intFontThickness = (int)std::round(fontScale * 1.0);
-            cv::putText(img, std::to_string(nb), entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
+            if (entity.getType() == Entity::entityType::FIRE)
+                cv::putText(img, /*std::to_string(nb)*/"fire", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
+            else
+                cv::putText(img, /*std::to_string(nb)*/"human", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
         }
         nb++;
     }

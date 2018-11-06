@@ -15,15 +15,15 @@ public:
     ImageService(const Log::debugMode &mode, const std::string &videoPath);
     ~ImageService();
 
-    void                        substractInfos(Frame &frame);
+    void                        substractInfos(Frame &frame, const Entity::entityType &type);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
     void                        displayImg(cv::Mat img, const std::vector<Entity> &savedEntities, const std::vector<Entity> &frameEntities);
 
 private:
     /* Methods */
-    void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed);
-    void                        threshImg(cv::Mat &imgProcessed);
+    void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed, const Entity::entityType &type);
+    void                        threshImg(cv::Mat &imgProcessed, const Entity::entityType &type);
     void                        setContoursFrame(Frame &frame, const cv::Mat &imgProcessed);
     void                        setConvexHullsFrame(Frame &frame, const cv::Mat &imgProcessed);
     ImageProvider::statusVideo  incrementImg(Frame &frame);

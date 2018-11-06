@@ -68,7 +68,7 @@ void Frame::clearEntities()
     _entities.clear();
 }
 
-void Frame::analyseInfos()
+void Frame::analyseInfos(const Entity::entityType &type)
 {
     for (auto &convexHull : _allConvexHulls)
     {
@@ -79,16 +79,17 @@ void Frame::analyseInfos()
             possibleBlob.getCurrentBoundingRect().height > 20 && possibleBlob.getCurrentDiagonalSize() > 30.0 &&
             (cv::contourArea(possibleBlob.getContour()) / (double)possibleBlob.getCurrentBoundingRect().area()) > 0.40)
         {
+            possibleBlob.setType(type);
             _entities.push_back(possibleBlob);
         }
     }
 }
 
-Error::ErrorType Frame::findEntitiesWithInfos()
+Error::ErrorType Frame::findEntitiesWithInfos(const Entity::entityType &type)
 {
     if (_readyForAnalyse > 1)
     {
-        analyseInfos();
+        analyseInfos(type);
         _readyForAnalyse = 0;
         return (Error::ErrorType::NO_ERROR);
     }

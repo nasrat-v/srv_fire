@@ -9,6 +9,7 @@
 
 #include "Entity.h"
 #include "output_static_object/Error.hh"
+#include "ImageProcesser.h"
 
 class Frame
 {
@@ -26,12 +27,12 @@ public:
     const std::vector<Entity>                   &getEntities() const;
     const std::vector<std::vector<cv::Point>>   &getAllContours() const;
     const std::vector<std::vector<cv::Point>>   &getAllConvexHulls() const;
-    Error::ErrorType                            findEntitiesWithInfos();
+    Error::ErrorType                            findEntitiesWithInfos(const Entity::entityType &type);
     void                                        clearEntities();
 
 private:
     /* Methods*/
-    void                                        analyseInfos();
+    void                                        analyseInfos(const Entity::entityType &type);
 
     /* Attributes */
     short                                       _readyForAnalyse;

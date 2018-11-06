@@ -52,9 +52,7 @@ ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage)
 
 ImageProvider::statusVideo ImageProvider::videoContinues()
 {
-    if (_capVideo.isOpened())
-        return (statusVideo::CONTINUE);
-    return (statusVideo::END);
+    return ((_capVideo.isOpened()) ? (statusVideo::CONTINUE) : (statusVideo::END));
 }
 
 

@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH     "../input/video/768x576.avi"
+# define VIDEO_PATH     "../input/video/video_test_camp_fire.mp4"
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
@@ -51,6 +51,7 @@ private:
     void                checkConsecutiveFrameWithoutMatchSavedEntities();
     void                findClosestFrameEntityForSavedEntity(const Entity &frameEntity, t_distance *distance);
     void                debugPredictedPosition(const Entity &frameEntity, const Entity &savedEntity);
+    Error::ErrorType    findEntities();
 };
 
 

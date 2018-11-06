@@ -17,6 +17,8 @@ CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o: ../src/source/Entity.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/Frame.h
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/ImageProcesser.h
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_object/Error.hh
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/source/Frame.cpp
@@ -47,6 +49,8 @@ CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/source/ImagePr
 
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Frame.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/ImageProcesser.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/ImageProvider.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_static_object/Error.hh
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_static_object/Log.hh

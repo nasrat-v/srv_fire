@@ -77,6 +77,11 @@ int Entity::getNumOfConsecutiveFramesWithoutMatch() const
     return (_numOfConsecutiveFramesWithoutMatch);
 }
 
+const Entity::entityType &Entity::getType() const
+{
+    return (_type);
+}
+
 void Entity::setCurrentBoundingRect(const cv::Rect &rect)
 {
     _currentBoundingRect = rect;
@@ -115,6 +120,11 @@ void Entity::setStillBeingTracked(bool val)
 void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
 {
     _numOfConsecutiveFramesWithoutMatch = val;
+}
+
+void Entity::setType(const Entity::entityType &type)
+{
+    _type = type;
 }
 
 void Entity::predictNextPosition()

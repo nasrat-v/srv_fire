@@ -12,28 +12,33 @@ ImageService::ImageService(const Log::debugMode &mode, const std::string &videoP
 
 ImageService::~ImageService() = default;
 
-void ImageService::substractInfos(Frame &frame)
+void ImageService::substractInfos(Frame &frame, const Entity::entityType &type)
 {
     cv::Mat imgProcessed;
 
-    differenceImg(frame.getFirstImg(), frame.getSecondImg(), imgProcessed);
-    threshImg(imgProcessed);
+    differenceImg(frame.getFirstImg().clone(), frame.getSecondImg().clone(), imgProcessed, type);
+    threshImg(imgProcessed, type);
     setContoursFrame(frame, imgProcessed);
     setConvexHullsFrame(frame, imgProcessed);
 }
 
-void ImageService::differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed)
+void ImageService::differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed, const Entity::entityType &type)
 {
-    imgProcessed = _imageProcesser.differenceImg(std::move(firstImg), std::move(secondImg));
+    imgProcessed = _imageProcesser.differenceImg(std::move(firstImg), std::move(secondImg), type);
     if (_debugMode & Log::debugMode::DIFFERENCE)
         cv::imshow("imgDifference", imgProcessed);
 }
 
-void ImageService::threshImg(cv::Mat &imgProcessed)
+void ImageService::threshImg(cv::Mat &imgProcessed, const Entity::entityType &type)
 {
     imgProcessed = _imageProcesser.threshImg(imgProcessed);
     if (_debugMode & Log::debugMode::THRESH)
-        cv::imshow("imgThresh", imgProcessed);
+    {
+        if (type == Entity::entityType::FIRE)
+            cv::imshow("imgThresFire", imgProcessed);
+        else
+            cv::imshow("imgThreshHuman", imgProcessed);
+    }
 }
 
 void ImageService::setContoursFrame(Frame &frame, const cv::Mat &imgProcessed)
