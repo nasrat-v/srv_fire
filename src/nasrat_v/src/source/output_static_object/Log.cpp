@@ -4,13 +4,9 @@
 
 #include "../../header/output_static_object/Log.hh"
 
-Log::Log()
-{
-}
+Log::Log() = default;
 
-Log::~Log()
-{
-}
+Log::~Log() = default;
 
 /**
  * Static function, can be called everywhere.
@@ -32,11 +28,12 @@ const std::string   Log::getTime()
  * @param complementary_msg Additional message to display
  * @param file_path Special filepath, if empty the default file path is the macro LOGFILE_PATH
  */
-void                Log::logSomething(const std::string &complementary_msg, const std::string &file_path)
+void                Log::logSomething(const std::string &complementary_msg, const std::string &file_path, bool error)
 {
     std::fstream    file(file_path, std::fstream::out | std::fstream::app);
 
     file << ("[" + getTime() + "\t" + complementary_msg + "]") << std::endl << std::endl;
-    std::cout << "[" << complementary_msg << "]" << std::endl;
+    if (!error)
+        std::cout << "[" << complementary_msg << "]" << std::endl;
     file.close();
 }

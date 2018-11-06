@@ -7,13 +7,16 @@
 
 # define NB_FRAME_MOVE_PREDICTION    5
 
+#include "output_static_object/Log.hh"
+
+#include <iostream>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core/types.hpp>
 
 class Entity
 {
 public:
-    Entity(const std::vector<cv::Point> &contour);
+    explicit Entity(const std::vector<cv::Point> &contour);
     ~Entity();
 
     void                            predictNextPosition();

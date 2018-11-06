@@ -3,16 +3,13 @@
 //
 
 #include "../header/Frame.h"
-#include "../header/output_static_object/Error.hh"
 
 Frame::Frame()
 {
     _readyForAnalyse = 0;
 }
 
-Frame::~Frame()
-{
-}
+Frame::~Frame() = default;
 
 void Frame::setFirstImg(const cv::Mat &img)
 {
@@ -85,16 +82,16 @@ void Frame::analyseInfos()
             _entities.push_back(possibleBlob);
         }
     }
-    //drawAndShowContours(_imgThresh.size(), _blobs, "imgCurrentFrameBlobs");
 }
 
-void Frame::findEntitiesWithInfos()
+Error::ErrorType Frame::findEntitiesWithInfos()
 {
     if (_readyForAnalyse > 1)
     {
         analyseInfos();
         _readyForAnalyse = 0;
+        return (Error::ErrorType::NO_ERROR);
     }
-    else
-        Error::logError(Error::ErrorType::MISSING_FRAME_INFOS);
+    Error::logError(Error::ErrorType::MISSING_FRAME_INFOS);
+    return (Error::ErrorType::NO_ERROR);
 }

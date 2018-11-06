@@ -5,13 +5,9 @@
 #include <cstring>
 #include "../header/DebugManager.h"
 
-DebugManager::DebugManager()
-{
-}
+DebugManager::DebugManager() = default;
 
-DebugManager::~DebugManager()
-{
-}
+DebugManager::~DebugManager() = default;
 
 const std::vector<std::string> DebugManager::convertCharStarToVectorOfString(const char **array)
 {
@@ -43,8 +39,10 @@ Log::debugMode DebugManager::findDebugMode(const char **av)
             mode |= Log::debugMode::CONTOUR;
         if (*it == CONVEXHULLS_ARG)
             mode |= Log::debugMode::CONVEXHULLS;
-        if (*it == ENTITIES_ARG)
-            mode |= Log::debugMode::ENTITIES;
+        if (*it == SAVEDENTITIES_ARG)
+            mode |= Log::debugMode::SAVED_ENTITIES;
+        if (*it == FRAMEENTITIES_ARG)
+            mode |= Log::debugMode::FRAME_ENTITIES;
         if (*it == DIFFERENCE_ARG)
             mode |= Log::debugMode::DIFFERENCE;
         if (*it == TRACK_ARG)

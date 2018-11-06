@@ -4,13 +4,9 @@
 
 #include "../../header/output_static_object/Error.hh"
 
-Error::Error()
-{
-}
+Error::Error() = default;
 
-Error::~Error()
-{
-}
+Error::~Error() = default;
 
 /**
  * Gives the appropriate message for each error type
@@ -21,6 +17,8 @@ const std::string   Error::getMessage(const ErrorType &type)
 {
     switch (type)
     {
+        case (ErrorType::NO_ERROR):
+            return ("No error");
         case (ErrorType::UNKNOWN_ERROR):
             return ("Unknown error");
         case (ErrorType::OPEN_VID):
@@ -29,6 +27,10 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Video must contain a minimum of " + std::to_string(MIN_FRAME_VID) + " frames");
         case (ErrorType::MISSING_FRAME_INFOS):
             return ("Missing frame infos. Frame need to be initialized before being analyzed");
+        case (ErrorType::MISSING_INIT):
+            return ("Missing initialization before analyse");
+        case (ErrorType::NO_CONTOUR):
+            return ("Missing contour");
     };
     return ("");
 }
@@ -58,6 +60,6 @@ void                Error::logError(const Error::ErrorType &type, const std::str
 {
     std::string     msg = (getMessage(type) + " " + complementary_msg);
 
-    Log::logSomething(msg, ERROR_LOGFILE_PATH);
-    std::cerr << "[ " << msg << "]" << std::endl;
+    Log::logSomething(msg, ERROR_LOGFILE_PATH, true);
+    std::cerr << "[" << msg << "]" << std::endl;
 }

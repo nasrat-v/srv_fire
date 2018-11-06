@@ -8,6 +8,7 @@
 #include <opencv2/core/mat.hpp>
 
 #include "Entity.h"
+#include "output_static_object/Error.hh"
 
 class Frame
 {
@@ -25,7 +26,7 @@ public:
     const std::vector<Entity>                   &getEntities() const;
     const std::vector<std::vector<cv::Point>>   &getAllContours() const;
     const std::vector<std::vector<cv::Point>>   &getAllConvexHulls() const;
-    void                                        findEntitiesWithInfos();
+    Error::ErrorType                            findEntitiesWithInfos();
     void                                        clearEntities();
 
 private:

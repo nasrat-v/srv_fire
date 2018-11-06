@@ -2,9 +2,7 @@
 // Created by nasrat_v on 11/3/18.
 //
 
-#include <iostream>
 #include "../header/Entity.h"
-#include "../header/output_static_object/Log.hh"
 
 Entity::Entity(const std::vector<cv::Point> &contour)
 {
@@ -16,9 +14,7 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     _numOfConsecutiveFramesWithoutMatch = 0;
 }
 
-Entity::~Entity()
-{
-}
+Entity::~Entity() = default;
 
 void Entity::initCurrentAttributes()
 {

@@ -4321,3 +4321,30 @@
 [Sun Nov  4 10:25:29 2018
 	Could not open video ../../video/768x576.avi]
 
+[Tue Nov  6 11:37:18 2018
+	Could not open video 768x576.avi]
+
+[Tue Nov  6 11:37:18 2018
+	Video must contain a minimum of 2 frames 768x576.avi]
+
+[Tue Nov  6 11:37:24 2018
+	Could not open video 768x576.avi]
+
+[Tue Nov  6 11:37:24 2018
+	Video must contain a minimum of 2 frames 768x576.avi]
+
+[Tue Nov  6 11:37:46 2018
+	Could not open video 768x576.avi]
+
+[Tue Nov  6 11:37:46 2018
+	Video must contain a minimum of 2 frames 768x576.avi]
+
+[Tue Nov  6 11:40:28 2018
+	Could not open video 768x576.avi]
+
+[Tue Nov  6 11:43:50 2018
+	Could not open video 768x576.avi]
+
+[Tue Nov  6 11:44:40 2018
+	Could not open video ../../input/video/768x576.avi]
+

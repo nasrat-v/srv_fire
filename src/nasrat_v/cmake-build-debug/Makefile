@@ -150,6 +150,33 @@ lib/tinyxml2/source/tinyxml2.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.s
 .PHONY : lib/tinyxml2/source/tinyxml2.cpp.s
 
+src/source/ConfigManager.o: src/source/ConfigManager.cpp.o
+
+.PHONY : src/source/ConfigManager.o
+
+# target to build an object file
+src/source/ConfigManager.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o
+.PHONY : src/source/ConfigManager.cpp.o
+
+src/source/ConfigManager.i: src/source/ConfigManager.cpp.i
+
+.PHONY : src/source/ConfigManager.i
+
+# target to preprocess a source file
+src/source/ConfigManager.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.i
+.PHONY : src/source/ConfigManager.cpp.i
+
+src/source/ConfigManager.s: src/source/ConfigManager.cpp.s
+
+.PHONY : src/source/ConfigManager.s
+
+# target to generate assembly for a file
+src/source/ConfigManager.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.s
+.PHONY : src/source/ConfigManager.cpp.s
+
 src/source/DebugManager.o: src/source/DebugManager.cpp.o
 
 .PHONY : src/source/DebugManager.o
@@ -231,33 +258,6 @@ src/source/Frame.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.s
 .PHONY : src/source/Frame.cpp.s
 
-src/source/FrameAddition.o: src/source/FrameAddition.cpp.o
-
-.PHONY : src/source/FrameAddition.o
-
-# target to build an object file
-src/source/FrameAddition.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o
-.PHONY : src/source/FrameAddition.cpp.o
-
-src/source/FrameAddition.i: src/source/FrameAddition.cpp.i
-
-.PHONY : src/source/FrameAddition.i
-
-# target to preprocess a source file
-src/source/FrameAddition.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.i
-.PHONY : src/source/FrameAddition.cpp.i
-
-src/source/FrameAddition.s: src/source/FrameAddition.cpp.s
-
-.PHONY : src/source/FrameAddition.s
-
-# target to generate assembly for a file
-src/source/FrameAddition.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.s
-.PHONY : src/source/FrameAddition.cpp.s
-
 src/source/FrameAnalyser.o: src/source/FrameAnalyser.cpp.o
 
 .PHONY : src/source/FrameAnalyser.o
@@ -285,32 +285,113 @@ src/source/FrameAnalyser.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.s
 .PHONY : src/source/FrameAnalyser.cpp.s
 
-src/source/FrameProcessing.o: src/source/FrameProcessing.cpp.o
+src/source/ImageAdditionner.o: src/source/ImageAdditionner.cpp.o
 
-.PHONY : src/source/FrameProcessing.o
+.PHONY : src/source/ImageAdditionner.o
 
 # target to build an object file
-src/source/FrameProcessing.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o
-.PHONY : src/source/FrameProcessing.cpp.o
+src/source/ImageAdditionner.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o
+.PHONY : src/source/ImageAdditionner.cpp.o
 
-src/source/FrameProcessing.i: src/source/FrameProcessing.cpp.i
+src/source/ImageAdditionner.i: src/source/ImageAdditionner.cpp.i
 
-.PHONY : src/source/FrameProcessing.i
+.PHONY : src/source/ImageAdditionner.i
 
 # target to preprocess a source file
-src/source/FrameProcessing.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.i
-.PHONY : src/source/FrameProcessing.cpp.i
+src/source/ImageAdditionner.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.i
+.PHONY : src/source/ImageAdditionner.cpp.i
 
-src/source/FrameProcessing.s: src/source/FrameProcessing.cpp.s
+src/source/ImageAdditionner.s: src/source/ImageAdditionner.cpp.s
 
-.PHONY : src/source/FrameProcessing.s
+.PHONY : src/source/ImageAdditionner.s
 
 # target to generate assembly for a file
-src/source/FrameProcessing.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.s
-.PHONY : src/source/FrameProcessing.cpp.s
+src/source/ImageAdditionner.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.s
+.PHONY : src/source/ImageAdditionner.cpp.s
+
+src/source/ImageProcesser.o: src/source/ImageProcesser.cpp.o
+
+.PHONY : src/source/ImageProcesser.o
+
+# target to build an object file
+src/source/ImageProcesser.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o
+.PHONY : src/source/ImageProcesser.cpp.o
+
+src/source/ImageProcesser.i: src/source/ImageProcesser.cpp.i
+
+.PHONY : src/source/ImageProcesser.i
+
+# target to preprocess a source file
+src/source/ImageProcesser.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.i
+.PHONY : src/source/ImageProcesser.cpp.i
+
+src/source/ImageProcesser.s: src/source/ImageProcesser.cpp.s
+
+.PHONY : src/source/ImageProcesser.s
+
+# target to generate assembly for a file
+src/source/ImageProcesser.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.s
+.PHONY : src/source/ImageProcesser.cpp.s
+
+src/source/ImageProvider.o: src/source/ImageProvider.cpp.o
+
+.PHONY : src/source/ImageProvider.o
+
+# target to build an object file
+src/source/ImageProvider.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o
+.PHONY : src/source/ImageProvider.cpp.o
+
+src/source/ImageProvider.i: src/source/ImageProvider.cpp.i
+
+.PHONY : src/source/ImageProvider.i
+
+# target to preprocess a source file
+src/source/ImageProvider.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.i
+.PHONY : src/source/ImageProvider.cpp.i
+
+src/source/ImageProvider.s: src/source/ImageProvider.cpp.s
+
+.PHONY : src/source/ImageProvider.s
+
+# target to generate assembly for a file
+src/source/ImageProvider.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.s
+.PHONY : src/source/ImageProvider.cpp.s
+
+src/source/ImageService.o: src/source/ImageService.cpp.o
+
+.PHONY : src/source/ImageService.o
+
+# target to build an object file
+src/source/ImageService.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o
+.PHONY : src/source/ImageService.cpp.o
+
+src/source/ImageService.i: src/source/ImageService.cpp.i
+
+.PHONY : src/source/ImageService.i
+
+# target to preprocess a source file
+src/source/ImageService.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.i
+.PHONY : src/source/ImageService.cpp.i
+
+src/source/ImageService.s: src/source/ImageService.cpp.s
+
+.PHONY : src/source/ImageService.s
+
+# target to generate assembly for a file
+src/source/ImageService.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.s
+.PHONY : src/source/ImageService.cpp.s
 
 src/source/Main.o: src/source/Main.cpp.o
 
@@ -405,6 +486,9 @@ help:
 	@echo "... lib/tinyxml2/source/tinyxml2.o"
 	@echo "... lib/tinyxml2/source/tinyxml2.i"
 	@echo "... lib/tinyxml2/source/tinyxml2.s"
+	@echo "... src/source/ConfigManager.o"
+	@echo "... src/source/ConfigManager.i"
+	@echo "... src/source/ConfigManager.s"
 	@echo "... src/source/DebugManager.o"
 	@echo "... src/source/DebugManager.i"
 	@echo "... src/source/DebugManager.s"
@@ -414,15 +498,21 @@ help:
 	@echo "... src/source/Frame.o"
 	@echo "... src/source/Frame.i"
 	@echo "... src/source/Frame.s"
-	@echo "... src/source/FrameAddition.o"
-	@echo "... src/source/FrameAddition.i"
-	@echo "... src/source/FrameAddition.s"
 	@echo "... src/source/FrameAnalyser.o"
 	@echo "... src/source/FrameAnalyser.i"
 	@echo "... src/source/FrameAnalyser.s"
-	@echo "... src/source/FrameProcessing.o"
-	@echo "... src/source/FrameProcessing.i"
-	@echo "... src/source/FrameProcessing.s"
+	@echo "... src/source/ImageAdditionner.o"
+	@echo "... src/source/ImageAdditionner.i"
+	@echo "... src/source/ImageAdditionner.s"
+	@echo "... src/source/ImageProcesser.o"
+	@echo "... src/source/ImageProcesser.i"
+	@echo "... src/source/ImageProcesser.s"
+	@echo "... src/source/ImageProvider.o"
+	@echo "... src/source/ImageProvider.i"
+	@echo "... src/source/ImageProvider.s"
+	@echo "... src/source/ImageService.o"
+	@echo "... src/source/ImageService.i"
+	@echo "... src/source/ImageService.s"
 	@echo "... src/source/Main.o"
 	@echo "... src/source/Main.i"
 	@echo "... src/source/Main.s"

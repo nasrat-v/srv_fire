@@ -15,17 +15,17 @@ set(SOURCE_FILES
         src/header/output_static_object/Log.hh
         src/source/Entity.cpp
         src/header/Entity.h
-        src/source/FrameProcessing.cpp
-        src/header/FrameProcessing.h
+        src/source/ImageProcesser.cpp
+        src/header/ImageProcesser.h
         src/source/FrameAnalyser.cpp
         src/header/FrameAnalyser.h
-        src/source/FrameAddition.cpp
-        src/header/FrameAddition.h
+        src/source/ImageAdditionner.cpp
+        src/header/ImageAdditionner.h
         src/source/Frame.cpp
         src/header/Frame.h
         src/source/DebugManager.cpp
         src/header/DebugManager.h
         lib/tinyxml2/source/tinyxml2.cpp
-        lib/tinyxml2/header/tinyxml2.h)
+        lib/tinyxml2/header/tinyxml2.h src/source/ImageProvider.cpp src/header/ImageProvider.h src/source/ImageService.cpp src/header/ImageService.h src/source/ConfigManager.cpp src/header/ConfigManager.h)
 
 add_executable(opencv_srv ${SOURCE_FILES})

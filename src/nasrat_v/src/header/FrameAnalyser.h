@@ -5,38 +5,35 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH     "768x576.avi"
+# define VIDEO_PATH     "../input/video/768x576.avi"
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
 #include <iostream>
 #include <string>
 
-#include "../header/output_static_object/Error.hh"
-#include "../header/Frame.h"
-#include "FrameProcessing.h"
-#include "FrameAddition.h"
+#include "output_static_object/Error.hh"
+#include "Frame.h"
+#include "ImageService.h"
 
 
 class FrameAnalyser
 {
 public:
-    FrameAnalyser();
+    FrameAnalyser(const Log::debugMode &mode, const std::string &videoPath);
     ~FrameAnalyser();
 
-    void                initAnalyser(const std::string &videoPath, Log::debugMode mode);
-    int                 analyseFrame();
+    Error::ErrorType    initAnalyser();
+    Error::ErrorType    analyseFrame();
 
 private:
     /* Attributes */
-    FrameProcessing     _frameProcesser;
-    FrameAddition       _frameAdditionner;
-    cv::VideoCapture    _capVideo;
+    bool                _isInit;
     std::vector<Entity> _savedEntities;
     Frame               _frame;
-    int                 _frameCnt;
     bool                _firstFrame;
     Log::debugMode      _debugMode;
+    ImageService        _imageService;
 
     typedef struct      s_distance
     {
@@ -45,8 +42,6 @@ private:
     }                   t_distance;
 
     /* Methods */
-    void                openVideo(const std::string &videoPath);
-    void                readFrame();
     void                initSavedEntities();
     void                matchFrameEntitiesToSavedEntities();
     void                setSavedEntityToFrameEntity(const Entity &frameEntity, size_t index);
@@ -56,7 +51,6 @@ private:
     void                checkConsecutiveFrameWithoutMatchSavedEntities();
     void                findClosestFrameEntityForSavedEntity(const Entity &frameEntity, t_distance *distance);
     void                debugPredictedPosition(const Entity &frameEntity, const Entity &savedEntity);
-    void                displayImg(cv::Mat img);
 };
 
 

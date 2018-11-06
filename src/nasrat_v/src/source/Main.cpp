@@ -6,7 +6,7 @@
 #include "../header/DebugManager.h"
 #include "../../lib/tinyxml2/header/tinyxml2.h"
 
-void        xmlTest()
+/*void        xmlTest()
 {
     tinyxml2::XMLDocument doc;
 
@@ -19,12 +19,21 @@ void        xmlTest()
         element->GetText();
         element = element->NextSiblingElement();
     }
+}*/
+
+Error::ErrorType analyse(const Log::debugMode &mode)
+{
+    Error::ErrorType error;
+    FrameAnalyser core(mode,VIDEO_PATH);
+
+    if ((error = core.initAnalyser()) != Error::ErrorType::NO_ERROR)
+        return (error);
+    return (core.analyseFrame());
 }
 
 int         main(int ac, const char **av)
 {
-    xmlTest();
-    /*FrameAnalyser core;
+
     DebugManager debugManager;
     Log::debugMode mode = Log::debugMode::NO_DEBUG;
 
@@ -33,11 +42,7 @@ int         main(int ac, const char **av)
         if (strncmp("--debug", av[1], strlen("--debug")) == 0)
             mode = debugManager.findDebugMode(av);
     }
-    core.initAnalyser("../input/video/video_test_camp_fire.mp4", mode);
-    if (core.analyseFrame() != 0)
-    {
-        Error::logError(Error::ErrorType::UNKNOWN_ERROR, "Something went wrong with the analyse");
+    if (analyse(mode) != Error::ErrorType::NO_ERROR)
         return (1);
-    }
-    return (0);*/
+    return (0);
 }

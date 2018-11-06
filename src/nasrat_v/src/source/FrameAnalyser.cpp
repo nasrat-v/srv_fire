@@ -4,21 +4,21 @@
 
 #include "../header/FrameAnalyser.h"
 
-FrameAnalyser::FrameAnalyser()
+FrameAnalyser::FrameAnalyser(const Log::debugMode &mode, const std::string &videoPath) :    _debugMode(mode),
+                                                                                            _imageService(mode, videoPath)
 {
-    _frameCnt = 2;
     _firstFrame = false;
+    _isInit = false;
 }
 
-FrameAnalyser::~FrameAnalyser()
-{
-}
+FrameAnalyser::~FrameAnalyser() = default;
 
-void FrameAnalyser::initAnalyser(const std::string &videoPath, Log::debugMode mode)
+Error::ErrorType FrameAnalyser::initAnalyser()
 {
-    _debugMode = mode;
-    openVideo(videoPath);
-    readFrame();
+    if (_imageService.openVideo() == ImageProvider::statusVideo::ERROR)
+        return (Error::ErrorType::OPEN_VID);
+    _isInit = true;
+    return (Error::ErrorType::NO_ERROR);
 }
 
 void FrameAnalyser::initSavedEntities()
@@ -28,58 +28,34 @@ void FrameAnalyser::initSavedEntities()
     _firstFrame = false;
 }
 
-void FrameAnalyser::openVideo(const std::string &videoPath)
+Error::ErrorType FrameAnalyser::analyseFrame()
 {
-    _capVideo.open(videoPath);
-    if (!_capVideo.isOpened())
-        Error::logErrorAbort(Error::ErrorType::OPEN_VID, videoPath);
-    else if (_capVideo.get(CV_CAP_PROP_FRAME_COUNT) < MIN_FRAME_VID)
-        Error::logErrorAbort(Error::ErrorType::TRUNCATED_VID, videoPath);
-}
+    bool end = false;
+    Error::ErrorType error;
 
-
-void FrameAnalyser::readFrame()
-{
-    cv::Mat first_img;
-    cv::Mat second_img;
-
-    _capVideo.read(first_img);
-    _capVideo.read(second_img);
-    _frame.setFirstImg(first_img);
-    _frame.setSecondImg(second_img);
-    Log::logSomething("Start of video");
-}
-
-int FrameAnalyser::analyseFrame()
-{
-    cv::Mat second_img;
-
-    while (_capVideo.isOpened())
+    if (!_isInit)
     {
-        _frameProcesser.substractInfos(_frame, _debugMode);
-        _frame.findEntitiesWithInfos();
+        Error::logError(Error::ErrorType::MISSING_INIT);
+        return (Error::ErrorType::MISSING_INIT);
+    }
+    if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
+        end = true;
+    while (!end)
+    {
+        _imageService.substractInfos(_frame);
+        if ((error = _frame.findEntitiesWithInfos()) != Error::ErrorType::NO_ERROR)
+            return (error);
         if (_firstFrame)
             initSavedEntities();
         else
             matchFrameEntitiesToSavedEntities();
-        second_img = _frame.getSecondImg().clone();
-        displayImg(second_img);
+        _imageService.displayImg(_frame.getSecondImg(), _savedEntities, _frame.getEntities());
         _frame.clearEntities();
-        _frame.setFirstImg(_frame.getSecondImg());
-        if ((_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
-        {
-            _capVideo.read(second_img);
-            _frame.setSecondImg(second_img);
-        }
-        else
-        {
-            Log::logSomething("End of video");
-            return (0);
-        }
-        _frameCnt++;
+        if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
+            end = true;
         cv::waitKey(1);
     }
-    return (1);
+    return (Error::ErrorType::NO_ERROR);
 }
 
 void FrameAnalyser::matchFrameEntitiesToSavedEntities()
@@ -165,20 +141,6 @@ double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point seco
     int intX = abs(firstPoint.x - secondPoint.x);
     int intY = abs(firstPoint.y - secondPoint.y);
     return (sqrt(pow(intX, 2) + pow(intY, 2)));
-}
-
-void FrameAnalyser::displayImg(cv::Mat img)
-{
-    if (_debugMode & Log::debugMode::ENTITIES)
-        _frameAdditionner.drawAndShowContours(_frameProcesser.getImgThresh().size(), _savedEntities, "imgEntities");
-    if (_debugMode & Log::debugMode::TRACK)
-        _frameAdditionner.drawTrackEntitiesOnImage(_savedEntities, img);
-    if (_debugMode & Log::debugMode::NUMBER)
-        _frameAdditionner.drawNumberEntitiesOnImage(_savedEntities, img);
-    if (!(_debugMode & Log::debugMode::NO_ORIGINAL_VIDEO))
-        cv::imshow("imgFrame", img);
-    if (_debugMode & Log::debugMode::WAIT_KEY)
-        cv::waitKey(0);
 }
 
 void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity, const Entity &savedEntity)

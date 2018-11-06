@@ -4,6 +4,9 @@
 CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o: ../lib/tinyxml2/header/tinyxml2.h
 CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o: ../lib/tinyxml2/source/tinyxml2.cpp
 
+CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o: ../src/header/ConfigManager.h
+CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o: ../src/source/ConfigManager.cpp
+
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/header/DebugManager.h
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/source/DebugManager.cpp
@@ -18,33 +21,56 @@ CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_ob
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/source/Frame.cpp
 
-CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o: ../src/header/Entity.h
-CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o: ../src/header/FrameAddition.h
-CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o: ../src/source/FrameAddition.cpp
-
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/Frame.h
-CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/FrameAddition.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/FrameAnalyser.h
-CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/FrameProcessing.h
+CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/ImageProcesser.h
+CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/ImageProvider.h
+CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/ImageService.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/output_static_object/Error.hh
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/source/FrameAnalyser.cpp
 
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/header/Entity.h
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/header/Frame.h
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/header/FrameAddition.h
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/header/FrameProcessing.h
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/header/output_static_object/Log.hh
-CMakeFiles/opencv_srv.dir/src/source/FrameProcessing.cpp.o: ../src/source/FrameProcessing.cpp
+CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o: ../src/header/Entity.h
+CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o: ../src/header/output_static_object/Log.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o: ../src/source/ImageAdditionner.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/Entity.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/Frame.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/ImageProcesser.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/output_static_object/Error.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/output_static_object/Log.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/source/ImageProcesser.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Entity.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Frame.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/ImageProvider.h
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_static_object/Error.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_static_object/Log.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/source/ImageProvider.cpp
+
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/Entity.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/Frame.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/ImageProcesser.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/ImageProvider.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/ImageService.h
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/output_static_object/Error.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/output_static_object/Log.hh
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/source/ImageService.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../lib/tinyxml2/header/tinyxml2.h
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/DebugManager.h
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/Frame.h
-CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/FrameAddition.h
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/FrameAnalyser.h
-CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/FrameProcessing.h
+CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/ImageAdditionner.h
+CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/ImageProcesser.h
+CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/ImageProvider.h
+CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/ImageService.h
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/output_static_object/Error.hh
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o: ../src/source/Main.cpp

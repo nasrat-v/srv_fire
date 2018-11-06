@@ -15,10 +15,13 @@ class Error
 public:
     enum class      ErrorType
     {
+        NO_ERROR,
         UNKNOWN_ERROR,
         OPEN_VID,
         TRUNCATED_VID,
-        MISSING_FRAME_INFOS
+        MISSING_FRAME_INFOS,
+        MISSING_INIT,
+        NO_CONTOUR
     };
 
     static void                 logError(const ErrorType &type, const std::string &complementary_msg = "");
