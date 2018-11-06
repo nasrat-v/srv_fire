@@ -22,6 +22,10 @@ set(SOURCE_FILES
         src/source/FrameAddition.cpp
         src/header/FrameAddition.h
         src/source/Frame.cpp
-        src/header/Frame.h src/source/DebugManager.cpp src/header/DebugManager.h)
+        src/header/Frame.h
+        src/source/DebugManager.cpp
+        src/header/DebugManager.h
+        lib/tinyxml2/source/tinyxml2.cpp
+        lib/tinyxml2/header/tinyxml2.h)
 
 add_executable(opencv_srv ${SOURCE_FILES})

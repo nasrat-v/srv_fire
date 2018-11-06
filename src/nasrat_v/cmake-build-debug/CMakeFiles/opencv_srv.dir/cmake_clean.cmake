@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv_srv.dir/src/source/FrameAddition.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o"
+  "CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o"
   "opencv_srv.pdb"
   "opencv_srv"
 )

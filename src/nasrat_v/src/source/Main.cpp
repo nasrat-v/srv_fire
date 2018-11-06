@@ -4,10 +4,27 @@
 
 #include "../header/FrameAnalyser.h"
 #include "../header/DebugManager.h"
+#include "../../lib/tinyxml2/header/tinyxml2.h"
+
+void        xmlTest()
+{
+    tinyxml2::XMLDocument doc;
+
+    doc.LoadFile("../input/config/xml_test.xml");
+    tinyxml2::XMLElement *element = doc.FirstChildElement("test");
+
+    std::cout << element->LastChildElement()->GetText();
+    while (element != element->LastChildElement())
+    {
+        element->GetText();
+        element = element->NextSiblingElement();
+    }
+}
 
 int         main(int ac, const char **av)
 {
-    FrameAnalyser core;
+    xmlTest();
+    /*FrameAnalyser core;
     DebugManager debugManager;
     Log::debugMode mode = Log::debugMode::NO_DEBUG;
 
@@ -16,11 +33,11 @@ int         main(int ac, const char **av)
         if (strncmp("--debug", av[1], strlen("--debug")) == 0)
             mode = debugManager.findDebugMode(av);
     }
-    core.initAnalyser("../video/video_test_camp_fire.mp4", mode);
+    core.initAnalyser("../input/video/video_test_camp_fire.mp4", mode);
     if (core.analyseFrame() != 0)
     {
         Error::logError(Error::ErrorType::UNKNOWN_ERROR, "Something went wrong with the analyse");
         return (1);
     }
-    return (0);
+    return (0);*/
 }

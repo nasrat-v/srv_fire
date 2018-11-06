@@ -123,6 +123,33 @@ opencv_srv/fast:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/build
 .PHONY : opencv_srv/fast
 
+lib/tinyxml2/source/tinyxml2.o: lib/tinyxml2/source/tinyxml2.cpp.o
+
+.PHONY : lib/tinyxml2/source/tinyxml2.o
+
+# target to build an object file
+lib/tinyxml2/source/tinyxml2.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o
+.PHONY : lib/tinyxml2/source/tinyxml2.cpp.o
+
+lib/tinyxml2/source/tinyxml2.i: lib/tinyxml2/source/tinyxml2.cpp.i
+
+.PHONY : lib/tinyxml2/source/tinyxml2.i
+
+# target to preprocess a source file
+lib/tinyxml2/source/tinyxml2.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.i
+.PHONY : lib/tinyxml2/source/tinyxml2.cpp.i
+
+lib/tinyxml2/source/tinyxml2.s: lib/tinyxml2/source/tinyxml2.cpp.s
+
+.PHONY : lib/tinyxml2/source/tinyxml2.s
+
+# target to generate assembly for a file
+lib/tinyxml2/source/tinyxml2.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.s
+.PHONY : lib/tinyxml2/source/tinyxml2.cpp.s
+
 src/source/DebugManager.o: src/source/DebugManager.cpp.o
 
 .PHONY : src/source/DebugManager.o
@@ -375,6 +402,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opencv_srv"
+	@echo "... lib/tinyxml2/source/tinyxml2.o"
+	@echo "... lib/tinyxml2/source/tinyxml2.i"
+	@echo "... lib/tinyxml2/source/tinyxml2.s"
 	@echo "... src/source/DebugManager.o"
 	@echo "... src/source/DebugManager.i"
 	@echo "... src/source/DebugManager.s"

@@ -6,6 +6,36 @@
 
 #IncludeRegexTransform: 
 
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/header/tinyxml2.h
+ctype.h
+-
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+stddef.h
+-
+cctype
+-
+climits
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+stdint.h
+-
+android/log.h
+-
+assert.h
+-
+
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
 vector
 -
@@ -74,13 +104,11 @@ fstream
 chrono
 -
 
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameProcessing.cpp
-../header/FrameProcessing.h
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameProcessing.h
-
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp
 ../header/FrameAnalyser.h
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
 ../header/DebugManager.h
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
+../../lib/tinyxml2/header/tinyxml2.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/header/tinyxml2.h
 

@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/header/tinyxml2.h">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/source/tinyxml2.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h">
 			<Option target="opencv_srv"/>
 		</Unit>
