@@ -11,14 +11,14 @@ Frame::Frame()
 
 Frame::~Frame() = default;
 
-void Frame::setFirstImg(const cv::Mat &img)
+void Frame::addImage(const cv::Mat &img)
 {
-    _firstImg = img;
+    _images.push_back(img);
 }
 
-void Frame::setSecondImg(const cv::Mat &img)
+void Frame::setImage(const cv::Mat &img, size_t index)
 {
-    _secondImg = img;
+    _images.at(index) = img;
 }
 
 void Frame::setAllContours(const std::vector<std::vector<cv::Point>> &contours)
@@ -38,14 +38,9 @@ void Frame::setCurrentMatchFoundOrNewEntity(int index, bool val)
     _entities[index].setCurrentMatchFoundOrNewEntity(val);
 }
 
-const cv::Mat &Frame::getFirstImg() const
+const std::vector<cv::Mat> &Frame::getImages() const
 {
-    return (_firstImg);
-}
-
-const cv::Mat &Frame::getSecondImg() const
-{
-    return (_secondImg);
+    return (_images);
 }
 
 const std::vector<Entity> &Frame::getEntities() const

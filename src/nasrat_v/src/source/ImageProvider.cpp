@@ -31,10 +31,17 @@ ImageProvider::statusVideo ImageProvider::openVideo()
     return (statusVideo::OPEN);
 }
 
-ImageProvider::statusVideo ImageProvider::initImg(cv::Mat &firstImg, cv::Mat &secondImg)
+ImageProvider::statusVideo ImageProvider::initImg(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
 {
-    _capVideo.read(firstImg);
-    _capVideo.read(secondImg);
+    size_t i = 0;
+    cv::Mat imgRead;
+
+    while (i < nbImgIncr)
+    {
+        _capVideo.read(imgRead);
+        imgs.push_back(imgRead);
+        i++;
+    }
     Log::logSomething("Video started", _videoPath);
     return (statusVideo::START);
 }

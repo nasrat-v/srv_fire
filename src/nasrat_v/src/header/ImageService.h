@@ -5,6 +5,8 @@
 #ifndef OPENCV_SRV_IMAGESERVICE_H
 # define OPENCV_SRV_IMAGESERVICE_H
 
+# define NB_IMG_INCR    5
+
 #include "ImageProvider.h"
 #include "ImageProcesser.h"
 #include "ImageAdditionner.h"
@@ -18,7 +20,7 @@ public:
     void                        substractInfos(Frame &frame, const Entity::entityType &type);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
-    void                        displayImg(cv::Mat img, const std::vector<Entity> &savedEntities, const std::vector<Entity> &frameEntities);
+    void                        displayImg(cv::Mat img, /*const std::vector<Entity> &savedEntities,*/ const std::vector<Entity> &frameEntities);
 
 private:
     /* Methods */

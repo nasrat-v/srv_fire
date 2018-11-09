@@ -16,7 +16,7 @@ void ImageService::substractInfos(Frame &frame, const Entity::entityType &type)
 {
     cv::Mat imgProcessed;
 
-    differenceImg(frame.getFirstImg().clone(), frame.getSecondImg().clone(), imgProcessed, type);
+    differenceImg(frame.getImages().front().clone(), frame.getImages().back().clone(), imgProcessed, type);
     threshImg(imgProcessed, type);
     setContoursFrame(frame, imgProcessed);
     setConvexHullsFrame(frame, imgProcessed);
@@ -76,39 +76,45 @@ ImageProvider::statusVideo ImageService::getNextImg(Frame &frame)
 
 ImageProvider::statusVideo ImageService::initImg(Frame &frame)
 {
-    cv::Mat firstImage;
-    cv::Mat secondImage;
+    std::vector<cv::Mat> imgs;
     ImageProvider::statusVideo status;
 
-    status = _imageProvider.initImg(firstImage, secondImage);
-    frame.setFirstImg(firstImage);
-    frame.setSecondImg(secondImage);
+    status = _imageProvider.initImg(imgs, NB_IMG_INCR);
+    for (const cv::Mat &img : imgs)
+        frame.addImage(img);
     return (status);
 }
 
 ImageProvider::statusVideo ImageService::incrementImg(Frame &frame)
 {
+    size_t i = 0;
     cv::Mat nextImage;
     ImageProvider::statusVideo status;
 
     status = _imageProvider.incrementImg(nextImage);
-    frame.setFirstImg(frame.getSecondImg());
-    frame.setSecondImg(nextImage);
+    while (i < (frame.getImages().size() - 1))
+    {
+        frame.setImage(frame.getImages()[i + 1], i);
+        i++;
+    }
+    frame.setImage(nextImage, (frame.getImages().size() - 1));
     return (status);
 }
 
-void ImageService::displayImg(cv::Mat img, const std::vector<Entity> &savedEntities, const std::vector<Entity> &frameEntities)
+void ImageService::displayImg(cv::Mat img, /*const std::vector<Entity> &savedEntities,*/ const std::vector<Entity> &frameEntities)
 {
     cv::Mat trackImg = img.clone();
 
-    if (_debugMode & Log::debugMode::SAVED_ENTITIES)
-        _imageAdditionner.drawAndShowContours(img.size(), savedEntities, "imgEntities");
+    //if (_debugMode & Log::debugMode::SAVED_ENTITIES)
+    //    _imageAdditionner.drawAndShowContours(img.size(), savedEntities, "imgEntities");
     if (_debugMode & Log::debugMode::FRAME_ENTITIES)
         _imageAdditionner.drawAndShowContours(img.size(), frameEntities, "imgFrameEntities");
     if (_debugMode & Log::debugMode::TRACK)
-        _imageAdditionner.drawTrackEntitiesOnImage(savedEntities, trackImg);
+        //_imageAdditionner.drawTrackEntitiesOnImage(savedEntities, trackImg);
+        _imageAdditionner.drawTrackEntitiesOnImage(frameEntities, trackImg);
     if (_debugMode & Log::debugMode::NUMBER)
-        _imageAdditionner.drawNumberEntitiesOnImage(savedEntities, trackImg);
+        //_imageAdditionner.drawNumberEntitiesOnImage(savedEntities, trackImg);
+        _imageAdditionner.drawNumberEntitiesOnImage(frameEntities, trackImg);
     if (!(_debugMode & Log::debugMode::NO_ORIGINAL_VIDEO))
         cv::imshow("imgFrame", trackImg);
     if (_debugMode & Log::debugMode::WAIT_KEY)

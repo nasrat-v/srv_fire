@@ -17,13 +17,12 @@ public:
     Frame();
     ~Frame();
 
-    void                                        setFirstImg(const cv::Mat &img);
-    void                                        setSecondImg(const cv::Mat &img);
+    void                                        addImage(const cv::Mat &img);
+    void                                        setImage(const cv::Mat &img, size_t index);
     void                                        setAllContours(const std::vector<std::vector<cv::Point>> &contours);
     void                                        setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls);
     void                                        setCurrentMatchFoundOrNewEntity(int index, bool val);
-    const cv::Mat                               &getFirstImg() const;
-    const cv::Mat                               &getSecondImg() const;
+    const std::vector<cv::Mat>                  &getImages() const;
     const std::vector<Entity>                   &getEntities() const;
     const std::vector<std::vector<cv::Point>>   &getAllContours() const;
     const std::vector<std::vector<cv::Point>>   &getAllConvexHulls() const;
@@ -36,8 +35,7 @@ private:
 
     /* Attributes */
     short                                       _readyForAnalyse;
-    cv::Mat                                     _firstImg;
-    cv::Mat                                     _secondImg;
+    std::vector<cv::Mat>                        _images;
     std::vector<Entity>                         _entities;
     std::vector<std::vector<cv::Point>>         _allContours;
     std::vector<std::vector<cv::Point>>         _allConvexHulls;

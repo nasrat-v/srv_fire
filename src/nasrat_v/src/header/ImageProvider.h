@@ -28,7 +28,7 @@ public:
     };
 
     statusVideo         openVideo();
-    statusVideo         initImg(cv::Mat &firstImg, cv::Mat &secondImg);
+    statusVideo         initImg(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
     statusVideo         incrementImg(cv::Mat &nextImage);
     statusVideo         videoContinues();
 

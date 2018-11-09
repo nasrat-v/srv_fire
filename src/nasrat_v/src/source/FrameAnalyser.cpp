@@ -44,11 +44,11 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     {
         if ((error = findEntities()) != Error::ErrorType::NO_ERROR)
             return (error);
-        if (_firstFrame)
+        /*if (_firstFrame)
             initSavedEntities();
         else
-            matchFrameEntitiesToSavedEntities();
-        _imageService.displayImg(_frame.getSecondImg(), _savedEntities, _frame.getEntities());
+            matchFrameEntitiesToSavedEntities();*/
+        _imageService.displayImg(_frame.getImages().back(), /*_savedEntities,*/ _frame.getEntities());
         _frame.clearEntities();
         if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
             end = true;
@@ -61,9 +61,9 @@ Error::ErrorType FrameAnalyser::findEntities()
 {
     Error::ErrorType error;
 
-    _imageService.substractInfos(_frame, Entity::entityType::FIRE);
+    /*_imageService.substractInfos(_frame, Entity::entityType::FIRE);
     if ((error = _frame.findEntitiesWithInfos(Entity::entityType::FIRE)) != Error::ErrorType::NO_ERROR)
-        return (error);
+        return (error);*/
     _imageService.substractInfos(_frame, Entity::entityType::HUMAN);
     if ((error = _frame.findEntitiesWithInfos(Entity::entityType::HUMAN)) != Error::ErrorType::NO_ERROR)
         return (error);
@@ -81,7 +81,7 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
         index = 0;
         findClosestFrameEntityForSavedEntity(frameEntity, &distance);
         if (distance.leastDistance < frameEntity.getCurrentDiagonalSize() * 1.15)
-            setSavedEntityToFrameEntity(frameEntity, distance.indexEntity);
+            setSavedEntityFromFrameEntity(frameEntity, distance.indexEntity);
         else
             addNewSavedEntity(frameEntity, index);
         index++;
@@ -131,7 +131,7 @@ void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
     }
 }
 
-void FrameAnalyser::setSavedEntityToFrameEntity(const Entity &frameEntity, size_t index)
+void FrameAnalyser::setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index)
 {
     _savedEntities[index].setContour(frameEntity.getContour());
     _savedEntities[index].setCurrentBoundingRect(frameEntity.getCurrentBoundingRect());

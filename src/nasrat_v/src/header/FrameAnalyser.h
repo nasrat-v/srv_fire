@@ -44,7 +44,7 @@ private:
     /* Methods */
     void                initSavedEntities();
     void                matchFrameEntitiesToSavedEntities();
-    void                setSavedEntityToFrameEntity(const Entity &frameEntity, size_t index);
+    void                setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index);
     void                addNewSavedEntity(const Entity &frameEntity, int index);
     double              distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
     void                predictNextPositionSavedEntities();
