@@ -2,7 +2,6 @@
 // Created by nasrat_v on 11/4/18.
 //
 
-#include <cstring>
 #include "../header/DebugManager.h"
 
 int launchPalette();
@@ -24,44 +23,46 @@ int DebugManager::strlenTab(const char **array)
     return (i);
 }
 
-Log::debugMode DebugManager::findDebugMode(const char **av)
+DebugManager::debugMode DebugManager::findDebugMode(const char **av)
 {
-    uint16_t mode = Log::debugMode::NO_DEBUG;
+    uint16_t mode = debugMode::NO_DEBUG;
     std::vector<std::string> args = convertCharStarToVectorOfString(av);
     std::vector<std::string>::const_iterator it = args.begin();
 
     if (args.size() == 2)
-        return (Log::debugMode::ALL);
+        return (debugMode::ALL);
     it++;
     while (it != args.end())
     {
         if (*it == THRESH_ARG)
-            mode |= Log::debugMode::THRESH;
+            mode |= debugMode::THRESH;
         if (*it == CONTOUR_ARG)
-            mode |= Log::debugMode::CONTOUR;
+            mode |= debugMode::CONTOUR;
         if (*it == CONVEXHULLS_ARG)
-            mode |= Log::debugMode::CONVEXHULLS;
+            mode |= debugMode::CONVEXHULLS;
         if (*it == SAVEDENTITIES_ARG)
-            mode |= Log::debugMode::SAVED_ENTITIES;
+            mode |= debugMode::SAVED_ENTITIES;
         if (*it == FRAMEENTITIES_ARG)
-            mode |= Log::debugMode::FRAME_ENTITIES;
+            mode |= debugMode::FRAME_ENTITIES;
         if (*it == DIFFERENCE_ARG)
-            mode |= Log::debugMode::DIFFERENCE;
+            mode |= debugMode::DIFFERENCE;
         if (*it == TRACK_ARG)
-            mode |= Log::debugMode::TRACK;
+            mode |= debugMode::TRACK;
         if (*it == NUMBER_ARG)
-            mode |= Log::debugMode::NUMBER;
+            mode |= debugMode::NUMBER;
         if (*it == WATIKEY_ARG)
-            mode |= Log::debugMode::WAIT_KEY;
+            mode |= debugMode::WAIT_KEY;
         if (*it == OUTPUTPREDICTION_ARG)
-            mode |= Log::debugMode::OUTPUT_PREDICTION;
+            mode |= debugMode::OUTPUT_PREDICTION;
         if (*it == NOORIGINALVIDEO_ARG)
-            mode |= Log::debugMode::NO_ORIGINAL_VIDEO;
+            mode |= debugMode::NO_ORIGINAL_VIDEO;
+        if (*it == SUBSTRACTCOLOR_ARG)
+            mode |= debugMode::SUBSTRACT_COLOR;
         if (*it == PALETTE_ARG)
             launchPalette();
         it++;
     }
-    return ((Log::debugMode)mode);
+    return ((debugMode)mode);
 }
 
 using namespace std;

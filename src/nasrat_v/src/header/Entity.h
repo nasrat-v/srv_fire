@@ -21,8 +21,8 @@ public:
 
     enum class  entityType
     {
-        FIRE,
-        HUMAN
+        MOVE,
+        STATIC
     };
 
     void                            predictNextPosition();

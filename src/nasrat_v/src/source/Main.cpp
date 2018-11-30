@@ -21,7 +21,7 @@
     }
 }*/
 
-Error::ErrorType analyse(const Log::debugMode &mode)
+Error::ErrorType analyse(const DebugManager::debugMode &mode)
 {
     Error::ErrorType error;
     FrameAnalyser core(mode,VIDEO_PATH);
@@ -35,7 +35,7 @@ int         main(int ac, const char **av)
 {
 
     DebugManager debugManager;
-    Log::debugMode mode = Log::debugMode::NO_DEBUG;
+    DebugManager::debugMode mode = DebugManager::debugMode::NO_DEBUG;
 
     if (ac > 1)
     {

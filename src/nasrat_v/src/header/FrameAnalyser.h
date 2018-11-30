@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH     "../input/video/video_test_camp_fire.mp4"
+# define VIDEO_PATH     "../input/video/video-dublin1.mp4"
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
@@ -20,38 +20,41 @@
 class FrameAnalyser
 {
 public:
-    FrameAnalyser(const Log::debugMode &mode, const std::string &videoPath);
+    FrameAnalyser(const DebugManager::debugMode &mode, const std::string &videoPath);
     ~FrameAnalyser();
 
-    Error::ErrorType    initAnalyser();
-    Error::ErrorType    analyseFrame();
+    Error::ErrorType        initAnalyser();
+    Error::ErrorType        analyseFrame();
 
 private:
     /* Attributes */
-    bool                _isInit;
-    std::vector<Entity> _savedEntities;
-    Frame               _frame;
-    bool                _firstFrame;
-    Log::debugMode      _debugMode;
-    ImageService        _imageService;
+    bool                    _isInit;
+    std::vector<Entity>     _savedEntities;
+    Frame                   _frame;
+    bool                    _firstFrame;
+    DebugManager::debugMode _debugMode;
+    ImageService            _imageService;
 
-    typedef struct      s_distance
+    typedef struct          s_distance
     {
-        double          leastDistance;
-        size_t          indexEntity;
-    }                   t_distance;
+        double              leastDistance;
+        size_t              indexEntity;
+    }                       t_distance;
 
     /* Methods */
-    void                initSavedEntities();
-    void                matchFrameEntitiesToSavedEntities();
-    void                setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index);
-    void                addNewSavedEntity(const Entity &frameEntity, int index);
-    double              distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
-    void                predictNextPositionSavedEntities();
-    void                checkConsecutiveFrameWithoutMatchSavedEntities();
-    void                findClosestFrameEntityForSavedEntity(const Entity &frameEntity, t_distance *distance);
-    void                debugPredictedPosition(const Entity &frameEntity, const Entity &savedEntity);
-    Error::ErrorType    findEntities();
+    Error::ErrorType        findEntities();
+    void                    findAllEntitiesWithInfos();
+    void                    findEntitiesInMovementWithInfos();
+    bool                    isPossibleEntity(const Entity &possibleEntity);
+    void                    findClosestMovementEntity(const Entity &entity, t_distance *distance);
+    double                  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
+    /*void                    initSavedEntities();
+    void                    matchFrameEntitiesToSavedEntities();
+    void                    setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index);
+    void                    addNewSavedEntity(const Entity &frameEntity, int index);
+    void                    predictNextPositionSavedEntities();
+    void                    checkConsecutiveFrameWithoutMatchSavedEntities();
+    void                    debugPredictedPosition(const Entity &frameEntity);*/
 };
 
 

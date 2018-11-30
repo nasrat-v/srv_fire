@@ -14,10 +14,7 @@ void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector
     std::vector<std::vector<cv::Point> > contours;
 
     for (auto &entity : entities)
-    {
-        if (entity.getStillBeingTracked())
-            contours.push_back(entity.getContour());
-    }
+        contours.push_back(entity.getContour());
     cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
     cv::imshow(strImageName, image);
 }
@@ -35,13 +32,10 @@ void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &entit
 {
     for (auto &entity : entities)
     {
-        if (entity.getStillBeingTracked())
-        {
-            if (entity.getType() == Entity::entityType::FIRE)
-                cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
-            else
-                cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
-        }
+        if (entity.getType() == Entity::entityType::STATIC)
+            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
+        else
+            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
     }
 }
 
@@ -53,15 +47,12 @@ void ImageAdditionner::drawNumberEntitiesOnImage(const std::vector<Entity> &enti
 
     for (auto &entity : entities)
     {
-        if (entity.getStillBeingTracked())
-        {
-            fontScale = (entity.getCurrentDiagonalSize() / 60.0);
-            intFontThickness = (int)std::round(fontScale * 1.0);
-            if (entity.getType() == Entity::entityType::FIRE)
-                cv::putText(img, /*std::to_string(nb)*/"fire", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
-            else
-                cv::putText(img, /*std::to_string(nb)*/"human", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
-        }
-        nb++;
+        fontScale = (entity.getCurrentDiagonalSize() / 60.0);
+        intFontThickness = (int)std::round(fontScale * 1.0);
+        if (entity.getType() == Entity::entityType::STATIC)
+            cv::putText(img, /*std::to_string(nb)*/"static", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
+        else
+            cv::putText(img, /*std::to_string(nb)*/"move", entity.getCenterPositions().back(), CV_FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
     }
+    nb++;
 }

@@ -20,10 +20,14 @@ public:
     ImageProcesser();
     ~ImageProcesser();
 
-    cv::Mat                             differenceImg(cv::Mat firstImg, cv::Mat secondImg, const Entity::entityType &type);
-    cv::Mat                             threshImg(const cv::Mat &img);
+    void                                imgToHSV(cv::Mat &img);
+    cv::Mat                             differenceImgGray(cv::Mat firstImg, cv::Mat secondImg);
+    void                                threshImg(cv::Mat &img);
     std::vector<std::vector<cv::Point>> findContoursFromImg(const cv::Mat &img);
     std::vector<std::vector<cv::Point>> findConvexHullsFromContours(const std::vector<std::vector<cv::Point>> &contours);
+
+private:
+    cv::Mat                             differenceImg(cv::Mat firstImg, cv::Mat secondImg);
 };
 
 

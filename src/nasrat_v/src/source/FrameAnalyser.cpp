@@ -4,8 +4,8 @@
 
 #include "../header/FrameAnalyser.h"
 
-FrameAnalyser::FrameAnalyser(const Log::debugMode &mode, const std::string &videoPath) :    _debugMode(mode),
-                                                                                            _imageService(mode, videoPath)
+FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, const std::string &videoPath) :    _debugMode(mode),
+                                                                                                     _imageService(mode, videoPath)
 {
     _firstFrame = false;
     _isInit = false;
@@ -19,13 +19,6 @@ Error::ErrorType FrameAnalyser::initAnalyser()
         return (Error::ErrorType::OPEN_VID);
     _isInit = true;
     return (Error::ErrorType::NO_ERROR);
-}
-
-void FrameAnalyser::initSavedEntities()
-{
-    for (auto &frameEntity : _frame.getEntities())
-        _savedEntities.push_back(frameEntity);
-    _firstFrame = false;
 }
 
 Error::ErrorType FrameAnalyser::analyseFrame()
@@ -48,7 +41,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
             initSavedEntities();
         else
             matchFrameEntitiesToSavedEntities();*/
-        _imageService.displayImg(_frame.getImages().back(), /*_savedEntities,*/ _frame.getEntities());
+        _imageService.displayImg(_frame.getImages().front(), /*_savedEntities,*/ _frame.getEntities());
         _frame.clearEntities();
         if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
             end = true;
@@ -59,15 +52,94 @@ Error::ErrorType FrameAnalyser::analyseFrame()
 
 Error::ErrorType FrameAnalyser::findEntities()
 {
-    Error::ErrorType error;
+    _imageService.substractInfosAllEntities(_frame);
+    findAllEntitiesWithInfos();
+    _imageService.substractInfosEntitiesInMovement(_frame);
+    findEntitiesInMovementWithInfos();
+}
 
-    /*_imageService.substractInfos(_frame, Entity::entityType::FIRE);
-    if ((error = _frame.findEntitiesWithInfos(Entity::entityType::FIRE)) != Error::ErrorType::NO_ERROR)
-        return (error);*/
-    _imageService.substractInfos(_frame, Entity::entityType::HUMAN);
-    if ((error = _frame.findEntitiesWithInfos(Entity::entityType::HUMAN)) != Error::ErrorType::NO_ERROR)
-        return (error);
-    return (Error::ErrorType::NO_ERROR);
+void FrameAnalyser::findAllEntitiesWithInfos()
+{
+    for (auto &convexHull : _frame.getAllConvexHulls())
+    {
+        Entity possibleEntity(convexHull);
+
+        if (isPossibleEntity(possibleEntity))
+            _frame.addEntity(possibleEntity);
+    }
+}
+
+void FrameAnalyser::findEntitiesInMovementWithInfos()
+{
+    int index = 0;
+    t_distance distance;
+
+    for (auto &entity : _frame.getEntities())
+    {
+        findClosestMovementEntity(entity, &distance);
+        if (distance.leastDistance < entity.getCurrentDiagonalSize() * 1.15)
+            _frame.setTypeEntity(index, Entity::entityType::MOVE);
+        else
+            _frame.setTypeEntity(index, Entity::entityType::STATIC);
+        index++;
+    }
+}
+
+void FrameAnalyser::findClosestMovementEntity(const Entity &entity, t_distance *distance)
+{
+    size_t i = 0;
+    double dist = 0;
+    distance->indexEntity = 0;
+    distance->leastDistance = 100000.0;
+
+    for (auto &convexHull : _frame.getConvexHullsMovement())
+    {
+        Entity possibleEntity(convexHull);
+
+        if (isPossibleEntity(possibleEntity))
+        {
+            dist = distanceBetweenPoints(entity.getCenterPositions().back(), possibleEntity.getCenterPositions().back());
+            if (dist < distance->leastDistance)
+            {
+                distance->leastDistance = dist;
+                distance->indexEntity = i;
+            }
+            i++;
+        }
+    }
+}
+
+double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint)
+{
+    int intX = abs(firstPoint.x - secondPoint.x);
+    int intY = abs(firstPoint.y - secondPoint.y);
+    return (sqrt(pow(intX, 2) + pow(intY, 2)));
+}
+
+bool FrameAnalyser::isPossibleEntity(const Entity &possibleEntity)
+{
+    return (possibleEntity.getCurrentBoundingRect().area() > 150 && possibleEntity.getCurrentAspectRatio() >= 0.2 &&
+            possibleEntity.getCurrentAspectRatio() <= 1.25 && possibleEntity.getCurrentBoundingRect().width > 30 &&
+            possibleEntity.getCurrentBoundingRect().height > 30 && possibleEntity.getCurrentDiagonalSize() > 30.0 &&
+            (cv::contourArea(possibleEntity.getContour()) / (double)possibleEntity.getCurrentBoundingRect().area()) > 0.40);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*void FrameAnalyser::initSavedEntities()
+{
+    for (auto &frameEntity : _frame.getEntities())
+        _savedEntities.push_back(frameEntity);
+    _firstFrame = false;
 }
 
 void FrameAnalyser::matchFrameEntitiesToSavedEntities()
@@ -98,28 +170,6 @@ void FrameAnalyser::predictNextPositionSavedEntities()
     }
 }
 
-void FrameAnalyser::findClosestFrameEntityForSavedEntity(const Entity &frameEntity, t_distance *distance)
-{
-    size_t i = 0;
-    double dist = 0;
-    distance->indexEntity = 0;
-    distance->leastDistance = 100000.0;
-
-    for (auto &savedEntity : _savedEntities)
-    {
-        if (savedEntity.getStillBeingTracked() && (savedEntity.getType() == frameEntity.getType()))
-        {
-            dist = distanceBetweenPoints(frameEntity.getCenterPositions().back(), savedEntity.getPredictedNextPosition());
-            if (dist < distance->leastDistance)
-            {
-                distance->leastDistance = dist;
-                distance->indexEntity = i;
-            }
-        }
-        i++;
-    }
-}
-
 void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
 {
     for (auto &savedEntity : _savedEntities)
@@ -140,7 +190,7 @@ void FrameAnalyser::setSavedEntityFromFrameEntity(const Entity &frameEntity, siz
     _savedEntities[index].setCurrentAspectRatio(frameEntity.getCurrentAspectRatio());
     _savedEntities[index].setCurrentMatchFoundOrNewEntity(true);
     _savedEntities[index].setType(frameEntity.getType());
-    debugPredictedPosition(frameEntity, _savedEntities[index]);
+    //debugPredictedPosition(frameEntity, _savedEntities[index]);
 }
 
 void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity, int index)
@@ -149,21 +199,14 @@ void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity, int index)
     _savedEntities.push_back(frameEntity);
 }
 
-double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint)
+void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity)
 {
-    int intX = abs(firstPoint.x - secondPoint.x);
-    int intY = abs(firstPoint.y - secondPoint.y);
-    return (sqrt(pow(intX, 2) + pow(intY, 2)));
-}
-
-void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity, const Entity &savedEntity)
-{
-    if (_debugMode & Log::debugMode::OUTPUT_PREDICTION)
+    if (_debugMode & DebugManager::debugMode::OUTPUT_PREDICTION)
     {
-        Log::logSomething("predicted X :\t" + std::to_string(savedEntity.getPredictedNextPosition().x));
-        Log::logSomething("predicted Y :\t" + std::to_string(savedEntity.getPredictedNextPosition().y));
+        Log::logSomething("predicted X :\t" + std::to_string(frameEntity.getPredictedNextPosition().x));
+        Log::logSomething("predicted Y :\t" + std::to_string(frameEntity.getPredictedNextPosition().y));
         Log::logSomething("real X :\t" + std::to_string(frameEntity.getCenterPositions().back().x));
         Log::logSomething("real Y :\t" + std::to_string(frameEntity.getCenterPositions().back().y));
         std::cout << std::endl;
     }
-}
+}*/

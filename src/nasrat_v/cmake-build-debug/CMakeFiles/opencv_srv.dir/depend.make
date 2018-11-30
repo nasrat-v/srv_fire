@@ -8,7 +8,6 @@ CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o: ../src/header/ConfigMa
 CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o: ../src/source/ConfigManager.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/header/DebugManager.h
-CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o: ../src/source/DebugManager.cpp
 
 CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o: ../src/header/Entity.h
@@ -23,6 +22,7 @@ CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_ob
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o: ../src/source/Frame.cpp
 
+CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/DebugManager.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/Frame.h
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o: ../src/header/FrameAnalyser.h
@@ -56,6 +56,7 @@ CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_s
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/output_static_object/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/source/ImageProvider.cpp
 
+CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/DebugManager.h
 CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/Frame.h
 CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o: ../src/header/ImageAdditionner.h

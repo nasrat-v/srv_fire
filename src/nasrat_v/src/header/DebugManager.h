@@ -17,6 +17,7 @@
 # define OUTPUTPREDICTION_ARG   "--output-prediction"
 # define NOORIGINALVIDEO_ARG    "--no-video"
 # define PALETTE_ARG            "--palette"
+# define SUBSTRACTCOLOR_ARG     "--substract-color"
 # define HUEMAX                 179
 # define SATMAX                 255
 # define VALMAX                 255
@@ -24,9 +25,8 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <cstring>
 #include "stdio.h"
-
-#include "output_static_object/Log.hh"
 
 class DebugManager
 {
@@ -34,7 +34,26 @@ public:
     DebugManager();
     ~DebugManager();
 
-    Log::debugMode  findDebugMode(const char **av);
+    enum    debugMode
+    {
+        NO_DEBUG = 0b0000'0000'0000'0000,
+        OUTPUT_PREDICTION = 0b0000'0000'0000'0001,
+        THRESH = 0b0000'0000'0000'0010,
+        CONTOUR = 0b0000'0000'0000'0100,
+        CONVEXHULLS = 0b0000'0000'0000'1000,
+        SAVED_ENTITIES = 0b0000'0000'0001'0000,
+        FRAME_ENTITIES = 0b0000'0000'0010'0000,
+        DIFFERENCE = 0b0000'0000'0100'0000,
+        TRACK = 0b0000'0000'1000'0000,
+        NUMBER = 0b0000'0001'0000'0000,
+        WAIT_KEY = 0b0000'0010'0000'0000,
+        NO_ORIGINAL_VIDEO = 0b0000'0100'0000'0000,
+        HSV_PALETTE = 0b0000'1000'0000'0000,
+        SUBSTRACT_COLOR = 0b0001'0000'0000'0000,
+        ALL = 0b1111'1011'1111'1111
+    };
+
+    debugMode  findDebugMode(const char **av);
 
 private:
     int                             strlenTab(const char **array);

@@ -9,7 +9,6 @@ CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ConfigManager.cpp
 CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
- /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Log.hh
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/DebugManager.cpp
 CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h
@@ -24,6 +23,7 @@ CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Log.hh
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Frame.cpp
 CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o
+ /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
@@ -57,6 +57,7 @@ CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Log.hh
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageProvider.cpp
 CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o
+ /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageAdditionner.h

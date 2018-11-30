@@ -8,49 +8,48 @@ ImageProcesser::ImageProcesser() = default;
 
 ImageProcesser::~ImageProcesser() = default;
 
-cv::Mat ImageProcesser::differenceImg(cv::Mat firstImg, cv::Mat secondImg, const Entity::entityType &type)
+void ImageProcesser::imgToHSV(cv::Mat &img)
+{
+    cv::cvtColor(img, img, CV_BGR2HSV);
+    cv::inRange(img, cv::Scalar(24, 0, 230), cv::Scalar(30, 255, 255), img);
+}
+
+cv::Mat ImageProcesser::differenceImgGray(cv::Mat firstImg, cv::Mat secondImg)
+{
+    cv::cvtColor(firstImg, firstImg, CV_BGR2GRAY);
+    cv::cvtColor(secondImg, secondImg, CV_BGR2GRAY);
+    return (differenceImg(firstImg, secondImg));
+}
+
+cv::Mat ImageProcesser::differenceImg(cv::Mat firstImg, cv::Mat secondImg)
 {
     cv::Mat imgDifference;
 
-    if (type == Entity::entityType::FIRE)
-    {
-        cv::cvtColor(firstImg, firstImg, CV_BGR2HSV);
-        cv::inRange(firstImg, cv::Scalar(0, 180, 180), cv::Scalar(20, 255, 255), firstImg);
-        cv::cvtColor(secondImg, secondImg, CV_BGR2HSV);
-        cv::inRange(secondImg, cv::Scalar(0, 160, 160), cv::Scalar(30, 255, 255), secondImg);
-    }
-    else
-    {
-        cv::cvtColor(firstImg, firstImg, CV_BGR2GRAY);
-        cv::cvtColor(secondImg, secondImg, CV_BGR2GRAY);
-    }
     cv::GaussianBlur(firstImg, firstImg, cv::Size(5, 5), 0);
     cv::GaussianBlur(secondImg, secondImg, cv::Size(5, 5), 0);
     cv::absdiff(firstImg, secondImg, imgDifference);
     return (imgDifference);
 }
 
-cv::Mat ImageProcesser::threshImg(const cv::Mat &img)
+void ImageProcesser::threshImg(cv::Mat &img)
 {
-    cv::Mat imgThresh;
     cv::Mat structuringElement1x1;
     cv::Mat structuringElement3x3;
     cv::Mat structuringElement5x5;
     cv::Mat structuringElement7x7;
     cv::Mat structuringElement9x9;
 
-    cv::threshold(img, imgThresh, 30, 255.0, CV_THRESH_BINARY);
+    cv::threshold(img, img, 30, 255.0, CV_THRESH_BINARY);
     structuringElement1x1 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(1, 1));
     structuringElement3x3 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     structuringElement5x5 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
     structuringElement7x7 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7));
     structuringElement9x9 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(9, 9));
-    cv::erode(imgThresh, imgThresh, structuringElement1x1);
-    cv::erode(imgThresh, imgThresh, structuringElement3x3);
-    cv::dilate(imgThresh, imgThresh, structuringElement5x5);
-    cv::dilate(imgThresh, imgThresh, structuringElement7x7);
-    cv::dilate(imgThresh, imgThresh, structuringElement9x9);
-    return (imgThresh);
+    cv::erode(img, img, structuringElement1x1);
+    cv::erode(img, img, structuringElement3x3);
+    cv::dilate(img, img, structuringElement5x5);
+    cv::dilate(img, img, structuringElement7x7);
+    cv::dilate(img, img, structuringElement9x9);
 }
 
 std::vector<std::vector<cv::Point>> ImageProcesser::findContoursFromImg(const cv::Mat &img)

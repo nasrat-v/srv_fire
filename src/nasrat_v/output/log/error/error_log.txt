@@ -19882,3 +19882,237 @@
 [Fri Nov  9 14:53:39 2018
 	Missing contour Cannot find convexhulls]
 
+[Sun Nov 11 22:51:37 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:52:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:52:34 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:52:55 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:57:40 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:58:35 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:58:45 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 22:59:02 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 23:30:55 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 23:32:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 23:36:27 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 23:40:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Sun Nov 11 23:40:20 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:36 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:37 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:37 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:37 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:37 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:43 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 11:47:49 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 12:08:44 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:50 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:50 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:51 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:51 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:51 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:51 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:08:51 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 13:18:04 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:05 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:04:06 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:09:26 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:32 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:32 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:32 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:32 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+
+[Fri Nov 30 14:28:33 2018
+	Missing contour Cannot find convexhulls]
+

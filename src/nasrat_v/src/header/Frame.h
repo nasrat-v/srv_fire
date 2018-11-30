@@ -21,24 +21,28 @@ public:
     void                                        setImage(const cv::Mat &img, size_t index);
     void                                        setAllContours(const std::vector<std::vector<cv::Point>> &contours);
     void                                        setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls);
+    void                                        setContoursMovement(const std::vector<std::vector<cv::Point>> &contours);
+    void                                        setConvexHullsMovement(const std::vector<std::vector<cv::Point>> &convexHulls);
     void                                        setCurrentMatchFoundOrNewEntity(int index, bool val);
+    void                                        setTypeEntity(int index, const Entity::entityType &type);
     const std::vector<cv::Mat>                  &getImages() const;
     const std::vector<Entity>                   &getEntities() const;
     const std::vector<std::vector<cv::Point>>   &getAllContours() const;
     const std::vector<std::vector<cv::Point>>   &getAllConvexHulls() const;
-    Error::ErrorType                            findEntitiesWithInfos(const Entity::entityType &type);
+    const std::vector<std::vector<cv::Point>>   &getContoursMovement() const;
+    const std::vector<std::vector<cv::Point>>   &getConvexHullsMovement() const;
     void                                        clearEntities();
+    void                                        predictNextPositionEntities();
+    void                                        addEntity(const Entity &entity);
 
 private:
-    /* Methods*/
-    void                                        analyseInfos(const Entity::entityType &type);
-
     /* Attributes */
-    short                                       _readyForAnalyse;
     std::vector<cv::Mat>                        _images;
     std::vector<Entity>                         _entities;
     std::vector<std::vector<cv::Point>>         _allContours;
     std::vector<std::vector<cv::Point>>         _allConvexHulls;
+    std::vector<std::vector<cv::Point>>         _contoursMovement;
+    std::vector<std::vector<cv::Point>>         _convexHullsMovement;
 };
 
 

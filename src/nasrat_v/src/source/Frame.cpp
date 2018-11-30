@@ -6,7 +6,6 @@
 
 Frame::Frame()
 {
-    _readyForAnalyse = 0;
 }
 
 Frame::~Frame() = default;
@@ -24,18 +23,31 @@ void Frame::setImage(const cv::Mat &img, size_t index)
 void Frame::setAllContours(const std::vector<std::vector<cv::Point>> &contours)
 {
     _allContours = contours;
-    _readyForAnalyse += 1;
 }
 
 void Frame::setAllConvexHulls(const std::vector<std::vector<cv::Point>> &convexHulls)
 {
     _allConvexHulls = convexHulls;
-    _readyForAnalyse += 1;
+}
+
+void Frame::setContoursMovement(const std::vector<std::vector<cv::Point>> &contours)
+{
+    _contoursMovement = contours;
+}
+
+void Frame::setConvexHullsMovement(const std::vector<std::vector<cv::Point>> &convexHulls)
+{
+    _convexHullsMovement = convexHulls;
 }
 
 void Frame::setCurrentMatchFoundOrNewEntity(int index, bool val)
 {
     _entities[index].setCurrentMatchFoundOrNewEntity(val);
+}
+
+void Frame::setTypeEntity(int index, const Entity::entityType &type)
+{
+    _entities.at(index).setType(type);
 }
 
 const std::vector<cv::Mat> &Frame::getImages() const
@@ -58,36 +70,28 @@ const std::vector<std::vector<cv::Point>> &Frame::getAllConvexHulls() const
     return (_allConvexHulls);
 }
 
+const std::vector<std::vector<cv::Point>> &Frame::getContoursMovement() const
+{
+    return (_contoursMovement);
+}
+
+const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsMovement() const
+{
+    return (_convexHullsMovement);
+}
+
 void Frame::clearEntities()
 {
     _entities.clear();
 }
 
-void Frame::analyseInfos(const Entity::entityType &type)
+void Frame::predictNextPositionEntities()
 {
-    for (auto &convexHull : _allConvexHulls)
-    {
-        Entity possibleBlob(convexHull);
-
-        if (possibleBlob.getCurrentBoundingRect().area() > 100 && possibleBlob.getCurrentAspectRatio() >= 0.2 &&
-            possibleBlob.getCurrentAspectRatio() <= 1.25 && possibleBlob.getCurrentBoundingRect().width > 20 &&
-            possibleBlob.getCurrentBoundingRect().height > 20 && possibleBlob.getCurrentDiagonalSize() > 30.0 &&
-            (cv::contourArea(possibleBlob.getContour()) / (double)possibleBlob.getCurrentBoundingRect().area()) > 0.40)
-        {
-            possibleBlob.setType(type);
-            _entities.push_back(possibleBlob);
-        }
-    }
+    for (auto &entity : _entities)
+        entity.predictNextPosition();
 }
 
-Error::ErrorType Frame::findEntitiesWithInfos(const Entity::entityType &type)
+void Frame::addEntity(const Entity &entity)
 {
-    if (_readyForAnalyse > 1)
-    {
-        analyseInfos(type);
-        _readyForAnalyse = 0;
-        return (Error::ErrorType::NO_ERROR);
-    }
-    Error::logError(Error::ErrorType::MISSING_FRAME_INFOS);
-    return (Error::ErrorType::NO_ERROR);
+    _entities.push_back(entity);
 }

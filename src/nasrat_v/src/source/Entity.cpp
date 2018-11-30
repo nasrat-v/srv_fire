@@ -12,6 +12,7 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     _stillBeingTracked = true;
     _currentMatchFoundOrNewEntity = true;
     _numOfConsecutiveFramesWithoutMatch = 0;
+    _type = entityType::STATIC;
 }
 
 Entity::~Entity() = default;

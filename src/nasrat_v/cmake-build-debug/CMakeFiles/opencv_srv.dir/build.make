@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/nasrat_v/clion-2018.2.5/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/nasrat_v/clion-2018.2.5/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =

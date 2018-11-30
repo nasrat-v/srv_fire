@@ -5,35 +5,40 @@
 #ifndef OPENCV_SRV_IMAGESERVICE_H
 # define OPENCV_SRV_IMAGESERVICE_H
 
-# define NB_IMG_INCR    5
+# define NB_IMG_INCR    2
 
 #include "ImageProvider.h"
 #include "ImageProcesser.h"
 #include "ImageAdditionner.h"
+#include "DebugManager.h"
 
 class ImageService
 {
 public:
-    ImageService(const Log::debugMode &mode, const std::string &videoPath);
+    ImageService(const DebugManager::debugMode &mode, const std::string &videoPath);
     ~ImageService();
 
-    void                        substractInfos(Frame &frame, const Entity::entityType &type);
+    void                        substractInfosAllEntities(Frame &frame);
+    void                        substractInfosEntitiesInMovement(Frame &frame);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
     void                        displayImg(cv::Mat img, /*const std::vector<Entity> &savedEntities,*/ const std::vector<Entity> &frameEntities);
 
 private:
     /* Methods */
-    void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed, const Entity::entityType &type);
-    void                        threshImg(cv::Mat &imgProcessed, const Entity::entityType &type);
-    void                        setContoursFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setConvexHullsFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        substractColor(cv::Mat &imgProcessed);
+    void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed);
+    void                        threshImg(cv::Mat &imgProcessed);
+    void                        setAllContoursFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setAllConvexHullsFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setConvexHullsMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
     ImageProvider::statusVideo  incrementImg(Frame &frame);
     ImageProvider::statusVideo  initImg(Frame &frame);
 
     /* Attributes */
     bool                        _firstTime;
-    Log::debugMode              _debugMode;
+    DebugManager::debugMode     _debugMode;
     ImageProvider               _imageProvider;
     ImageProcesser              _imageProcesser;
     ImageAdditionner            _imageAdditionner;
