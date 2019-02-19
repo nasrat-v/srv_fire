@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_IMAGEPROCESSER_H
 # define OPENCV_SRV_IMAGEPROCESSER_H
 
-#include <cv.hpp>
+#include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core/mat.hpp>
 

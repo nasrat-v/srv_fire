@@ -181,7 +181,7 @@ void onTrackbar_changed(int, void*)
     drawPointers();
 
     Mat RGB;
-    cvtColor(HSV, RGB,CV_HSV2BGR);
+    cvtColor(HSV, RGB, cv::COLOR_HSV2BGR);
 
     imshow(window_name,RGB);
     imwrite("hsv.jpg",RGB);
@@ -190,12 +190,12 @@ void onTrackbar_changed(int, void*)
 
 static void onMouse( int event, int x, int y, int f, void* )
 {
-    if(f&CV_EVENT_FLAG_LBUTTON){
+    if(f & cv::EVENT_FLAG_LBUTTON){
         mouse_x=x;
         mouse_y=y;
         if(((wheel_x<=x)&&(x<=wheel_x+wheel_width))&&((wheel_y<=y)&&(y<=wheel_y+wheel_hight))){
             H=(x-wheel_x)/ max_step;
-            cvSetTrackbarPos("Hue", window_name, H);
+            cv::setTrackbarPos("Hue", window_name, H);
         }
         else if(((S_V_x<=x)&&(x<=S_V_x+S_V_Width))&&((S_V_y<=y)&&(y<=S_V_y+S_V_Height))){
 
@@ -203,8 +203,8 @@ static void onMouse( int event, int x, int y, int f, void* )
             y=y-S_V_y;
             V=255-y;
 
-            cvSetTrackbarPos("Saturation", window_name, S);
-            cvSetTrackbarPos("Value", window_name, V);
+            cv::setTrackbarPos("Saturation", window_name, S);
+            cv::setTrackbarPos("Value", window_name, V);
 
 
         }
@@ -226,12 +226,12 @@ void drawPointers()
     p2.y=p.y;
 
     Mat roi1(HSV,Rect(S_V_x,S_V_y,S_V_Width,S_V_Height));
-    line(roi1, p1, p2,Scalar(255,255,255),1,CV_AA,0);
+    line(roi1, p1, p2,Scalar(255,255,255),1, LINE_AA,0);
     p1.x=p.x;
     p1.y=p.y-index;
     p2.x=p.x;
     p2.y=p.y+index;
-    line(roi1, p1, p2,Scalar(255,255,255),1,CV_AA,0);
+    line(roi1, p1, p2,Scalar(255,255,255),1, LINE_AA,0);
 
     int x_index=wheel_x+H*max_step;
     if(x_index>=wheel_x+wheel_width) x_index=wheel_x+wheel_width-2;
@@ -241,12 +241,12 @@ void drawPointers()
     p1.y=wheel_y+1;
     p2.x=x_index;
     p2.y=wheel_y+20;
-    line(HSV, p1, p2,Scalar(255,255,255),2,CV_AA,0);
+    line(HSV, p1, p2,Scalar(255,255,255),2, LINE_AA,0);
 
     Mat RGB(1,1,CV_8UC3);
     Mat temp;
     RGB=Scalar(H,S,V);
-    cvtColor(RGB, temp,CV_HSV2BGR);
+    cvtColor(RGB, temp, cv::COLOR_HSV2BGR);
     Vec3b rgb=temp.at<Vec3b>(0,0);
     B=rgb.val[0];
     G=rgb.val[1];
@@ -257,21 +257,21 @@ void drawPointers()
 
     char name[30];
     sprintf(name,"R=%d",R);
-    putText(HSV,name, Point(460,155) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(460,155) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 
     sprintf(name,"G=%d",G);
-    putText(HSV,name, Point(460,180) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(460,180) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 
     sprintf(name,"B=%d",B);
-    putText(HSV,name, Point(460,205) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(460,205) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 
 
     sprintf(name,"H=%d",H);
-    putText(HSV,name, Point(545,155) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(545,155) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 
     sprintf(name,"S=%d",S);
-    putText(HSV,name, Point(545,180) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(545,180) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 
     sprintf(name,"V=%d",V);
-    putText(HSV,name, Point(545,205) , FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
+    putText(HSV,name, Point(545,205) , cv::FONT_HERSHEY_SIMPLEX, .7, Scalar(5,255,255), 2,8,false );
 }

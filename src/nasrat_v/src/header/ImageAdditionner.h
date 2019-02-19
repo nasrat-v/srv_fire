@@ -13,7 +13,7 @@
 
 #include "Entity.h"
 
-#include <cv.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 class ImageAdditionner
 {

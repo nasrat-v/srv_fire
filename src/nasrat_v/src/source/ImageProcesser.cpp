@@ -10,14 +10,14 @@ ImageProcesser::~ImageProcesser() = default;
 
 void ImageProcesser::imgToHSV(cv::Mat &img)
 {
-    cv::cvtColor(img, img, CV_BGR2HSV);
+    cv::cvtColor(img, img, cv::COLOR_BGR2HSV);
     cv::inRange(img, cv::Scalar(24, 0, 230), cv::Scalar(30, 255, 255), img);
 }
 
 cv::Mat ImageProcesser::differenceImgGray(cv::Mat firstImg, cv::Mat secondImg)
 {
-    cv::cvtColor(firstImg, firstImg, CV_BGR2GRAY);
-    cv::cvtColor(secondImg, secondImg, CV_BGR2GRAY);
+    cv::cvtColor(firstImg, firstImg, cv::COLOR_BGR2GRAY);
+    cv::cvtColor(secondImg, secondImg, cv::COLOR_BGR2GRAY);
     return (differenceImg(firstImg, secondImg));
 }
 
@@ -39,7 +39,7 @@ void ImageProcesser::threshImg(cv::Mat &img)
     cv::Mat structuringElement7x7;
     cv::Mat structuringElement9x9;
 
-    cv::threshold(img, img, 30, 255.0, CV_THRESH_BINARY);
+    cv::threshold(img, img, 30, 255.0, cv::THRESH_BINARY);
     structuringElement1x1 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(1, 1));
     structuringElement3x3 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     structuringElement5x5 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
