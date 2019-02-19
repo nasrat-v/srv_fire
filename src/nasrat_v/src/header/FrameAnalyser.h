@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH     "../input/video/video-dublin1.mp4"
+# define VIDEO_PATH     "../input/video/video-incendie-pompiers.mp4"
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
@@ -15,7 +15,6 @@
 #include "output_static_object/Error.hh"
 #include "Frame.h"
 #include "ImageService.h"
-
 
 class FrameAnalyser
 {
@@ -42,7 +41,7 @@ private:
     }                       t_distance;
 
     /* Methods */
-    Error::ErrorType        findEntities();
+    void                    findEntities();
     void                    findAllEntitiesWithInfos();
     void                    findEntitiesInMovementWithInfos();
     bool                    isPossibleEntity(const Entity &possibleEntity);

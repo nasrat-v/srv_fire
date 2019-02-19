@@ -12,6 +12,10 @@
 #include "ImageAdditionner.h"
 #include "DebugManager.h"
 
+#define RED_RANGE       ImageProcesser::t_colorRange { cv::Scalar(0, 150, 100), cv::Scalar(10, 255, 255) }
+#define ORANGE_RANGE    ImageProcesser::t_colorRange { cv::Scalar(11, 150, 100), cv::Scalar(20, 255, 255) }
+#define YELLOW_RANGE    ImageProcesser::t_colorRange { cv::Scalar(21, 150, 100), cv::Scalar(30, 255, 255) }
+
 class ImageService
 {
 public:
@@ -26,13 +30,17 @@ public:
 
 private:
     /* Methods */
-    void                        substractColor(cv::Mat &imgProcessed);
+    void                        substractColor(cv::Mat &imgProcessed, const ImageProcesser::t_colorRange &range);
     void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed);
     void                        threshImg(cv::Mat &imgProcessed);
-    void                        setAllContoursFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setAllConvexHullsFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setConvexHullsMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed);
+    //void                        setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
+    //void                        setConvexHullsMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
     ImageProvider::statusVideo  incrementImg(Frame &frame);
     ImageProvider::statusVideo  initImg(Frame &frame);
 

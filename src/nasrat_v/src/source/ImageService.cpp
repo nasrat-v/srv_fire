@@ -18,10 +18,24 @@ void ImageService::substractInfosAllEntities(Frame &frame)
 {
     cv::Mat imgProcessed = frame.getImages().front().clone();
 
-    substractColor(imgProcessed);
+    substractColor(imgProcessed, YELLOW_RANGE);
     threshImg(imgProcessed);
-    setAllContoursFrame(frame, imgProcessed);
-    setAllConvexHullsFrame(frame, imgProcessed);
+    setContoursWarmFrame(frame, imgProcessed);
+    setConvexHullsWarmFrame(frame, imgProcessed);
+
+    imgProcessed = frame.getImages().front().clone();
+
+    substractColor(imgProcessed, ORANGE_RANGE);
+    threshImg(imgProcessed);
+    setContoursHotFrame(frame, imgProcessed);
+    setConvexHullsHotFrame(frame, imgProcessed);
+
+    imgProcessed = frame.getImages().front().clone();
+
+    substractColor(imgProcessed, RED_RANGE);
+    threshImg(imgProcessed);
+    setContoursVeryHotFrame(frame, imgProcessed);
+    setConvexHullsVeryHotFrame(frame, imgProcessed);
 }
 
 void ImageService::substractInfosEntitiesInMovement(Frame &frame)
@@ -30,13 +44,13 @@ void ImageService::substractInfosEntitiesInMovement(Frame &frame)
 
     differenceImg(frame.getImages().front().clone(), frame.getImages().back().clone(), imgProcessed);
     threshImg(imgProcessed);
-    setContoursMovementFrame(frame, imgProcessed);
-    setConvexHullsMovementFrame(frame, imgProcessed);
+    //setContoursMovementFrame(frame, imgProcessed);
+    //setConvexHullsMovementFrame(frame, imgProcessed);
 }
 
-void ImageService::substractColor(cv::Mat &imgProcessed)
+void ImageService::substractColor(cv::Mat &imgProcessed, const ImageProcesser::t_colorRange &range)
 {
-    _imageProcesser.imgToHSV(imgProcessed);
+    _imageProcesser.imgToHSV(imgProcessed, range);
     if (_debugMode & DebugManager::debugMode::SUBSTRACT_COLOR)
         cv::imshow("imgSubstractColor", imgProcessed);
 }
@@ -55,21 +69,49 @@ void ImageService::threshImg(cv::Mat &imgProcessed)
         cv::imshow("imgThresh", imgProcessed);
 }
 
-void ImageService::setAllContoursFrame(Frame &frame, const cv::Mat &imgProcessed)
+void ImageService::setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
-    frame.setAllContours(_imageProcesser.findContoursFromImg(imgProcessed));
+    frame.setContoursWarm(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getAllContours(), "imgAllContours");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursWarm(), "imgContoursWarm");
 }
 
-void ImageService::setAllConvexHullsFrame(Frame &frame, const cv::Mat &imgProcessed)
+void ImageService::setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
-    frame.setAllConvexHulls(_imageProcesser.findConvexHullsFromContours(frame.getAllContours()));
+    frame.setConvexHullsWarm(_imageProcesser.findConvexHullsFromContours(frame.getContoursWarm()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getAllConvexHulls(), "imgAllConvexHulls");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsWarm(), "imgConvexHullsWarm");
 }
 
-void ImageService::setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed)
+void ImageService::setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed)
+{
+    frame.setContoursHot(_imageProcesser.findContoursFromImg(imgProcessed));
+    if (_debugMode & DebugManager::debugMode::CONTOUR)
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursHot(), "imgAContoursHot");
+}
+
+void ImageService::setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProcessed)
+{
+    frame.setConvexHullsHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursHot()));
+    if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsHot(), "imgConvexHullsHot");
+}
+
+void ImageService::setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
+{
+    frame.setContoursVeryHot(_imageProcesser.findContoursFromImg(imgProcessed));
+    if (_debugMode & DebugManager::debugMode::CONTOUR)
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursVeryHot(), "imgAContoursVeryHot");
+}
+
+void ImageService::setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
+{
+    frame.setConvexHullsVeryHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursVeryHot()));
+    if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsVeryHot(), "imgConvexHullsVeryHot");
+}
+
+/*void ImageService::setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setContoursMovement(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
@@ -81,7 +123,7 @@ void ImageService::setConvexHullsMovementFrame(Frame &frame, const cv::Mat &imgP
     frame.setConvexHullsMovement(_imageProcesser.findConvexHullsFromContours(frame.getAllContours()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getAllConvexHulls(), "imgConvexHullsMovement");
-}
+}*/
 
 /////////////////////// Image Providing //////////////////////////
 

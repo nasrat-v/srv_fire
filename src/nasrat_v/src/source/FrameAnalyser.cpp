@@ -24,7 +24,6 @@ Error::ErrorType FrameAnalyser::initAnalyser()
 Error::ErrorType FrameAnalyser::analyseFrame()
 {
     bool end = false;
-    Error::ErrorType error;
 
     if (!_isInit)
     {
@@ -35,8 +34,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
         end = true;
     while (!end)
     {
-        if ((error = findEntities()) != Error::ErrorType::NO_ERROR)
-            return (error);
+        findEntities();
         /*if (_firstFrame)
             initSavedEntities();
         else
@@ -50,37 +48,60 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     return (Error::ErrorType::NO_ERROR);
 }
 
-Error::ErrorType FrameAnalyser::findEntities()
+void FrameAnalyser::findEntities()
 {
     _imageService.substractInfosAllEntities(_frame);
     findAllEntitiesWithInfos();
-    _imageService.substractInfosEntitiesInMovement(_frame);
-    findEntitiesInMovementWithInfos();
+    //_imageService.substractInfosEntitiesInMovement(_frame);
+    //findEntitiesInMovementWithInfos();
 }
 
 void FrameAnalyser::findAllEntitiesWithInfos()
 {
-    for (auto &convexHull : _frame.getAllConvexHulls())
+    for (auto &convexHull : _frame.getConvexHullsWarm())
     {
         Entity possibleEntity(convexHull);
 
         if (isPossibleEntity(possibleEntity))
+        {
+            possibleEntity.setTemperatureType(Entity::entityTemperature::WARM);
             _frame.addEntity(possibleEntity);
+        }
+    }
+    for (auto &convexHull : _frame.getConvexHullsHot())
+    {
+        Entity possibleEntity(convexHull);
+
+        if (isPossibleEntity(possibleEntity))
+        {
+            possibleEntity.setTemperatureType(Entity::entityTemperature::HOT);
+            _frame.addEntity(possibleEntity);
+        }
+    }
+    for (auto &convexHull : _frame.getConvexHullsVeryHot())
+    {
+        Entity possibleEntity(convexHull);
+
+        if (isPossibleEntity(possibleEntity))
+        {
+            possibleEntity.setTemperatureType(Entity::entityTemperature::VERY_HOT);
+            _frame.addEntity(possibleEntity);
+        }
     }
 }
 
 void FrameAnalyser::findEntitiesInMovementWithInfos()
 {
-    int index = 0;
+    size_t index = 0;
     t_distance distance;
 
     for (auto &entity : _frame.getEntities())
     {
         findClosestMovementEntity(entity, &distance);
         if (distance.leastDistance < entity.getCurrentDiagonalSize() * 1.15)
-            _frame.setTypeEntity(index, Entity::entityType::MOVE);
+            _frame.setMovementTypeEntity(index, Entity::entityMovement::MOVE);
         else
-            _frame.setTypeEntity(index, Entity::entityType::STATIC);
+            _frame.setMovementTypeEntity(index, Entity::entityMovement::STATIC);
         index++;
     }
 }
@@ -113,6 +134,7 @@ double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point seco
 {
     int intX = abs(firstPoint.x - secondPoint.x);
     int intY = abs(firstPoint.y - secondPoint.y);
+    
     return (sqrt(pow(intX, 2) + pow(intY, 2)));
 }
 

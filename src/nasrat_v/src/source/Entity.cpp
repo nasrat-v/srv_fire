@@ -9,10 +9,11 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     _contour = contour;
     initCurrentAttributes();
     initCenterPosition();
-    _stillBeingTracked = true;
+    _movementType = entityMovement::STATIC;
+    _temperatureType = entityTemperature::WARM;
     _currentMatchFoundOrNewEntity = true;
-    _numOfConsecutiveFramesWithoutMatch = 0;
-    _type = entityType::STATIC;
+    /*_stillBeingTracked = true;
+    _numOfConsecutiveFramesWithoutMatch = 0;*/
 }
 
 Entity::~Entity() = default;
@@ -48,11 +49,6 @@ const cv::Rect &Entity::getCurrentBoundingRect() const
     return (_currentBoundingRect);
 }
 
-const cv::Point &Entity::getPredictedNextPosition() const
-{
-    return (_predictedNextPosition);
-}
-
 const std::vector<cv::Point> &Entity::getContour() const
 {
     return (_contour);
@@ -63,49 +59,14 @@ const std::vector<cv::Point> &Entity::getCenterPositions() const
     return (_centerPositions);
 }
 
-bool Entity::getStillBeingTracked() const
+const Entity::entityMovement &Entity::getMovementType() const
 {
-    return (_stillBeingTracked);
+    return (_movementType);
 }
 
-bool Entity::getCurrentMatchFoundOrNewEntity() const
+const Entity::entityTemperature &Entity::getTemperatureType() const
 {
-    return (_currentMatchFoundOrNewEntity);
-}
-
-int Entity::getNumOfConsecutiveFramesWithoutMatch() const
-{
-    return (_numOfConsecutiveFramesWithoutMatch);
-}
-
-const Entity::entityType &Entity::getType() const
-{
-    return (_type);
-}
-
-void Entity::setCurrentBoundingRect(const cv::Rect &rect)
-{
-    _currentBoundingRect = rect;
-}
-
-void Entity::setContour(const std::vector<cv::Point> &contour)
-{
-    _contour = contour;
-}
-
-void Entity::addCenterPosition(const cv::Point &centerPosition)
-{
-    _centerPositions.push_back(centerPosition);
-}
-
-void Entity::setCurrentAspectRatio(double val)
-{
-    _currentAspectRatio = val;
-}
-
-void Entity::setCurrentDiagonalSize(double val)
-{
-    _currentDiagonalSize = val;
+    return (_temperatureType);
 }
 
 void Entity::setCurrentMatchFoundOrNewEntity(bool val)
@@ -113,19 +74,14 @@ void Entity::setCurrentMatchFoundOrNewEntity(bool val)
     _currentMatchFoundOrNewEntity = val;
 }
 
-void Entity::setStillBeingTracked(bool val)
+void Entity::setMovementType(const Entity::entityMovement &type)
 {
-    _stillBeingTracked = val;
+    _movementType = type;
 }
 
-void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
+void Entity::setTemperatureType(const Entity::entityTemperature &type)
 {
-    _numOfConsecutiveFramesWithoutMatch = val;
-}
-
-void Entity::setType(const Entity::entityType &type)
-{
-    _type = type;
+    _temperatureType = type;
 }
 
 void Entity::predictNextPosition()
@@ -167,3 +123,64 @@ void Entity::calculateSumOfChanges(t_sumOfChanges &sumOfChanges)
     sumOfChanges.changesLeft -= 1;
     sumOfChanges.nbChanges += 1;
 }
+
+
+
+
+/*
+const cv::Point &Entity::getPredictedNextPosition() const
+{
+    return (_predictedNextPosition);
+}
+
+void Entity::setStillBeingTracked(bool val)
+{
+    _stillBeingTracked = val;
+}
+
+void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
+{
+    _numOfConsecutiveFramesWithoutMatch = val;
+}
+
+bool Entity::getStillBeingTracked() const
+{
+    return (_stillBeingTracked);
+}
+
+bool Entity::getCurrentMatchFoundOrNewEntity() const
+{
+    return (_currentMatchFoundOrNewEntity);
+}
+
+int Entity::getNumOfConsecutiveFramesWithoutMatch() const
+{
+    return (_numOfConsecutiveFramesWithoutMatch);
+}
+
+
+void Entity::setCurrentBoundingRect(const cv::Rect &rect)
+{
+    _currentBoundingRect = rect;
+}
+
+void Entity::setContour(const std::vector<cv::Point> &contour)
+{
+    _contour = contour;
+}
+
+void Entity::addCenterPosition(const cv::Point &centerPosition)
+{
+    _centerPositions.push_back(centerPosition);
+}
+
+void Entity::setCurrentAspectRatio(double val)
+{
+    _currentAspectRatio = val;
+}
+
+void Entity::setCurrentDiagonalSize(double val)
+{
+    _currentDiagonalSize = val;
+}
+ */

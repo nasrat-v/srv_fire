@@ -19,45 +19,57 @@ public:
     explicit Entity(const std::vector<cv::Point> &contour);
     ~Entity();
 
-    enum class  entityType
+    enum class entityMovement
     {
         MOVE,
         STATIC
+    };
+
+    enum class entityTemperature
+    {
+        WARM,
+        HOT,
+        VERY_HOT
     };
 
     void                            predictNextPosition();
     double                          getCurrentAspectRatio() const;
     double                          getCurrentDiagonalSize() const;
     const cv::Rect                  &getCurrentBoundingRect() const;
-    const cv::Point                 &getPredictedNextPosition() const;
     const std::vector<cv::Point>    &getContour() const;
     const std::vector<cv::Point>    &getCenterPositions() const;
+    const entityMovement            &getMovementType() const;
+    const entityTemperature         &getTemperatureType() const;
+    void                            setCurrentMatchFoundOrNewEntity(bool val);
+    void                            setMovementType(const entityMovement &type);
+    void                            setTemperatureType(const entityTemperature &type);
+
+    /*const cv::Point                 &getPredictedNextPosition() const;
     bool                            getStillBeingTracked() const;
     bool                            getCurrentMatchFoundOrNewEntity() const;
     int                             getNumOfConsecutiveFramesWithoutMatch() const;
-    const entityType                &getType() const;
     void                            setCurrentAspectRatio(double val);
     void                            setCurrentDiagonalSize(double val);
     void                            setCurrentBoundingRect(const cv::Rect &rect);
     void                            setContour(const std::vector<cv::Point> &contour);
     void                            addCenterPosition(const cv::Point &centerPosition);
-    void                            setCurrentMatchFoundOrNewEntity(bool val);
     void                            setStillBeingTracked(bool val);
-    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
-    void                            setType(const entityType &type);
+    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);*/
 
 private:
     /* Attributes */
-    int                             _numOfConsecutiveFramesWithoutMatch;
-    bool                            _stillBeingTracked;
-    bool                            _currentMatchFoundOrNewEntity;
     double                          _currentAspectRatio;
     double                          _currentDiagonalSize;
     cv::Rect                        _currentBoundingRect;
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
     std::vector<cv::Point>          _contour;
-    entityType                      _type;
+    entityMovement                  _movementType;
+    entityTemperature               _temperatureType;
+    bool                            _currentMatchFoundOrNewEntity;
+
+    /*int                             _numOfConsecutiveFramesWithoutMatch;
+    bool                            _stillBeingTracked;*/
 
     typedef struct                  s_sumOfChanges
     {

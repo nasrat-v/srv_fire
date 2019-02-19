@@ -10,6 +10,8 @@
 # define SCALAR_YELLOW  cv::Scalar(0.0, 255.0, 255.0)
 # define SCALAR_GREEN   cv::Scalar(0.0, 200.0, 0.0)
 # define SCALAR_RED     cv::Scalar(0.0, 0.0, 255.0)
+# define SCALAR_BLUE    cv::Scalar(255.0, 0.0, 0.0)
+# define SCALAR_ORANGE  cv::Scalar(0.0 ,165.0 , 255.0)
 
 #include "Entity.h"
 

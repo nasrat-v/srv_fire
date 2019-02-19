@@ -8,10 +8,10 @@ ImageProcesser::ImageProcesser() = default;
 
 ImageProcesser::~ImageProcesser() = default;
 
-void ImageProcesser::imgToHSV(cv::Mat &img)
+void ImageProcesser::imgToHSV(cv::Mat &img, const t_colorRange &range)
 {
     cv::cvtColor(img, img, cv::COLOR_BGR2HSV);
-    cv::inRange(img, cv::Scalar(24, 0, 230), cv::Scalar(30, 255, 255), img);
+    cv::inRange(img, range.firstRange, range.secondRange, img);
 }
 
 cv::Mat ImageProcesser::differenceImgGray(cv::Mat firstImg, cv::Mat secondImg)

@@ -4,27 +4,11 @@
 
 #include "../header/FrameAnalyser.h"
 #include "../header/DebugManager.h"
-#include "../../lib/tinyxml2/header/tinyxml2.h"
-
-/*void        xmlTest()
-{
-    tinyxml2::XMLDocument doc;
-
-    doc.LoadFile("../input/config/xml_test.xml");
-    tinyxml2::XMLElement *element = doc.FirstChildElement("test");
-
-    std::cout << element->LastChildElement()->GetText();
-    while (element != element->LastChildElement())
-    {
-        element->GetText();
-        element = element->NextSiblingElement();
-    }
-}*/
 
 Error::ErrorType analyse(const DebugManager::debugMode &mode)
 {
     Error::ErrorType error;
-    FrameAnalyser core(mode,VIDEO_PATH);
+    FrameAnalyser core(mode, VIDEO_PATH);
 
     if ((error = core.initAnalyser()) != Error::ErrorType::NO_ERROR)
         return (error);
