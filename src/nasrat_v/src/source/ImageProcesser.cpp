@@ -67,7 +67,7 @@ std::vector<std::vector<cv::Point>> ImageProcesser::findConvexHullsFromContours(
     std::vector<std::vector<cv::Point>> convexHulls(contoursSize);
 
     if (contoursSize == 0)
-        Error::logError(Error::ErrorType::NO_CONTOUR, "Cannot find convexhulls");
+        std::cout << "Cannot find convexhulls" << std::endl;
     while (i < contoursSize)
     {
         cv::convexHull(contours[i], convexHulls[i]);

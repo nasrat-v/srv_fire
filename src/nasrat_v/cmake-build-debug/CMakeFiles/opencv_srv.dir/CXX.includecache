@@ -38,6 +38,22 @@ output_static_object/Error.hh
 ImageProcesser.h
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageProcesser.h
 
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
+opencv2/videoio.hpp
+-
+opencv2/videoio/videoio_c.h
+-
+iostream
+-
+string
+-
+output_static_object/Error.hh
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Error.hh
+Frame.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h
+ImageService.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageService.h
+
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageAdditionner.h
 Entity.h
 /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h
@@ -94,7 +110,13 @@ fstream
 chrono
 -
 
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageService.cpp
-../header/ImageService.h
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageService.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/FrameAnalyser.cpp
+../header/FrameAnalyser.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
+
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp
+../header/FrameAnalyser.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h
+../header/DebugManager.h
+/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
 
