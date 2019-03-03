@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 
-#include "output_static_object/Error.hh"
+#include "Log/Error.hh"
 #include "Frame.h"
 #include "ImageService.h"
 

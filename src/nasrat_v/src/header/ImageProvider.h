@@ -9,7 +9,7 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
 
-#include "output_static_object/Error.hh"
+#include "Log/Error.hh"
 #include "Frame.h"
 
 class ImageProvider

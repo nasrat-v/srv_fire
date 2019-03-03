@@ -7,7 +7,7 @@
 
 # define NB_FRAME_MOVE_PREDICTION    5
 
-#include "output_static_object/Log.hh"
+#include "Log/Log.hh"
 
 #include <iostream>
 #include <opencv2/imgproc.hpp>

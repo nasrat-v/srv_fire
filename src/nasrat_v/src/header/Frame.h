@@ -8,7 +8,7 @@
 #include <opencv2/core/mat.hpp>
 
 #include "Entity.h"
-#include "output_static_object/Error.hh"
+#include "Log/Error.hh"
 #include "ImageProcesser.h"
 
 class Frame

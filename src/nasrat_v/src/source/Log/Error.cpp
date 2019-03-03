@@ -2,7 +2,7 @@
 // Created by nasrat_v on 15/03/18.
 //
 
-#include "../../header/output_static_object/Error.hh"
+#include "../../header/Log/Error.hh"
 
 Error::Error() = default;
 
