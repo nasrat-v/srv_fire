@@ -82,12 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/header/tinyxml2.h">
-			<Option target="opencv_srv"/>
-		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/lib/tinyxml2/source/tinyxml2.cpp">
-			<Option target="opencv_srv"/>
-		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ConfigManager.h">
 			<Option target="opencv_srv"/>
 		</Unit>
@@ -115,10 +109,16 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageService.h">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Error.hh">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Log/Error.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/output_static_object/Log.hh">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Log/Log.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Network/ClientNetwork.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Network/Log/LogNetwork.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ConfigManager.cpp">
@@ -148,13 +148,25 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageService.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Log/Error.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Log/Log.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Main.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Error.cpp">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ClientNetwork.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/output_static_object/Log.cpp">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/Log/LogNetwork.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ProcessCommunication.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/CMakeLists.txt">

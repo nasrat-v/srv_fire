@@ -9,10 +9,10 @@ set(CMAKE_CXX_FLAGS
 
 set(SOURCE_FILES
         src/source/Main.cpp
-        src/source/output_static_object/Error.cpp
-        src/header/output_static_object/Error.hh
-        src/source/output_static_object/Log.cpp
-        src/header/output_static_object/Log.hh
+        src/source/Log/Error.cpp
+        src/header/Log/Error.hh
+        src/source/Log/Log.cpp
+        src/header/Log/Log.hh
         src/source/Entity.cpp
         src/header/Entity.h
         src/source/ImageProcesser.cpp
@@ -25,7 +25,15 @@ set(SOURCE_FILES
         src/header/Frame.h
         src/source/DebugManager.cpp
         src/header/DebugManager.h
-        lib/tinyxml2/source/tinyxml2.cpp
-        lib/tinyxml2/header/tinyxml2.h src/source/ImageProvider.cpp src/header/ImageProvider.h src/source/ImageService.cpp src/header/ImageService.h src/source/ConfigManager.cpp src/header/ConfigManager.h)
+        src/source/ImageProvider.cpp
+        src/header/ImageProvider.h
+        src/source/ImageService.cpp
+        src/header/ImageService.h
+        src/source/ConfigManager.cpp
+        src/header/ConfigManager.h
+        src/source/Network/ClientNetwork.cpp
+        src/header/Network/ClientNetwork.hh
+        src/source/Network/Log/LogNetwork.cpp
+        src/header/Network/Log/LogNetwork.hh src/source/Network/ProcessCommunication.cpp src/header/Network/ProcessCommunication.hh)
 
 add_executable(opencv_srv ${SOURCE_FILES})

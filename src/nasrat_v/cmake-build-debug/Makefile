@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/nasrat_v/Dev/srv_fire/src/nasrat_v/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/nasrat_v/clion-2018.3/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,33 +122,6 @@ opencv_srv: cmake_check_build_system
 opencv_srv/fast:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/build
 .PHONY : opencv_srv/fast
-
-lib/tinyxml2/source/tinyxml2.o: lib/tinyxml2/source/tinyxml2.cpp.o
-
-.PHONY : lib/tinyxml2/source/tinyxml2.o
-
-# target to build an object file
-lib/tinyxml2/source/tinyxml2.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o
-.PHONY : lib/tinyxml2/source/tinyxml2.cpp.o
-
-lib/tinyxml2/source/tinyxml2.i: lib/tinyxml2/source/tinyxml2.cpp.i
-
-.PHONY : lib/tinyxml2/source/tinyxml2.i
-
-# target to preprocess a source file
-lib/tinyxml2/source/tinyxml2.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.i
-.PHONY : lib/tinyxml2/source/tinyxml2.cpp.i
-
-lib/tinyxml2/source/tinyxml2.s: lib/tinyxml2/source/tinyxml2.cpp.s
-
-.PHONY : lib/tinyxml2/source/tinyxml2.s
-
-# target to generate assembly for a file
-lib/tinyxml2/source/tinyxml2.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.s
-.PHONY : lib/tinyxml2/source/tinyxml2.cpp.s
 
 src/source/ConfigManager.o: src/source/ConfigManager.cpp.o
 
@@ -393,6 +366,60 @@ src/source/ImageService.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.s
 .PHONY : src/source/ImageService.cpp.s
 
+src/source/Log/Error.o: src/source/Log/Error.cpp.o
+
+.PHONY : src/source/Log/Error.o
+
+# target to build an object file
+src/source/Log/Error.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Error.cpp.o
+.PHONY : src/source/Log/Error.cpp.o
+
+src/source/Log/Error.i: src/source/Log/Error.cpp.i
+
+.PHONY : src/source/Log/Error.i
+
+# target to preprocess a source file
+src/source/Log/Error.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Error.cpp.i
+.PHONY : src/source/Log/Error.cpp.i
+
+src/source/Log/Error.s: src/source/Log/Error.cpp.s
+
+.PHONY : src/source/Log/Error.s
+
+# target to generate assembly for a file
+src/source/Log/Error.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Error.cpp.s
+.PHONY : src/source/Log/Error.cpp.s
+
+src/source/Log/Log.o: src/source/Log/Log.cpp.o
+
+.PHONY : src/source/Log/Log.o
+
+# target to build an object file
+src/source/Log/Log.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Log.cpp.o
+.PHONY : src/source/Log/Log.cpp.o
+
+src/source/Log/Log.i: src/source/Log/Log.cpp.i
+
+.PHONY : src/source/Log/Log.i
+
+# target to preprocess a source file
+src/source/Log/Log.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Log.cpp.i
+.PHONY : src/source/Log/Log.cpp.i
+
+src/source/Log/Log.s: src/source/Log/Log.cpp.s
+
+.PHONY : src/source/Log/Log.s
+
+# target to generate assembly for a file
+src/source/Log/Log.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Log/Log.cpp.s
+.PHONY : src/source/Log/Log.cpp.s
+
 src/source/Main.o: src/source/Main.cpp.o
 
 .PHONY : src/source/Main.o
@@ -420,59 +447,86 @@ src/source/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Main.cpp.s
 .PHONY : src/source/Main.cpp.s
 
-src/source/output_static_object/Error.o: src/source/output_static_object/Error.cpp.o
+src/source/Network/ClientNetwork.o: src/source/Network/ClientNetwork.cpp.o
 
-.PHONY : src/source/output_static_object/Error.o
-
-# target to build an object file
-src/source/output_static_object/Error.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o
-.PHONY : src/source/output_static_object/Error.cpp.o
-
-src/source/output_static_object/Error.i: src/source/output_static_object/Error.cpp.i
-
-.PHONY : src/source/output_static_object/Error.i
-
-# target to preprocess a source file
-src/source/output_static_object/Error.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.i
-.PHONY : src/source/output_static_object/Error.cpp.i
-
-src/source/output_static_object/Error.s: src/source/output_static_object/Error.cpp.s
-
-.PHONY : src/source/output_static_object/Error.s
-
-# target to generate assembly for a file
-src/source/output_static_object/Error.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.s
-.PHONY : src/source/output_static_object/Error.cpp.s
-
-src/source/output_static_object/Log.o: src/source/output_static_object/Log.cpp.o
-
-.PHONY : src/source/output_static_object/Log.o
+.PHONY : src/source/Network/ClientNetwork.o
 
 # target to build an object file
-src/source/output_static_object/Log.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o
-.PHONY : src/source/output_static_object/Log.cpp.o
+src/source/Network/ClientNetwork.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.o
+.PHONY : src/source/Network/ClientNetwork.cpp.o
 
-src/source/output_static_object/Log.i: src/source/output_static_object/Log.cpp.i
+src/source/Network/ClientNetwork.i: src/source/Network/ClientNetwork.cpp.i
 
-.PHONY : src/source/output_static_object/Log.i
+.PHONY : src/source/Network/ClientNetwork.i
 
 # target to preprocess a source file
-src/source/output_static_object/Log.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.i
-.PHONY : src/source/output_static_object/Log.cpp.i
+src/source/Network/ClientNetwork.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.i
+.PHONY : src/source/Network/ClientNetwork.cpp.i
 
-src/source/output_static_object/Log.s: src/source/output_static_object/Log.cpp.s
+src/source/Network/ClientNetwork.s: src/source/Network/ClientNetwork.cpp.s
 
-.PHONY : src/source/output_static_object/Log.s
+.PHONY : src/source/Network/ClientNetwork.s
 
 # target to generate assembly for a file
-src/source/output_static_object/Log.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.s
-.PHONY : src/source/output_static_object/Log.cpp.s
+src/source/Network/ClientNetwork.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.s
+.PHONY : src/source/Network/ClientNetwork.cpp.s
+
+src/source/Network/Log/LogNetwork.o: src/source/Network/Log/LogNetwork.cpp.o
+
+.PHONY : src/source/Network/Log/LogNetwork.o
+
+# target to build an object file
+src/source/Network/Log/LogNetwork.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/Log/LogNetwork.cpp.o
+.PHONY : src/source/Network/Log/LogNetwork.cpp.o
+
+src/source/Network/Log/LogNetwork.i: src/source/Network/Log/LogNetwork.cpp.i
+
+.PHONY : src/source/Network/Log/LogNetwork.i
+
+# target to preprocess a source file
+src/source/Network/Log/LogNetwork.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/Log/LogNetwork.cpp.i
+.PHONY : src/source/Network/Log/LogNetwork.cpp.i
+
+src/source/Network/Log/LogNetwork.s: src/source/Network/Log/LogNetwork.cpp.s
+
+.PHONY : src/source/Network/Log/LogNetwork.s
+
+# target to generate assembly for a file
+src/source/Network/Log/LogNetwork.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/Log/LogNetwork.cpp.s
+.PHONY : src/source/Network/Log/LogNetwork.cpp.s
+
+src/source/Network/ProcessCommunication.o: src/source/Network/ProcessCommunication.cpp.o
+
+.PHONY : src/source/Network/ProcessCommunication.o
+
+# target to build an object file
+src/source/Network/ProcessCommunication.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.o
+.PHONY : src/source/Network/ProcessCommunication.cpp.o
+
+src/source/Network/ProcessCommunication.i: src/source/Network/ProcessCommunication.cpp.i
+
+.PHONY : src/source/Network/ProcessCommunication.i
+
+# target to preprocess a source file
+src/source/Network/ProcessCommunication.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.i
+.PHONY : src/source/Network/ProcessCommunication.cpp.i
+
+src/source/Network/ProcessCommunication.s: src/source/Network/ProcessCommunication.cpp.s
+
+.PHONY : src/source/Network/ProcessCommunication.s
+
+# target to generate assembly for a file
+src/source/Network/ProcessCommunication.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.s
+.PHONY : src/source/Network/ProcessCommunication.cpp.s
 
 # Help Target
 help:
@@ -483,9 +537,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... opencv_srv"
 	@echo "... edit_cache"
-	@echo "... lib/tinyxml2/source/tinyxml2.o"
-	@echo "... lib/tinyxml2/source/tinyxml2.i"
-	@echo "... lib/tinyxml2/source/tinyxml2.s"
 	@echo "... src/source/ConfigManager.o"
 	@echo "... src/source/ConfigManager.i"
 	@echo "... src/source/ConfigManager.s"
@@ -513,15 +564,24 @@ help:
 	@echo "... src/source/ImageService.o"
 	@echo "... src/source/ImageService.i"
 	@echo "... src/source/ImageService.s"
+	@echo "... src/source/Log/Error.o"
+	@echo "... src/source/Log/Error.i"
+	@echo "... src/source/Log/Error.s"
+	@echo "... src/source/Log/Log.o"
+	@echo "... src/source/Log/Log.i"
+	@echo "... src/source/Log/Log.s"
 	@echo "... src/source/Main.o"
 	@echo "... src/source/Main.i"
 	@echo "... src/source/Main.s"
-	@echo "... src/source/output_static_object/Error.o"
-	@echo "... src/source/output_static_object/Error.i"
-	@echo "... src/source/output_static_object/Error.s"
-	@echo "... src/source/output_static_object/Log.o"
-	@echo "... src/source/output_static_object/Log.i"
-	@echo "... src/source/output_static_object/Log.s"
+	@echo "... src/source/Network/ClientNetwork.o"
+	@echo "... src/source/Network/ClientNetwork.i"
+	@echo "... src/source/Network/ClientNetwork.s"
+	@echo "... src/source/Network/Log/LogNetwork.o"
+	@echo "... src/source/Network/Log/LogNetwork.i"
+	@echo "... src/source/Network/Log/LogNetwork.s"
+	@echo "... src/source/Network/ProcessCommunication.o"
+	@echo "... src/source/Network/ProcessCommunication.i"
+	@echo "... src/source/Network/ProcessCommunication.s"
 .PHONY : help
 
 
