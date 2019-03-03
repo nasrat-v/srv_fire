@@ -121,6 +121,9 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Network/Log/LogNetwork.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ConfigManager.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
@@ -164,9 +167,6 @@
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
-			<Option target="opencv_srv"/>
-		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ProcessCommunication.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/CMakeLists.txt">

@@ -11,8 +11,8 @@
 
 #include "Frame.h"
 #include "ImageAdditionner.h"
-#include "output_static_object/Log.hh"
-#include "output_static_object/Error.hh"
+#include "Log/Log.hh"
+#include "Log/Error.hh"
 
 class ImageProcesser
 {

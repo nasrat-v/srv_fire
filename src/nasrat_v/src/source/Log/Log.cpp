@@ -2,7 +2,7 @@
 // Created by nasrat_v on 29/05/18.
 //
 
-#include "../../header/output_static_object/Log.hh"
+#include "../../header/Log/Log.hh"
 
 Log::Log() = default;
 

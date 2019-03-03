@@ -12,32 +12,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf6e252d-9ed9-44d2-9ba5-ee25b8e5927e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/srv_fire.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/srv_fire.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/lib/tinyxml2/source/tinyxml2.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Entity.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Frame.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/FrameAnalyser.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/ImageAdditionner.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Error.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/output_static_object/Log.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/opencv_srv.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/opencv_srv.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/output_static_object/Error.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/Log/Error.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/output_static_object/Log.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/Log/Log.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/source/output_static_object/Error.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/source/output_static_object/Log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/Entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/Frame.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/Frame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/FrameAnalyser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/FrameAnalyser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProcesser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProcesser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProvider.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProvider.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/nasrat_v/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,10 +49,27 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/Log/LogNetwork.cpp">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/DebugManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#823#842#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ConfigManager.h">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -73,15 +89,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Network/Log/LogNetwork.hh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
@@ -91,41 +98,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ClientNetwork.cpp">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="92" column="1" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+            <state relative-caret-position="357">
+              <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+              <folding>
+                <element signature="e#43#79#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-357" />
+            <state relative-caret-position="68">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Frame.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Entity.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+              <folding>
+                <element signature="e#140#161#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -144,10 +163,17 @@
         <option value="$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.hh" />
         <option value="$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh" />
         <option value="$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.cpp" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/header/FrameAnalyser.h" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProcesser.h" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/header/ImageProvider.h" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/header/Frame.h" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/header/Entity.h" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp" />
+        <option value="$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="107" />
     <option name="y" value="42" />
     <option name="width" value="1390" />
@@ -270,7 +296,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
+    <configuration name="opencv_srv" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--debug --track --convexhulls --waitkey" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -287,22 +313,23 @@
       <option name="presentableId" value="Default" />
       <updated>1541223434941</updated>
       <workItem from="1541223437571" duration="43000" />
-      <workItem from="1551629996326" duration="1721000" />
+      <workItem from="1551629996326" duration="2032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1764000" />
+    <option name="totallyTimeSpent" value="2075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18235295" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18235295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="CMake" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32890365" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -323,18 +350,113 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nasrat_v/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/Log/LogNetwork.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ClientNetwork.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="92" column="1" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/FrameAnalyser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#186#216#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ImageProcesser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding>
+            <element signature="e#116#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ImageProvider.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ImageService.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#139#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ImageAdditionner.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#492#511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Frame.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Entity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+          <folding>
+            <element signature="e#140#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/DebugManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#823#842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/ConfigManager.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -357,31 +479,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/Log/LogNetwork.cpp">
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        <state relative-caret-position="357">
+          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+          <folding>
+            <element signature="e#43#79#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ClientNetwork.cpp">
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Error.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="92" column="1" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+        <state relative-caret-position="68">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
+    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Log/Log.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+        <state relative-caret-position="68">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
