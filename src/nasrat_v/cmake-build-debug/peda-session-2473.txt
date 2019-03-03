@@ -1,0 +1,3 @@
+break /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/ImageAnalyser.cpp:45
+
+set exec-wrapper The wrapper for running programs is \
