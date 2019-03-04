@@ -45,6 +45,7 @@ CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Log/Log.hh
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageProcesser.cpp
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o
+ /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h
  /home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageAdditionner.h

@@ -4,7 +4,8 @@
 
 #include "../header/ImageProvider.h"
 
-ImageProvider::ImageProvider(const std::string &videoPath) :  _videoPath(videoPath)
+ImageProvider::ImageProvider(const DebugManager::debugMode &mode, const std::string &videoPath) :   _debugMode(mode),
+                                                                                                    _videoPath(videoPath)
 {
 }
 
@@ -33,6 +34,25 @@ ImageProvider::statusVideo ImageProvider::openVideo()
 
 ImageProvider::statusVideo ImageProvider::initImg(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
 {
+    if (_debugMode & DebugManager::debugMode::SRC_AS_IMG)
+        return (initImgPng(imgs, nbImgIncr));
+    return (initImgVideo(imgs, nbImgIncr));
+}
+
+ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage, size_t nbImgIncr)
+{
+    if (_debugMode & DebugManager::debugMode::SRC_AS_IMG)
+        return (incrementImgPng(nextImage, nbImgIncr));
+    return (incrementImgVideo(nextImage));
+}
+
+ImageProvider::statusVideo ImageProvider::videoContinues()
+{
+    return ((_capVideo.isOpened()) ? (statusVideo::CONTINUE) : (statusVideo::END));
+}
+
+ImageProvider::statusVideo ImageProvider::initImgVideo(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
+{
     size_t i = 0;
     cv::Mat imgRead;
 
@@ -46,7 +66,7 @@ ImageProvider::statusVideo ImageProvider::initImg(std::vector<cv::Mat> &imgs, si
     return (statusVideo::START);
 }
 
-ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage)
+ImageProvider::statusVideo ImageProvider::incrementImgVideo(cv::Mat &nextImage)
 {
     if ((_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
     {
@@ -57,9 +77,54 @@ ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage)
     return (statusVideo::END);
 }
 
-ImageProvider::statusVideo ImageProvider::videoContinues()
+ImageProvider::statusVideo ImageProvider::initImgPng(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
 {
-    return ((_capVideo.isOpened()) ? (statusVideo::CONTINUE) : (statusVideo::END));
+    size_t i = 0;
+    cv::Mat imgRead;
+
+    while (i < nbImgIncr)
+    {
+        if (openImg(i, imgRead) == statusVideo::ERROR)
+            return (statusVideo::ERROR);
+        imgs.push_back(imgRead);
+        i++;
+    }
+    Log::logSomething("Video started", _videoPath);
+    return (statusVideo::START);
+}
+
+ImageProvider::statusVideo ImageProvider::incrementImgPng(cv::Mat &nextImage, size_t nbImgIncr)
+{
+    static size_t idPath = nbImgIncr;
+
+    Log::logSomething(("Read source as IMG number: " + std::to_string(idPath)));
+    return (openImg((idPath++), nextImage));
+}
+
+ImageProvider::statusVideo ImageProvider::openImg(size_t idPath, cv::Mat &imgRead)
+{
+    std::string path = (IMG_PATH +  std::to_string(idPath) + IMG_FORMAT);
+
+    imgRead = imread(path, cv::IMREAD_COLOR);
+    if (!imgRead.data)
+    {
+        Error::logError(Error::ErrorType::OPEN_VID, ("- Cannot read source as IMG: " + path));
+        return (statusVideo::ERROR);
+    }
+    return (statusVideo::OPEN);
+}
+
+void ImageProvider::createSampleImgFromVideo()
+{
+    size_t idPath = 0;
+    cv::Mat imgRead;
+
+    while ((_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
+    {
+        _capVideo.read(imgRead);
+        cv::imwrite((IMG_PATH +  std::to_string(idPath) + IMG_FORMAT), imgRead);
+        idPath++;
+    }
 }
 
 

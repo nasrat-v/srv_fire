@@ -17,7 +17,6 @@ Error::ErrorType analyse(const DebugManager::debugMode &mode)
 
 int         main(int ac, const char **av)
 {
-
     DebugManager debugManager;
     DebugManager::debugMode mode = DebugManager::debugMode::NO_DEBUG;
 

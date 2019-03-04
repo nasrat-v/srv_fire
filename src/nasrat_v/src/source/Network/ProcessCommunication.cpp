@@ -8,7 +8,7 @@ ProcessCommunication::ProcessCommunication() = default;
 
 ProcessCommunication::~ProcessCommunication() = default;
 
-ERR ProcessCommunication::initHttpsClient()
+ERR ProcessCommunication::initClient()
 {
     ClientNetwork::t_serverParam srvParam;
 

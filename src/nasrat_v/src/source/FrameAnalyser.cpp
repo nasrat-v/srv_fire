@@ -15,6 +15,11 @@ FrameAnalyser::~FrameAnalyser() = default;
 
 Error::ErrorType FrameAnalyser::initAnalyser()
 {
+    if (_debugMode & DebugManager::debugMode::CREATE_SAMPLE_IMG)
+    {
+        _imageService.createSampleImgFromVideo();
+        return (Error::ErrorType::DEBUG_STOP);
+    }
     if (_imageService.openVideo() == ImageProvider::statusVideo::ERROR)
         return (Error::ErrorType::OPEN_VID);
     _isInit = true;

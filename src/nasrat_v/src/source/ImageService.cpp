@@ -5,7 +5,7 @@
 #include "../header/ImageService.h"
 
 ImageService::ImageService(const DebugManager::debugMode &mode, const std::string &videoPath) :  _debugMode(mode),
-                                                                                                 _imageProvider(videoPath)
+                                                                                                 _imageProvider(mode, videoPath)
 {
     _firstTime = true;
 }
@@ -163,7 +163,7 @@ ImageProvider::statusVideo ImageService::incrementImg(Frame &frame)
     cv::Mat nextImage;
     ImageProvider::statusVideo status;
 
-    status = _imageProvider.incrementImg(nextImage);
+    status = _imageProvider.incrementImg(nextImage, NB_IMG_INCR);
     while (i < (frame.getImages().size() - 1))
     {
         frame.setImage(frame.getImages()[i + 1], i);
@@ -171,6 +171,18 @@ ImageProvider::statusVideo ImageService::incrementImg(Frame &frame)
     }
     frame.setImage(nextImage, (frame.getImages().size() - 1));
     return (status);
+}
+
+ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
+{
+    ImageProvider::statusVideo status;
+
+    if ((status =_imageProvider.openVideo()) != ImageProvider::statusVideo::OPEN)
+    {
+        Error::logError(Error::ErrorType::OPEN_VID, "Cannot create sample IMG");
+        return (status);
+    }
+    _imageProvider.createSampleImgFromVideo();
 }
 
 /////////////////////// Image Addition //////////////////////////

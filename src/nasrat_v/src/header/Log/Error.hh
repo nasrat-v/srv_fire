@@ -21,7 +21,8 @@ public:
         TRUNCATED_VID,
         MISSING_FRAME_INFOS,
         MISSING_INIT,
-        NO_CONTOUR
+        NO_CONTOUR,
+        DEBUG_STOP
     };
 
     static void                 logError(const ErrorType &type, const std::string &complementary_msg = "");

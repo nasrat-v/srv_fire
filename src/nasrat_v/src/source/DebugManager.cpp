@@ -60,6 +60,10 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::SUBSTRACT_COLOR;
         if (*it == PALETTE_ARG)
             launchPalette();
+        if (*it == SRCASIMG_ARG)
+            mode |= debugMode::SRC_AS_IMG;
+        if (*it == CREATESAMPLEIMG_ARG)
+            mode |= debugMode::CREATE_SAMPLE_IMG;
         it++;
     }
     return ((debugMode)mode);

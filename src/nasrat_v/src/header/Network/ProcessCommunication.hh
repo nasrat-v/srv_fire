@@ -7,7 +7,7 @@
 
 # define IPADDR     "127.0.0.1"
 # define PORT       4343
-# define TYPE_ASK   "type"
+# define TYPE_ASK   "TYPE"
 # define TYPE_RESP  "IA"
 # define ID_ASK     "ID"
 
@@ -19,7 +19,7 @@ public:
     ProcessCommunication();
     ~ProcessCommunication();
 
-    ERR                                 initHttpsClient();
+    ERR                                 initClient();
     ERR                                 communicateWithServer(const std::string &msg);
 
 private:

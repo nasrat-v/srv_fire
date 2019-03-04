@@ -18,6 +18,8 @@
 # define NOORIGINALVIDEO_ARG    "--no-video"
 # define PALETTE_ARG            "--palette"
 # define SUBSTRACTCOLOR_ARG     "--substract-color"
+# define SRCASIMG_ARG           "--src-as-img"
+# define CREATESAMPLEIMG_ARG    "--create-sample-img"
 # define HUEMAX                 179
 # define SATMAX                 255
 # define VALMAX                 255
@@ -50,6 +52,8 @@ public:
         NO_ORIGINAL_VIDEO = 0b0000'0100'0000'0000,
         HSV_PALETTE = 0b0000'1000'0000'0000,
         SUBSTRACT_COLOR = 0b0001'0000'0000'0000,
+        SRC_AS_IMG = 0b0010'0000'0000'0000,
+        CREATE_SAMPLE_IMG = 0b0100'0000'0000'0000,
         ALL = 0b1111'1011'1111'1111
     };
 

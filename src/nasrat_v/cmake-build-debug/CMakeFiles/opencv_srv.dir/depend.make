@@ -44,6 +44,7 @@ CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/Log/Err
 CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/header/Log/Log.hh
 CMakeFiles/opencv_srv.dir/src/source/ImageProcesser.cpp.o: ../src/source/ImageProcesser.cpp
 
+CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/DebugManager.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Entity.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/Frame.h
 CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o: ../src/header/ImageAdditionner.h

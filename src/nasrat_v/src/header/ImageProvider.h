@@ -11,11 +11,15 @@
 
 #include "Log/Error.hh"
 #include "Frame.h"
+#include "DebugManager.h"
+
+# define IMG_PATH "../input/image/sample-image"
+# define IMG_FORMAT ".jpg"
 
 class ImageProvider
 {
 public:
-    explicit ImageProvider(const std::string &videoPath);
+    explicit ImageProvider(const DebugManager::debugMode &mode, const std::string &videoPath);
     ~ImageProvider();
 
     enum class statusVideo
@@ -29,12 +33,22 @@ public:
 
     statusVideo         openVideo();
     statusVideo         initImg(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
-    statusVideo         incrementImg(cv::Mat &nextImage);
+    statusVideo         incrementImg(cv::Mat &nextImage, size_t nbImgIncr);
     statusVideo         videoContinues();
+    void                createSampleImgFromVideo();
 
 private:
-    cv::VideoCapture    _capVideo;
-    std::string         _videoPath;
+    /* Methods */
+    statusVideo         openImg(size_t idPath, cv::Mat &imgRead);
+    statusVideo         initImgVideo(std::vector<cv::Mat> &imgs, size_t nbImgIncr); // default
+    statusVideo         incrementImgVideo(cv::Mat &nextImage); // default
+    statusVideo         initImgPng(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
+    statusVideo         incrementImgPng(cv::Mat &nextImage, size_t nbImgIncr);
+
+    /* Attributes */
+    DebugManager::debugMode _debugMode;
+    cv::VideoCapture        _capVideo;
+    std::string             _videoPath;
 };
 
 
