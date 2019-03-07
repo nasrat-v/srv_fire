@@ -4,7 +4,7 @@
 // Created by nasrat_v on 11/3/18.
 //
 
-#include "../header/ImageAdditionner.h"
+#include "../header/ImageAdditionner.hh"
 
 ImageAdditionner::ImageAdditionner() = default;
 

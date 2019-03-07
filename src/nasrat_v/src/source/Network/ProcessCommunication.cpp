@@ -6,7 +6,11 @@
 
 ProcessCommunication::ProcessCommunication() = default;
 
-ProcessCommunication::~ProcessCommunication() = default;
+ProcessCommunication::~ProcessCommunication()
+{
+    if(_netThread.joinable())
+        _netThread.join();
+}
 
 ERR ProcessCommunication::initClient()
 {
@@ -37,28 +41,72 @@ const ClientNetwork::t_serverParam ProcessCommunication::initConfigurationServer
     return (srvParam);
 }
 
-ERR ProcessCommunication::communicateWithServer(const std::string &msg)
+void ProcessCommunication::startThread(const std::string &idNetwork, ImageProvider *imageProvider)
+{
+    _netThread = std::thread(&ProcessCommunication::communicateWithServer, this, idNetwork, imageProvider);
+    _netThread.detach();
+}
+
+ERR ProcessCommunication::communicateWithServer(const std::string &idNetwork, ImageProvider *imageProvider)
 {
     std::string data;
 
-    if (_network.connectToServer() == NET_ERROR)
+    while (_network.connectToServer() == NET_ERROR)
+        std::this_thread::yield(); // TRY UNTIL IT CAN CONNECT
+    if (typeRequest() == NET_ERROR)
         return (NET_ERROR);
+    if (idRequest(idNetwork) == NET_ERROR)
+        return (NET_ERROR);
+    while (_network.isConnected())
+    {
+        if (_network.isDataToRead())
+        {
+            _network.readData(data);
+            formatData(data);
+            _mutex.lock();
+            imageProvider->setImageNetworkPath(data);
+            imageProvider->setCanReadImage(true);
+            _mutex.unlock();
+            resetString(data);
+        }
+    }
+    return (SUCCESS);
+}
+
+ERR ProcessCommunication::typeRequest()
+{
+    std::string data;
+
     _network.readData(data);
     if (data == TYPE_ASK)
     {
         if (_network.writeData(TYPE_RESP) == NET_ERROR)
             return (NET_ERROR);
     }
+    return (SUCCESS);
+}
+
+ERR ProcessCommunication::idRequest(const std::string &idNetwork)
+{
+    std::string data;
+
     _network.readData(data);
     if (data == ID_ASK)
     {
-        if (_network.writeData(msg) == NET_ERROR) // msg == av[1]
+        if (_network.writeData(idNetwork) == NET_ERROR)
             return (NET_ERROR);
     }
-    while (_network.isConnected())
-    {
-        if (_network.isDataToRead())
-            _network.readData(data);
-    }
     return (SUCCESS);
+}
+
+void ProcessCommunication::resetString(std::string &str)
+{
+    str = "";
+}
+
+void ProcessCommunication::formatData(std::string &data)
+{
+    size_t pos = data.find('\n');
+
+    data[pos] = '\0';
 }

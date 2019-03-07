@@ -123,33 +123,6 @@ opencv_srv/fast:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/build
 .PHONY : opencv_srv/fast
 
-src/source/ConfigManager.o: src/source/ConfigManager.cpp.o
-
-.PHONY : src/source/ConfigManager.o
-
-# target to build an object file
-src/source/ConfigManager.cpp.o:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o
-.PHONY : src/source/ConfigManager.cpp.o
-
-src/source/ConfigManager.i: src/source/ConfigManager.cpp.i
-
-.PHONY : src/source/ConfigManager.i
-
-# target to preprocess a source file
-src/source/ConfigManager.cpp.i:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.i
-.PHONY : src/source/ConfigManager.cpp.i
-
-src/source/ConfigManager.s: src/source/ConfigManager.cpp.s
-
-.PHONY : src/source/ConfigManager.s
-
-# target to generate assembly for a file
-src/source/ConfigManager.cpp.s:
-	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.s
-.PHONY : src/source/ConfigManager.cpp.s
-
 src/source/DebugManager.o: src/source/DebugManager.cpp.o
 
 .PHONY : src/source/DebugManager.o
@@ -366,6 +339,33 @@ src/source/ImageService.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.s
 .PHONY : src/source/ImageService.cpp.s
 
+src/source/Launcher.o: src/source/Launcher.cpp.o
+
+.PHONY : src/source/Launcher.o
+
+# target to build an object file
+src/source/Launcher.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Launcher.cpp.o
+.PHONY : src/source/Launcher.cpp.o
+
+src/source/Launcher.i: src/source/Launcher.cpp.i
+
+.PHONY : src/source/Launcher.i
+
+# target to preprocess a source file
+src/source/Launcher.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Launcher.cpp.i
+.PHONY : src/source/Launcher.cpp.i
+
+src/source/Launcher.s: src/source/Launcher.cpp.s
+
+.PHONY : src/source/Launcher.s
+
+# target to generate assembly for a file
+src/source/Launcher.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Launcher.cpp.s
+.PHONY : src/source/Launcher.cpp.s
+
 src/source/Log/Error.o: src/source/Log/Error.cpp.o
 
 .PHONY : src/source/Log/Error.o
@@ -528,6 +528,33 @@ src/source/Network/ProcessCommunication.cpp.s:
 	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.s
 .PHONY : src/source/Network/ProcessCommunication.cpp.s
 
+src/source/ParamManager.o: src/source/ParamManager.cpp.o
+
+.PHONY : src/source/ParamManager.o
+
+# target to build an object file
+src/source/ParamManager.cpp.o:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ParamManager.cpp.o
+.PHONY : src/source/ParamManager.cpp.o
+
+src/source/ParamManager.i: src/source/ParamManager.cpp.i
+
+.PHONY : src/source/ParamManager.i
+
+# target to preprocess a source file
+src/source/ParamManager.cpp.i:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ParamManager.cpp.i
+.PHONY : src/source/ParamManager.cpp.i
+
+src/source/ParamManager.s: src/source/ParamManager.cpp.s
+
+.PHONY : src/source/ParamManager.s
+
+# target to generate assembly for a file
+src/source/ParamManager.cpp.s:
+	$(MAKE) -f CMakeFiles/opencv_srv.dir/build.make CMakeFiles/opencv_srv.dir/src/source/ParamManager.cpp.s
+.PHONY : src/source/ParamManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -537,9 +564,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... opencv_srv"
 	@echo "... edit_cache"
-	@echo "... src/source/ConfigManager.o"
-	@echo "... src/source/ConfigManager.i"
-	@echo "... src/source/ConfigManager.s"
 	@echo "... src/source/DebugManager.o"
 	@echo "... src/source/DebugManager.i"
 	@echo "... src/source/DebugManager.s"
@@ -564,6 +588,9 @@ help:
 	@echo "... src/source/ImageService.o"
 	@echo "... src/source/ImageService.i"
 	@echo "... src/source/ImageService.s"
+	@echo "... src/source/Launcher.o"
+	@echo "... src/source/Launcher.i"
+	@echo "... src/source/Launcher.s"
 	@echo "... src/source/Log/Error.o"
 	@echo "... src/source/Log/Error.i"
 	@echo "... src/source/Log/Error.s"
@@ -582,6 +609,9 @@ help:
 	@echo "... src/source/Network/ProcessCommunication.o"
 	@echo "... src/source/Network/ProcessCommunication.i"
 	@echo "... src/source/Network/ProcessCommunication.s"
+	@echo "... src/source/ParamManager.o"
+	@echo "... src/source/ParamManager.i"
+	@echo "... src/source/ParamManager.s"
 .PHONY : help
 
 

@@ -22,6 +22,7 @@ public:
         MISSING_FRAME_INFOS,
         MISSING_INIT,
         NO_CONTOUR,
+        THREAD_ERROR,
         DEBUG_STOP
     };
 

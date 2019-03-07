@@ -10,10 +10,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv_srv.dir/src/source/DebugManager.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/ImageProvider.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/ImageService.cpp.o"
-  "CMakeFiles/opencv_srv.dir/src/source/ConfigManager.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Network/Log/LogNetwork.cpp.o"
   "CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.o"
+  "CMakeFiles/opencv_srv.dir/src/source/ParamManager.cpp.o"
+  "CMakeFiles/opencv_srv.dir/src/source/Launcher.cpp.o"
   "opencv_srv.pdb"
   "opencv_srv"
 )

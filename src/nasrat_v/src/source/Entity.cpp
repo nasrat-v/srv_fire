@@ -2,7 +2,7 @@
 // Created by nasrat_v on 11/3/18.
 //
 
-#include "../header/Entity.h"
+#include "../header/Entity.hh"
 
 Entity::Entity(const std::vector<cv::Point> &contour)
 {

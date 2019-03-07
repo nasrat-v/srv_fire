@@ -2,7 +2,7 @@
 // Created by nasrat_v on 11/4/18.
 //
 
-#include "../header/DebugManager.h"
+#include "../header/DebugManager.hh"
 
 int launchPalette();
 
@@ -27,7 +27,7 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
 {
     uint16_t mode = debugMode::NO_DEBUG;
     std::vector<std::string> args = convertCharStarToVectorOfString(av);
-    std::vector<std::string>::const_iterator it = args.begin();
+    auto it = args.begin();
 
     if (args.size() == 2)
         return (debugMode::ALL);

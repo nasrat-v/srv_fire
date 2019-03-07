@@ -2,10 +2,10 @@
 // Created by nasrat_v on 11/3/18.
 //
 
-#include "../header/FrameAnalyser.h"
+#include "../header/FrameAnalyser.hh"
 
-FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, const std::string &videoPath) :    _debugMode(mode),
-                                                                                                     _imageService(mode, videoPath)
+FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider) :    _debugMode(mode),
+                                                                                                     _imageService(mode, imageProvider)
 {
     _firstFrame = false;
     _isInit = false;
@@ -13,15 +13,18 @@ FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, const std::str
 
 FrameAnalyser::~FrameAnalyser() = default;
 
-Error::ErrorType FrameAnalyser::initAnalyser()
+Error::ErrorType FrameAnalyser::initAnalyser(bool openVideo)
 {
     if (_debugMode & DebugManager::debugMode::CREATE_SAMPLE_IMG)
     {
         _imageService.createSampleImgFromVideo();
         return (Error::ErrorType::DEBUG_STOP);
     }
-    if (_imageService.openVideo() == ImageProvider::statusVideo::ERROR)
-        return (Error::ErrorType::OPEN_VID);
+    if (openVideo)
+    {
+        if (_imageService.openVideo() == ImageProvider::statusVideo::ERROR)
+            return (Error::ErrorType::OPEN_VID);
+    }
     _isInit = true;
     return (Error::ErrorType::NO_ERROR);
 }
@@ -29,14 +32,17 @@ Error::ErrorType FrameAnalyser::initAnalyser()
 Error::ErrorType FrameAnalyser::analyseFrame()
 {
     bool end = false;
+    ImageProvider::statusVideo status;
 
     if (!_isInit)
     {
         Error::logError(Error::ErrorType::MISSING_INIT);
         return (Error::ErrorType::MISSING_INIT);
     }
-    if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
+    if ((status = _imageService.getNextImg(_frame)) == ImageProvider::statusVideo::END)
         end = true;
+    else if (status == ImageProvider::statusVideo::ERROR)
+        return (Error::ErrorType::OPEN_VID);
     while (!end)
     {
         findEntities();

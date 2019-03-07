@@ -7,7 +7,7 @@
 
 # define SUCCESS			(ERR)1
 # define FILE_ERROR			(ERR)~0
-# define LOGFILE_NAME		"log-network.txt"
+# define LOGFILE_NAME		"../output/log/log-network.txt"
 
 typedef short			ERR;
 static bool				_tryStatus = false;

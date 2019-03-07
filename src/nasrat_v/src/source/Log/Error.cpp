@@ -31,6 +31,10 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Missing initialization before analyse");
         case (ErrorType::NO_CONTOUR):
             return ("Missing contour");
+        case (ErrorType::DEBUG_STOP):
+            return ("Stop debug");
+        case (ErrorType::THREAD_ERROR):
+            return ("Error in network thread");
     };
     return ("");
 }

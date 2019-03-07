@@ -128,7 +128,7 @@ ERR ClientNetwork::connectToServer()
 		if (__inetntop(sin.sin_family, &sin.sin_addr, hostsIp, SIZE_BUFF) == nullptr)
 			LogNetwork::logSomething("\nWarning ! error when parsing ip server");
 		else
-			LogNetwork::logSomething("\nTrying to connect to server " + std::string(hostsIp) + ':' + std::to_string(sin.sin_port));
+		    LogNetwork::logSomething("\nTrying to connect to server " + std::string(hostsIp) + ':' + std::to_string(sin.sin_port));
 		if (connect(_sock, (__sockaddr*)&sin, sizeof(__sockaddr)) != NET_ERROR)
 		{
 			LogNetwork::logSuccessMsg("Successfully connect to server");
@@ -187,6 +187,7 @@ ERR ClientNetwork::readData(std::string &data)
 	}
 	else if (ret < 0)
 	{
+		strerror(errno);
 		LogNetwork::logFailureMsg("Error failed to read data from socket");
 		return (NET_ERROR);
 	}

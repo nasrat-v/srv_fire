@@ -82,31 +82,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ConfigManager.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/DebugManager.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Entity.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Frame.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/FrameAnalyser.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageAdditionner.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageAdditionner.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageProcesser.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageProcesser.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageProvider.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageProvider.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageService.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ImageService.h">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Launcher.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Log/Error.hh">
@@ -124,7 +124,7 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/Network/ProcessCommunication.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
-		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ConfigManager.cpp">
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/header/ParamManager.hh">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/DebugManager.cpp">
@@ -151,6 +151,9 @@
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageService.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Launcher.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Log/Error.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
@@ -167,6 +170,9 @@
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/Network/ProcessCommunication.cpp">
+			<Option target="opencv_srv"/>
+		</Unit>
+		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ParamManager.cpp">
 			<Option target="opencv_srv"/>
 		</Unit>
 		<Unit filename="/home/nasrat_v/Dev/srv_fire/src/nasrat_v/CMakeLists.txt">

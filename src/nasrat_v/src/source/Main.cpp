@@ -2,30 +2,34 @@
 // Created by nasrat_v on 22/12/17.
 //
 
-#include "../header/FrameAnalyser.h"
-#include "../header/DebugManager.h"
+#include "../header/DebugManager.hh"
+#include "../header/ParamManager.hh"
+#include "../header/Launcher.hh"
 
-Error::ErrorType analyse(const DebugManager::debugMode &mode)
+int main(int ac, const char **av)
 {
-    Error::ErrorType error;
-    FrameAnalyser core(mode, VIDEO_PATH);
-
-    if ((error = core.initAnalyser()) != Error::ErrorType::NO_ERROR)
-        return (error);
-    return (core.analyseFrame());
-}
-
-int         main(int ac, const char **av)
-{
+    ParamManager paramManager;
+    ParamManager::paramMode paramMode;
     DebugManager debugManager;
-    DebugManager::debugMode mode = DebugManager::debugMode::NO_DEBUG;
+    DebugManager::debugMode debugMode = DebugManager::debugMode::NO_DEBUG;
+    Launcher launcher;
 
     if (ac > 1)
     {
-        if (strncmp("--debug", av[1], strlen("--debug")) == 0)
-            mode = debugManager.findDebugMode(av);
+        paramMode = paramManager.findParams(av);
+        if (paramMode & ParamManager::paramMode::DEBUG_MODE)
+            debugMode = debugManager.findDebugMode(av);
+        if (paramMode & ParamManager::paramMode::NETWORK_MODE)
+        {
+            if (launcher.launchAnalyseNetwork(debugMode, paramMode,
+                    paramManager.getIdNetwork()) != Error::ErrorType::NO_ERROR)
+                return (1);
+        }
+        else
+        {
+            if (launcher.launchAnalyse(debugMode, paramMode) != Error::ErrorType::NO_ERROR)
+                return (1);
+        }
     }
-    if (analyse(mode) != Error::ErrorType::NO_ERROR)
-        return (1);
     return (0);
 }

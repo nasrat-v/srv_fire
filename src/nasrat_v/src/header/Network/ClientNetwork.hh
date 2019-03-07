@@ -15,6 +15,7 @@
     #include <unistd.h>
     #include <stdio.h>
 	#include <cstring>
+	#include <errno.h>
 #endif
 
 #include <iostream>

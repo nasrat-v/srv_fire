@@ -2,7 +2,7 @@
 // Created by nasrat_v on 11/3/18.
 //
 
-#include "../header/ImageProcesser.h"
+#include "../header/ImageProcesser.hh"
 
 ImageProcesser::ImageProcesser() = default;
 
