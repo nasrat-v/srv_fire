@@ -192,7 +192,7 @@ void onTrackbar_changed(int, void*)
 
 }
 
-static void onMouse( int event, int x, int y, int f, void* )
+static void onMouse(__attribute__((unused))int event, int x, int y, int f, void* )
 {
     if(f & cv::EVENT_FLAG_LBUTTON){
         mouse_x=x;
