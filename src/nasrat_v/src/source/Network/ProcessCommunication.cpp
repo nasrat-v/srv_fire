@@ -52,7 +52,10 @@ ERR ProcessCommunication::communicateWithServer(const std::string &idNetwork, Im
     std::string data;
 
     while (_network.connectToServer() == NET_ERROR)
+    {
         std::this_thread::yield(); // TRY UNTIL IT CAN CONNECT
+    }
+    std::cout << "Connected" << std::endl;
     if (typeRequest() == NET_ERROR)
         return (NET_ERROR);
     if (idRequest(idNetwork) == NET_ERROR)
@@ -78,10 +81,12 @@ ERR ProcessCommunication::typeRequest()
     std::string data;
 
     _network.readData(data);
+    std::cout << data << std::endl;
     if (data == TYPE_ASK)
     {
         if (_network.writeData(TYPE_RESP) == NET_ERROR)
             return (NET_ERROR);
+        std::cout << TYPE_RESP << std::endl;
     }
     return (SUCCESS);
 }
@@ -91,10 +96,12 @@ ERR ProcessCommunication::idRequest(const std::string &idNetwork)
     std::string data;
 
     _network.readData(data);
+    std::cout << data << std::endl;
     if (data == ID_ASK)
     {
         if (_network.writeData(idNetwork) == NET_ERROR)
             return (NET_ERROR);
+        std::cout << idNetwork << std::endl;
     }
     return (SUCCESS);
 }

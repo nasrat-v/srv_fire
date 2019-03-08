@@ -6,7 +6,7 @@
 #define OPENCV_SRV_PROCESSCOMMUNICATION_HH
 
 # define IPADDR     "127.0.0.1"
-# define PORT       4242
+# define PORT       4747
 # define TYPE_ASK   "TYPE\n"
 # define TYPE_RESP  "IA\n"
 # define ID_ASK     "ID\n"
