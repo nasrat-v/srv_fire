@@ -187,7 +187,6 @@ ERR ClientNetwork::readData(std::string &data)
 	}
 	else if (ret < 0)
 	{
-		strerror(errno);
 		LogNetwork::logFailureMsg("Error failed to read data from socket");
 		return (NET_ERROR);
 	}
@@ -197,7 +196,7 @@ ERR ClientNetwork::readData(std::string &data)
 		deconnectToServer();
 		return (SUCCESS);
 	}
-	LogNetwork::logSomething("\nReceived:\n" + data + "\n:From Server\n");
+	//LogNetwork::logSomething("\nReceived:\n" + data + "\n:From Server\n");
 	return (SUCCESS);
 }
 
@@ -211,7 +210,7 @@ ERR ClientNetwork::writeData(const std::string &data)
 		LogNetwork::logFailureMsg("\nError failed to write data to socket");
 		return (NET_ERROR);
 	}
-	LogNetwork::logSomething("\nSend:\n" + data + "\n:To server\n");
+	//LogNetwork::logSomething("\nSend:\n" + data + "\n:To server\n");
 	return (SUCCESS);
 }
 
