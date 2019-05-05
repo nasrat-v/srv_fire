@@ -5,7 +5,7 @@
 #ifndef __OPENCV_TEST_ERROR_HH__
 # define __OPENCV_TEST_ERROR_HH__
 
-# define ERROR_LOGFILE_PATH     "../output/log/error/error_log.txt"
+# define ERROR_LOGFILE_PATH     "../output/log/error/log-error.txt"
 # define MIN_FRAME_VID          2
 
 #include "Log.hh"
