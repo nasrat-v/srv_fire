@@ -53,7 +53,7 @@ ERR ProcessCommunication::communicateWithServer(const std::string &idNetwork, Im
 
     while (_network.connectToServer() == NET_ERROR)
     {
-        std::this_thread::yield(); // TRY UNTIL IT CAN CONNECT
+        std::this_thread::yield(); // TRY UNTIL IT CAN CONNECT => like sleep in infinite loop
     }
     std::cout << "Connected" << std::endl;
     if (typeRequest() == NET_ERROR)
