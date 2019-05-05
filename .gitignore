@@ -9,6 +9,7 @@
 .idea/srv_fire.iml
 .idea/vcs.xml
 .idea/codeStyles/codeStyleConfig.xml
+.idea/workspace.xml
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -42,7 +43,7 @@
 # .idea/modules
 
 # CMake
-cmake-build-*/
+src/nasrat_v/cmake-build-*/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml

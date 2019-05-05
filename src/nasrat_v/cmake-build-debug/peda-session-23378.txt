@@ -1,5 +1,0 @@
-break /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/ZoneAnalyser.cpp:78
-break /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/ZoneAnalyser.cpp:80
-break /home/nasrat_v/Dev/tek3/C++/opencv_srv/src/source/ZoneAnalyser.cpp:75
-
-set exec-wrapper The wrapper for running programs is \
