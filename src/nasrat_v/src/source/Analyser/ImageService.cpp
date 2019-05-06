@@ -73,42 +73,48 @@ void ImageService::setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcesse
 {
     frame.setContoursWarm(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursWarm(), "imgContoursWarm");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursWarm(),
+                "imgContoursWarm", Entity::entityTemperature::WARM);
 }
 
 void ImageService::setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setConvexHullsWarm(_imageProcesser.findConvexHullsFromContours(frame.getContoursWarm()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsWarm(), "imgConvexHullsWarm");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsWarm(),
+                "imgConvexHullsWarm", Entity::entityTemperature::WARM);
 }
 
 void ImageService::setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setContoursHot(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursHot(), "imgAContoursHot");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursHot(),
+                "imgAContoursHot", Entity::entityTemperature::HOT);
 }
 
 void ImageService::setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setConvexHullsHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursHot()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsHot(), "imgConvexHullsHot");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsHot(),
+                "imgConvexHullsHot", Entity::entityTemperature::HOT);
 }
 
 void ImageService::setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setContoursVeryHot(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursVeryHot(), "imgAContoursVeryHot");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursVeryHot(),
+                "imgAContoursVeryHot", Entity::entityTemperature::VERY_HOT);
 }
 
 void ImageService::setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
 {
     frame.setConvexHullsVeryHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursVeryHot()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
-        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsVeryHot(), "imgConvexHullsVeryHot");
+        _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsVeryHot(),
+                "imgConvexHullsVeryHot", Entity::entityTemperature::VERY_HOT);
 }
 
 /*void ImageService::setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed)

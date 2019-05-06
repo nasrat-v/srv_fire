@@ -10,22 +10,30 @@ ImageAdditionner::ImageAdditionner() = default;
 
 ImageAdditionner::~ImageAdditionner() = default;
 
-void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<Entity> &entities, std::string strImageName)
+void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<Entity> &entities,
+                                            const std::string &strImageName)
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
     std::vector<std::vector<cv::Point> > contours;
 
     for (auto &entity : entities)
         contours.push_back(entity.getContour());
+
     cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
     imshow(strImageName, image);
 }
 
-void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<std::vector<cv::Point>> &contours, std::string strImageName)
+void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<std::vector<cv::Point>> &contours,
+                                            const std::string &strImageName, const Entity::entityTemperature &temp)
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
 
-    cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
+    if (temp == Entity::entityTemperature::WARM)
+        cv::drawContours(image, contours, -1, SCALAR_YELLOW, -1);
+    else if (temp == Entity::entityTemperature::HOT)
+        cv::drawContours(image, contours, -1, SCALAR_ORANGE, -1);
+    else
+        cv::drawContours(image, contours, -1, SCALAR_RED, -1);
     imshow(strImageName, image);
 }
 

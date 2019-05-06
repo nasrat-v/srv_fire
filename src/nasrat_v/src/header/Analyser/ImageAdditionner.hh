@@ -23,10 +23,14 @@ public:
     ImageAdditionner();
     ~ImageAdditionner();
 
-    void drawAndShowContours(cv::Size imageSize, const std::vector<Entity> &entities, std::string strImageName);
-    void drawAndShowContours(cv::Size imageSize, const std::vector<std::vector<cv::Point>> &contours, std::string strImageName);
-    void drawTrackEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);
-    void drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);
+    void                drawAndShowContours(cv::Size imageSize,
+                                            const std::vector<Entity> &entities,
+                                            const std::string &strImageName);
+    void                drawAndShowContours(cv::Size imageSize,
+                                            const std::vector<std::vector<cv::Point>> &contours,
+                                            const std::string &strImageName, const Entity::entityTemperature &temp);
+    void                drawTrackEntitiesOnImage(const std::vector<Entity> &entities,cv::Mat &img);
+    void                drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);
 };
 
 
