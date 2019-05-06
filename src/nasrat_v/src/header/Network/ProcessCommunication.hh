@@ -12,7 +12,7 @@
 # define ID_ASK     "ID\n"
 
 #include "ClientNetwork.hh"
-#include "../ImageProvider.hh"
+#include "../Analyser/ImageProvider.hh"
 
 #include <mutex>
 #include <thread>
