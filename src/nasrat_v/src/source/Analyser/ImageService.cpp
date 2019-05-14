@@ -52,7 +52,7 @@ void ImageService::substractColor(cv::Mat &imgProcessed, const ImageProcesser::t
 {
     _imageProcesser.imgToHSV(imgProcessed, range);
     if (_debugMode & DebugManager::debugMode::SUBSTRACT_COLOR)
-        cv::imshow("imgSubstractColor", imgProcessed);
+        cv::imshow(("imgSubstractColor " + range.nameRange), imgProcessed);
 }
 
 void ImageService::differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed)

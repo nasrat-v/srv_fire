@@ -12,9 +12,9 @@
 #include "ImageAdditionner.hh"
 #include "../Launcher/DebugManager.hh"
 
-#define RED_RANGE       ImageProcesser::t_colorRange { cv::Scalar(0, 150, 100), cv::Scalar(10, 255, 255) }
-#define ORANGE_RANGE    ImageProcesser::t_colorRange { cv::Scalar(11, 150, 100), cv::Scalar(20, 255, 255) }
-#define YELLOW_RANGE    ImageProcesser::t_colorRange { cv::Scalar(21, 150, 100), cv::Scalar(30, 255, 255) }
+#define RED_RANGE       ImageProcesser::t_colorRange { "Red Range", cv::Scalar(0, 150, 100), cv::Scalar(10, 255, 255) }
+#define ORANGE_RANGE    ImageProcesser::t_colorRange { "Orange Range", cv::Scalar(11, 150, 100), cv::Scalar(20, 255, 255) }
+#define YELLOW_RANGE    ImageProcesser::t_colorRange { "Yellow Range", cv::Scalar(21, 150, 100), cv::Scalar(30, 255, 255) }
 
 class ImageService
 {

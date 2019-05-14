@@ -41,12 +41,6 @@ int main(int ac, char **av)
 	close(pipefd[0]);
 	ret = read(0, buff, 4095);
 	buff[ret] = '\0';
-	write(1, "TYPE", strlen("TYPE"));
-	ret = read(0, buff, 4095);
-	buff[ret] = '\0';
-	write(1, "ID", strlen("ID"));
-	ret = read(0, buff, 4095);
-	buff[ret] = '\0';
 	while (42)
 	{
 	    path = (std::string(PATH) + std::to_string(id++) + std::string(".jpg"));

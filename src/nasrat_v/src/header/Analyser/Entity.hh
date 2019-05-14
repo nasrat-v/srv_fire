@@ -6,6 +6,7 @@
 # define OPENCV_SRV_ENTITY_H
 
 # define NB_FRAME_MOVE_PREDICTION    5
+# define DEFAULT_NB_ENTITY          -1
 
 #include "../Log/Log.hh"
 
@@ -32,6 +33,7 @@ public:
         VERY_HOT
     };
 
+    void                            clone(const Entity &entity);
     void                            predictNextPosition();
     double                          getCurrentAspectRatio() const;
     double                          getCurrentDiagonalSize() const;
@@ -40,9 +42,10 @@ public:
     const std::vector<cv::Point>    &getCenterPositions() const;
     const entityMovement            &getMovementType() const;
     const entityTemperature         &getTemperatureType() const;
-    void                            setCurrentMatchFoundOrNewEntity(bool val);
+    int                             getNbEntity() const;
     void                            setMovementType(const entityMovement &type);
     void                            setTemperatureType(const entityTemperature &type);
+    void                            setNbEntity(int nb);
 
     /*const cv::Point                 &getPredictedNextPosition() const;
     bool                            getStillBeingTracked() const;
@@ -58,15 +61,15 @@ public:
 
 private:
     /* Attributes */
-    double                          _currentAspectRatio;
-    double                          _currentDiagonalSize;
+    double                          _currentAspectRatio { };
+    double                          _currentDiagonalSize { };
     cv::Rect                        _currentBoundingRect;
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
     std::vector<cv::Point>          _contour;
     entityMovement                  _movementType;
     entityTemperature               _temperatureType;
-    bool                            _currentMatchFoundOrNewEntity;
+    int                             _nbEntity;
 
     /*int                             _numOfConsecutiveFramesWithoutMatch;
     bool                            _stillBeingTracked;*/

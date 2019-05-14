@@ -7,7 +7,7 @@
 FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider) :    _debugMode(mode),
                                                                                                      _imageService(mode, imageProvider)
 {
-    _firstFrame = false;
+    _firstFrame = true;
     _isInit = false;
 }
 
@@ -46,11 +46,11 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     while (!end)
     {
         findEntities();
-        /*if (_firstFrame)
+        if (_firstFrame)
             initSavedEntities();
         else
-            matchFrameEntitiesToSavedEntities();*/
-        _imageService.displayImg(_frame.getImages().front(), /*_savedEntities,*/ _frame.getEntities());
+            matchFrameEntitiesToSavedEntities();
+        _imageService.displayImg(_frame.getImages().front(), _savedEntities);/*, _frame.getEntities());*/
         _frame.clearEntities();
         if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
             end = true;
@@ -121,23 +121,18 @@ void FrameAnalyser::findClosestMovementEntity(const Entity &entity, t_distance *
 {
     size_t i = 0;
     double dist = 0;
-    distance->indexEntity = 0;
+    distance->indexSavedEntity = 0;
     distance->leastDistance = 100000.0;
 
-    for (auto &convexHull : _frame.getConvexHullsMovement())
+    for (auto &savedEntity : _savedEntities)
     {
-        Entity possibleEntity(convexHull);
-
-        if (isPossibleEntity(possibleEntity))
+        dist = distanceBetweenPoints(entity.getCenterPositions().back(), savedEntity.getCenterPositions().back());
+        if (dist < distance->leastDistance)
         {
-            dist = distanceBetweenPoints(entity.getCenterPositions().back(), possibleEntity.getCenterPositions().back());
-            if (dist < distance->leastDistance)
-            {
-                distance->leastDistance = dist;
-                distance->indexEntity = i;
-            }
-            i++;
+            distance->leastDistance = dist;
+            distance->indexSavedEntity = i;
         }
+        i++;
     }
 }
 
@@ -145,7 +140,7 @@ double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point seco
 {
     int intX = abs(firstPoint.x - secondPoint.x);
     int intY = abs(firstPoint.y - secondPoint.y);
-    
+
     return (sqrt(pow(intX, 2) + pow(intY, 2)));
 }
 
@@ -157,50 +152,60 @@ bool FrameAnalyser::isPossibleEntity(const Entity &possibleEntity)
             (cv::contourArea(possibleEntity.getContour()) / (double)possibleEntity.getCurrentBoundingRect().area()) > 0.40);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/*void FrameAnalyser::initSavedEntities()
+void FrameAnalyser::initSavedEntities()
 {
+    int index = 0;
+
     for (auto &frameEntity : _frame.getEntities())
-        _savedEntities.push_back(frameEntity);
-    _firstFrame = false;
+    {
+        Entity savedEntity(frameEntity.getContour());
+
+        savedEntity.clone(frameEntity);
+        savedEntity.setNbEntity(index);
+        _savedEntities.push_back(savedEntity);
+        _firstFrame = false;
+        index++;
+    }
 }
 
 void FrameAnalyser::matchFrameEntitiesToSavedEntities()
 {
-    int index;
     t_distance  distance;
 
-    predictNextPositionSavedEntities();
+    //predictNextPositionSavedEntities();
     for (auto &frameEntity : _frame.getEntities())
     {
-        index = 0;
-        findClosestFrameEntityForSavedEntity(frameEntity, &distance);
-        if (distance.leastDistance < frameEntity.getCurrentDiagonalSize() * 1.15)
-            setSavedEntityFromFrameEntity(frameEntity, distance.indexEntity);
+        findClosestMovementEntity(frameEntity, &distance);
+        if (distance.leastDistance < (frameEntity.getCurrentDiagonalSize() * 1.15))
+            setNewValueSavedEntity(frameEntity, distance.indexSavedEntity);
         else
-            addNewSavedEntity(frameEntity, index);
-        index++;
+            addNewSavedEntity(frameEntity);
     }
-    checkConsecutiveFrameWithoutMatchSavedEntities();
+    //checkConsecutiveFrameWithoutMatchSavedEntities();
 }
 
-void FrameAnalyser::predictNextPositionSavedEntities()
+
+void FrameAnalyser::setNewValueSavedEntity(const Entity &frameEntity, size_t index)
+{
+    _savedEntities[index].clone(frameEntity);
+}
+
+
+void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity)
+{
+    Entity savedEntity(frameEntity.getContour());
+
+    savedEntity.clone(frameEntity);
+    _savedEntities.push_back(savedEntity);
+}
+
+
+
+
+/*void FrameAnalyser::predictNextPositionSavedEntities()
 {
     for (auto &savedEntity : _savedEntities)
-    {
-        savedEntity.setCurrentMatchFoundOrNewEntity(false);
         savedEntity.predictNextPosition();
-    }
 }
 
 void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
@@ -212,24 +217,6 @@ void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
         if (savedEntity.getNumOfConsecutiveFramesWithoutMatch() >= NB_FRAME_MOVE_PREDICTION)
             savedEntity.setStillBeingTracked(false);
     }
-}
-
-void FrameAnalyser::setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index)
-{
-    _savedEntities[index].setContour(frameEntity.getContour());
-    _savedEntities[index].setCurrentBoundingRect(frameEntity.getCurrentBoundingRect());
-    _savedEntities[index].addCenterPosition(frameEntity.getCenterPositions().back());
-    _savedEntities[index].setCurrentDiagonalSize(frameEntity.getCurrentDiagonalSize());
-    _savedEntities[index].setCurrentAspectRatio(frameEntity.getCurrentAspectRatio());
-    _savedEntities[index].setCurrentMatchFoundOrNewEntity(true);
-    _savedEntities[index].setType(frameEntity.getType());
-    //debugPredictedPosition(frameEntity, _savedEntities[index]);
-}
-
-void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity, int index)
-{
-    _frame.setCurrentMatchFoundOrNewEntity(index, true);
-    _savedEntities.push_back(frameEntity);
 }
 
 void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity)

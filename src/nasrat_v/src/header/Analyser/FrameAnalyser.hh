@@ -37,7 +37,7 @@ private:
     typedef struct          s_distance
     {
         double              leastDistance;
-        size_t              indexEntity;
+        size_t              indexSavedEntity;
     }                       t_distance;
 
     /* Methods */
@@ -47,11 +47,11 @@ private:
     bool                    isPossibleEntity(const Entity &possibleEntity);
     void                    findClosestMovementEntity(const Entity &entity, t_distance *distance);
     double                  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
-    /*void                    initSavedEntities();
+    void                    initSavedEntities();
     void                    matchFrameEntitiesToSavedEntities();
-    void                    setSavedEntityFromFrameEntity(const Entity &frameEntity, size_t index);
-    void                    addNewSavedEntity(const Entity &frameEntity, int index);
-    void                    predictNextPositionSavedEntities();
+    void                    setNewValueSavedEntity(const Entity &frameEntity, size_t index);
+    void                    addNewSavedEntity(const Entity &frameEntity);
+    /*void                    predictNextPositionSavedEntities();
     void                    checkConsecutiveFrameWithoutMatchSavedEntities();
     void                    debugPredictedPosition(const Entity &frameEntity);*/
 };

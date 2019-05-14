@@ -7,9 +7,8 @@
 
 # define IPADDR     "127.0.0.1"
 # define PORT       4444
-# define TYPE_ASK   "TYPE\n"
-# define TYPE_RESP  "IA\n"
-# define ID_ASK     "ID\n"
+# define JSON_ID   "{\"Id\":"
+# define JSON_TYPE  ",\"Type\":\"IA\"}"
 
 #include "ClientNetwork.hh"
 #include "../Analyser/ImageProvider.hh"
@@ -35,8 +34,7 @@ private:
     /* Methods */
     const ClientNetwork::t_serverParam  initConfigurationServer();
     ERR                                 communicateWithServer(const std::string &idNetwork, ImageProvider *imageProvider);
-    ERR                                 typeRequest();
-    ERR                                 idRequest(const std::string &idNetwork);
+    ERR                                 sendJsonConnection(const std::string &idNetwork);
     void                                resetString(std::string &str);
     void                                formatData(std::string &data);
 };

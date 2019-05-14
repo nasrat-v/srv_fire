@@ -25,9 +25,6 @@ public:
     void                                        setConvexHullsHot(const std::vector<std::vector<cv::Point>> &convexHulls);
     void                                        setContoursVeryHot(const std::vector<std::vector<cv::Point>> &contours);
     void                                        setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursMovement(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsMovement(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setCurrentMatchFoundOrNewEntity(int index, bool val);
     void                                        setMovementTypeEntity(size_t index, const Entity::entityMovement &type);
     void                                        setTemperatureTypeEntity(size_t index, const Entity::entityTemperature &type);
     const std::vector<cv::Mat>                  &getImages() const;
@@ -38,8 +35,6 @@ public:
     const std::vector<std::vector<cv::Point>>   &getConvexHullsHot() const;
     const std::vector<std::vector<cv::Point>>   &getContoursVeryHot() const;
     const std::vector<std::vector<cv::Point>>   &getConvexHullsVeryHot() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursMovement() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsMovement() const;
     void                                        clearEntities();
     void                                        predictNextPositionEntities();
     void                                        addEntity(const Entity &entity);
@@ -54,8 +49,6 @@ private:
     std::vector<std::vector<cv::Point>>         _convexHullsHot;
     std::vector<std::vector<cv::Point>>         _contoursVeryHot;
     std::vector<std::vector<cv::Point>>         _convexHullsVeryHot;
-    std::vector<std::vector<cv::Point>>         _contoursMovement;
-    std::vector<std::vector<cv::Point>>         _convexHullsMovement;
 };
 
 

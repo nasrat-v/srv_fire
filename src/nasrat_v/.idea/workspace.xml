@@ -12,17 +12,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbeecc0e-6650-4f5a-b383-04d0c22c1917" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Network/ClientNetwork.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/opencv_srv.dir/src/source/Network/ProcessCommunication.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/opencv_srv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/image/sample-image0.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/input/video/video-incendie-pompiers.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/input/video/video-incendie-pompiers.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/error/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/error/error_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/log/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/launch_server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/script/launch_server.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/server_test" beforeDir="false" afterPath="$PROJECT_DIR$/script/server_test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Analyser/Entity.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Analyser/Entity.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Analyser/Frame.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Analyser/Frame.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Analyser/FrameAnalyser.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Analyser/FrameAnalyser.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Analyser/ImageProcesser.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Analyser/ImageProcesser.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Analyser/ImageService.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Analyser/ImageService.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Analyser/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Analyser/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Analyser/Frame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Analyser/Frame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Analyser/ImageService.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Analyser/ImageService.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,78 +36,83 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/FrameAnalyser.cpp">
+        <entry file="file://$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1445">
-              <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+            <state relative-caret-position="-43">
+              <caret line="140" column="49" lean-forward="true" selection-start-line="140" selection-start-column="49" selection-end-line="140" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/ImageProcesser.cpp">
+        <entry file="file://$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="1003">
+              <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.hh">
+        <entry file="file://$PROJECT_DIR$/src/source/Network/Log/LogNetwork.cpp">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/Analyser/Entity.hh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/launch_server.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/source/Network/ClientNetwork.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2448" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/source/Analyser/ImageService.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="811">
+              <caret line="201" column="42" selection-start-line="201" selection-start-column="42" selection-end-line="201" selection-end-column="42" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/source/Analyser/Entity.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header/DebugManager.hh">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/Frame.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/DebugManager.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/source/ImageAdditionner.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="646">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
@@ -114,6 +124,9 @@
       <find>substractInfos</find>
       <find>setContoursFrame</find>
       <find>getContour</find>
+      <find>track</find>
+      <find>Read source from</find>
+      <find>TYPE</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,14 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/source/output_static_object/StreamAnalyser.cpp" />
-        <option value="$PROJECT_DIR$/src/header/StreamAnalyser.h" />
-        <option value="$PROJECT_DIR$/src/source/StreamAnalyser.cpp" />
-        <option value="$PROJECT_DIR$/src/header/FrameSubstraction.h" />
-        <option value="$PROJECT_DIR$/src/source/FrameSubstraction.cpp" />
-        <option value="$PROJECT_DIR$/src/source/DebugMode.cpp" />
-        <option value="$PROJECT_DIR$/src/header/DebugMode.h" />
-        <option value="$PROJECT_DIR$/src/header/FrameProcessing.h" />
         <option value="$PROJECT_DIR$/src/header/FrameAddition.h" />
         <option value="$PROJECT_DIR$/src/source/FrameAddition.cpp" />
         <option value="$PROJECT_DIR$/src/source/FrameProcessing.cpp" />
@@ -168,7 +173,19 @@
         <option value="$PROJECT_DIR$/src/header/ImageProcesser.h" />
         <option value="$PROJECT_DIR$/src/header/FrameAnalyser.h" />
         <option value="$PROJECT_DIR$/src/source/ImageProcesser.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/ImageProcesser.hh" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/ImageService.hh" />
+        <option value="$PROJECT_DIR$/src/source/Analyser/ImageService.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/SavedEntity.hh" />
+        <option value="$PROJECT_DIR$/src/source/Analyser/SavedEntity.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/FrameAnalyser.hh" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/Entity.hh" />
+        <option value="$PROJECT_DIR$/src/source/Analyser/Frame.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Analyser/Frame.hh" />
+        <option value="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" />
         <option value="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" />
+        <option value="$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp" />
+        <option value="$PROJECT_DIR$/src/source/Analyser/Entity.cpp" />
       </list>
     </option>
   </component>
@@ -184,18 +201,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
               <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
@@ -207,6 +218,20 @@
               <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="Analyser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
@@ -221,16 +246,47 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="Analyser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="Network" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencv_srv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasrat_v" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="Network" type="462c0819:PsiDirectoryNode" />
+              <item name="Log" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/nasrat_v/Dev/srv_fire/src/nasrat_v/src/source/ImageProcesser.cpp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../client-network-module" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -255,8 +311,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.opencv_srv">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+  <component name="RunManager" selected="CMake Application.Build All">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--debug --track" PASS_PARENT_ENVS_2="true" PROJECT_NAME="opencv_srv" TARGET_NAME="opencv_srv" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="opencv_srv" RUN_TARGET_NAME="opencv_srv">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -267,8 +323,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Build All" />
-      <item itemvalue="Application.opencv_srv" />
+      <item itemvalue="CMake Application.Build All" />
+      <item itemvalue="CMake Application.opencv_srv" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -307,11 +363,13 @@
       <workItem from="1553380346323" duration="3000" />
       <workItem from="1553380647142" duration="3000" />
       <workItem from="1553770750795" duration="76000" />
+      <workItem from="1557748479610" duration="5894000" />
+      <workItem from="1557866848481" duration="3817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117069000" />
+    <option name="totallyTimeSpent" value="126780000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,13 +384,13 @@
     <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22406417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22941177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.43964562" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991131" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986711" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
@@ -351,32 +409,15 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="entity._centerPositions" />
+        <watch expression="_centerPositions" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Image.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Packet.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Pixel.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Request.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ImageAnalyser.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/ZoneAnalyser.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/business_logic_layer/BusinessLogicManager.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/source/data_transfert_object/Zone.cpp" />
-    <entry file="file://$PROJECT_DIR$/lib/tinyxml2/source/tinyxml2.cpp" />
-    <entry file="file://$PROJECT_DIR$/lib/tinyxml2/source/xmltest.cpp" />
-    <entry file="file://$PROJECT_DIR$/input/config/xml_test.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Error.hh" />
-    <entry file="file:///usr/include/c++/8.2.1/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16660">
-          <caret line="980" selection-start-line="980" selection-end-line="980" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -387,89 +428,172 @@
     <entry file="file://$PROJECT_DIR$/src/header/output_static_object/Log.hh" />
     <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Log.cpp" />
     <entry file="file://$PROJECT_DIR$/src/header/ImageProvider.h" />
-    <entry file="file://$PROJECT_DIR$/src/source/Main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Main.cpp" />
     <entry file="file://$PROJECT_DIR$/src/source/output_static_object/Error.cpp" />
     <entry file="file://$PROJECT_DIR$/src/header/ConfigManager.h" />
-    <entry file="file://$PROJECT_DIR$/src/source/ImageProvider.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/ImageProvider.cpp" />
     <entry file="file://$PROJECT_DIR$/src/header/ImageAdditionner.h" />
     <entry file="file://$PROJECT_DIR$/src/header/ImageProcesser.h" />
     <entry file="file://$PROJECT_DIR$/src/header/DebugManager.h" />
-    <entry file="file://$PROJECT_DIR$/src/source/ImageService.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" column="85" selection-start-line="99" selection-start-column="85" selection-end-line="99" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/ImageService.cpp" />
     <entry file="file://$PROJECT_DIR$/src/header/Entity.h" />
     <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.h" />
     <entry file="file://$PROJECT_DIR$/src/header/ImageService.h" />
     <entry file="file://$PROJECT_DIR$/src/source/ConfigManager.cpp" />
     <entry file="file://$PROJECT_DIR$/src/header/Frame.h" />
-    <entry file="file://$PROJECT_DIR$/src/source/FrameAnalyser.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/FrameAnalyser.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/ImageProcesser.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.hh" />
+    <entry file="file://$PROJECT_DIR$/src/header/DebugManager.hh" />
+    <entry file="file://$PROJECT_DIR$/src/source/Frame.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/DebugManager.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/source/ImageAdditionner.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/header/Network/Log/LogNetwork.hh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+        <state relative-caret-position="153">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/ImageProcesser.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/ImageProcesser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="527">
+          <caret line="64" column="79" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="79" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/FrameAnalyser.hh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/DebugManager.hh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Frame.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/ImageAdditionner.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <caret line="40" column="47" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Entity.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/SavedEntity.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/SavedEntity.hh" />
+    <entry file="file:///usr/include/c++/8.3.0/bits/stl_algobase.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        <state relative-caret-position="6494">
+          <caret line="382" column="17" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/DebugManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/ImageAdditionner.cpp">
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/FrameAnalyser.hh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/Frame.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/ImageProvider.hh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/ImageProcesser.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/ImageService.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Launcher/Launcher.hh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Launcher/DebugManager.hh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Network/ClientNetwork.hh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/Frame.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/ImageProvider.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="158" column="71" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/launch_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Network/Log/LogNetwork.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Network/ClientNetwork.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2448" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="646">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/ImageService.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="811">
+          <caret line="201" column="42" selection-start-line="201" selection-start-column="42" selection-end-line="201" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/opencv2/core/types.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="1168" selection-start-line="1168" selection-end-line="1168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Analyser/Entity.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-43">
+          <caret line="140" column="49" lean-forward="true" selection-start-line="140" selection-start-column="49" selection-end-line="140" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/Entity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
         </state>
       </provider>
     </entry>
