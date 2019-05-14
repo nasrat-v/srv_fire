@@ -22,6 +22,7 @@ public:
 
     typedef struct  s_colorRange
     {
+        std::string nameRange;
         cv::Scalar  firstRange;
         cv::Scalar  secondRange;
     }               t_colorRange;

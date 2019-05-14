@@ -11,7 +11,9 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     initCenterPosition();
     _movementType = entityMovement::STATIC;
     _temperatureType = entityTemperature::WARM;
-    _currentMatchFoundOrNewEntity = true;
+    _predictedNextPosition = { 0 };
+    _nbEntity = DEFAULT_NB_ENTITY;
+
     /*_stillBeingTracked = true;
     _numOfConsecutiveFramesWithoutMatch = 0;*/
 }
@@ -32,6 +34,19 @@ void Entity::initCenterPosition()
     currentCenter.x = ((_currentBoundingRect.x + _currentBoundingRect.x + _currentBoundingRect.width) / 2);
     currentCenter.y = ((_currentBoundingRect.y + _currentBoundingRect.y + _currentBoundingRect.height) / 2);
     _centerPositions.push_back(currentCenter);
+}
+
+void Entity::clone(const Entity &entity)
+{
+    _currentAspectRatio = entity._currentAspectRatio;
+    _currentDiagonalSize = entity._currentDiagonalSize;
+    _currentBoundingRect = entity._currentBoundingRect;
+    _predictedNextPosition = entity._predictedNextPosition;
+    _centerPositions = std::vector<cv::Point>(entity._centerPositions);
+    _contour = std::vector<cv::Point>(entity._contour);
+    _movementType = entity._movementType;
+    _temperatureType = entity._temperatureType;
+    _nbEntity = entity._nbEntity;
 }
 
 double Entity::getCurrentAspectRatio() const
@@ -69,9 +84,9 @@ const Entity::entityTemperature &Entity::getTemperatureType() const
     return (_temperatureType);
 }
 
-void Entity::setCurrentMatchFoundOrNewEntity(bool val)
+int Entity::getNbEntity() const
 {
-    _currentMatchFoundOrNewEntity = val;
+    return (_nbEntity);
 }
 
 void Entity::setMovementType(const Entity::entityMovement &type)
@@ -84,12 +99,17 @@ void Entity::setTemperatureType(const Entity::entityTemperature &type)
     _temperatureType = type;
 }
 
+void Entity::setNbEntity(int nb)
+{
+    _nbEntity = nb;
+}
+
 void Entity::predictNextPosition()
 {
     short deltaX;
     short deltaY;
     t_sumOfChanges sumOfChanges;
-    short numPositions = (short)_centerPositions.size();
+    auto numPositions = (short)_centerPositions.size();
     sumOfChanges.posX = 0;
     sumOfChanges.posY = 0;
     sumOfChanges.changesLeft = numPositions;

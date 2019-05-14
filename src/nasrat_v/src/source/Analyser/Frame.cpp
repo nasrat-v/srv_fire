@@ -48,21 +48,6 @@ void Frame::setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &con
     _convexHullsVeryHot = convexHulls;
 }
 
-void Frame::setContoursMovement(const std::vector<std::vector<cv::Point>> &contours)
-{
-    _contoursMovement = contours;
-}
-
-void Frame::setConvexHullsMovement(const std::vector<std::vector<cv::Point>> &convexHulls)
-{
-    _convexHullsMovement = convexHulls;
-}
-
-void Frame::setCurrentMatchFoundOrNewEntity(int index, bool val)
-{
-    _entities[index].setCurrentMatchFoundOrNewEntity(val);
-}
-
 void Frame::setMovementTypeEntity(size_t index, const Entity::entityMovement &type)
 {
     _entities.at(index).setMovementType(type);
@@ -111,16 +96,6 @@ const std::vector<std::vector<cv::Point>> &Frame::getContoursVeryHot() const
 const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsVeryHot() const
 {
     return (_convexHullsVeryHot);
-}
-
-const std::vector<std::vector<cv::Point>> &Frame::getContoursMovement() const
-{
-    return (_contoursMovement);
-}
-
-const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsMovement() const
-{
-    return (_convexHullsMovement);
 }
 
 void Frame::clearEntities()
