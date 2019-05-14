@@ -8,7 +8,7 @@
 # define IPADDR     "127.0.0.1"
 # define PORT       4248
 # define JSON_ID   "{\"Id\":"
-# define JSON_TYPE  ",\"Type\":\"IA\"}"
+# define JSON_TYPE  ",\"Type\":\"IA\"}\n"
 
 #include "ClientNetwork.hh"
 #include "../Analyser/ImageProvider.hh"

@@ -12,11 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbeecc0e-6650-4f5a-b383-04d0c22c1917" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/input/video/video-incendie-pompiers.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/input/video/video-incendie-pompiers.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/launch_server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/script/launch_server.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/server_test" beforeDir="false" afterPath="$PROJECT_DIR$/script/server_test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,10 +27,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
+            <state relative-caret-position="947">
               <caret line="223" column="34" lean-forward="true" selection-start-line="223" selection-start-column="34" selection-end-line="223" selection-end-column="34" />
             </state>
           </provider>
@@ -43,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
+            <state relative-caret-position="493">
               <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
             </state>
           </provider>
@@ -97,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+            <state relative-caret-position="170">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -173,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/header/Analyser/Frame.hh" />
         <option value="$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp" />
         <option value="$PROJECT_DIR$/src/source/Analyser/Entity.cpp" />
-        <option value="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" />
         <option value="$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh" />
       </list>
     </option>
   </component>
@@ -331,12 +327,12 @@
       <workItem from="1553380647142" duration="3000" />
       <workItem from="1553770750795" duration="76000" />
       <workItem from="1557748479610" duration="5894000" />
-      <workItem from="1557866848481" duration="4893000" />
+      <workItem from="1557866848481" duration="5354000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127856000" />
+    <option name="totallyTimeSpent" value="128317000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -351,7 +347,7 @@
     <frame x="0" y="0" width="1920" height="1038" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22941177" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22941177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -510,13 +506,6 @@
     <entry file="file://$PROJECT_DIR$/src/source/Network/Log/LogNetwork.cpp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/opencv2/core/types.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -550,17 +539,24 @@
         <state relative-caret-position="-102" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh">
+    <entry file="file://$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        <state relative-caret-position="947">
+          <caret line="223" column="34" lean-forward="true" selection-start-line="223" selection-start-column="34" selection-end-line="223" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/source/Analyser/FrameAnalyser.cpp">
+    <entry file="file://$PROJECT_DIR$/src/source/Network/ProcessCommunication.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="223" column="34" lean-forward="true" selection-start-line="223" selection-start-column="34" selection-end-line="223" selection-end-column="34" />
+        <state relative-caret-position="493">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Network/ProcessCommunication.hh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
         </state>
       </provider>
     </entry>
