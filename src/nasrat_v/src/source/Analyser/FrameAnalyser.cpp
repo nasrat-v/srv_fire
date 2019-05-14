@@ -50,7 +50,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
             initSavedEntities();
         else
             matchFrameEntitiesToSavedEntities();
-        _imageService.displayImg(_frame.getImages().front(), _savedEntities);/*, _frame.getEntities());*/
+        _imageService.displayImg(_frame.getImages().front(), _savedEntities); /*, _frame.getEntities());*/
         _frame.clearEntities();
         if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
             end = true;

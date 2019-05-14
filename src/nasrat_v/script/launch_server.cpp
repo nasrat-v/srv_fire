@@ -10,8 +10,9 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-# define UTIME_WAIT 5000
-# define PATH "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/input/image/sample-image"
+# define BUFF_SIZE	4096
+# define UTIME_WAIT	5000
+# define PATH		"/home/nasrat_v/Dev/srv_fire/src/nasrat_v/input/image/sample-image"
 
 int main(int ac, char **av)
 {
@@ -19,7 +20,7 @@ int main(int ac, char **av)
     std::string path = "";
     std::string netcat_arg = "";
     ssize_t ret;
-    char buff[4096] = { 0 };
+    char buff[(BUFF_SIZE + sizeof(char))] = { 0 };
     int pipefd[2];
 
     if (ac < 2)
@@ -39,7 +40,7 @@ int main(int ac, char **av)
     {
 	dup2(pipefd[1], 1);
 	close(pipefd[0]);
-	ret = read(0, buff, 4095);
+	ret = read(0, buff, BUFF_SIZE);
 	buff[ret] = '\0';
 	while (42)
 	{
