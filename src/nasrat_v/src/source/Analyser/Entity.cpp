@@ -13,47 +13,50 @@ Entity::Entity(const std::vector<cv::Point> &contour)
     _temperatureType = entityTemperature::WARM;
     _predictedNextPosition = { 0 };
     _nbEntity = DEFAULT_NB_ENTITY;
-
-    /*_stillBeingTracked = true;
-    _numOfConsecutiveFramesWithoutMatch = 0;*/
+    _matchFoundOrNewEntity = true;
+    _numOfConsecutiveFramesWithoutMatch = 0;
+    _stillBeingTracked = true;
 }
 
 Entity::~Entity() = default;
 
 void Entity::initCurrentAttributes()
 {
-    _currentBoundingRect = cv::boundingRect(_contour);
-    _currentDiagonalSize = sqrt(pow(_currentBoundingRect.width, 2) + pow(_currentBoundingRect.height, 2));
-    _currentAspectRatio = ((float)_currentBoundingRect.width / (float)_currentBoundingRect.height);
+    _boundingRect = cv::boundingRect(_contour);
+    _diagonalSize = sqrt(pow(_boundingRect.width, 2) + pow(_boundingRect.height, 2));
+    _aspectRatio = ((float)_boundingRect.width / (float)_boundingRect.height);
 }
 
 void Entity::initCenterPosition()
 {
     cv::Point currentCenter;
 
-    currentCenter.x = ((_currentBoundingRect.x + _currentBoundingRect.x + _currentBoundingRect.width) / 2);
-    currentCenter.y = ((_currentBoundingRect.y + _currentBoundingRect.y + _currentBoundingRect.height) / 2);
+    currentCenter.x = ((_boundingRect.x + _boundingRect.x + _boundingRect.width) / 2);
+    currentCenter.y = ((_boundingRect.y + _boundingRect.y + _boundingRect.height) / 2);
     _centerPositions.push_back(currentCenter);
 }
 
 void Entity::clone(const Entity &entity)
 {
-    _currentAspectRatio = entity._currentAspectRatio;
-    _currentDiagonalSize = entity._currentDiagonalSize;
-    _currentBoundingRect = entity._currentBoundingRect;
+    _aspectRatio = entity._aspectRatio;
+    _diagonalSize = entity._diagonalSize;
+    _boundingRect = entity._boundingRect;
     _predictedNextPosition = entity._predictedNextPosition;
     _centerPositions = std::vector<cv::Point>(entity._centerPositions);
     _contour = std::vector<cv::Point>(entity._contour);
     _movementType = entity._movementType;
     _temperatureType = entity._temperatureType;
     _nbEntity = entity._nbEntity;
+    _matchFoundOrNewEntity = entity._matchFoundOrNewEntity;
+    _numOfConsecutiveFramesWithoutMatch = entity._numOfConsecutiveFramesWithoutMatch;
+    _stillBeingTracked = entity._stillBeingTracked;
 }
 
 bool Entity::isSame(const Entity &entity) const
 {
-    return (_currentAspectRatio == entity._currentAspectRatio &&
-            _currentDiagonalSize == entity._currentDiagonalSize &&
-            _currentBoundingRect == entity._currentBoundingRect &&
+    return (_aspectRatio == entity._aspectRatio &&
+            _diagonalSize == entity._diagonalSize &&
+            _boundingRect == entity._boundingRect &&
             _predictedNextPosition == entity._predictedNextPosition &&
             _centerPositions.back() == entity._centerPositions.back() &&
             _contour.back() == entity._contour.back() &&
@@ -61,19 +64,19 @@ bool Entity::isSame(const Entity &entity) const
             _temperatureType == entity._temperatureType);
 }
 
-double Entity::getCurrentAspectRatio() const
+double Entity::getAspectRatio() const
 {
-    return (_currentAspectRatio);
+    return (_aspectRatio);
 }
 
-double Entity::getCurrentDiagonalSize() const
+double Entity::getDiagonalSize() const
 {
-    return (_currentDiagonalSize);
+    return (_diagonalSize);
 }
 
-const cv::Rect &Entity::getCurrentBoundingRect() const
+const cv::Rect &Entity::getBoundingRect() const
 {
-    return (_currentBoundingRect);
+    return (_boundingRect);
 }
 
 const std::vector<cv::Point> &Entity::getContour() const
@@ -101,6 +104,41 @@ int Entity::getNbEntity() const
     return (_nbEntity);
 }
 
+bool Entity::getMatchFoundOrNewEntity() const
+{
+    return (_matchFoundOrNewEntity);
+}
+
+int Entity::getNumOfConsecutiveFramesWithoutMatch() const
+{
+    return (_numOfConsecutiveFramesWithoutMatch);
+}
+
+bool Entity::isStillBeingTracked() const
+{
+    return (_stillBeingTracked);
+}
+
+void Entity::setAspectRatio(double val)
+{
+    _aspectRatio = val;
+}
+
+void Entity::setDiagonalSize(double val)
+{
+    _diagonalSize = val;
+}
+
+void Entity::setBoundingRect(const cv::Rect &rect)
+{
+    _boundingRect = rect;
+}
+
+void Entity::setContour(const std::vector<cv::Point> &contour)
+{
+    _contour = contour;
+}
+
 void Entity::setMovementType(const Entity::entityMovement &type)
 {
     _movementType = type;
@@ -114,6 +152,21 @@ void Entity::setTemperatureType(const Entity::entityTemperature &type)
 void Entity::setNbEntity(int nb)
 {
     _nbEntity = nb;
+}
+
+void Entity::setMatchFoundOrNewEntity(bool match)
+{
+    _matchFoundOrNewEntity = match;
+}
+
+void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
+{
+    _numOfConsecutiveFramesWithoutMatch = val;
+}
+
+void Entity::setStillBeingTracked(bool tracked)
+{
+    _stillBeingTracked = tracked;
 }
 
 void Entity::predictNextPosition()
@@ -157,61 +210,13 @@ void Entity::calculateSumOfChanges(t_sumOfChanges &sumOfChanges)
 }
 
 
-
 /*
 const cv::Point &Entity::getPredictedNextPosition() const
 {
     return (_predictedNextPosition);
 }
 
-void Entity::setStillBeingTracked(bool val)
-{
-    _stillBeingTracked = val;
-}
-
-void Entity::setNumOfConsecutiveFramesWithoutAMatch(int val)
-{
-    _numOfConsecutiveFramesWithoutMatch = val;
-}
-
-bool Entity::getStillBeingTracked() const
-{
-    return (_stillBeingTracked);
-}
-
-bool Entity::getCurrentMatchFoundOrNewEntity() const
-{
-    return (_currentMatchFoundOrNewEntity);
-}
-
-int Entity::getNumOfConsecutiveFramesWithoutMatch() const
-{
-    return (_numOfConsecutiveFramesWithoutMatch);
-}
-
-
-void Entity::setCurrentBoundingRect(const cv::Rect &rect)
-{
-    _currentBoundingRect = rect;
-}
-
-void Entity::setContour(const std::vector<cv::Point> &contour)
-{
-    _contour = contour;
-}
-
 void Entity::addCenterPosition(const cv::Point &centerPosition)
 {
     _centerPositions.push_back(centerPosition);
-}
-
-void Entity::setCurrentAspectRatio(double val)
-{
-    _currentAspectRatio = val;
-}
-
-void Entity::setCurrentDiagonalSize(double val)
-{
-    _currentDiagonalSize = val;
-}
- */
+}*/

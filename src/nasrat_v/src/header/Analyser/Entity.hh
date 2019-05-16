@@ -36,44 +36,45 @@ public:
     void                            clone(const Entity &entity);
     bool                            isSame(const Entity &entity) const;
     void                            predictNextPosition();
-    double                          getCurrentAspectRatio() const;
-    double                          getCurrentDiagonalSize() const;
-    const cv::Rect                  &getCurrentBoundingRect() const;
+    double                          getAspectRatio() const;
+    double                          getDiagonalSize() const;
+    const cv::Rect                  &getBoundingRect() const;
     const std::vector<cv::Point>    &getContour() const;
     const std::vector<cv::Point>    &getCenterPositions() const;
     const entityMovement            &getMovementType() const;
     const entityTemperature         &getTemperatureType() const;
     int                             getNbEntity() const;
+    bool                            getMatchFoundOrNewEntity() const;
+    int                             getNumOfConsecutiveFramesWithoutMatch() const;
+    bool                            isStillBeingTracked() const;
+    void                            setAspectRatio(double val);
+    void                            setDiagonalSize(double val);
+    void                            setBoundingRect(const cv::Rect &rect);
+    void                            setContour(const std::vector<cv::Point> &contour);
     void                            setMovementType(const entityMovement &type);
     void                            setTemperatureType(const entityTemperature &type);
     void                            setNbEntity(int nb);
+    void                            setMatchFoundOrNewEntity(bool match);
+    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
+    void                            setStillBeingTracked(bool tracked);
 
     /*const cv::Point                 &getPredictedNextPosition() const;
-    bool                            getStillBeingTracked() const;
-    bool                            getCurrentMatchFoundOrNewEntity() const;
-    int                             getNumOfConsecutiveFramesWithoutMatch() const;
-    void                            setCurrentAspectRatio(double val);
-    void                            setCurrentDiagonalSize(double val);
-    void                            setCurrentBoundingRect(const cv::Rect &rect);
-    void                            setContour(const std::vector<cv::Point> &contour);
-    void                            addCenterPosition(const cv::Point &centerPosition);
-    void                            setStillBeingTracked(bool val);
-    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);*/
+    void                            addCenterPosition(const cv::Point &centerPosition);*/
 
 private:
     /* Attributes */
-    double                          _currentAspectRatio { };
-    double                          _currentDiagonalSize { };
-    cv::Rect                        _currentBoundingRect;
+    double                          _aspectRatio { };
+    double                          _diagonalSize { };
+    cv::Rect                        _boundingRect;
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
     std::vector<cv::Point>          _contour;
     entityMovement                  _movementType;
     entityTemperature               _temperatureType;
     int                             _nbEntity;
-
-    /*int                             _numOfConsecutiveFramesWithoutMatch;
-    bool                            _stillBeingTracked;*/
+    bool                            _matchFoundOrNewEntity;
+    int                             _numOfConsecutiveFramesWithoutMatch;
+    bool                            _stillBeingTracked;
 
     typedef struct                  s_sumOfChanges
     {

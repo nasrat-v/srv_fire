@@ -35,6 +35,9 @@ set(SOURCE_FILES
         src/header/Network/Log/LogNetwork.hh
         src/source/Network/ProcessCommunication.cpp
         src/header/Network/ProcessCommunication.hh
-        src/source/Launcher/ParamManager.cpp src/header/Launcher/ParamManager.hh src/source/Launcher/Launcher.cpp src/header/Launcher/Launcher.hh)
+        src/source/Launcher/ParamManager.cpp
+        src/header/Launcher/ParamManager.hh
+        src/source/Launcher/Launcher.cpp
+        src/header/Launcher/Launcher.hh)
 
 add_executable(opencv_srv ${SOURCE_FILES})

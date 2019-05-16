@@ -18,7 +18,6 @@ void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector
 
     for (auto &entity : entities)
         contours.push_back(entity.getContour());
-
     cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
     imshow(strImageName, image);
 }
@@ -37,24 +36,21 @@ void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector
     imshow(strImageName, image);
 }
 
-
-/// A decouper
-
 void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &savedEntities,
                                                 const std::vector<Entity> &frameEntities, cv::Mat &img)
 {
     for (auto &savedEntity : savedEntities)
     {
-        for (auto &frameEntity: frameEntities)
+        for (auto &frameEntity : frameEntities)
         {
-            if (savedEntity.isSame(frameEntity))
+            if (savedEntity.isSame(frameEntity) && savedEntity.isStillBeingTracked())
             {
                 if (savedEntity.getTemperatureType() == Entity::entityTemperature::WARM)
-                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
+                    cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_YELLOW, 2);
                 else if (savedEntity.getTemperatureType() == Entity::entityTemperature::HOT)
-                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_ORANGE, 2);
+                    cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_ORANGE, 2);
                 else
-                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_RED, 2);
+                    cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_RED, 2);
             }
         }
     }
@@ -62,20 +58,21 @@ void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &saved
 
 void ImageAdditionner::drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img)
 {
-    int nb = 0;
     double fontScale;
     int intFontThickness;
 
     for (auto &entity : entities)
     {
-        fontScale = (entity.getCurrentDiagonalSize() / 60.0);
+        fontScale = (entity.getDiagonalSize() / 60.0);
         intFontThickness = (int)std::round(fontScale * 1.0);
         if (entity.getTemperatureType() == Entity::entityTemperature::WARM)
-            cv::putText(img, /*std::to_string(nb)*/"warm", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_WHITE, intFontThickness);
+            cv::putText(img, "warm", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
+                    fontScale, SCALAR_WHITE, intFontThickness);
         else if (entity.getTemperatureType() == Entity::entityTemperature::HOT)
-            cv::putText(img, /*std::to_string(nb)*/"hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
+            cv::putText(img, "hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
+                    fontScale, SCALAR_GREEN, intFontThickness);
         else
-            cv::putText(img, /*std::to_string(nb)*/"very_hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_BLUE, intFontThickness);
+            cv::putText(img, "very_hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
+                    fontScale, SCALAR_BLUE, intFontThickness);
     }
-    nb++;
 }

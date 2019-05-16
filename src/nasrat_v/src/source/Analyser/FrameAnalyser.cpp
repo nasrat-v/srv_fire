@@ -101,23 +101,7 @@ void FrameAnalyser::findAllEntitiesWithInfos()
     }
 }
 
-void FrameAnalyser::findEntitiesInMovementWithInfos()
-{
-    size_t index = 0;
-    t_distance distance;
-
-    for (auto &entity : _frame.getEntities())
-    {
-        findClosestMovementEntity(entity, &distance);
-        if (distance.leastDistance < entity.getCurrentDiagonalSize() * 1.15)
-            _frame.setMovementTypeEntity(index, Entity::entityMovement::MOVE);
-        else
-            _frame.setMovementTypeEntity(index, Entity::entityMovement::STATIC);
-        index++;
-    }
-}
-
-void FrameAnalyser::findClosestMovementEntity(const Entity &entity, t_distance *distance)
+void FrameAnalyser::findClosestSavedEntity(const Entity &entity, t_distance *distance)
 {
     size_t i = 0;
     double dist = 0;
@@ -146,10 +130,10 @@ double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point seco
 
 bool FrameAnalyser::isPossibleEntity(const Entity &possibleEntity)
 {
-    return (possibleEntity.getCurrentBoundingRect().area() > 150 && possibleEntity.getCurrentAspectRatio() >= 0.2 &&
-            possibleEntity.getCurrentAspectRatio() <= 1.25 && possibleEntity.getCurrentBoundingRect().width > 30 &&
-            possibleEntity.getCurrentBoundingRect().height > 30 && possibleEntity.getCurrentDiagonalSize() > 30.0 &&
-            (cv::contourArea(possibleEntity.getContour()) / (double)possibleEntity.getCurrentBoundingRect().area()) > 0.40);
+    return (possibleEntity.getBoundingRect().area() > 150 && possibleEntity.getAspectRatio() >= 0.2 &&
+            possibleEntity.getAspectRatio() <= 1.25 && possibleEntity.getBoundingRect().width > 30 &&
+            possibleEntity.getBoundingRect().height > 30 && possibleEntity.getDiagonalSize() > 30.0 &&
+            (cv::contourArea(possibleEntity.getContour()) / (double)possibleEntity.getBoundingRect().area()) > 0.40);
 }
 
 void FrameAnalyser::initSavedEntities()
@@ -175,48 +159,49 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
     //predictNextPositionSavedEntities();
     for (auto &frameEntity : _frame.getEntities())
     {
-        findClosestMovementEntity(frameEntity, &distance);
-        if (distance.leastDistance < (frameEntity.getCurrentDiagonalSize() * 1.15))
+        findClosestSavedEntity(frameEntity, &distance);
+        if (distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15))
             setNewValueSavedEntity(frameEntity, distance.indexSavedEntity);
         else
             addNewSavedEntity(frameEntity);
     }
-    //checkConsecutiveFrameWithoutMatchSavedEntities();
+    checkConsecutiveFrameWithoutMatchSavedEntities();
 }
-
 
 void FrameAnalyser::setNewValueSavedEntity(const Entity &frameEntity, size_t index)
 {
     _savedEntities[index].clone(frameEntity);
+    _savedEntities[index].setMatchFoundOrNewEntity(true);
 }
-
 
 void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity)
 {
     Entity savedEntity(frameEntity.getContour());
 
     savedEntity.clone(frameEntity);
+    savedEntity.setMatchFoundOrNewEntity(true);
     _savedEntities.push_back(savedEntity);
-}
-
-
-
-
-/*void FrameAnalyser::predictNextPositionSavedEntities()
-{
-    for (auto &savedEntity : _savedEntities)
-        savedEntity.predictNextPosition();
 }
 
 void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
 {
     for (auto &savedEntity : _savedEntities)
     {
-        if (!savedEntity.getCurrentMatchFoundOrNewEntity())
+        if (!savedEntity.getMatchFoundOrNewEntity())
             savedEntity.setNumOfConsecutiveFramesWithoutAMatch(savedEntity.getNumOfConsecutiveFramesWithoutMatch() + 1);
-        if (savedEntity.getNumOfConsecutiveFramesWithoutMatch() >= NB_FRAME_MOVE_PREDICTION)
+        if (savedEntity.getNumOfConsecutiveFramesWithoutMatch() >= MAX_FRAME_WITHOUT_MATCH)
             savedEntity.setStillBeingTracked(false);
+        savedEntity.setMatchFoundOrNewEntity(false);
     }
+    _savedEntities.erase(std::remove_if(_savedEntities.begin(), _savedEntities.end(),
+                    [](const Entity &entity) { return (!entity.isStillBeingTracked()); }), _savedEntities.end());
+}
+
+
+/*void FrameAnalyser::predictNextPositionSavedEntities()
+{
+    for (auto &savedEntity : _savedEntities)
+        savedEntity.predictNextPosition();
 }
 
 void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity)
@@ -229,4 +214,20 @@ void FrameAnalyser::debugPredictedPosition(const Entity &frameEntity)
         Log::logSomething("real Y :\t" + std::to_string(frameEntity.getCenterPositions().back().y));
         std::cout << std::endl;
     }
+}
+
+void FrameAnalyser::findEntitiesInMovementWithInfos()
+{
+   size_t index = 0;
+   t_distance distance;
+
+   for (auto &entity : _frame.getEntities())
+   {
+       findClosestSavedEntity(entity, &distance);
+       if (distance.leastDistance < entity.getCurrentDiagonalSize() * 1.15)
+           _frame.setMovementTypeEntity(index, Entity::entityMovement::MOVE);
+       else
+           _frame.setMovementTypeEntity(index, Entity::entityMovement::STATIC);
+       index++;
+   }
 }*/

@@ -5,7 +5,8 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH     "../input/video/video-incendie-pompiers.mp4"
+# define VIDEO_PATH                 "../input/video/video-incendie-pompiers.mp4"
+# define MAX_FRAME_WITHOUT_MATCH    20
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
@@ -43,17 +44,17 @@ private:
     /* Methods */
     void                    findEntities();
     void                    findAllEntitiesWithInfos();
-    void                    findEntitiesInMovementWithInfos();
     bool                    isPossibleEntity(const Entity &possibleEntity);
-    void                    findClosestMovementEntity(const Entity &entity, t_distance *distance);
+    void                    findClosestSavedEntity(const Entity &entity, t_distance *distance);
     double                  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
     void                    initSavedEntities();
     void                    matchFrameEntitiesToSavedEntities();
     void                    setNewValueSavedEntity(const Entity &frameEntity, size_t index);
     void                    addNewSavedEntity(const Entity &frameEntity);
-    /*void                    predictNextPositionSavedEntities();
     void                    checkConsecutiveFrameWithoutMatchSavedEntities();
-    void                    debugPredictedPosition(const Entity &frameEntity);*/
+    /*void                    predictNextPositionSavedEntities();
+    void                    debugPredictedPosition(const Entity &frameEntity);
+    void                    findEntitiesInMovementWithInfos();*/
 };
 
 
