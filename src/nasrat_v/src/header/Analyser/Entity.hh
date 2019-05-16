@@ -34,6 +34,7 @@ public:
     };
 
     void                            clone(const Entity &entity);
+    bool                            isSame(const Entity &entity) const;
     void                            predictNextPosition();
     double                          getCurrentAspectRatio() const;
     double                          getCurrentDiagonalSize() const;

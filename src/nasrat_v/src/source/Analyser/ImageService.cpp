@@ -189,20 +189,19 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
 
 /////////////////////// Image Addition //////////////////////////
 
-void ImageService::displayImg(cv::Mat img, /*const std::vector<Entity> &savedEntities,*/ const std::vector<Entity> &frameEntities)
+void ImageService::displayImg(cv::Mat img, const std::vector<Entity> &savedEntities,
+                                            const std::vector<Entity> &frameEntities)
 {
     cv::Mat trackImg = img.clone();
 
-    //if (_debugMode & Log::debugMode::SAVED_ENTITIES)
-    //    _imageAdditionner.drawAndShowContours(img.size(), savedEntities, "imgEntities");
+    if (_debugMode & DebugManager::debugMode::SAVED_ENTITIES)
+        _imageAdditionner.drawAndShowContours(img.size(), savedEntities, "imgSavedEntities");
     if (_debugMode & DebugManager::debugMode::FRAME_ENTITIES)
         _imageAdditionner.drawAndShowContours(img.size(), frameEntities, "imgFrameEntities");
     if (_debugMode & DebugManager::debugMode::TRACK)
-        //_imageAdditionner.drawTrackEntitiesOnImage(savedEntities, trackImg);
-        _imageAdditionner.drawTrackEntitiesOnImage(frameEntities, trackImg);
+        _imageAdditionner.drawTrackEntitiesOnImage(savedEntities, frameEntities, trackImg);
     if (_debugMode & DebugManager::debugMode::NUMBER)
-        //_imageAdditionner.drawNumberEntitiesOnImage(savedEntities, trackImg);
-        _imageAdditionner.drawNumberEntitiesOnImage(frameEntities, trackImg);
+        _imageAdditionner.drawNumberEntitiesOnImage(savedEntities, trackImg);
     if (!(_debugMode & DebugManager::debugMode::NO_ORIGINAL_VIDEO))
         cv::imshow("imgFrame", trackImg);
     if (_debugMode & DebugManager::debugMode::WAIT_KEY)

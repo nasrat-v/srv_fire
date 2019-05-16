@@ -38,16 +38,25 @@ void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector
 }
 
 
-void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img)
+/// A decouper
+
+void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &savedEntities,
+                                                const std::vector<Entity> &frameEntities, cv::Mat &img)
 {
-    for (auto &entity : entities)
+    for (auto &savedEntity : savedEntities)
     {
-        if (entity.getTemperatureType() == Entity::entityTemperature::WARM)
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
-        else if (entity.getTemperatureType() == Entity::entityTemperature::HOT)
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_ORANGE, 2);
-        else
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
+        for (auto &frameEntity: frameEntities)
+        {
+            if (savedEntity.isSame(frameEntity))
+            {
+                if (savedEntity.getTemperatureType() == Entity::entityTemperature::WARM)
+                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
+                else if (savedEntity.getTemperatureType() == Entity::entityTemperature::HOT)
+                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_ORANGE, 2);
+                else
+                    cv::rectangle(img, savedEntity.getCurrentBoundingRect(), SCALAR_RED, 2);
+            }
+        }
     }
 }
 

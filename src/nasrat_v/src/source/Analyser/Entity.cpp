@@ -49,6 +49,18 @@ void Entity::clone(const Entity &entity)
     _nbEntity = entity._nbEntity;
 }
 
+bool Entity::isSame(const Entity &entity) const
+{
+    return (_currentAspectRatio == entity._currentAspectRatio &&
+            _currentDiagonalSize == entity._currentDiagonalSize &&
+            _currentBoundingRect == entity._currentBoundingRect &&
+            _predictedNextPosition == entity._predictedNextPosition &&
+            _centerPositions.back() == entity._centerPositions.back() &&
+            _contour.back() == entity._contour.back() &&
+            _movementType == entity._movementType &&
+            _temperatureType == entity._temperatureType);
+}
+
 double Entity::getCurrentAspectRatio() const
 {
     return (_currentAspectRatio);
@@ -143,7 +155,6 @@ void Entity::calculateSumOfChanges(t_sumOfChanges &sumOfChanges)
     sumOfChanges.changesLeft -= 1;
     sumOfChanges.nbChanges += 1;
 }
-
 
 
 

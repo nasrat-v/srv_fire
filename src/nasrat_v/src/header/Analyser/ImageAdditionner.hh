@@ -29,7 +29,8 @@ public:
     void                drawAndShowContours(cv::Size imageSize,
                                             const std::vector<std::vector<cv::Point>> &contours,
                                             const std::string &strImageName, const Entity::entityTemperature &temp);
-    void                drawTrackEntitiesOnImage(const std::vector<Entity> &entities,cv::Mat &img);
+    void                drawTrackEntitiesOnImage(const std::vector<Entity> &savedEntities,
+                                                 const std::vector<Entity> &frameEntities,cv::Mat &img);
     void                drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);
 };
 

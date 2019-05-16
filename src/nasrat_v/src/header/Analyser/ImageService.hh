@@ -26,7 +26,8 @@ public:
     void                        substractInfosEntitiesInMovement(Frame &frame);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
-    void                        displayImg(cv::Mat img, /*const std::vector<Entity> &savedEntities,*/ const std::vector<Entity> &frameEntities);
+    void                        displayImg(cv::Mat img, const std::vector<Entity> &savedEntities,
+                                                        const std::vector<Entity> &frameEntities);
     ImageProvider::statusVideo  createSampleImgFromVideo();
 
 private:
