@@ -15,6 +15,7 @@
 
 #include "Entity.hh"
 
+#include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
 class ImageAdditionner
@@ -23,12 +24,14 @@ public:
     ImageAdditionner();
     ~ImageAdditionner();
 
+    void                drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours);
     void                drawAndShowContours(cv::Size imageSize,
                                             const std::vector<Entity> &entities,
                                             const std::string &strImageName);
     void                drawAndShowContours(cv::Size imageSize,
                                             const std::vector<std::vector<cv::Point>> &contours,
-                                            const std::string &strImageName, const Entity::entityTemperature &temp);
+                                            const std::string &strImageName,
+                                            const Entity::entityTemperature &temp = Entity::entityTemperature::NO_TEMP);
     void                drawTrackEntitiesOnImage(const std::vector<Entity> &savedEntities,
                                                  const std::vector<Entity> &frameEntities,cv::Mat &img);
     void                drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);

@@ -28,6 +28,7 @@ public:
 
     enum class entityTemperature
     {
+        NO_TEMP,
         WARM,
         HOT,
         VERY_HOT

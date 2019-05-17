@@ -6,7 +6,7 @@
 # define OPENCV_SRV_DEBUGMODE_H
 
 # define THRESH_ARG             "--thresh"
-# define CONTOUR_ARG            "--contour"
+# define CONTOUR_ARG            "--contours"
 # define CONVEXHULLS_ARG        "--convexhulls"
 # define SAVEDENTITIES_ARG      "--saved-entities"
 # define FRAMEENTITIES_ARG      "--frame-entities"

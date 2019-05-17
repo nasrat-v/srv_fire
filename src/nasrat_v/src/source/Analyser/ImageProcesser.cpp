@@ -14,10 +14,15 @@ void ImageProcesser::imgToHSV(cv::Mat &img, const t_colorRange &range)
     cv::inRange(img, range.firstRange, range.secondRange, img);
 }
 
+void ImageProcesser::imgToGray(cv::Mat &img)
+{
+    cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
+}
+
 cv::Mat ImageProcesser::differenceImgGray(cv::Mat firstImg, cv::Mat secondImg)
 {
-    cv::cvtColor(firstImg, firstImg, cv::COLOR_BGR2GRAY);
-    cv::cvtColor(secondImg, secondImg, cv::COLOR_BGR2GRAY);
+    imgToGray(firstImg);
+    imgToGray(secondImg);
     return (differenceImg(firstImg, secondImg));
 }
 
@@ -67,6 +72,7 @@ std::vector<std::vector<cv::Point>> ImageProcesser::findConvexHullsFromContours(
     size_t  i = 0;
     size_t  contoursSize = contours.size();
     std::vector<std::vector<cv::Point>> convexHulls(contoursSize);
+    std::vector<cv::Point> point;
 
     /*if (contoursSize == 0)
         std::cout << "Cannot find convexhulls" << std::endl;*/

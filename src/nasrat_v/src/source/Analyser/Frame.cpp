@@ -48,6 +48,16 @@ void Frame::setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &con
     _convexHullsVeryHot = convexHulls;
 }
 
+void Frame::setContoursMerged(const std::vector<std::vector<cv::Point>> &contours)
+{
+    _contoursMerged = contours;
+}
+
+void Frame::setConvexHullsMerged(const std::vector<std::vector<cv::Point>> &convexHulls)
+{
+    _convexHullsMerged = convexHulls;
+}
+
 void Frame::setMovementTypeEntity(size_t index, const Entity::entityMovement &type)
 {
     _entities.at(index).setMovementType(type);
@@ -96,6 +106,16 @@ const std::vector<std::vector<cv::Point>> &Frame::getContoursVeryHot() const
 const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsVeryHot() const
 {
     return (_convexHullsVeryHot);
+}
+
+const std::vector<std::vector<cv::Point>> &Frame::getContoursMerged() const
+{
+    return (_contoursMerged);
+}
+
+const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsMerged() const
+{
+    return (_convexHullsMerged);
 }
 
 void Frame::clearEntities()

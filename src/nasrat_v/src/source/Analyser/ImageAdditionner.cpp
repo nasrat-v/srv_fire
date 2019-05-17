@@ -1,4 +1,3 @@
-#include <utility>
 
 //
 // Created by nasrat_v on 11/3/18.
@@ -9,6 +8,11 @@
 ImageAdditionner::ImageAdditionner() = default;
 
 ImageAdditionner::~ImageAdditionner() = default;
+
+void ImageAdditionner::drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours)
+{
+    cv::drawContours(img, contours, -1, SCALAR_WHITE, -1);
+}
 
 void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<Entity> &entities,
                                             const std::string &strImageName)
@@ -31,8 +35,10 @@ void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector
         cv::drawContours(image, contours, -1, SCALAR_YELLOW, -1);
     else if (temp == Entity::entityTemperature::HOT)
         cv::drawContours(image, contours, -1, SCALAR_ORANGE, -1);
-    else
+    else if (temp == Entity::entityTemperature::VERY_HOT)
         cv::drawContours(image, contours, -1, SCALAR_RED, -1);
+    else
+        cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
     imshow(strImageName, image);
 }
 
@@ -49,8 +55,10 @@ void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &saved
                     cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_YELLOW, 2);
                 else if (savedEntity.getTemperatureType() == Entity::entityTemperature::HOT)
                     cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_ORANGE, 2);
-                else
+                else if (savedEntity.getTemperatureType() == Entity::entityTemperature::VERY_HOT)
                     cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_RED, 2);
+                else
+                    cv::rectangle(img, savedEntity.getBoundingRect(), SCALAR_WHITE, 2);
             }
         }
     }
@@ -67,12 +75,15 @@ void ImageAdditionner::drawNumberEntitiesOnImage(const std::vector<Entity> &enti
         intFontThickness = (int)std::round(fontScale * 1.0);
         if (entity.getTemperatureType() == Entity::entityTemperature::WARM)
             cv::putText(img, "warm", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
-                    fontScale, SCALAR_WHITE, intFontThickness);
+                    fontScale, SCALAR_BLACK, intFontThickness);
         else if (entity.getTemperatureType() == Entity::entityTemperature::HOT)
             cv::putText(img, "hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
                     fontScale, SCALAR_GREEN, intFontThickness);
-        else
+        else if (entity.getTemperatureType() == Entity::entityTemperature::VERY_HOT)
             cv::putText(img, "very_hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
                     fontScale, SCALAR_BLUE, intFontThickness);
+        else
+            cv::putText(img, "entity", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
+                        fontScale, SCALAR_WHITE, intFontThickness);
     }
 }

@@ -69,7 +69,17 @@ void FrameAnalyser::findEntities()
 
 void FrameAnalyser::findAllEntitiesWithInfos()
 {
-    for (auto &convexHull : _frame.getConvexHullsWarm())
+    for (auto &convexHull : _frame.getConvexHullsMerged())
+    {
+        Entity possibleEntity(convexHull);
+
+        if (isPossibleEntity(possibleEntity))
+        {
+            possibleEntity.setTemperatureType(Entity::entityTemperature::NO_TEMP);
+            _frame.addEntity(possibleEntity);
+        }
+    }
+    /*for (auto &convexHull : _frame.getConvexHullsWarm())
     {
         Entity possibleEntity(convexHull);
 
@@ -78,8 +88,8 @@ void FrameAnalyser::findAllEntitiesWithInfos()
             possibleEntity.setTemperatureType(Entity::entityTemperature::WARM);
             _frame.addEntity(possibleEntity);
         }
-    }
-    for (auto &convexHull : _frame.getConvexHullsHot())
+    }*/
+    /*for (auto &convexHull : _frame.getConvexHullsHot())
     {
         Entity possibleEntity(convexHull);
 
@@ -98,7 +108,7 @@ void FrameAnalyser::findAllEntitiesWithInfos()
             possibleEntity.setTemperatureType(Entity::entityTemperature::VERY_HOT);
             _frame.addEntity(possibleEntity);
         }
-    }
+    }*/
 }
 
 void FrameAnalyser::findClosestSavedEntity(const Entity &entity, t_distance *distance)

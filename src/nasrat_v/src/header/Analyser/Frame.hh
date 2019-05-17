@@ -25,6 +25,8 @@ public:
     void                                        setConvexHullsHot(const std::vector<std::vector<cv::Point>> &convexHulls);
     void                                        setContoursVeryHot(const std::vector<std::vector<cv::Point>> &contours);
     void                                        setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &convexHulls);
+    void                                        setContoursMerged(const std::vector<std::vector<cv::Point>> &contours);
+    void                                        setConvexHullsMerged(const std::vector<std::vector<cv::Point>> &convexHulls);
     void                                        setMovementTypeEntity(size_t index, const Entity::entityMovement &type);
     void                                        setTemperatureTypeEntity(size_t index, const Entity::entityTemperature &type);
     const std::vector<cv::Mat>                  &getImages() const;
@@ -35,6 +37,8 @@ public:
     const std::vector<std::vector<cv::Point>>   &getConvexHullsHot() const;
     const std::vector<std::vector<cv::Point>>   &getContoursVeryHot() const;
     const std::vector<std::vector<cv::Point>>   &getConvexHullsVeryHot() const;
+    const std::vector<std::vector<cv::Point>>   &getContoursMerged() const;
+    const std::vector<std::vector<cv::Point>>   &getConvexHullsMerged() const;
     void                                        clearEntities();
     void                                        predictNextPositionEntities();
     void                                        addEntity(const Entity &entity);
@@ -49,6 +53,8 @@ private:
     std::vector<std::vector<cv::Point>>         _convexHullsHot;
     std::vector<std::vector<cv::Point>>         _contoursVeryHot;
     std::vector<std::vector<cv::Point>>         _convexHullsVeryHot;
+    std::vector<std::vector<cv::Point>>         _contoursMerged;
+    std::vector<std::vector<cv::Point>>         _convexHullsMerged;
 };
 
 

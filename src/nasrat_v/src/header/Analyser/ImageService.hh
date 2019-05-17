@@ -35,6 +35,10 @@ private:
     void                        substractColor(cv::Mat &imgProcessed, const ImageProcesser::t_colorRange &range);
     void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed);
     void                        threshImg(cv::Mat &imgProcessed);
+    void                        mergeAllContours(cv::Mat &img, Frame &frame);
+    void                        mergeAllConvexHulls(cv::Mat &img, Frame &frame);
+    void                        setContoursMergedFrame(Frame &frame);
+    void                        setConvexHullsMergedFrame(Frame &frame);
     void                        setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
     void                        setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
     void                        setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed);

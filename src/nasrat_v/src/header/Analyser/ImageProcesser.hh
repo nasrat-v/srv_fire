@@ -28,6 +28,7 @@ public:
     }               t_colorRange;
 
     void                                imgToHSV(cv::Mat &img, const t_colorRange &range);
+    void                                imgToGray(cv::Mat &img);
     cv::Mat                             differenceImgGray(cv::Mat firstImg, cv::Mat secondImg);
     void                                threshImg(cv::Mat &img);
     std::vector<std::vector<cv::Point>> findContoursFromImg(const cv::Mat &img);

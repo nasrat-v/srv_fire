@@ -36,6 +36,9 @@ void ImageService::substractInfosAllEntities(Frame &frame)
     threshImg(imgProcessed);
     setContoursVeryHotFrame(frame, imgProcessed);
     setConvexHullsVeryHotFrame(frame, imgProcessed);
+
+    setContoursMergedFrame(frame);
+    setConvexHullsMergedFrame(frame);
 }
 
 void ImageService::substractInfosEntitiesInMovement(Frame &frame)
@@ -44,6 +47,7 @@ void ImageService::substractInfosEntitiesInMovement(Frame &frame)
 
     differenceImg(frame.getImages().front().clone(), frame.getImages().back().clone(), imgProcessed);
     threshImg(imgProcessed);
+
     //setContoursMovementFrame(frame, imgProcessed);
     //setConvexHullsMovementFrame(frame, imgProcessed);
 }
@@ -67,6 +71,34 @@ void ImageService::threshImg(cv::Mat &imgProcessed)
     _imageProcesser.threshImg(imgProcessed);
     if (_debugMode & DebugManager::debugMode::THRESH)
         cv::imshow("imgThresh", imgProcessed);
+}
+
+void ImageService::mergeAllContours(cv::Mat &img, Frame &frame)
+{
+    _imageAdditionner.drawContours(img, frame.getContoursWarm());
+    _imageAdditionner.drawContours(img, frame.getContoursHot());
+    _imageAdditionner.drawContours(img, frame.getContoursVeryHot());
+    _imageProcesser.imgToGray(img);
+    _imageProcesser.threshImg(img);
+}
+
+void ImageService::setContoursMergedFrame(Frame &frame)
+{
+    cv::Mat imgMerge(frame.getImages().front().size(), CV_8UC3, SCALAR_BLACK);
+
+    mergeAllContours(imgMerge, frame);
+    frame.setContoursMerged(_imageProcesser.findContoursFromImg(imgMerge));
+    if (_debugMode & DebugManager::debugMode::CONTOUR)
+        _imageAdditionner.drawAndShowContours(imgMerge.size(), frame.getContoursMerged(), "imgContoursMerged");
+}
+
+void ImageService::setConvexHullsMergedFrame(Frame &frame)
+{
+    cv::Mat imgMerge(frame.getImages().front().size(), CV_8UC3, SCALAR_BLACK);
+
+    frame.setConvexHullsMerged(_imageProcesser.findConvexHullsFromContours(frame.getContoursMerged()));
+    if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
+        _imageAdditionner.drawAndShowContours(imgMerge.size(), frame.getConvexHullsMerged(), "imgConvexHullsMerged");
 }
 
 void ImageService::setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcessed)
