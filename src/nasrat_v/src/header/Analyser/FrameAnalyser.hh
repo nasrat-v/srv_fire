@@ -29,7 +29,7 @@ public:
 private:
     /* Attributes */
     bool                    _isInit;
-    std::vector<Entity>     _savedEntities;
+    std::vector<Blob>       _savedBlobs;
     Frame                   _frame;
     bool                    _firstFrame;
     DebugManager::debugMode _debugMode;
@@ -38,20 +38,20 @@ private:
     typedef struct          s_distance
     {
         double              leastDistance;
-        size_t              indexSavedEntity;
+        size_t              indexSavedBlob;
     }                       t_distance;
 
     /* Methods */
-    void                    findEntities();
-    void                    findAllEntitiesWithInfos();
-    bool                    isPossibleEntity(const Entity &possibleEntity);
-    void                    findClosestSavedEntity(const Entity &entity, t_distance *distance);
+    void                    findBlobs();
+    void                    findAllBlobsWithInfos();
+    bool                    isPossibleBlob(const Blob &possibleBlob);
+    void                    findClosestSavedBlob(const Blob &blob, t_distance *distance);
     double                  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
-    void                    initSavedEntities();
-    void                    matchFrameEntitiesToSavedEntities();
-    void                    setNewValueSavedEntity(const Entity &frameEntity, size_t index);
-    void                    addNewSavedEntity(const Entity &frameEntity);
-    void                    checkConsecutiveFrameWithoutMatchSavedEntities();
+    void                    initSavedBlobs();
+    void                    matchFrameBlobsToSavedBlobs();
+    void                    setNewValueSavedBlob(const Blob &frameBlob, size_t index);
+    void                    addNewSavedBlob(const Blob &frameBlob);
+    void                    checkConsecutiveFrameWithoutMatchSavedBlobs();
     /*void                    predictNextPositionSavedEntities();
     void                    debugPredictedPosition(const Entity &frameEntity);
     void                    findEntitiesInMovementWithInfos();*/

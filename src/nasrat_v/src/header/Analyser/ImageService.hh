@@ -22,12 +22,12 @@ public:
     ImageService(const DebugManager::debugMode &mode, ImageProvider *imageProvider);
     ~ImageService();
 
-    void                        substractInfosAllEntities(Frame &frame);
-    void                        substractInfosEntitiesInMovement(Frame &frame);
+    void                        substractInfosAllBlobs(Frame &frame);
+    void                        substractInfosBlobsInMovement(Frame &frame);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
-    void                        displayImg(cv::Mat img, const std::vector<Entity> &savedEntities,
-                                                        const std::vector<Entity> &frameEntities);
+    void                        displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
+                                                        const std::vector<Blob> &frameBlobs);
     ImageProvider::statusVideo  createSampleImgFromVideo();
 
 private:

@@ -5,11 +5,12 @@
 #ifndef OPENCV_SRV_FRAME_H
 # define OPENCV_SRV_FRAME_H
 
+#include <map>
 #include <opencv2/core/mat.hpp>
 
-#include "Entity.hh"
-#include "../Log/Error.hh"
+#include "Blob.hh"
 #include "ImageProcesser.hh"
+#include "../Log/Error.hh"
 
 class Frame
 {
@@ -18,43 +19,24 @@ public:
     ~Frame();
 
     void                                        addImage(const cv::Mat &img);
+    void                                        addPossibleBlob(const ImageProcesser::t_colorRange &colorRange,
+                                                                const Blob::t_blobForm &possibleBlob);
     void                                        setImage(const cv::Mat &img, size_t index);
-    void                                        setContoursWarm(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsWarm(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursHot(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsHot(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursVeryHot(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursMerged(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsMerged(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setMovementTypeEntity(size_t index, const Entity::entityMovement &type);
-    void                                        setTemperatureTypeEntity(size_t index, const Entity::entityTemperature &type);
+    void                                        setMovementTypeBlob(size_t index, const Blob::blobMovement &type);
+    void                                        setTemperatureTypeBlob(size_t index, const Blob::blobTemperature &type);
     const std::vector<cv::Mat>                  &getImages() const;
-    const std::vector<Entity>                   &getEntities() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursWarm() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsWarm() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursHot() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsHot() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursVeryHot() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsVeryHot() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursMerged() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsMerged() const;
-    void                                        clearEntities();
-    void                                        predictNextPositionEntities();
-    void                                        addEntity(const Entity &entity);
+    const std::vector<Blob>                     &getBlobs() const;
+    const std::vector<Blob::t_blobForm>         &getPossibleBlobs(const ImageProcesser::t_colorRange &colorRange) const;
+    void                                        clearBlobs();
+    void                                        clearPossibleBlobs();
+    void                                        predictNextPositionBlobs();
+    void                                        addBlob(const Blob &blob);
 
 private:
     /* Attributes */
     std::vector<cv::Mat>                        _images;
-    std::vector<Entity>                         _entities;
-    std::vector<std::vector<cv::Point>>         _contoursWarm;
-    std::vector<std::vector<cv::Point>>         _convexHullsWarm;
-    std::vector<std::vector<cv::Point>>         _contoursHot;
-    std::vector<std::vector<cv::Point>>         _convexHullsHot;
-    std::vector<std::vector<cv::Point>>         _contoursVeryHot;
-    std::vector<std::vector<cv::Point>>         _convexHullsVeryHot;
-    std::vector<std::vector<cv::Point>>         _contoursMerged;
-    std::vector<std::vector<cv::Point>>         _convexHullsMerged;
+    std::vector<Blob>                           _blobs;
+    std::map<ImageProcesser::t_colorRange, std::vector<Blob::t_blobForm>>   _possibleBlobs
 };
 
 

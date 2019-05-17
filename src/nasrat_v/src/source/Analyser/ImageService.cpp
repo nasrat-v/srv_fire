@@ -14,7 +14,7 @@ ImageService::~ImageService() = default;
 
 /////////////////////// Image Processing //////////////////////////
 
-void ImageService::substractInfosAllEntities(Frame &frame)
+void ImageService::substractInfosAllBlobs(Frame &frame)
 {
     cv::Mat imgProcessed = frame.getImages().front().clone();
 
@@ -41,7 +41,7 @@ void ImageService::substractInfosAllEntities(Frame &frame)
     setConvexHullsMergedFrame(frame);
 }
 
-void ImageService::substractInfosEntitiesInMovement(Frame &frame)
+void ImageService::substractInfosBlobsInMovement(Frame &frame)
 {
     cv::Mat imgProcessed;
 
@@ -106,7 +106,7 @@ void ImageService::setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcesse
     frame.setContoursWarm(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursWarm(),
-                "imgContoursWarm", Entity::entityTemperature::WARM);
+                "imgContoursWarm", Blob::blobTemperature ::WARM);
 }
 
 void ImageService::setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -114,7 +114,7 @@ void ImageService::setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProce
     frame.setConvexHullsWarm(_imageProcesser.findConvexHullsFromContours(frame.getContoursWarm()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsWarm(),
-                "imgConvexHullsWarm", Entity::entityTemperature::WARM);
+                "imgConvexHullsWarm", Blob::blobTemperature ::WARM);
 }
 
 void ImageService::setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -122,7 +122,7 @@ void ImageService::setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed
     frame.setContoursHot(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursHot(),
-                "imgAContoursHot", Entity::entityTemperature::HOT);
+                "imgAContoursHot", Blob::blobTemperature ::HOT);
 }
 
 void ImageService::setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -130,7 +130,7 @@ void ImageService::setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProces
     frame.setConvexHullsHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursHot()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsHot(),
-                "imgConvexHullsHot", Entity::entityTemperature::HOT);
+                "imgConvexHullsHot", Blob::blobTemperature ::HOT);
 }
 
 void ImageService::setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -138,7 +138,7 @@ void ImageService::setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProce
     frame.setContoursVeryHot(_imageProcesser.findContoursFromImg(imgProcessed));
     if (_debugMode & DebugManager::debugMode::CONTOUR)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getContoursVeryHot(),
-                "imgAContoursVeryHot", Entity::entityTemperature::VERY_HOT);
+                "imgAContoursVeryHot", Blob::blobTemperature ::VERY_HOT);
 }
 
 void ImageService::setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -146,7 +146,7 @@ void ImageService::setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgPr
     frame.setConvexHullsVeryHot(_imageProcesser.findConvexHullsFromContours(frame.getContoursVeryHot()));
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), frame.getConvexHullsVeryHot(),
-                "imgConvexHullsVeryHot", Entity::entityTemperature::VERY_HOT);
+                "imgConvexHullsVeryHot", Blob::blobTemperature ::VERY_HOT);
 }
 
 /*void ImageService::setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed)
@@ -221,19 +221,19 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
 
 /////////////////////// Image Addition //////////////////////////
 
-void ImageService::displayImg(cv::Mat img, const std::vector<Entity> &savedEntities,
-                                            const std::vector<Entity> &frameEntities)
+void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
+                                            const std::vector<Blob> &frameBlobs)
 {
     cv::Mat trackImg = img.clone();
 
     if (_debugMode & DebugManager::debugMode::SAVED_ENTITIES)
-        _imageAdditionner.drawAndShowContours(img.size(), savedEntities, "imgSavedEntities");
+        _imageAdditionner.drawAndShowContours(img.size(), savedBlobs, "imgSavedBlobs");
     if (_debugMode & DebugManager::debugMode::FRAME_ENTITIES)
-        _imageAdditionner.drawAndShowContours(img.size(), frameEntities, "imgFrameEntities");
+        _imageAdditionner.drawAndShowContours(img.size(), frameBlobs, "imgFrameBlobs");
     if (_debugMode & DebugManager::debugMode::TRACK)
-        _imageAdditionner.drawTrackEntitiesOnImage(savedEntities, frameEntities, trackImg);
+        _imageAdditionner.drawTrackBlobsOnImage(savedBlobs, frameBlobs, trackImg);
     if (_debugMode & DebugManager::debugMode::NUMBER)
-        _imageAdditionner.drawNumberEntitiesOnImage(savedEntities, trackImg);
+        _imageAdditionner.drawNumberBlobsOnImage(savedBlobs, trackImg);
     if (!(_debugMode & DebugManager::debugMode::NO_ORIGINAL_VIDEO))
         cv::imshow("imgFrame", trackImg);
     if (_debugMode & DebugManager::debugMode::WAIT_KEY)

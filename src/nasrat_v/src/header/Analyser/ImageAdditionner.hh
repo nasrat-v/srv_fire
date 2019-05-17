@@ -13,7 +13,7 @@
 # define SCALAR_BLUE    cv::Scalar(255.0, 0.0, 0.0)
 # define SCALAR_ORANGE  cv::Scalar(0.0 ,165.0 , 255.0)
 
-#include "Entity.hh"
+#include "Blob.hh"
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -26,15 +26,15 @@ public:
 
     void                drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours);
     void                drawAndShowContours(cv::Size imageSize,
-                                            const std::vector<Entity> &entities,
+                                            const std::vector<Blob> &blobs,
                                             const std::string &strImageName);
     void                drawAndShowContours(cv::Size imageSize,
                                             const std::vector<std::vector<cv::Point>> &contours,
                                             const std::string &strImageName,
-                                            const Entity::entityTemperature &temp = Entity::entityTemperature::NO_TEMP);
-    void                drawTrackEntitiesOnImage(const std::vector<Entity> &savedEntities,
-                                                 const std::vector<Entity> &frameEntities,cv::Mat &img);
-    void                drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img);
+                                            const Blob::blobTemperature &temp = Blob::blobTemperature::NO_TEMP);
+    void                drawTrackBlobsOnImage(const std::vector<Blob> &savedBlobs,
+                                                 const std::vector<Blob> &frameBlobs,cv::Mat &img);
+    void                drawNumberBlobsOnImage(const std::vector<Blob> &blobs, cv::Mat &img);
 };
 
 
