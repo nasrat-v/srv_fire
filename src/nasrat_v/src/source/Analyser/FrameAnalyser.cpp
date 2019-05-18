@@ -29,10 +29,9 @@ Error::ErrorType FrameAnalyser::initAnalyser(bool openVideo)
     return (Error::ErrorType::NO_ERROR);
 }
 
-Error::ErrorType FrameAnalyser::analyseFrame()
+Error::ErrorType FrameAnalyser::checkInitialisation(bool &end)
 {
-    bool end = false;
-    ImageProvider::statusVideo status;
+    ImageProvider::statusVideo  status;
 
     if (!_isInit)
     {
@@ -43,26 +42,47 @@ Error::ErrorType FrameAnalyser::analyseFrame()
         end = true;
     else if (status == ImageProvider::statusVideo::ERROR)
         return (Error::ErrorType::OPEN_VID);
+    return (Error::ErrorType::NO_ERROR);
+}
+
+Error::ErrorType FrameAnalyser::analyseFrame()
+{
+    bool                end = false;
+    Error::ErrorType    status;
+
+    if ((status = checkInitialisation(end)) != Error::ErrorType::NO_ERROR)
+        return (status);
     while (!end)
     {
-        findBlobs();
-        if (_firstFrame)
-            initSavedBlobs();
-        else
-            matchFrameBlobsToSavedBlobs();
-        _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs());
-        _frame.clearAllBlobs();
-        if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
-            end = true;
+        logicForEachFrame(end);
         cv::waitKey(1);
     }
     return (Error::ErrorType::NO_ERROR);
+}
+
+void FrameAnalyser::logicForEachFrame(bool &end)
+{
+    findBlobs();
+    findEntities();
+    _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs());
+    _frame.clearAllBlobs();
+    if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
+        end = true;
 }
 
 void FrameAnalyser::findBlobs()
 {
     _imageService.substractInfosPossibleBlobs(_frame, colorToAnalyse);
     findAllBlobsWithInfos();
+    if (_firstFrame)
+        initSavedBlobs();
+    else
+        matchFrameBlobsToSavedBlobs(); // filtrate blobs
+}
+
+void FrameAnalyser::findEntities()
+{
+    _imageService.substractInfosPossibleEntities(_frame, /*all contours*/ );
 }
 
 void FrameAnalyser::findAllBlobsWithInfos()

@@ -44,7 +44,10 @@ private:
     }                       t_distance;
 
     /* Methods */
+    Error::ErrorType        checkInitialisation(bool &end);
+    void                    logicForEachFrame(bool &end);
     void                    findBlobs();
+    void                    findEntities();
     void                    findAllBlobsWithInfos();
     bool                    isPossibleBlob(const Blob &possibleBlob);
     void                    findClosestSavedBlob(const Blob &blob, t_distance *distance);
