@@ -10,13 +10,12 @@ Blob::Blob(const std::vector<cv::Point> &contour)
     _form._convexHull = contour;
     initCurrentAttributes();
     initCenterPosition();
-    _movementType = blobMovement ::STATIC;
-    _temperatureType = blobTemperature ::WARM;
     _predictedNextPosition = { 0 };
     _nbBlob = DEFAULT_NB_BLOB;
     _matchFoundOrNewBlob = true;
     _numOfConsecutiveFramesWithoutMatch = 0;
     _stillBeingTracked = true;
+    _colorRange = DEFAULT_COLOR_RANGE_BLOB;
 }
 
 Blob::~Blob() = default;
@@ -46,12 +45,11 @@ void Blob::clone(const Blob &blob)
     _centerPositions = std::vector<cv::Point>(blob._centerPositions);
     _form._contour = std::vector<cv::Point>(blob._form._contour);
     _form._convexHull = std::vector<cv::Point>(blob._form._convexHull);
-    _movementType = blob._movementType;
-    _temperatureType = blob._temperatureType;
     _nbBlob = blob._nbBlob;
     _matchFoundOrNewBlob = blob._matchFoundOrNewBlob;
     _numOfConsecutiveFramesWithoutMatch = blob._numOfConsecutiveFramesWithoutMatch;
     _stillBeingTracked = blob._stillBeingTracked;
+    _colorRange = blob._colorRange;
 }
 
 bool Blob::isSame(const Blob &blob) const
@@ -63,8 +61,7 @@ bool Blob::isSame(const Blob &blob) const
             _centerPositions.back() == blob._centerPositions.back() &&
             _form._contour.back() == blob._form._contour.back() &&
             _form._convexHull.back() == blob._form._convexHull.back() &&
-            _movementType == blob._movementType &&
-            _temperatureType == blob._temperatureType);
+            _colorRange._nameRange == blob._colorRange._nameRange);
 }
 
 double Blob::getAspectRatio() const
@@ -97,16 +94,6 @@ const std::vector<cv::Point> &Blob::getCenterPositions() const
     return (_centerPositions);
 }
 
-const Blob::blobMovement &Blob::getMovementType() const
-{
-    return (_movementType);
-}
-
-const Blob::blobTemperature &Blob::getTemperatureType() const
-{
-    return (_temperatureType);
-}
-
 int Blob::getNbBlob() const
 {
     return (_nbBlob);
@@ -120,6 +107,11 @@ bool Blob::getMatchFoundOrNewBlob() const
 int Blob::getNumOfConsecutiveFramesWithoutMatch() const
 {
     return (_numOfConsecutiveFramesWithoutMatch);
+}
+
+const ScalarColor::t_colorRange &Blob::getColorRange() const
+{
+    return (_colorRange);
 }
 
 bool Blob::isStillBeingTracked() const
@@ -152,16 +144,6 @@ void Blob::setConvexHull(const std::vector<cv::Point> &convexHull)
     _form._convexHull = convexHull;
 }
 
-void Blob::setMovementType(const Blob::blobMovement &type)
-{
-    _movementType = type;
-}
-
-void Blob::setTemperatureType(const Blob::blobTemperature &type)
-{
-    _temperatureType = type;
-}
-
 void Blob::setNbBlob(int nb)
 {
     _nbBlob = nb;
@@ -180,6 +162,11 @@ void Blob::setNumOfConsecutiveFramesWithoutAMatch(int val)
 void Blob::setStillBeingTracked(bool tracked)
 {
     _stillBeingTracked = tracked;
+}
+
+void Blob::setColorRange(const ScalarColor::t_colorRange &colorRange)
+{
+    _colorRange = colorRange;
 }
 
 void Blob::predictNextPosition()

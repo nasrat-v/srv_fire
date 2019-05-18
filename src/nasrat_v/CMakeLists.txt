@@ -40,6 +40,7 @@ set(SOURCE_FILES
         src/source/Launcher/Launcher.cpp
         src/header/Launcher/Launcher.hh
         src/source/Analyser/Entity.cpp
-        src/header/Analyser/Entity.hh)
+        src/header/Analyser/Entity.hh
+        src/header/Analyser/ScalarColor.hpp)
 
 add_executable(opencv_srv ${SOURCE_FILES})

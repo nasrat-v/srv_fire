@@ -8,9 +8,8 @@
 #include <map>
 #include <opencv2/core/mat.hpp>
 
-#include "Blob.hh"
+#include "Entity.hh"
 #include "ImageProcesser.hh"
-#include "../Log/Error.hh"
 
 class Frame
 {
@@ -19,24 +18,27 @@ public:
     ~Frame();
 
     void                                        addImage(const cv::Mat &img);
-    void                                        addPossibleBlob(const ImageProcesser::t_colorRange &colorRange,
+    void                                        addBlob(const Blob &blob);
+    void                                        addEntity(const Entity &entity);
+    void                                        addFormBlob(const ScalarColor::t_colorRange &colorRange,
                                                                 const Blob::t_blobForm &possibleBlob);
+    void                                        addFormEntity(const Blob::t_blobForm &possibleEntity);
     void                                        setImage(const cv::Mat &img, size_t index);
-    void                                        setMovementTypeBlob(size_t index, const Blob::blobMovement &type);
-    void                                        setTemperatureTypeBlob(size_t index, const Blob::blobTemperature &type);
     const std::vector<cv::Mat>                  &getImages() const;
     const std::vector<Blob>                     &getBlobs() const;
-    const std::vector<Blob::t_blobForm>         &getPossibleBlobs(const ImageProcesser::t_colorRange &colorRange) const;
-    void                                        clearBlobs();
-    void                                        clearPossibleBlobs();
-    void                                        predictNextPositionBlobs();
-    void                                        addBlob(const Blob &blob);
+    const std::vector<Entity>                   &getEntities() const;
+    const std::vector<Blob::t_blobForm>         &getFormBlobs(const ScalarColor::t_colorRange &colorRange);
+    const std::vector<Blob::t_blobForm>         &getFormEntities() const;
+    void                                        clearAllBlobs();
+
 
 private:
     /* Attributes */
     std::vector<cv::Mat>                        _images;
     std::vector<Blob>                           _blobs;
-    std::map<ImageProcesser::t_colorRange, std::vector<Blob::t_blobForm>>   _possibleBlobs
+    std::vector<Entity>                         _entities;
+    std::map<ScalarColor::t_colorRange, std::vector<Blob::t_blobForm>>  _formBlobs;
+    std::vector<Blob::t_blobForm>                                       _formEntities;
 };
 
 

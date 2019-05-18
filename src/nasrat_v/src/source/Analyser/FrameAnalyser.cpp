@@ -51,7 +51,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
         else
             matchFrameBlobsToSavedBlobs();
         _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs());
-        _frame.clearBlobs();
+        _frame.clearAllBlobs();
         if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
             end = true;
         cv::waitKey(1);
@@ -61,54 +61,25 @@ Error::ErrorType FrameAnalyser::analyseFrame()
 
 void FrameAnalyser::findBlobs()
 {
-    _imageService.substractInfosAllBlobs(_frame);
+    _imageService.substractInfosPossibleBlobs(_frame, colorToAnalyse);
     findAllBlobsWithInfos();
-    //_imageService.substractInfosBlobsInMovement(_frame);
-    //findBlobsInMovementWithInfos();
 }
 
 void FrameAnalyser::findAllBlobsWithInfos()
 {
-    for (auto &convexHull : _frame.getConvexHullsMerged())
+    for (auto &colorRange : colorToAnalyse)
     {
-        Blob possibleBlob(convexHull);
-
-        if (isPossibleBlob(possibleBlob))
+        for (auto &formBlob : _frame.getFormBlobs(colorRange))
         {
-            possibleBlob.setTemperatureType(Blob::blobTemperature::NO_TEMP);
-            _frame.addBlob(possibleBlob);
+            Blob possibleBlob(formBlob._contour);
+
+            if (isPossibleBlob(possibleBlob))
+            {
+                possibleBlob.setColorRange(colorRange);
+                _frame.addBlob(possibleBlob);
+            }
         }
     }
-    /*for (auto &convexHull : _frame.getConvexHullsWarm())
-    {
-        Blob possibleBlob(convexHull);
-
-        if (isPossibleBlob(possibleBlob))
-        {
-            possibleBlob.setTemperatureType(Blob::blobTemperature::WARM);
-            _frame.addBlob(possibleBlob);
-        }
-    }*/
-    /*for (auto &convexHull : _frame.getConvexHullsHot())
-    {
-        Blob possibleBlob(convexHull);
-
-        if (isPossibleBlob(possibleBlob))
-        {
-            possibleBlob.setTemperatureType(Blob::blobTemperature::HOT);
-            _frame.addBlob(possibleBlob);
-        }
-    }
-    for (auto &convexHull : _frame.getConvexHullsVeryHot())
-    {
-        Blob possibleBlob(convexHull);
-
-        if (isPossibleBlob(possibleBlob))
-        {
-            possibleBlob.setTemperatureType(Blob::blobTemperature::VERY_HOT);
-            _frame.addBlob(possibleBlob);
-        }
-    }*/
 }
 
 void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)

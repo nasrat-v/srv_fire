@@ -17,6 +17,8 @@
 #include "Frame.hh"
 #include "ImageService.hh"
 
+static std::vector<ScalarColor::t_colorRange> colorToAnalyse = { YELLOW_RANGE, ORANGE_RANGE, RED_RANGE };
+
 class FrameAnalyser
 {
 public:

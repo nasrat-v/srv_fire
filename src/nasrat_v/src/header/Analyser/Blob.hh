@@ -7,8 +7,10 @@
 
 # define NB_FRAME_MOVE_PREDICTION    5
 # define DEFAULT_NB_BLOB            -1
+# define DEFAULT_COLOR_RANGE_BLOB   WHITE_RANGE
 
 #include "../Log/Log.hh"
+#include "ScalarColor.hpp"
 
 #include <iostream>
 #include <opencv2/imgproc.hpp>
@@ -19,20 +21,6 @@ class Blob
 public:
     explicit Blob(const std::vector<cv::Point> &contour);
     virtual ~Blob();
-
-    enum class blobMovement
-    {
-        MOVE,
-        STATIC
-    };
-
-    enum class blobTemperature
-    {
-        NO_TEMP,
-        WARM,
-        HOT,
-        VERY_HOT
-    };
 
     typedef struct                  s_blobForm
     {
@@ -49,23 +37,21 @@ public:
     const std::vector<cv::Point>    &getContour() const;
     const std::vector<cv::Point>    &getConvexHull() const;
     const std::vector<cv::Point>    &getCenterPositions() const;
-    const blobMovement              &getMovementType() const;
-    const blobTemperature           &getTemperatureType() const;
     int                             getNbBlob() const;
     bool                            getMatchFoundOrNewBlob() const;
     int                             getNumOfConsecutiveFramesWithoutMatch() const;
+    const ScalarColor::t_colorRange &getColorRange() const;
     bool                            isStillBeingTracked() const;
     void                            setAspectRatio(double val);
     void                            setDiagonalSize(double val);
     void                            setBoundingRect(const cv::Rect &rect);
     void                            setContour(const std::vector<cv::Point> &contour);
     void                            setConvexHull(const std::vector<cv::Point> &convexHulls);
-    void                            setMovementType(const blobMovement &type);
-    void                            setTemperatureType(const blobTemperature &type);
     void                            setNbBlob(int nb);
     void                            setMatchFoundOrNewBlob(bool match);
     void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
     void                            setStillBeingTracked(bool tracked);
+    void                            setColorRange(const ScalarColor::t_colorRange &colorRange);
 
     /*const cv::Point                 &getPredictedNextPosition() const;
     void                            addCenterPosition(const cv::Point &centerPosition);*/
@@ -77,13 +63,12 @@ protected:
     cv::Rect                        _boundingRect;
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
-    blobMovement                    _movementType;
-    blobTemperature                 _temperatureType;
     int                             _nbBlob;
     bool                            _matchFoundOrNewBlob;
     int                             _numOfConsecutiveFramesWithoutMatch;
     bool                            _stillBeingTracked;
     t_blobForm                      _form;
+    ScalarColor::t_colorRange       _colorRange;
 
     typedef struct                  s_sumOfChanges
     {

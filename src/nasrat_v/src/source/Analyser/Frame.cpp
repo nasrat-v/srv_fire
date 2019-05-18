@@ -18,25 +18,24 @@ void Frame::addBlob(const Blob &blob)
     _blobs.push_back(blob);
 }
 
-void Frame::addPossibleBlob(const ImageProcesser::t_colorRange &colorRange,
-                            const Blob::t_blobForm &possibleBlob)
+void Frame::addEntity(const Entity &entity)
 {
-    _possibleBlobs[colorRange].push_back(possibleBlob);
+    _entities.push_back(entity);
+}
+
+void Frame::addFormBlob(const ScalarColor::t_colorRange &colorRange, const Blob::t_blobForm &possibleBlob)
+{
+    _formBlobs[colorRange].push_back(possibleBlob);
+}
+
+void Frame::addFormEntity(const Blob::t_blobForm &possibleEntity)
+{
+    _formEntities.push_back(possibleEntity);
 }
 
 void Frame::setImage(const cv::Mat &img, size_t index)
 {
     _images.at(index) = img;
-}
-
-void Frame::setMovementTypeBlob(size_t index, const Blob::blobMovement &type)
-{
-    _blobs.at(index).setMovementType(type);
-}
-
-void Frame::setTemperatureTypeBlob(size_t index, const Blob::blobTemperature &type)
-{
-    _blobs.at(index).setTemperatureType(type);
 }
 
 const std::vector<cv::Mat> &Frame::getImages() const
@@ -49,23 +48,25 @@ const std::vector<Blob> &Frame::getBlobs() const
     return (_blobs);
 }
 
-const std::vector<Blob::t_blobForm> &Frame::getPossibleBlobs(const ImageProcesser::t_colorRange &colorRange) const
+const std::vector<Entity> &Frame::getEntities() const
 {
-    return (_possibleBlobs.at(colorRange));
+    return (_entities);
 }
 
-void Frame::clearBlobs()
+const std::vector<Blob::t_blobForm> &Frame::getFormBlobs(const ScalarColor::t_colorRange &colorRange)
+{
+    return (_formBlobs[colorRange]);
+}
+
+const std::vector<Blob::t_blobForm> &Frame::getFormEntities() const
+{
+    return (_formEntities);
+}
+
+void Frame::clearAllBlobs()
 {
     _blobs.clear();
-}
-
-void Frame::clearPossibleBlobs()
-{
-    _possibleBlobs.clear();
-}
-
-void Frame::predictNextPositionBlobs()
-{
-    for (auto &blob : _blobs)
-        blob.predictNextPosition();
+    _entities.clear();
+    _formBlobs.clear();
+    _formEntities.clear();
 }

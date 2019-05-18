@@ -12,17 +12,16 @@
 #include "ImageAdditionner.hh"
 #include "../Launcher/DebugManager.hh"
 
-#define RED_RANGE       ImageProcesser::t_colorRange { "Red Range", cv::Scalar(0, 150, 100), cv::Scalar(10, 255, 255) }
-#define ORANGE_RANGE    ImageProcesser::t_colorRange { "Orange Range", cv::Scalar(11, 150, 100), cv::Scalar(20, 255, 255) }
-#define YELLOW_RANGE    ImageProcesser::t_colorRange { "Yellow Range", cv::Scalar(21, 150, 100), cv::Scalar(30, 255, 255) }
-
 class ImageService
 {
 public:
     ImageService(const DebugManager::debugMode &mode, ImageProvider *imageProvider);
     ~ImageService();
 
-    void                        substractInfosAllBlobs(Frame &frame);
+    void                        substractInfosPossibleBlobs(Frame &frame,
+                                                            const std::vector<ScalarColor::t_colorRange> &colorRanges);
+    void                        substractInfosPossibleEntities(Frame &frame,
+                                                                const std::vector<std::vector<cv::Point>> &allContours);
     void                        substractInfosBlobsInMovement(Frame &frame);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
@@ -32,21 +31,25 @@ public:
 
 private:
     /* Methods */
-    void                        substractColor(cv::Mat &imgProcessed, const ImageProcesser::t_colorRange &range);
+    void                        substractColor(cv::Mat &imgProcessed, const ScalarColor::t_colorRange &range);
     void                        differenceImg(cv::Mat firstImg, cv::Mat secondImg, cv::Mat &imgProcessed);
     void                        threshImg(cv::Mat &imgProcessed);
-    void                        mergeAllContours(cv::Mat &img, Frame &frame);
-    void                        mergeAllConvexHulls(cv::Mat &img, Frame &frame);
-    void                        setContoursMergedFrame(Frame &frame);
-    void                        setConvexHullsMergedFrame(Frame &frame);
-    void                        setContoursWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setConvexHullsWarmFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setContoursHotFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setConvexHullsHotFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setContoursVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed);
-    void                        setConvexHullsVeryHotFrame(Frame &frame, const cv::Mat &imgProcessed);
-    //void                        setContoursMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
-    //void                        setConvexHullsMovementFrame(Frame &frame, const cv::Mat &imgProcessed);
+    void                        addFormBlob(Frame &frame, const cv::Mat &imgProcessed,
+                                            const ScalarColor::t_colorRange &colorRange);
+    void                        addFormEntity(Frame &frame, const cv::Mat &imgMerge);
+    void                        findContoursFrame(const cv::Mat &imgProcessed,
+                                                    const ScalarColor::t_colorRange &colorRange,
+                                                    std::vector<std::vector<cv::Point>> &contours);
+    void                        findConvexHullsFrame(const cv::Size &imageSize,
+                                                    const ScalarColor::t_colorRange &colorRange,
+                                                    const std::vector<std::vector<cv::Point>> &contours,
+                                                    std::vector<std::vector<cv::Point>> &convexHulls);
+    void                        mergeAllContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &allContours);
+    void                        findContoursMergedFrame(const cv::Mat &imgMerge,
+                                                        std::vector<std::vector<cv::Point>> &contoursMerged);
+    void                        findConvexHullsMergedFrame(const cv::Size &imageSize,
+                                                           const std::vector<std::vector<cv::Point>> &contoursMerged,
+                                                           std::vector<std::vector<cv::Point>> &convexHullsMerged);
     ImageProvider::statusVideo  incrementImg(Frame &frame);
     ImageProvider::statusVideo  initImg(Frame &frame);
 
