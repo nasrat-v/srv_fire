@@ -11,6 +11,7 @@
 
 typedef short			ERR;
 static bool				_tryStatus = false;
+static bool             _logActive = true;
 static std::fstream		_logFile;
 
 class LogNetwork
@@ -23,6 +24,7 @@ public:
 	static void			logInfoMsg(const std::string &msg);
 	static void			logTryMsg(const std::string &msg);
 	static void			logSomething(const std::string &msg);
+    static void         setLogActive(bool log);
 
 private:
     LogNetwork() = default;

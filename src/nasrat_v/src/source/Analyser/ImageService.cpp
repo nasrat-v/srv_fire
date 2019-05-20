@@ -216,15 +216,14 @@ void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
 {
     cv::Mat trackImg = img.clone();
 
-    if (_debugMode & DebugManager::debugMode::SAVED_ENTITIES)
+    if (_debugMode & DebugManager::debugMode::SAVED_BLOBS)
         _imageAdditionner.drawAndShowContours(img.size(), savedBlobs, "Saved Blobs");
-    if (_debugMode & DebugManager::debugMode::FRAME_ENTITIES)
+    if (_debugMode & DebugManager::debugMode::FRAME_BLOBS)
         _imageAdditionner.drawAndShowContours(img.size(), frameBlobs, "Frame Blobs");
     if (_debugMode & DebugManager::debugMode::TRACK)
-    {
-        _imageAdditionner.drawTrackBlobsOnImage(trackImg, savedBlobs, frameBlobs);
         _imageAdditionner.drawTrackEntitiesOnImage(trackImg, savedEntities, frameEntities);
-    }
+    if (_debugMode & DebugManager::debugMode::HOT_SPOT)
+        _imageAdditionner.drawTrackBlobsOnImage(trackImg, savedBlobs, frameBlobs);
     if (_debugMode & DebugManager::debugMode::NUMBER)
         _imageAdditionner.drawNumberEntitiesOnImage(trackImg, savedEntities, frameEntities);
     if (!(_debugMode & DebugManager::debugMode::NO_ORIGINAL_VIDEO))

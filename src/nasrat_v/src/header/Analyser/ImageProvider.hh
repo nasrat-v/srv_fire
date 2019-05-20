@@ -32,7 +32,8 @@ public:
         START,
         CONTINUE,
         END,
-        ERROR
+        ERROR,
+        IGNORE_WAIT
     };
 
     statusVideo         openVideo();

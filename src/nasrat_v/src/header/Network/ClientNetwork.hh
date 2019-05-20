@@ -88,6 +88,8 @@ public:
 	ERR					writeData(const std::string &data);
 	bool				isDataToRead();
 	bool				isConnected() const;
+    void                setLogActive(bool log);
+    bool                isLogActive() const;
 
 protected:
 	/* Attributes */
@@ -100,6 +102,7 @@ protected:
 	struct addrinfo		        *_addrInfo;
 	t_serverParam		        _srvParam;
 	bool				        _connected;
+    bool                        _logActive;
 
 	/* Methods */
 #ifdef _WIN32
@@ -111,7 +114,7 @@ protected:
 	void				initHandleSocketWithHostname();
 	ERR					findIpAddrWithHostname();
 	void				clearSocket();
-    int                 logFailureMsg(const std::string &msg, bool errorCode);
+    void                logFailureMsg(const std::string &msg, bool errorCode);
 };
 
 #endif // !__CLIENTNETWORK__

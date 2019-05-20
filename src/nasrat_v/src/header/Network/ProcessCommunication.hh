@@ -22,8 +22,9 @@ public:
     ProcessCommunication();
     ~ProcessCommunication();
 
-    ERR                                 initClient();
-    void                                startThread(const std::string &idNetwork, ImageProvider *imageProvider);
+    ERR                                 initClient(bool log);
+    void                                startThread(const std::string &idNetwork,
+                                                    ImageProvider *imageProvider);
 
 private:
     /* Attributes */
@@ -33,7 +34,8 @@ private:
 
     /* Methods */
     const ClientNetwork::t_serverParam  initConfigurationServer();
-    ERR                                 communicateWithServer(const std::string &idNetwork, ImageProvider *imageProvider);
+    ERR                                 communicateWithServer(const std::string &idNetwork,
+                                                              ImageProvider *imageProvider);
     ERR                                 sendJsonConnection(const std::string &idNetwork);
     void                                resetString(std::string &str);
     void                                formatData(std::string &data);

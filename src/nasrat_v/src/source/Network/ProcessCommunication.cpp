@@ -12,11 +12,12 @@ ProcessCommunication::~ProcessCommunication()
         _netThread.join();
 }
 
-ERR ProcessCommunication::initClient()
+ERR ProcessCommunication::initClient(bool log)
 {
     ClientNetwork::t_serverParam srvParam;
 
     srvParam = initConfigurationServer();
+    _network.setLogActive(log);
     if (_network.initNetworkClient(srvParam) == NET_ERROR)
     {
         LogNetwork::logFailureMsg("Config error with server at " +

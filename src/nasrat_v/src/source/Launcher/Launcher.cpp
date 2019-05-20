@@ -28,16 +28,16 @@ Error::ErrorType Launcher::launchAnalyseNetwork(const DebugManager::debugMode &d
     ImageProvider imageProvider(VIDEO_PATH, debugMode, paramMode);
     FrameAnalyser core(debugMode, &imageProvider);
 
-    if (launchThreadNetwork(idNetwork, &imageProvider) == NET_ERROR)
+    if (launchThreadNetwork(idNetwork, &imageProvider, (debugMode & DebugManager::LOG_NETWORK)) == NET_ERROR)
         return (Error::ErrorType::THREAD_ERROR);
     if ((error = core.initAnalyser(false)) != Error::ErrorType::NO_ERROR)
         return (error);
     return (core.analyseFrame());
 }
 
-ERR Launcher::launchThreadNetwork(const std::string &idNetwork, ImageProvider *imageProvider)
+ERR Launcher::launchThreadNetwork(const std::string &idNetwork, ImageProvider *imageProvider, bool log)
 {
-    if (_processComm.initClient() == NET_ERROR)
+    if (_processComm.initClient(log) == NET_ERROR)
         return (NET_ERROR);
     _processComm.startThread(idNetwork, imageProvider);
     return (SUCCESS);
