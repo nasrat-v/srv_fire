@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef __LOGNETWORK_HH__
+#define __LOGNETWORK_HH__
 
 #include <iostream>
 #include <fstream>
@@ -10,8 +12,8 @@
 # define LOGFILE_NAME		"../output/log/log-network.txt"
 
 typedef short			ERR;
-static bool				_tryStatus = false;
-static bool             _logActive = true;
+static bool				__attribute__((unused))_tryStatus = false;
+static bool             __attribute__((unused))_logActive = true;
 static std::fstream		_logFile;
 
 class LogNetwork
@@ -30,3 +32,5 @@ private:
     LogNetwork() = default;
 	~LogNetwork() = default;
 };
+
+#endif /* !__LOGNETWORK_HH__ */

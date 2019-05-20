@@ -1,6 +1,6 @@
 
-#ifndef __CLIENTNETWORK__
-#define __CLIENTNETWORK__
+#ifndef __CLIENTNETWORK_HH__
+#define __CLIENTNETWORK_HH__
 
 #ifdef _WIN32
 	#include <winsock2.h>
@@ -117,4 +117,4 @@ protected:
     void                logFailureMsg(const std::string &msg, bool errorCode);
 };
 
-#endif // !__CLIENTNETWORK__
+#endif /* !__CLIENTNETWORK_HH__ */

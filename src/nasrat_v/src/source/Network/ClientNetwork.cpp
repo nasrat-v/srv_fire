@@ -38,7 +38,6 @@ ERR ClientNetwork::initHandleSocketWithIpAddress()
     __binary_iptype binaryIpAddress = 0;
 	__sockaddr_in sin;
 
-	memset(&_sins, 0, sizeof(_sins));
 	memset(&sin, 0, sizeof(sin));
 	sin.sin_family = _srvParam.ipType;
 	sin.sin_port = htons(_srvParam.port);
@@ -59,7 +58,6 @@ void ClientNetwork::initHandleSocketWithHostname()
     __sockaddr_in sin;
 	struct addrinfo *p;
 
-	memset(&_sins, 0, sizeof(_sins));
 	for (p = _addrInfo; p != nullptr; p = p->ai_next)
 	{
 		memset(&sin, 0, sizeof(sin));
