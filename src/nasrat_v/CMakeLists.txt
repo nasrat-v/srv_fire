@@ -45,6 +45,7 @@ set(SOURCE_FILES
         src/header/Analyser/BlobFilter.hh
         src/source/Analyser/BlobFilter.cpp
         src/header/Analyser/EntityFilter.hh
-        src/source/Analyser/EntityFilter.cpp src/header/Analyser/IdManager.hpp)
+        src/source/Analyser/EntityFilter.cpp
+        src/header/Analyser/IdManager.hpp)
 
 add_executable(opencv_srv ${SOURCE_FILES})
