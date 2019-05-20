@@ -49,8 +49,13 @@ ImageProvider::statusVideo ImageProvider::initImg(std::vector<cv::Mat> &imgs, si
 
 ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage, size_t nbImgIncr)
 {
+    statusVideo status;
+
     if (_paramMode & ParamManager::paramMode::NETWORK_MODE)
-        return (incrementImgNetwork(nextImage));
+    {
+        while ((status = incrementImgNetwork(nextImage)) == statusVideo::IGNORE_WAIT);
+        return (status);
+    }
     if (_debugMode & DebugManager::debugMode::SRC_AS_IMG)
         return (incrementImgPng(nextImage, nbImgIncr));
     return (incrementImgVideo(nextImage));
@@ -114,7 +119,7 @@ ImageProvider::statusVideo ImageProvider::incrementImgPng(cv::Mat &nextImage, si
 ImageProvider::statusVideo ImageProvider::openImg(const std::string &path, cv::Mat &imgRead)
 {
     imgRead = imread(path, cv::IMREAD_COLOR);
-    if (!imgRead.data)
+    if ((!imgRead.data) || (imgRead.size == 0))
     {
         Error::logError(Error::ErrorType::OPEN_IMG, ("- Cannot read source as IMG: " + path));
         return (statusVideo::ERROR);
