@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 
 # define BUFF_SIZE	4096
-# define UTIME_WAIT	5000
+# define UTIME_WAIT	50000
 # define PATH		"/home/nasrat_v/Dev/srv_fire/src/nasrat_v/input/image/sample-image"
 
 int main(int ac, char **av)
@@ -44,6 +44,8 @@ int main(int ac, char **av)
 	buff[ret] = '\0';
 	while (42)
 	{
+	    write(2, std::to_string(id).c_str(), std::to_string(id).size());
+	    write(2, "\n", 1);
 	    path = (std::string(PATH) + std::to_string(id++) + std::string(".jpg"));
 	    write(1, path.c_str(), strlen(path.c_str()));
 	    path = "";

@@ -19,8 +19,6 @@ bool EntityFilter::isPossibleEntity(const Entity &possibleEntity)
 void EntityFilter::filtratePossibleEntities(const std::vector<Entity::t_blobForm> &possibleEntities,
                                             std::vector<Entity> &entitiesFiltred)
 {
-    int index = 0;
-
     for (auto &formEntity : possibleEntities)
     {
         Entity pEntity(formEntity._contour);
