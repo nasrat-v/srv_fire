@@ -5,17 +5,21 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH                 "../input/video/video-incendie-pompiers.mp4"
-# define MAX_FRAME_WITHOUT_MATCH    20
+# define VIDEO_PATH                     "../input/video/video-incendie-pompiers.mp4"
+# define MAX_FRAME_WITHOUT_MATCH_BLOB   20
+# define MAX_FRAME_WITHOUT_MATCH_ENTITY 10
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
 #include <iostream>
 #include <string>
 
-#include "../Log/Error.hh"
 #include "Frame.hh"
 #include "ImageService.hh"
+#include "BlobFilter.hh"
+#include "EntityFilter.hh"
+#include "IdManager.hpp"
+#include "../Log/Error.hh"
 
 static std::vector<ScalarColor::t_colorRange> colorToAnalyse = { YELLOW_RANGE, ORANGE_RANGE, RED_RANGE };
 
@@ -32,10 +36,14 @@ private:
     /* Attributes */
     bool                    _isInit;
     std::vector<Blob>       _savedBlobs;
+    std::vector<Entity>     _savedEntities;
     Frame                   _frame;
-    bool                    _firstFrame;
+    bool                    _firstFrameBlob;
+    bool                    _firstFrameEntity;
     DebugManager::debugMode _debugMode;
     ImageService            _imageService;
+    BlobFilter              _blobFilter;
+    EntityFilter            _entityFilter;
 
     typedef struct          s_distance
     {
@@ -49,14 +57,22 @@ private:
     void                    findBlobs();
     void                    findEntities();
     void                    findAllBlobsWithInfos();
-    bool                    isPossibleBlob(const Blob &possibleBlob);
+    void                    findAllEntitiesWithInfos();
+    void                    findContoursAllBlobs(std::vector<std::vector<cv::Point>> &allContours);
     void                    findClosestSavedBlob(const Blob &blob, t_distance *distance);
+    void                    findClosestSavedEntity(const Blob &blob, t_distance *distance);
     double                  distanceBetweenPoints(cv::Point firstPoint, cv::Point secondPoint);
     void                    initSavedBlobs();
+    void                    initSavedEntities();
     void                    matchFrameBlobsToSavedBlobs();
+    void                    matchFrameEntitiesToSavedEntities();
+    void                    matchSavedBlobsToSavedEntities();
     void                    setNewValueSavedBlob(const Blob &frameBlob, size_t index);
+    void                    setNewValueSavedEntity(const Entity &frameEntity, size_t index);
     void                    addNewSavedBlob(const Blob &frameBlob);
+    void                    addNewSavedEntity(const Entity &frameEntity);
     void                    checkConsecutiveFrameWithoutMatchSavedBlobs();
+    void                    checkConsecutiveFrameWithoutMatchSavedEntities();
     /*void                    predictNextPositionSavedEntities();
     void                    debugPredictedPosition(const Entity &frameEntity);
     void                    findEntitiesInMovementWithInfos();*/

@@ -22,13 +22,15 @@ public:
     void                                        addEntity(const Entity &entity);
     void                                        addFormBlob(const ScalarColor::t_colorRange &colorRange,
                                                                 const Blob::t_blobForm &possibleBlob);
-    void                                        addFormEntity(const Blob::t_blobForm &possibleEntity);
+    void                                        addFormEntity(const Entity::t_blobForm &possibleEntity);
     void                                        setImage(const cv::Mat &img, size_t index);
+    void                                        setBlobs(const std::vector<Blob> &blobs);
+    void                                        setEntities(const std::vector<Entity> &entities);
     const std::vector<cv::Mat>                  &getImages() const;
     const std::vector<Blob>                     &getBlobs() const;
     const std::vector<Entity>                   &getEntities() const;
     const std::vector<Blob::t_blobForm>         &getFormBlobs(const ScalarColor::t_colorRange &colorRange);
-    const std::vector<Blob::t_blobForm>         &getFormEntities() const;
+    const std::vector<Entity::t_blobForm>       &getFormEntities() const;
     void                                        clearAllBlobs();
 
 
@@ -38,7 +40,7 @@ private:
     std::vector<Blob>                           _blobs;
     std::vector<Entity>                         _entities;
     std::map<ScalarColor::t_colorRange, std::vector<Blob::t_blobForm>>  _formBlobs;
-    std::vector<Blob::t_blobForm>                                       _formEntities;
+    std::vector<Entity::t_blobForm>                                     _formEntities;
 };
 
 

@@ -32,8 +32,6 @@ void ImageService::substractInfosPossibleEntities(Frame &frame,
                                                     const std::vector<std::vector<cv::Point>> &allContours)
 {
     cv::Mat imgMerge(frame.getImages().front().size(), CV_8UC3, SCALAR_BLACK);
-    std::vector<std::vector<cv::Point>> contoursMerged;
-    std::vector<std::vector<cv::Point>> convexHullsMerged;
 
     mergeAllContours(imgMerge, allContours);
     addFormEntity(frame, imgMerge);
@@ -70,7 +68,7 @@ void ImageService::threshImg(cv::Mat &imgProcessed)
 }
 
 void ImageService::addFormBlob(Frame &frame, const cv::Mat &imgProcessed,
-                                    const ScalarColor::t_colorRange &colorRange)
+                                const ScalarColor::t_colorRange &colorRange)
 {
     int                                 index = 0;
     Blob::t_blobForm                    blobForm;
@@ -147,11 +145,9 @@ void ImageService::findConvexHullsMergedFrame(const cv::Size &imageSize,
                                               const std::vector<std::vector<cv::Point>> &contoursMerged,
                                               std::vector<std::vector<cv::Point>> &convexHullsMerged)
 {
-    cv::Mat imgMerge(imageSize, CV_8UC3, SCALAR_BLACK);
-
-    _imageProcesser.findConvexHullsFromContours(contoursMerged);
+    convexHullsMerged = _imageProcesser.findConvexHullsFromContours(contoursMerged);
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
-        _imageAdditionner.drawAndShowContours(imgMerge.size(), convexHullsMerged,
+        _imageAdditionner.drawAndShowContours(imageSize, convexHullsMerged,
                                               "ConvexHulls Merged", WHITE_RANGE);
 }
 
@@ -214,7 +210,9 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
 /////////////////////// Image Addition //////////////////////////
 
 void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
-                                            const std::vector<Blob> &frameBlobs)
+                                            const std::vector<Blob> &frameBlobs,
+                                            const std::vector<Entity> &savedEntities,
+                                            const std::vector<Entity> &frameEntities)
 {
     cv::Mat trackImg = img.clone();
 
@@ -223,9 +221,12 @@ void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
     if (_debugMode & DebugManager::debugMode::FRAME_ENTITIES)
         _imageAdditionner.drawAndShowContours(img.size(), frameBlobs, "Frame Blobs");
     if (_debugMode & DebugManager::debugMode::TRACK)
-        _imageAdditionner.drawTrackBlobsOnImage(savedBlobs, frameBlobs, trackImg);
+    {
+        _imageAdditionner.drawTrackBlobsOnImage(trackImg, savedBlobs, frameBlobs);
+        _imageAdditionner.drawTrackEntitiesOnImage(trackImg, savedEntities, frameEntities);
+    }
     if (_debugMode & DebugManager::debugMode::NUMBER)
-        _imageAdditionner.drawNumberBlobsOnImage(savedBlobs, trackImg);
+        _imageAdditionner.drawNumberEntitiesOnImage(trackImg, savedEntities, frameEntities);
     if (!(_debugMode & DebugManager::debugMode::NO_ORIGINAL_VIDEO))
         cv::imshow("Frame", trackImg);
     if (_debugMode & DebugManager::debugMode::WAIT_KEY)

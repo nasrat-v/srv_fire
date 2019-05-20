@@ -26,7 +26,9 @@ public:
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
     void                        displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
-                                                        const std::vector<Blob> &frameBlobs);
+                                                        const std::vector<Blob> &frameBlobs,
+                                                        const std::vector<Entity> &savedEntities,
+                                                        const std::vector<Entity> &frameEntities);
     ImageProvider::statusVideo  createSampleImgFromVideo();
 
 private:

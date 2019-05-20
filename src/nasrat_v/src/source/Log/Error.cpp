@@ -4,10 +4,6 @@
 
 #include "../../header/Log/Error.hh"
 
-Error::Error() = default;
-
-Error::~Error() = default;
-
 /**
  * Gives the appropriate message for each error type
  * @param type Enum type of the error

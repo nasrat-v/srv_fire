@@ -5,6 +5,9 @@
 #ifndef OPENCV_SRV_ENTITY_HH
 #define OPENCV_SRV_ENTITY_HH
 
+# define DEFAULT_ID_ENTITY          -1
+# define DEFAULT_COLOR_RANGE_ENTITY WHITE_RANGE
+
 #include "Blob.hh"
 
 class Entity : public Blob

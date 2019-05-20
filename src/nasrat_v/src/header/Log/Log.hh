@@ -17,8 +17,8 @@ public:
     static void                 logSomething(const std::string &complementary_msg = "", const std::string &file_path = LOGFILE_PATH, bool error = false);
 
 private:
-    Log();
-    ~Log();
+    Log() = default;
+    ~Log() = default;
     static const std::string    getTime();
 };
 

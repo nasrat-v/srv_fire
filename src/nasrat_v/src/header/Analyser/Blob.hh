@@ -6,7 +6,7 @@
 # define OPENCV_SRV_BLOB_HH
 
 # define NB_FRAME_MOVE_PREDICTION    5
-# define DEFAULT_NB_BLOB            -1
+# define DEFAULT_ID_BLOB            -1
 # define DEFAULT_COLOR_RANGE_BLOB   WHITE_RANGE
 
 #include "../Log/Log.hh"
@@ -37,7 +37,7 @@ public:
     const std::vector<cv::Point>    &getContour() const;
     const std::vector<cv::Point>    &getConvexHull() const;
     const std::vector<cv::Point>    &getCenterPositions() const;
-    int                             getNbBlob() const;
+    size_t                          getId() const;
     bool                            getMatchFoundOrNewBlob() const;
     int                             getNumOfConsecutiveFramesWithoutMatch() const;
     const ScalarColor::t_colorRange &getColorRange() const;
@@ -47,7 +47,7 @@ public:
     void                            setBoundingRect(const cv::Rect &rect);
     void                            setContour(const std::vector<cv::Point> &contour);
     void                            setConvexHull(const std::vector<cv::Point> &convexHulls);
-    void                            setNbBlob(int nb);
+    void                            setId(size_t id);
     void                            setMatchFoundOrNewBlob(bool match);
     void                            setNumOfConsecutiveFramesWithoutAMatch(int val);
     void                            setStillBeingTracked(bool tracked);
@@ -63,7 +63,7 @@ protected:
     cv::Rect                        _boundingRect;
     cv::Point                       _predictedNextPosition;
     std::vector<cv::Point>          _centerPositions;
-    int                             _nbBlob;
+    size_t                          _id;
     bool                            _matchFoundOrNewBlob;
     int                             _numOfConsecutiveFramesWithoutMatch;
     bool                            _stillBeingTracked;

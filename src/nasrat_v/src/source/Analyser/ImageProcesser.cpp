@@ -50,9 +50,8 @@ void ImageProcesser::threshImg(cv::Mat &img)
     structuringElement5x5 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
     structuringElement7x7 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7));
     structuringElement9x9 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(9, 9));
-    /*cv::erode(img, img, structuringElement1x1);
-    cv::erode(img, img, structuringElement3x3);*/
-    cv::dilate(img, img, structuringElement1x1);
+    cv::erode(img, img, structuringElement1x1);
+    /*cv::erode(img, img, structuringElement3x3);*/
     cv::dilate(img, img, structuringElement3x3);
     cv::dilate(img, img, structuringElement5x5);
     cv::dilate(img, img, structuringElement7x7);

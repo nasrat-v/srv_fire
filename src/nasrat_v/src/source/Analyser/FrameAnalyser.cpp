@@ -7,7 +7,8 @@
 FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider) :    _debugMode(mode),
                                                                                                      _imageService(mode, imageProvider)
 {
-    _firstFrame = true;
+    _firstFrameBlob = true;
+    _firstFrameEntity = true;
     _isInit = false;
 }
 
@@ -64,7 +65,9 @@ void FrameAnalyser::logicForEachFrame(bool &end)
 {
     findBlobs();
     findEntities();
-    _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs());
+    matchSavedBlobsToSavedEntities();
+    _imageService.displayImg(_frame.getImages().front(), _savedBlobs,
+                             _frame.getBlobs(), _savedEntities, _frame.getEntities());
     _frame.clearAllBlobs();
     if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
         end = true;
@@ -74,32 +77,50 @@ void FrameAnalyser::findBlobs()
 {
     _imageService.substractInfosPossibleBlobs(_frame, colorToAnalyse);
     findAllBlobsWithInfos();
-    if (_firstFrame)
+    if (_firstFrameBlob)
         initSavedBlobs();
     else
-        matchFrameBlobsToSavedBlobs(); // filtrate blobs
+        matchFrameBlobsToSavedBlobs();
 }
 
 void FrameAnalyser::findEntities()
 {
-    _imageService.substractInfosPossibleEntities(_frame, /*all contours*/ );
+    std::vector<std::vector<cv::Point>> allContours;
+
+    findContoursAllBlobs(allContours);
+    if (!allContours.empty())
+    {
+        _imageService.substractInfosPossibleEntities(_frame, allContours);
+        findAllEntitiesWithInfos();
+        if (_firstFrameEntity)
+            initSavedEntities();
+        else
+            matchFrameEntitiesToSavedEntities();
+    }
 }
 
 void FrameAnalyser::findAllBlobsWithInfos()
 {
-    for (auto &colorRange : colorToAnalyse)
-    {
-        for (auto &formBlob : _frame.getFormBlobs(colorRange))
-        {
-            Blob possibleBlob(formBlob._contour);
+    std::vector<Blob> blobsFiltered;
 
-            if (isPossibleBlob(possibleBlob))
-            {
-                possibleBlob.setColorRange(colorRange);
-                _frame.addBlob(possibleBlob);
-            }
-        }
-    }
+    for (auto &colorRange : colorToAnalyse)
+        _blobFilter.filtratePossibleBlobs(colorRange, _frame.getFormBlobs(colorRange), blobsFiltered);
+    _frame.setBlobs(blobsFiltered);
+}
+
+void FrameAnalyser::findAllEntitiesWithInfos()
+{
+    std::vector<Entity> entitiesFiltered;
+
+    _entityFilter.filtratePossibleEntities(_frame.getFormEntities(), entitiesFiltered);
+    _frame.setEntities(entitiesFiltered);
+}
+
+
+void FrameAnalyser::findContoursAllBlobs(std::vector<std::vector<cv::Point>> &allContours)
+{
+    for (auto &blob : _frame.getBlobs())
+        allContours.push_back(blob.getContour());
 }
 
 void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
@@ -111,7 +132,29 @@ void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
 
     for (auto &savedBlob : _savedBlobs)
     {
-        dist = distanceBetweenPoints(blob.getCenterPositions().back(), savedBlob.getCenterPositions().back());
+        if (savedBlob.getColorRange()._nameRange == blob.getColorRange()._nameRange)
+        {
+            dist = distanceBetweenPoints(blob.getCenterPositions().back(), savedBlob.getCenterPositions().back());
+            if (dist < distance->leastDistance)
+            {
+                distance->leastDistance = dist;
+                distance->indexSavedBlob = i;
+            }
+        }
+        i++;
+    }
+}
+
+void FrameAnalyser::findClosestSavedEntity(const Blob &blob, t_distance *distance)
+{
+    size_t i = 0;
+    double dist = 0;
+    distance->indexSavedBlob = 0;
+    distance->leastDistance = 100000.0;
+
+    for (auto &savedEntity : _savedEntities)
+    {
+        dist = distanceBetweenPoints(blob.getCenterPositions().back(), savedEntity.getCenterPositions().back());
         if (dist < distance->leastDistance)
         {
             distance->leastDistance = dist;
@@ -129,14 +172,6 @@ double FrameAnalyser::distanceBetweenPoints(cv::Point firstPoint, cv::Point seco
     return (sqrt(pow(intX, 2) + pow(intY, 2)));
 }
 
-bool FrameAnalyser::isPossibleBlob(const Blob &possibleBlob)
-{
-    return (possibleBlob.getBoundingRect().area() > 150 && possibleBlob.getAspectRatio() >= 0.2 &&
-            possibleBlob.getAspectRatio() <= 1.25 && possibleBlob.getBoundingRect().width > 30 &&
-            possibleBlob.getBoundingRect().height > 30 && possibleBlob.getDiagonalSize() > 30.0 &&
-            (cv::contourArea(possibleBlob.getContour()) / (double)possibleBlob.getBoundingRect().area()) > 0.40);
-}
-
 void FrameAnalyser::initSavedBlobs()
 {
     int index = 0;
@@ -146,16 +181,32 @@ void FrameAnalyser::initSavedBlobs()
         Blob savedBlob(frameBlob.getContour());
 
         savedBlob.clone(frameBlob);
-        savedBlob.setNbBlob(index);
+        savedBlob.setId(index);
         _savedBlobs.push_back(savedBlob);
-        _firstFrame = false;
+        _firstFrameBlob = false;
+        index++;
+    }
+}
+
+void FrameAnalyser::initSavedEntities()
+{
+    int index = 0;
+
+    for (auto &frameEntity : _frame.getEntities())
+    {
+        Entity savedEntity(frameEntity.getContour());
+
+        savedEntity.clone(frameEntity);
+        savedEntity.setId(IdManager::newId());
+        _savedEntities.push_back(savedEntity);
+        _firstFrameEntity = false;
         index++;
     }
 }
 
 void FrameAnalyser::matchFrameBlobsToSavedBlobs()
 {
-    t_distance  distance;
+    t_distance distance;
 
     //predictNextPositionSavedBlobs();
     for (auto &frameBlob : _frame.getBlobs())
@@ -169,10 +220,46 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
     checkConsecutiveFrameWithoutMatchSavedBlobs();
 }
 
+void FrameAnalyser::matchFrameEntitiesToSavedEntities()
+{
+    t_distance distance;
+
+    //predictNextPositionSavedEntities();
+    for (auto &frameEntity : _frame.getEntities())
+    {
+        findClosestSavedEntity(frameEntity, &distance);
+        if (distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15))
+            setNewValueSavedEntity(frameEntity, distance.indexSavedBlob);
+        else
+            addNewSavedEntity(frameEntity);
+    }
+    checkConsecutiveFrameWithoutMatchSavedEntities();
+}
+
+void FrameAnalyser::matchSavedBlobsToSavedEntities()
+{
+    t_distance distance;
+
+    for (auto &blob : _savedBlobs)
+    {
+        findClosestSavedEntity(blob, &distance);
+        _savedEntities[distance.indexSavedBlob].addBlob(blob);
+    }
+}
+
 void FrameAnalyser::setNewValueSavedBlob(const Blob &frameBlob, size_t index)
 {
     _savedBlobs[index].clone(frameBlob);
     _savedBlobs[index].setMatchFoundOrNewBlob(true);
+}
+
+void FrameAnalyser::setNewValueSavedEntity(const Entity &frameEntity, size_t index)
+{
+    int id = _savedEntities[index].getId();
+
+    _savedEntities[index].clone(frameEntity);
+    _savedEntities[index].setMatchFoundOrNewBlob(true);
+    _savedEntities[index].setId(id);
 }
 
 void FrameAnalyser::addNewSavedBlob(const Blob &frameBlob)
@@ -184,18 +271,44 @@ void FrameAnalyser::addNewSavedBlob(const Blob &frameBlob)
     _savedBlobs.push_back(savedBlob);
 }
 
+void FrameAnalyser::addNewSavedEntity(const Entity &frameEntity)
+{
+    Entity savedEntity(frameEntity.getContour());
+
+    savedEntity.clone(frameEntity);
+    savedEntity.setMatchFoundOrNewBlob(true);
+    savedEntity.setId(IdManager::newId());
+    _savedEntities.push_back(savedEntity);
+}
+
 void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedBlobs()
 {
     for (auto &savedBlob : _savedBlobs)
     {
         if (!savedBlob.getMatchFoundOrNewBlob())
             savedBlob.setNumOfConsecutiveFramesWithoutAMatch(savedBlob.getNumOfConsecutiveFramesWithoutMatch() + 1);
-        if (savedBlob.getNumOfConsecutiveFramesWithoutMatch() >= MAX_FRAME_WITHOUT_MATCH)
+        if (savedBlob.getNumOfConsecutiveFramesWithoutMatch() >= MAX_FRAME_WITHOUT_MATCH_BLOB)
             savedBlob.setStillBeingTracked(false);
         savedBlob.setMatchFoundOrNewBlob(false);
     }
     _savedBlobs.erase(std::remove_if(_savedBlobs.begin(), _savedBlobs.end(),
-                    [](const Blob &blob) { return (!blob.isStillBeingTracked()); }), _savedBlobs.end());
+                    [](const Blob &blob) { return (!blob.isStillBeingTracked()); }),
+                            _savedBlobs.end());
+}
+
+void FrameAnalyser::checkConsecutiveFrameWithoutMatchSavedEntities()
+{
+    for (auto &savedEntity : _savedEntities)
+    {
+        if (!savedEntity.getMatchFoundOrNewBlob())
+            savedEntity.setNumOfConsecutiveFramesWithoutAMatch(savedEntity.getNumOfConsecutiveFramesWithoutMatch() + 1);
+        if (savedEntity.getNumOfConsecutiveFramesWithoutMatch() >= MAX_FRAME_WITHOUT_MATCH_ENTITY)
+            savedEntity.setStillBeingTracked(false);
+        savedEntity.setMatchFoundOrNewBlob(false);
+    }
+    _savedEntities.erase(std::remove_if(_savedEntities.begin(), _savedEntities.end(),
+                                     [](const Entity &entity) { return (!entity.isStillBeingTracked()); }),
+                                             _savedEntities.end());
 }
 
 

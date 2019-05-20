@@ -11,7 +11,7 @@ Blob::Blob(const std::vector<cv::Point> &contour)
     initCurrentAttributes();
     initCenterPosition();
     _predictedNextPosition = { 0 };
-    _nbBlob = DEFAULT_NB_BLOB;
+    _id = DEFAULT_ID_BLOB;
     _matchFoundOrNewBlob = true;
     _numOfConsecutiveFramesWithoutMatch = 0;
     _stillBeingTracked = true;
@@ -45,7 +45,7 @@ void Blob::clone(const Blob &blob)
     _centerPositions = std::vector<cv::Point>(blob._centerPositions);
     _form._contour = std::vector<cv::Point>(blob._form._contour);
     _form._convexHull = std::vector<cv::Point>(blob._form._convexHull);
-    _nbBlob = blob._nbBlob;
+    _id = blob._id;
     _matchFoundOrNewBlob = blob._matchFoundOrNewBlob;
     _numOfConsecutiveFramesWithoutMatch = blob._numOfConsecutiveFramesWithoutMatch;
     _stillBeingTracked = blob._stillBeingTracked;
@@ -94,9 +94,9 @@ const std::vector<cv::Point> &Blob::getCenterPositions() const
     return (_centerPositions);
 }
 
-int Blob::getNbBlob() const
+size_t Blob::getId() const
 {
-    return (_nbBlob);
+    return (_id);
 }
 
 bool Blob::getMatchFoundOrNewBlob() const
@@ -144,9 +144,9 @@ void Blob::setConvexHull(const std::vector<cv::Point> &convexHull)
     _form._convexHull = convexHull;
 }
 
-void Blob::setNbBlob(int nb)
+void Blob::setId(size_t id)
 {
-    _nbBlob = nb;
+    _id = id;
 }
 
 void Blob::setMatchFoundOrNewBlob(bool match)

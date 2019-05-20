@@ -31,8 +31,8 @@ public:
 
 private:
     /* Methods */
-    Error();
-    ~Error();
+    Error() = default;
+    ~Error() = default;
     static const std::string    getMessage(const ErrorType &type);
 };
 

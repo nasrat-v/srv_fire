@@ -28,7 +28,7 @@ void Frame::addFormBlob(const ScalarColor::t_colorRange &colorRange, const Blob:
     _formBlobs[colorRange].push_back(possibleBlob);
 }
 
-void Frame::addFormEntity(const Blob::t_blobForm &possibleEntity)
+void Frame::addFormEntity(const Entity::t_blobForm &possibleEntity)
 {
     _formEntities.push_back(possibleEntity);
 }
@@ -36,6 +36,16 @@ void Frame::addFormEntity(const Blob::t_blobForm &possibleEntity)
 void Frame::setImage(const cv::Mat &img, size_t index)
 {
     _images.at(index) = img;
+}
+
+void Frame::setBlobs(const std::vector<Blob> &blobs)
+{
+    _blobs = std::vector<Blob>(blobs);
+}
+
+void Frame::setEntities(const std::vector<Entity> &entities)
+{
+    _entities = std::vector<Entity>(entities);
 }
 
 const std::vector<cv::Mat> &Frame::getImages() const
@@ -58,7 +68,7 @@ const std::vector<Blob::t_blobForm> &Frame::getFormBlobs(const ScalarColor::t_co
     return (_formBlobs[colorRange]);
 }
 
-const std::vector<Blob::t_blobForm> &Frame::getFormEntities() const
+const std::vector<Entity::t_blobForm> &Frame::getFormEntities() const
 {
     return (_formEntities);
 }

@@ -6,6 +6,8 @@
 
 Entity::Entity(const std::vector<cv::Point> &contour) : Blob(contour)
 {
+    _id = DEFAULT_ID_ENTITY;
+    _colorRange = DEFAULT_COLOR_RANGE_ENTITY;
 }
 
 Entity::~Entity() = default;
