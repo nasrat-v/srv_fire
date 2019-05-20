@@ -40,10 +40,10 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::CONTOUR;
         if (*it == CONVEXHULLS_ARG)
             mode |= debugMode::CONVEXHULLS;
-        if (*it == SAVEDENTITIES_ARG)
-            mode |= debugMode::SAVED_ENTITIES;
-        if (*it == FRAMEENTITIES_ARG)
-            mode |= debugMode::FRAME_ENTITIES;
+        if (*it == SAVEDBLOBS_ARG)
+            mode |= debugMode::SAVED_BLOBS;
+        if (*it == FRAMEBLOBS_ARG)
+            mode |= debugMode::FRAME_BLOBS;
         if (*it == DIFFERENCE_ARG)
             mode |= debugMode::DIFFERENCE;
         if (*it == TRACK_ARG)
@@ -56,6 +56,8 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::OUTPUT_PREDICTION;
         if (*it == NOORIGINALVIDEO_ARG)
             mode |= debugMode::NO_ORIGINAL_VIDEO;
+        if (*it == HOTSPOT_ARG)
+            mode |= debugMode::HOT_SPOT;
         if (*it == SUBSTRACTCOLOR_ARG)
             mode |= debugMode::SUBSTRACT_COLOR;
         if (*it == PALETTE_ARG)
@@ -64,6 +66,8 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::SRC_AS_IMG;
         if (*it == CREATESAMPLEIMG_ARG)
             mode |= debugMode::CREATE_SAMPLE_IMG;
+        if (*it == LOGNETWORK_ARG)
+            mode |= debugMode::LOG_NETWORK;
         it++;
     }
     return ((debugMode)mode);

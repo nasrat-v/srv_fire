@@ -1,4 +1,3 @@
-#include <utility>
 
 //
 // Created by nasrat_v on 11/3/18.
@@ -10,63 +9,83 @@ ImageAdditionner::ImageAdditionner() = default;
 
 ImageAdditionner::~ImageAdditionner() = default;
 
-void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<Entity> &entities,
+void ImageAdditionner::drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours)
+{
+    cv::drawContours(img, contours, -1, SCALAR_WHITE, -1);
+}
+
+void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize, const std::vector<Blob> &blobs,
                                             const std::string &strImageName)
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
     std::vector<std::vector<cv::Point> > contours;
 
-    for (auto &entity : entities)
-        contours.push_back(entity.getContour());
-
+    for (auto &blob : blobs)
+        contours.push_back(blob.getContour());
     cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
     imshow(strImageName, image);
 }
 
-void ImageAdditionner::drawAndShowContours(cv::Size imageSize, const std::vector<std::vector<cv::Point>> &contours,
-                                            const std::string &strImageName, const Entity::entityTemperature &temp)
+void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize,
+                                            const std::vector<std::vector<cv::Point>> &contours,
+                                            const std::string &strImageName,
+                                            const ScalarColor::t_colorRange &colorRange)
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
 
-    if (temp == Entity::entityTemperature::WARM)
-        cv::drawContours(image, contours, -1, SCALAR_YELLOW, -1);
-    else if (temp == Entity::entityTemperature::HOT)
-        cv::drawContours(image, contours, -1, SCALAR_ORANGE, -1);
-    else
-        cv::drawContours(image, contours, -1, SCALAR_RED, -1);
+    cv::drawContours(image, contours, -1, colorRange._displayColor, -1);
     imshow(strImageName, image);
 }
 
-
-void ImageAdditionner::drawTrackEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img)
+void ImageAdditionner::drawTrackBlobsOnImage(cv::Mat &img, const std::vector<Blob> &savedBlobs,
+                                             const std::vector<Blob> &frameBlobs)
 {
-    for (auto &entity : entities)
+    for (auto &savedBlob : savedBlobs)
     {
-        if (entity.getTemperatureType() == Entity::entityTemperature::WARM)
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_YELLOW, 2);
-        else if (entity.getTemperatureType() == Entity::entityTemperature::HOT)
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_ORANGE, 2);
-        else
-            cv::rectangle(img, entity.getCurrentBoundingRect(), SCALAR_RED, 2);
+        for (auto &frameBlob : frameBlobs)
+        {
+            if (savedBlob.isSame(frameBlob) && savedBlob.isStillBeingTracked())
+                drawRectangleForBlobs(img, savedBlob);
+        }
     }
 }
 
-void ImageAdditionner::drawNumberEntitiesOnImage(const std::vector<Entity> &entities, cv::Mat &img)
+void ImageAdditionner::drawTrackEntitiesOnImage(cv::Mat &img, const std::vector<Entity> &savedEntities,
+                                                const std::vector<Entity> &frameEntities)
 {
-    int nb = 0;
+    for (auto &savedEntity : savedEntities)
+    {
+        for (auto &frameEntity : frameEntities)
+        {
+            if (savedEntity.isSame(frameEntity) && savedEntity.isStillBeingTracked())
+                drawRectangleForBlobs(img, savedEntity);
+        }
+    }
+}
+
+void ImageAdditionner::drawNumberEntitiesOnImage(cv::Mat &img, const std::vector<Entity> &savedEntities,
+                                                 const std::vector<Entity> &frameEntities)
+{
     double fontScale;
     int intFontThickness;
 
-    for (auto &entity : entities)
+    for (auto &savedEntity : savedEntities)
     {
-        fontScale = (entity.getCurrentDiagonalSize() / 60.0);
-        intFontThickness = (int)std::round(fontScale * 1.0);
-        if (entity.getTemperatureType() == Entity::entityTemperature::WARM)
-            cv::putText(img, /*std::to_string(nb)*/"warm", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_WHITE, intFontThickness);
-        else if (entity.getTemperatureType() == Entity::entityTemperature::HOT)
-            cv::putText(img, /*std::to_string(nb)*/"hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_GREEN, intFontThickness);
-        else
-            cv::putText(img, /*std::to_string(nb)*/"very_hot", entity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX, fontScale, SCALAR_BLUE, intFontThickness);
+        for (auto &frameEntity : frameEntities)
+        {
+            if (savedEntity.isSame(frameEntity) && savedEntity.isStillBeingTracked())
+            {
+                fontScale = (savedEntity.getDiagonalSize() / 60.0);
+                intFontThickness = (int) std::round(fontScale * 1.0);
+                cv::putText(img, std::to_string(savedEntity.getId()),
+                            savedEntity.getCenterPositions().back(), cv::FONT_HERSHEY_SIMPLEX,
+                            fontScale, savedEntity.getColorRange()._displayColor, intFontThickness);
+            }
+        }
     }
-    nb++;
+}
+
+void ImageAdditionner::drawRectangleForBlobs(cv::Mat &img, const Blob &blob)
+{
+    cv::rectangle(img, blob.getBoundingRect(), blob.getColorRange()._displayColor, 2);
 }

@@ -24,6 +24,8 @@ void LogNetwork::closeLogFile()
  */
  void LogNetwork::logSomething(const std::string &msg)
 {
+     if (!_logActive)
+         return;
 	if (!_logFile.is_open())
 		openLogFile(LOGFILE_NAME);
 	_logFile << msg.c_str() << std::endl;
@@ -32,33 +34,48 @@ void LogNetwork::closeLogFile()
 
  void LogNetwork::logSuccessMsg(const std::string &msg)
  {
-	 if (_tryStatus)
-	 {
-		 logSomething("\t\t[OK] " + msg);
-		 _tryStatus = false;
-	 }
-	 else
-		 logSomething("[OK] " + msg);
+     if (_logActive)
+     {
+         if (_tryStatus)
+         {
+             logSomething("\t\t[OK] " + msg);
+             _tryStatus = false;
+         }
+         else
+             logSomething("[OK] " + msg);
+     }
  }
 
  void LogNetwork::logFailureMsg(const std::string &msg)
  {
-	 if (_tryStatus)
-	 {
-		 logSomething("\t\t[KO] " + msg);
-		 _tryStatus = false;
-	 }
-	 else
-		 logSomething("[KO] " + msg);
+     if (_logActive)
+     {
+         if (_tryStatus)
+         {
+             logSomething("\t\t[KO] " + msg);
+             _tryStatus = false;
+         }
+         else
+             logSomething("[KO] " + msg);
+     }
  }
 
  void LogNetwork::logInfoMsg(const std::string &msg)
  {
-	 logSomething("[info] " + msg + '\n');
+     if (_logActive)
+	    logSomething("[info] " + msg + '\n');
  }
 
  void LogNetwork::logTryMsg(const std::string &msg)
  {
-	 logSomething("\t[try] " + msg);
-	 _tryStatus = true;
+     if (_logActive)
+     {
+         logSomething("\t[try] " + msg);
+         _tryStatus = true;
+     }
+ }
+
+ void LogNetwork::setLogActive(bool log)
+ {
+     _logActive = log;
  }

@@ -13,49 +13,39 @@ void Frame::addImage(const cv::Mat &img)
     _images.push_back(img);
 }
 
+void Frame::addBlob(const Blob &blob)
+{
+    _blobs.push_back(blob);
+}
+
+void Frame::addEntity(const Entity &entity)
+{
+    _entities.push_back(entity);
+}
+
+void Frame::addFormBlob(const ScalarColor::t_colorRange &colorRange, const Blob::t_blobForm &possibleBlob)
+{
+    _formBlobs[colorRange].push_back(possibleBlob);
+}
+
+void Frame::addFormEntity(const Entity::t_blobForm &possibleEntity)
+{
+    _formEntities.push_back(possibleEntity);
+}
+
 void Frame::setImage(const cv::Mat &img, size_t index)
 {
     _images.at(index) = img;
 }
 
-void Frame::setContoursWarm(const std::vector<std::vector<cv::Point>> &contours)
+void Frame::setBlobs(const std::vector<Blob> &blobs)
 {
-    _contoursWarm = contours;
+    _blobs = std::vector<Blob>(blobs);
 }
 
-void Frame::setConvexHullsWarm(const std::vector<std::vector<cv::Point>> &convexHulls)
+void Frame::setEntities(const std::vector<Entity> &entities)
 {
-    _convexHullsWarm = convexHulls;
-}
-
-void Frame::setContoursHot(const std::vector<std::vector<cv::Point>> &contours)
-{
-    _contoursHot = contours;
-}
-
-void Frame::setConvexHullsHot(const std::vector<std::vector<cv::Point>> &convexHulls)
-{
-    _convexHullsHot = convexHulls;
-}
-
-void Frame::setContoursVeryHot(const std::vector<std::vector<cv::Point>> &contours)
-{
-    _contoursVeryHot = contours;
-}
-
-void Frame::setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &convexHulls)
-{
-    _convexHullsVeryHot = convexHulls;
-}
-
-void Frame::setMovementTypeEntity(size_t index, const Entity::entityMovement &type)
-{
-    _entities.at(index).setMovementType(type);
-}
-
-void Frame::setTemperatureTypeEntity(size_t index, const Entity::entityTemperature &type)
-{
-    _entities.at(index).setTemperatureType(type);
+    _entities = std::vector<Entity>(entities);
 }
 
 const std::vector<cv::Mat> &Frame::getImages() const
@@ -63,53 +53,30 @@ const std::vector<cv::Mat> &Frame::getImages() const
     return (_images);
 }
 
+const std::vector<Blob> &Frame::getBlobs() const
+{
+    return (_blobs);
+}
+
 const std::vector<Entity> &Frame::getEntities() const
 {
     return (_entities);
 }
 
-const std::vector<std::vector<cv::Point>> &Frame::getContoursWarm() const
+const std::vector<Blob::t_blobForm> &Frame::getFormBlobs(const ScalarColor::t_colorRange &colorRange)
 {
-    return (_contoursWarm);
+    return (_formBlobs[colorRange]);
 }
 
-const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsWarm() const
+const std::vector<Entity::t_blobForm> &Frame::getFormEntities() const
 {
-    return (_convexHullsWarm);
+    return (_formEntities);
 }
 
-const std::vector<std::vector<cv::Point>> &Frame::getContoursHot() const
+void Frame::clearAllBlobs()
 {
-    return (_contoursHot);
-}
-
-const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsHot() const
-{
-    return (_convexHullsHot);
-}
-
-const std::vector<std::vector<cv::Point>> &Frame::getContoursVeryHot() const
-{
-    return (_contoursVeryHot);
-}
-
-const std::vector<std::vector<cv::Point>> &Frame::getConvexHullsVeryHot() const
-{
-    return (_convexHullsVeryHot);
-}
-
-void Frame::clearEntities()
-{
+    _blobs.clear();
     _entities.clear();
-}
-
-void Frame::predictNextPositionEntities()
-{
-    for (auto &entity : _entities)
-        entity.predictNextPosition();
-}
-
-void Frame::addEntity(const Entity &entity)
-{
-    _entities.push_back(entity);
+    _formBlobs.clear();
+    _formEntities.clear();
 }

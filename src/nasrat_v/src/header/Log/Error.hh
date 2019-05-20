@@ -5,7 +5,7 @@
 #ifndef __OPENCV_TEST_ERROR_HH__
 # define __OPENCV_TEST_ERROR_HH__
 
-# define ERROR_LOGFILE_PATH     "../output/log/error/log-error.txt"
+# define ERROR_LOGFILE_PATH     "../output/log/log.txt"
 # define MIN_FRAME_VID          2
 
 #include "Log.hh"
@@ -17,13 +17,15 @@ public:
     {
         NO_ERROR,
         UNKNOWN_ERROR,
+        OPEN_IMG,
         OPEN_VID,
         TRUNCATED_VID,
         MISSING_FRAME_INFOS,
         MISSING_INIT,
         NO_CONTOUR,
         THREAD_ERROR,
-        DEBUG_STOP
+        DEBUG_STOP,
+        TRUNCATED_IMG_NETWORK
     };
 
     static void                 logError(const ErrorType &type, const std::string &complementary_msg = "");
@@ -31,8 +33,8 @@ public:
 
 private:
     /* Methods */
-    Error();
-    ~Error();
+    Error() = default;
+    ~Error() = default;
     static const std::string    getMessage(const ErrorType &type);
 };
 

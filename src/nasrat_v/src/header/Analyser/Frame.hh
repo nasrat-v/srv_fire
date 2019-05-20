@@ -5,10 +5,10 @@
 #ifndef OPENCV_SRV_FRAME_H
 # define OPENCV_SRV_FRAME_H
 
+#include <map>
 #include <opencv2/core/mat.hpp>
 
 #include "Entity.hh"
-#include "../Log/Error.hh"
 #include "ImageProcesser.hh"
 
 class Frame
@@ -18,37 +18,29 @@ public:
     ~Frame();
 
     void                                        addImage(const cv::Mat &img);
-    void                                        setImage(const cv::Mat &img, size_t index);
-    void                                        setContoursWarm(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsWarm(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursHot(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsHot(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setContoursVeryHot(const std::vector<std::vector<cv::Point>> &contours);
-    void                                        setConvexHullsVeryHot(const std::vector<std::vector<cv::Point>> &convexHulls);
-    void                                        setMovementTypeEntity(size_t index, const Entity::entityMovement &type);
-    void                                        setTemperatureTypeEntity(size_t index, const Entity::entityTemperature &type);
-    const std::vector<cv::Mat>                  &getImages() const;
-    const std::vector<Entity>                   &getEntities() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursWarm() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsWarm() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursHot() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsHot() const;
-    const std::vector<std::vector<cv::Point>>   &getContoursVeryHot() const;
-    const std::vector<std::vector<cv::Point>>   &getConvexHullsVeryHot() const;
-    void                                        clearEntities();
-    void                                        predictNextPositionEntities();
+    void                                        addBlob(const Blob &blob);
     void                                        addEntity(const Entity &entity);
+    void                                        addFormBlob(const ScalarColor::t_colorRange &colorRange,
+                                                                const Blob::t_blobForm &possibleBlob);
+    void                                        addFormEntity(const Entity::t_blobForm &possibleEntity);
+    void                                        setImage(const cv::Mat &img, size_t index);
+    void                                        setBlobs(const std::vector<Blob> &blobs);
+    void                                        setEntities(const std::vector<Entity> &entities);
+    const std::vector<cv::Mat>                  &getImages() const;
+    const std::vector<Blob>                     &getBlobs() const;
+    const std::vector<Entity>                   &getEntities() const;
+    const std::vector<Blob::t_blobForm>         &getFormBlobs(const ScalarColor::t_colorRange &colorRange);
+    const std::vector<Entity::t_blobForm>       &getFormEntities() const;
+    void                                        clearAllBlobs();
+
 
 private:
     /* Attributes */
     std::vector<cv::Mat>                        _images;
+    std::vector<Blob>                           _blobs;
     std::vector<Entity>                         _entities;
-    std::vector<std::vector<cv::Point>>         _contoursWarm;
-    std::vector<std::vector<cv::Point>>         _convexHullsWarm;
-    std::vector<std::vector<cv::Point>>         _contoursHot;
-    std::vector<std::vector<cv::Point>>         _convexHullsHot;
-    std::vector<std::vector<cv::Point>>         _contoursVeryHot;
-    std::vector<std::vector<cv::Point>>         _convexHullsVeryHot;
+    std::map<ScalarColor::t_colorRange, std::vector<Blob::t_blobForm>>  _formBlobs;
+    std::vector<Entity::t_blobForm>                                     _formEntities;
 };
 
 

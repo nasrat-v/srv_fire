@@ -1,92 +1,26 @@
 //
-// Created by nasrat_v on 11/3/18.
+// Created by nasrat_v on 5/17/19.
 //
 
-#ifndef OPENCV_SRV_ENTITY_H
-# define OPENCV_SRV_ENTITY_H
+#ifndef OPENCV_SRV_ENTITY_HH
+#define OPENCV_SRV_ENTITY_HH
 
-# define NB_FRAME_MOVE_PREDICTION    5
-# define DEFAULT_NB_ENTITY          -1
+# define DEFAULT_ID_ENTITY          -1
+# define DEFAULT_COLOR_RANGE_ENTITY WHITE_RANGE
 
-#include "../Log/Log.hh"
+#include "Blob.hh"
 
-#include <iostream>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/core/types.hpp>
-
-class Entity
+class Entity : public Blob
 {
 public:
-    explicit Entity(const std::vector<cv::Point> &contour);
+    Entity(const std::vector<cv::Point> &contour);
     ~Entity();
 
-    enum class entityMovement
-    {
-        MOVE,
-        STATIC
-    };
-
-    enum class entityTemperature
-    {
-        WARM,
-        HOT,
-        VERY_HOT
-    };
-
-    void                            clone(const Entity &entity);
-    void                            predictNextPosition();
-    double                          getCurrentAspectRatio() const;
-    double                          getCurrentDiagonalSize() const;
-    const cv::Rect                  &getCurrentBoundingRect() const;
-    const std::vector<cv::Point>    &getContour() const;
-    const std::vector<cv::Point>    &getCenterPositions() const;
-    const entityMovement            &getMovementType() const;
-    const entityTemperature         &getTemperatureType() const;
-    int                             getNbEntity() const;
-    void                            setMovementType(const entityMovement &type);
-    void                            setTemperatureType(const entityTemperature &type);
-    void                            setNbEntity(int nb);
-
-    /*const cv::Point                 &getPredictedNextPosition() const;
-    bool                            getStillBeingTracked() const;
-    bool                            getCurrentMatchFoundOrNewEntity() const;
-    int                             getNumOfConsecutiveFramesWithoutMatch() const;
-    void                            setCurrentAspectRatio(double val);
-    void                            setCurrentDiagonalSize(double val);
-    void                            setCurrentBoundingRect(const cv::Rect &rect);
-    void                            setContour(const std::vector<cv::Point> &contour);
-    void                            addCenterPosition(const cv::Point &centerPosition);
-    void                            setStillBeingTracked(bool val);
-    void                            setNumOfConsecutiveFramesWithoutAMatch(int val);*/
+    void                    addBlob(const Blob &blob);
+    const std::vector<Blob> &getBlobs() const;
 
 private:
-    /* Attributes */
-    double                          _currentAspectRatio { };
-    double                          _currentDiagonalSize { };
-    cv::Rect                        _currentBoundingRect;
-    cv::Point                       _predictedNextPosition;
-    std::vector<cv::Point>          _centerPositions;
-    std::vector<cv::Point>          _contour;
-    entityMovement                  _movementType;
-    entityTemperature               _temperatureType;
-    int                             _nbEntity;
-
-    /*int                             _numOfConsecutiveFramesWithoutMatch;
-    bool                            _stillBeingTracked;*/
-
-    typedef struct                  s_sumOfChanges
-    {
-        short                       posX;
-        short                       posY;
-        short                       changesLeft;
-        short                       nbChanges;
-    }                               t_sumOfChanges;
-
-    /* Methods */
-    void                            initCenterPosition();
-    void                            initCurrentAttributes();
-    void                            calculateSumOfChanges(t_sumOfChanges &sumOfChanges);
+    std::vector<Blob>       _blobs;
 };
 
-
-#endif //OPENCV_SRV_ENTITY_H
+#endif //OPENCV_SRV_ENTITY_HH

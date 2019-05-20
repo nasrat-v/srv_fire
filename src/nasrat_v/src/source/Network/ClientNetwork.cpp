@@ -38,7 +38,6 @@ ERR ClientNetwork::initHandleSocketWithIpAddress()
     __binary_iptype binaryIpAddress = 0;
 	__sockaddr_in sin;
 
-	memset(&_sins, 0, sizeof(_sins));
 	memset(&sin, 0, sizeof(sin));
 	sin.sin_family = _srvParam.ipType;
 	sin.sin_port = htons(_srvParam.port);
@@ -59,7 +58,6 @@ void ClientNetwork::initHandleSocketWithHostname()
     __sockaddr_in sin;
 	struct addrinfo *p;
 
-	memset(&_sins, 0, sizeof(_sins));
 	for (p = _addrInfo; p != nullptr; p = p->ai_next)
 	{
 		memset(&sin, 0, sizeof(sin));
@@ -145,7 +143,7 @@ void ClientNetwork::deconnectToServer()
 {
 	char error_code[SIZE_BUFF] = { 0 };
 	__err_size error_code_size = sizeof(error_code);
-	int status;
+    __attribute__((unused))int status;
 
 	LogNetwork::logTryMsg("Cleaning server connection...");
 	if (getsockopt(_sock, SOL_SOCKET, SO_ERROR, error_code, &error_code_size) == NET_ERROR)
@@ -196,7 +194,7 @@ ERR ClientNetwork::readData(std::string &data)
 		deconnectToServer();
 		return (SUCCESS);
 	}
-	//LogNetwork::logSomething("\nReceived:\n" + data + "\n:From Server\n");
+	LogNetwork::logSomething("\nReceived:\n" + data + "\n:From Server\n");
 	return (SUCCESS);
 }
 
@@ -210,7 +208,7 @@ ERR ClientNetwork::writeData(const std::string &data)
 		LogNetwork::logFailureMsg("\nError failed to write data to socket");
 		return (NET_ERROR);
 	}
-	//LogNetwork::logSomething("\nSend:\n" + data + "\n:To server\n");
+	LogNetwork::logSomething("\nSend:\n" + data + "\n:To server\n");
 	return (SUCCESS);
 }
 
@@ -237,14 +235,25 @@ void ClientNetwork::clearSocket()
 	LogNetwork::logSomething("Socket: " + std::to_string(_sock) + " cleared\n");
 }
 
-int ClientNetwork::logFailureMsg(const std::string &msg, bool errorCode)
+void ClientNetwork::logFailureMsg(const std::string &msg, __attribute__((unused))bool errorCode)
 {
 #ifdef _WIN32
 	if (errorCode)
-		Log::logFailureMsg(msg + WSAGetLastError());
+		LogNetwork::logFailureMsg(msg + WSAGetLastError());
 	else
-		Log::logFailureMsg(msg);
+		LogNetwork::logFailureMsg(msg);
 #elif __linux__ || __unix__ || __unix || unix || __APPLE__ || __MACH__
 	LogNetwork::logFailureMsg(msg);
 #endif
+}
+
+void ClientNetwork::setLogActive(bool log)
+{
+    _logActive = log;
+    LogNetwork::setLogActive(log);
+}
+
+bool ClientNetwork::isLogActive() const
+{
+    return (_logActive);
 }

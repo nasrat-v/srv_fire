@@ -116,7 +116,7 @@ ImageProvider::statusVideo ImageProvider::openImg(const std::string &path, cv::M
     imgRead = imread(path, cv::IMREAD_COLOR);
     if (!imgRead.data)
     {
-        Error::logError(Error::ErrorType::OPEN_VID, ("- Cannot read source as IMG: " + path));
+        Error::logError(Error::ErrorType::OPEN_IMG, ("- Cannot read source as IMG: " + path));
         return (statusVideo::ERROR);
     }
     return (statusVideo::OPEN);
@@ -139,10 +139,12 @@ ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &i
 {
     size_t i = 0;
     cv::Mat imgRead;
+    statusVideo status;
 
     while (i < nbImgIncr)
     {
-        if (incrementImgNetwork(imgRead) == statusVideo::ERROR)
+        while ((status = incrementImgNetwork(imgRead)) == statusVideo::IGNORE_WAIT);
+        if (status == statusVideo::ERROR)
             return (statusVideo::ERROR);
         imgs.push_back(imgRead);
         i++;
@@ -158,7 +160,11 @@ ImageProvider::statusVideo ImageProvider::incrementImgNetwork(cv::Mat &nextImage
         std::this_thread::yield(); // WAIT FOR PATH FROM NETWORK
     Log::logSomething(("Read source from network: " + _imageNetworkPath));
     if (openImg(_imageNetworkPath, nextImage) == statusVideo::ERROR)
-        return (statusVideo::ERROR);
+    {
+        Error::logError(Error::ErrorType::TRUNCATED_IMG_NETWORK, "- Ignore image");
+        resetImageNetworkPath();
+        return (statusVideo::IGNORE_WAIT);
+    }
     resetImageNetworkPath();
     return (statusVideo::OPEN);
 }

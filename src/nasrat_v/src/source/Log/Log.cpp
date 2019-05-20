@@ -4,10 +4,6 @@
 
 #include "../../header/Log/Log.hh"
 
-Log::Log() = default;
-
-Log::~Log() = default;
-
 /**
  * Static function, can be called everywhere.
  * Get current time to format: DAY MONTH NUM_DAY HOUR:MIN:SEC YEAR.

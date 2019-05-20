@@ -8,16 +8,21 @@ ImageProcesser::ImageProcesser() = default;
 
 ImageProcesser::~ImageProcesser() = default;
 
-void ImageProcesser::imgToHSV(cv::Mat &img, const t_colorRange &range)
+void ImageProcesser::imgToHSV(cv::Mat &img, const ScalarColor::t_colorRange &range)
 {
     cv::cvtColor(img, img, cv::COLOR_BGR2HSV);
-    cv::inRange(img, range.firstRange, range.secondRange, img);
+    cv::inRange(img, range._firstRange, range._secondRange, img);
+}
+
+void ImageProcesser::imgToGray(cv::Mat &img)
+{
+    cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
 }
 
 cv::Mat ImageProcesser::differenceImgGray(cv::Mat firstImg, cv::Mat secondImg)
 {
-    cv::cvtColor(firstImg, firstImg, cv::COLOR_BGR2GRAY);
-    cv::cvtColor(secondImg, secondImg, cv::COLOR_BGR2GRAY);
+    imgToGray(firstImg);
+    imgToGray(secondImg);
     return (differenceImg(firstImg, secondImg));
 }
 
@@ -45,9 +50,8 @@ void ImageProcesser::threshImg(cv::Mat &img)
     structuringElement5x5 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
     structuringElement7x7 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7));
     structuringElement9x9 = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(9, 9));
-    /*cv::erode(img, img, structuringElement1x1);
-    cv::erode(img, img, structuringElement3x3);*/
-    cv::dilate(img, img, structuringElement1x1);
+    cv::erode(img, img, structuringElement1x1);
+    /*cv::erode(img, img, structuringElement3x3);*/
     cv::dilate(img, img, structuringElement3x3);
     cv::dilate(img, img, structuringElement5x5);
     cv::dilate(img, img, structuringElement7x7);
@@ -67,6 +71,7 @@ std::vector<std::vector<cv::Point>> ImageProcesser::findConvexHullsFromContours(
     size_t  i = 0;
     size_t  contoursSize = contours.size();
     std::vector<std::vector<cv::Point>> convexHulls(contoursSize);
+    std::vector<cv::Point> point;
 
     /*if (contoursSize == 0)
         std::cout << "Cannot find convexhulls" << std::endl;*/

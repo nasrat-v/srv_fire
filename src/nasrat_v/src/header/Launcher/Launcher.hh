@@ -24,7 +24,8 @@ private:
     ProcessCommunication    _processComm;
 
     /* Methods */
-    ERR                     launchThreadNetwork(const std::string &idNetwork, ImageProvider *imageProvider);
+    ERR                     launchThreadNetwork(const std::string &idNetwork,
+                                                ImageProvider *imageProvider, bool log);
 };
 
 

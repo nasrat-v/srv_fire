@@ -4,10 +4,6 @@
 
 #include "../../header/Log/Error.hh"
 
-Error::Error() = default;
-
-Error::~Error() = default;
-
 /**
  * Gives the appropriate message for each error type
  * @param type Enum type of the error
@@ -21,6 +17,8 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("No error");
         case (ErrorType::UNKNOWN_ERROR):
             return ("Unknown error");
+        case (ErrorType::OPEN_IMG):
+            return ("Could not open image");
         case (ErrorType::OPEN_VID):
             return ("Could not open video");
         case (ErrorType::TRUNCATED_VID):
@@ -35,6 +33,8 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Stop debug");
         case (ErrorType::THREAD_ERROR):
             return ("Error in network thread");
+        case (ErrorType::TRUNCATED_IMG_NETWORK):
+            return ("Truncated Image from network");
     };
     return ("");
 }
@@ -62,7 +62,7 @@ void                Error::logErrorAbort(const Error::ErrorType &type, const std
  */
 void                Error::logError(const Error::ErrorType &type, const std::string &complementary_msg)
 {
-    std::string     msg = (getMessage(type) + " " + complementary_msg);
+    std::string     msg = ("Error - " + getMessage(type) + " " + complementary_msg);
 
     Log::logSomething(msg, ERROR_LOGFILE_PATH, true);
     std::cerr << "[" << msg << "]" << std::endl;

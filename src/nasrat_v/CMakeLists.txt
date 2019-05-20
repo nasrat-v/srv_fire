@@ -13,8 +13,8 @@ set(SOURCE_FILES
         src/header/Log/Error.hh
         src/source/Log/Log.cpp
         src/header/Log/Log.hh
-        src/source/Analyser/Entity.cpp
-        src/header/Analyser/Entity.hh
+        src/source/Analyser/Blob.cpp
+        src/header/Analyser/Blob.hh
         src/source/Analyser/ImageProcesser.cpp
         src/header/Analyser/ImageProcesser.hh
         src/source/Analyser/FrameAnalyser.cpp
@@ -35,6 +35,17 @@ set(SOURCE_FILES
         src/header/Network/Log/LogNetwork.hh
         src/source/Network/ProcessCommunication.cpp
         src/header/Network/ProcessCommunication.hh
-        src/source/Launcher/ParamManager.cpp src/header/Launcher/ParamManager.hh src/source/Launcher/Launcher.cpp src/header/Launcher/Launcher.hh)
+        src/source/Launcher/ParamManager.cpp
+        src/header/Launcher/ParamManager.hh
+        src/source/Launcher/Launcher.cpp
+        src/header/Launcher/Launcher.hh
+        src/source/Analyser/Entity.cpp
+        src/header/Analyser/Entity.hh
+        src/header/Analyser/ScalarColor.hpp
+        src/header/Analyser/BlobFilter.hh
+        src/source/Analyser/BlobFilter.cpp
+        src/header/Analyser/EntityFilter.hh
+        src/source/Analyser/EntityFilter.cpp
+        src/header/Analyser/IdManager.hpp)
 
 add_executable(opencv_srv ${SOURCE_FILES})
