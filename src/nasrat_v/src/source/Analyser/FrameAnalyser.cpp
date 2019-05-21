@@ -213,7 +213,8 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
     for (auto &frameBlob : _frame.getBlobs())
     {
         findClosestSavedBlob(frameBlob, &distance);
-        if (distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15))
+        if ((distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15)) &&
+             distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
             setNewValueSavedBlob(frameBlob, distance.indexSavedBlob);
         else
             addNewSavedBlob(frameBlob);
@@ -229,7 +230,8 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
     for (auto &frameEntity : _frame.getEntities())
     {
         findClosestSavedEntity(frameEntity, &distance);
-        if (distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15))
+        if ((distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15)) &&
+             distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
             setNewValueSavedEntity(frameEntity, distance.indexSavedBlob);
         else
             addNewSavedEntity(frameEntity);
