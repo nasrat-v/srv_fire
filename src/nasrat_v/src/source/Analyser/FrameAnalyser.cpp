@@ -65,7 +65,8 @@ void FrameAnalyser::logicForEachFrame(bool &end)
 {
     findBlobs();
     findEntities();
-    matchSavedBlobsToSavedEntities();
+    if (_debugMode & DebugManager::HOT_SPOT)
+        matchSavedBlobsToSavedEntities();
     _imageService.displayImg(_frame.getImages().front(), _savedBlobs,
                              _frame.getBlobs(), _savedEntities, _frame.getEntities());
     _frame.clearAllBlobs();
@@ -127,7 +128,7 @@ void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
 {
     size_t i = 0;
     double dist = 0;
-    distance->indexSavedBlob = 0;
+    distance->indexSavedBlob = INDEX_SAVED_BLOB_NOT_FOUND;
     distance->leastDistance = 100000.0;
 
     for (auto &savedBlob : _savedBlobs)
@@ -149,7 +150,7 @@ void FrameAnalyser::findClosestSavedEntity(const Blob &blob, t_distance *distanc
 {
     size_t i = 0;
     double dist = 0;
-    distance->indexSavedBlob = 0;
+    distance->indexSavedBlob = INDEX_SAVED_BLOB_NOT_FOUND;
     distance->leastDistance = 100000.0;
 
     for (auto &savedEntity : _savedEntities)
@@ -212,7 +213,8 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
     for (auto &frameBlob : _frame.getBlobs())
     {
         findClosestSavedBlob(frameBlob, &distance);
-        if (distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15))
+        if ((distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15)) &&
+             distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
             setNewValueSavedBlob(frameBlob, distance.indexSavedBlob);
         else
             addNewSavedBlob(frameBlob);
@@ -228,7 +230,8 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
     for (auto &frameEntity : _frame.getEntities())
     {
         findClosestSavedEntity(frameEntity, &distance);
-        if (distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15))
+        if ((distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15)) &&
+             distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
             setNewValueSavedEntity(frameEntity, distance.indexSavedBlob);
         else
             addNewSavedEntity(frameEntity);
@@ -243,7 +246,8 @@ void FrameAnalyser::matchSavedBlobsToSavedEntities()
     for (auto &blob : _savedBlobs)
     {
         findClosestSavedEntity(blob, &distance);
-        _savedEntities[distance.indexSavedBlob].addBlob(blob);
+        if (distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
+            _savedEntities[distance.indexSavedBlob].addBlob(blob);
     }
 }
 
