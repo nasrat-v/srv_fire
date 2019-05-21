@@ -8,6 +8,7 @@
 # define VIDEO_PATH                     "../input/video/video-incendie-pompiers.mp4"
 # define MAX_FRAME_WITHOUT_MATCH_BLOB   20
 # define MAX_FRAME_WITHOUT_MATCH_ENTITY 10
+# define INDEX_SAVED_BLOB_NOT_FOUND     (size_t)-1
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>

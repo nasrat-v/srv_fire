@@ -65,7 +65,8 @@ void FrameAnalyser::logicForEachFrame(bool &end)
 {
     findBlobs();
     findEntities();
-    matchSavedBlobsToSavedEntities();
+    if (_debugMode & DebugManager::HOT_SPOT)
+        matchSavedBlobsToSavedEntities();
     _imageService.displayImg(_frame.getImages().front(), _savedBlobs,
                              _frame.getBlobs(), _savedEntities, _frame.getEntities());
     _frame.clearAllBlobs();
@@ -127,7 +128,7 @@ void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
 {
     size_t i = 0;
     double dist = 0;
-    distance->indexSavedBlob = 0;
+    distance->indexSavedBlob = INDEX_SAVED_BLOB_NOT_FOUND;
     distance->leastDistance = 100000.0;
 
     for (auto &savedBlob : _savedBlobs)
@@ -149,7 +150,7 @@ void FrameAnalyser::findClosestSavedEntity(const Blob &blob, t_distance *distanc
 {
     size_t i = 0;
     double dist = 0;
-    distance->indexSavedBlob = 0;
+    distance->indexSavedBlob = INDEX_SAVED_BLOB_NOT_FOUND;
     distance->leastDistance = 100000.0;
 
     for (auto &savedEntity : _savedEntities)
@@ -243,7 +244,8 @@ void FrameAnalyser::matchSavedBlobsToSavedEntities()
     for (auto &blob : _savedBlobs)
     {
         findClosestSavedEntity(blob, &distance);
-        _savedEntities[distance.indexSavedBlob].addBlob(blob);
+        if (distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
+            _savedEntities[distance.indexSavedBlob].addBlob(blob);
     }
 }
 
