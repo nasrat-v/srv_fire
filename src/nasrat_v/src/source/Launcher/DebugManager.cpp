@@ -42,8 +42,8 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::CONVEXHULLS;
         if (*it == SAVEDBLOBS_ARG)
             mode |= debugMode::SAVED_BLOBS;
-        if (*it == FRAMEBLOBS_ARG)
-            mode |= debugMode::FRAME_BLOBS;
+        if (*it == FRAMEFILTRATEBLOBS_ARG)
+            mode |= debugMode::FRAME_FILTRATE_BLOBS;
         if (*it == DIFFERENCE_ARG)
             mode |= debugMode::DIFFERENCE;
         if (*it == TRACK_ARG)

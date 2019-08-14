@@ -67,8 +67,8 @@ void FrameAnalyser::logicForEachFrame(bool &end)
     findEntities();
     if (_debugMode & DebugManager::HOT_SPOT)
         matchSavedBlobsToSavedEntities();
-    _imageService.displayImg(_frame.getImages().front(), _savedBlobs,
-                             _frame.getBlobs(), _savedEntities, _frame.getEntities());
+    _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs(),
+                             _savedEntities, _frame.getEntities(), colorToAnalyse);
     _frame.clearAllBlobs();
     if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
         end = true;
@@ -215,7 +215,7 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
         findClosestSavedBlob(frameBlob, &distance);
         if ((distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15)) &&
              distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
-            setNewValueSavedBlob(frameBlob, distance.indexSavedBlob);
+            mergeSavedBlobAndFrameBlob(frameBlob, distance.indexSavedBlob);
         else
             addNewSavedBlob(frameBlob);
     }
@@ -232,7 +232,7 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
         findClosestSavedEntity(frameEntity, &distance);
         if ((distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15)) &&
              distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
-            setNewValueSavedEntity(frameEntity, distance.indexSavedBlob);
+            mergeSavedEntityAndFrameEntity(frameEntity, distance.indexSavedBlob);
         else
             addNewSavedEntity(frameEntity);
     }
@@ -251,19 +251,32 @@ void FrameAnalyser::matchSavedBlobsToSavedEntities()
     }
 }
 
-void FrameAnalyser::setNewValueSavedBlob(const Blob &frameBlob, size_t index)
+void FrameAnalyser::mergeSavedBlobAndFrameBlob(const Blob &frameBlob, size_t index)
 {
     _savedBlobs[index].clone(frameBlob);
+    //_savedBlobs[index].clone(mergeBlobs(_savedBlobs[index], frameBlob));
+    //
+    // il faut trouver une solution pour merger les deux blobs ensemble
+    // dilatation ? créer des lignes pour les relier puis trouver les contours ??
+    // car en clonant seulement une des deux entités disparait (aspiré par l'autre) si elles ne sont pas exactement les memes
+    //
     _savedBlobs[index].setMatchFoundOrNewBlob(true);
 }
 
-void FrameAnalyser::setNewValueSavedEntity(const Entity &frameEntity, size_t index)
+void FrameAnalyser::mergeSavedEntityAndFrameEntity(const Entity &frameEntity, size_t index)
 {
     int id = _savedEntities[index].getId();
 
-    _savedEntities[index].clone(frameEntity);
+    _savedBlobs[index].clone(frameEntity);
+    //_savedEntities[index].clone(mergeBlobs(_savedEntities[index], frameEntity));
     _savedEntities[index].setMatchFoundOrNewBlob(true);
     _savedEntities[index].setId(id);
+}
+
+Blob FrameAnalyser::mergeBlobs(const Blob &savedBlob, const Blob &frameBlob)
+{
+    return (Blob(_imageService.mergeContour(
+            _frame.getImages().front().size(), savedBlob.getContour(), frameBlob.getContour())));
 }
 
 void FrameAnalyser::addNewSavedBlob(const Blob &frameBlob)

@@ -68,8 +68,9 @@ private:
     void                    matchFrameBlobsToSavedBlobs();
     void                    matchFrameEntitiesToSavedEntities();
     void                    matchSavedBlobsToSavedEntities();
-    void                    setNewValueSavedBlob(const Blob &frameBlob, size_t index);
-    void                    setNewValueSavedEntity(const Entity &frameEntity, size_t index);
+    void                    mergeSavedBlobAndFrameBlob(const Blob &frameBlob, size_t index);
+    void                    mergeSavedEntityAndFrameEntity(const Entity &frameEntity, size_t index);
+    Blob                    mergeBlobs(const Blob &savedBlob, const Blob &frameBlob);
     void                    addNewSavedBlob(const Blob &frameBlob);
     void                    addNewSavedEntity(const Entity &frameEntity);
     void                    checkConsecutiveFrameWithoutMatchSavedBlobs();

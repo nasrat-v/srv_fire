@@ -9,7 +9,7 @@
 # define CONTOUR_ARG            "--contours"
 # define CONVEXHULLS_ARG        "--convexhulls"
 # define SAVEDBLOBS_ARG         "--saved-blobs"
-# define FRAMEBLOBS_ARG         "--frame-blobs"
+# define FRAMEFILTRATEBLOBS_ARG "--frame-filtrate-blobs"
 # define DIFFERENCE_ARG         "--difference"
 # define TRACK_ARG              "--track"
 # define NUMBER_ARG             "--number"
@@ -46,7 +46,7 @@ public:
         CONTOUR = 0b0000'0000'0000'0100,
         CONVEXHULLS = 0b0000'0000'0000'1000,
         SAVED_BLOBS = 0b0000'0000'0001'0000,
-        FRAME_BLOBS = 0b0000'0000'0010'0000,
+        FRAME_FILTRATE_BLOBS = 0b0000'0000'0010'0000,
         DIFFERENCE = 0b0000'0000'0100'0000,
         TRACK = 0b0000'0000'1000'0000,
         NUMBER = 0b0000'0001'0000'0000,

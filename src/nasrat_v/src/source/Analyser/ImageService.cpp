@@ -111,7 +111,7 @@ void ImageService::findContoursFrame(const cv::Mat &imgProcessed,
     contours = _imageProcesser.findContoursFromImg(imgProcessed);
     if (_debugMode & DebugManager::debugMode::CONTOUR)
         _imageAdditionner.drawAndShowContours(imgProcessed.size(), contours,
-                                              ("Contours " + colorRange._nameRange), colorRange);
+                                              ("Blob Form Contours " + colorRange._nameRange), colorRange);
 }
 
 void ImageService::findConvexHullsFrame(const cv::Size &imageSize,
@@ -122,12 +122,28 @@ void ImageService::findConvexHullsFrame(const cv::Size &imageSize,
     convexHulls = _imageProcesser.findConvexHullsFromContours(contours);
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imageSize, convexHulls,
-                                              ("ConvexHulls " + colorRange._nameRange), colorRange);
+                                              ("Blob Form ConvexHulls " + colorRange._nameRange), colorRange);
+}
+
+std::vector<cv::Point> ImageService::mergeContour(const cv::Size &imgSize,
+                                                  const std::vector<cv::Point> &contourFirst,
+                                                  const std::vector<cv::Point> &contourSecond)
+{
+    cv::Mat image(std::move(imgSize), CV_8UC3, SCALAR_BLACK);
+    std::vector<std::vector<cv::Point>> tmpContours;
+
+    tmpContours.push_back(contourFirst);
+    tmpContours.push_back(contourSecond);
+    _imageAdditionner.drawContours(image, tmpContours, WHITE_RANGE);
+    _imageProcesser.imgToGray(image);
+    _imageProcesser.threshImg(image);
+    imshow("toto", image);
+    return (_imageProcesser.findContoursFromImg(image).front());
 }
 
 void ImageService::mergeAllContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &allContours)
 {
-    _imageAdditionner.drawContours(img, allContours);
+    _imageAdditionner.drawContours(img, allContours, WHITE_RANGE);
     _imageProcesser.imgToGray(img);
     _imageProcesser.threshImg(img);
 }
@@ -138,7 +154,7 @@ void ImageService::findContoursMergedFrame(const cv::Mat &imgMerge,
     contoursMerged = _imageProcesser.findContoursFromImg(imgMerge);
     if (_debugMode & DebugManager::debugMode::CONTOUR)
         _imageAdditionner.drawAndShowContours(imgMerge.size(), contoursMerged,
-                                              "Contours Merged", WHITE_RANGE);
+                                              "Blob Form Contours Merged", WHITE_RANGE);
 }
 
 void ImageService::findConvexHullsMergedFrame(const cv::Size &imageSize,
@@ -148,7 +164,7 @@ void ImageService::findConvexHullsMergedFrame(const cv::Size &imageSize,
     convexHullsMerged = _imageProcesser.findConvexHullsFromContours(contoursMerged);
     if (_debugMode & DebugManager::debugMode::CONVEXHULLS)
         _imageAdditionner.drawAndShowContours(imageSize, convexHullsMerged,
-                                              "ConvexHulls Merged", WHITE_RANGE);
+                                              "Blob Form ConvexHulls Merged", WHITE_RANGE);
 }
 
 /////////////////////// Image Providing //////////////////////////
@@ -209,17 +225,25 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
 
 /////////////////////// Image Addition //////////////////////////
 
+void ImageService::displayBlobs(const cv::Size &imgSize, const std::vector<Blob> &blobs,
+                                const std::string &strImageName,
+                                const std::vector<ScalarColor::t_colorRange> &colorToAnalyse)
+{
+    _imageAdditionner.drawAndShowContours(imgSize, blobs, strImageName, colorToAnalyse);
+}
+
 void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
                                             const std::vector<Blob> &frameBlobs,
                                             const std::vector<Entity> &savedEntities,
-                                            const std::vector<Entity> &frameEntities)
+                                            const std::vector<Entity> &frameEntities,
+                                            const std::vector<ScalarColor::t_colorRange> &colorToAnalyse)
 {
     cv::Mat trackImg = img.clone();
 
     if (_debugMode & DebugManager::debugMode::SAVED_BLOBS)
-        _imageAdditionner.drawAndShowContours(img.size(), savedBlobs, "Saved Blobs");
-    if (_debugMode & DebugManager::debugMode::FRAME_BLOBS)
-        _imageAdditionner.drawAndShowContours(img.size(), frameBlobs, "Frame Blobs");
+        displayBlobs(img.size(), savedBlobs, "Saved Blobs", colorToAnalyse);
+    if (_debugMode & DebugManager::debugMode::FRAME_FILTRATE_BLOBS)
+        displayBlobs(img.size(), frameBlobs, "Frame Filtrate Blobs", colorToAnalyse);
     if (_debugMode & DebugManager::debugMode::TRACK)
         _imageAdditionner.drawTrackEntitiesOnImage(trackImg, savedEntities, frameEntities);
     if (_debugMode & DebugManager::debugMode::HOT_SPOT)

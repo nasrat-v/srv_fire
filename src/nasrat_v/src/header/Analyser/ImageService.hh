@@ -25,10 +25,16 @@ public:
     void                        substractInfosBlobsInMovement(Frame &frame);
     ImageProvider::statusVideo  openVideo();
     ImageProvider::statusVideo  getNextImg(Frame &frame);
+    std::vector<cv::Point>      mergeContour(const cv::Size &imgSize, const std::vector<cv::Point> &contourFirst,
+                                             const std::vector<cv::Point> &contourSecond);
+    void                        displayBlobs(const cv::Size &imgSize, const std::vector<Blob> &blobs,
+                                             const std::string &strImageName,
+                                             const std::vector<ScalarColor::t_colorRange> &colorToAnalyse);
     void                        displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
                                                         const std::vector<Blob> &frameBlobs,
                                                         const std::vector<Entity> &savedEntities,
-                                                        const std::vector<Entity> &frameEntities);
+                                                        const std::vector<Entity> &frameEntities,
+                                                        const std::vector<ScalarColor::t_colorRange> &colorToAnalyse);
     ImageProvider::statusVideo  createSampleImgFromVideo();
 
 private:
