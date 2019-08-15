@@ -1,0 +1,3 @@
+logOut=../log.txt
+port=4234
+maxCli=10
