@@ -1,4 +1,0 @@
-/home/nasrat_v/Dev/srv_fire/src/IA_plus_SRV/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nasrat_v/Dev/srv_fire/src/IA_plus_SRV/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/nasrat_v/Dev/srv_fire/src/IA_plus_SRV/cmake-build-debug/CMakeFiles/srv_fire.dir
-/home/nasrat_v/Dev/srv_fire/src/IA_plus_SRV/cmake-build-debug/CMakeFiles/ia.dir
