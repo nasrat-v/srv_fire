@@ -1,6 +1,8 @@
 # srv_fire
 Server FIRE project
 
-### Version 1.2.2 actually on master
+### Stable branch actually on master
 
-### dev branch for WIP feature
+## Stable branch = version 1.2.2
+
+## WIP feature = dev branch
