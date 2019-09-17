@@ -14,7 +14,7 @@ RM		= rm -f
 
 CXXFLAGS	= -std=c++17 -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code
 
-OPENCVFLAGS	= -I /usr/include/opencv -L /usr/lib -lopencv_core -lopencv_imgproc -lopencv_highgui
+OPENCVFLAGS	= -I /usr/include/opencv -L /usr/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
 
 CC		= g++ -o
 

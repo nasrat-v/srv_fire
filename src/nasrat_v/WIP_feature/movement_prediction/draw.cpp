@@ -20,7 +20,22 @@ void drawPrediction(cv::Mat &img, const cv::Point &center, int nbPrediction)
     drawCross(img, center, color, THICKNESS_PREDICTION);
 }
 
-void resetImg(cv::Mat &img)
+int drawBackground(cv::Mat &img)
+{
+    img = cv::imread(PATHFILE_BACKGROUND, cv::IMREAD_COLOR);
+    if (!img.data)
+    {
+        std::cout <<  "Could not open or find the image" << std::endl;
+        return (ERROR);
+    }
+    cv::namedWindow(NAME_WINDOW);
+    return (SUCCESS);  
+}
+
+int resetImg(cv::Mat &img)
 {
     img = cv::Scalar::all(0);
+    /*if (drawBackground(img) == ERROR)
+        return (ERROR);*/
+    return (SUCCESS);
 }

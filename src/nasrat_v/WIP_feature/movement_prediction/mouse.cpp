@@ -18,14 +18,13 @@ void initTmpPositions(std::vector<cv::Point> &tmpPositions, std::vector<cv::Poin
     tmpPositions.swap(mousePositions);
 }
 
-void mousePredictPosition(cv::Mat &img)
+int mousePredictPosition(cv::Mat &img)
 {
+    int nb;
     std::vector<cv::Point> mousePositions;
     std::vector<cv::Point> tmpPositions;
     cv::Point predictedMousePosition;
-    int nb;
 
-    cv::namedWindow(NAME_WINDOW);
     cv::setMouseCallback(NAME_WINDOW, mouseMoveCallback);
     while (42) 
     {
@@ -43,6 +42,8 @@ void mousePredictPosition(cv::Mat &img)
         drawMouseCursor(img, currentMousePosition, SCALAR_WHITE);
         cv::imshow(NAME_WINDOW, img);
         cv::waitKey(UTIME_WAIT_KEY);
-        resetImg(img);
+        if (resetImg(img) == ERROR)
+            return (ERROR);
     }
+    return (ERROR);
 }
