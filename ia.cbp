@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ia"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ia">
+				<Option output="/Users/alexandrebouvier/Documents/srv_fire/ia" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 ia"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ia/fast">
+				<Option output="/Users/alexandrebouvier/Documents/srv_fire/ia" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 ia/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="srv_fire">
+				<Option output="/Users/alexandrebouvier/Documents/srv_fire/srv_fire" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 srv_fire"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="srv_fire/fast">
+				<Option output="/Users/alexandrebouvier/Documents/srv_fire/srv_fire" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alexandrebouvier/Documents/srv_fire"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 srv_fire/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/alexandrebouvier/Documents/srv_fire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/Utilitary/loger.hpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/Utilitary/sources/ClientNetwork.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/Utilitary/sources/Error.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/Utilitary/sources/Log.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/Utilitary/sources/LogNetwork.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/Blob.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/BlobFilter.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/Entity.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/EntityFilter.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/Frame.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/FrameAnalyser.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/ImageAdditionner.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/ImageProcesser.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/ImageProvider.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Analyser/ImageService.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Launcher/DebugManager.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Launcher/Launcher.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Launcher/ParamManager.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Log/Error.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Log/Log.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Network/ClientNetwork.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Network/Log/LogNetwork.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/header/Network/ProcessCommunication.hh">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/Blob.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/BlobFilter.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/Entity.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/EntityFilter.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/Frame.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/FrameAnalyser.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/ImageAdditionner.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/ImageProcesser.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/ImageProvider.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Analyser/ImageService.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Launcher/DebugManager.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Launcher/Launcher.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Launcher/Main.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Launcher/ParamManager.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Log/Error.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Log/Log.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Network/ClientNetwork.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Network/Log/LogNetwork.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/imageAnalyzing/src/source/Network/ProcessCommunication.cpp">
+			<Option target="ia"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/main.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/include/ANetwork.hpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/include/BusinessLogicManager.hh">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/include/PacketHandler.h">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/include/connectionHandler.h">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/src/BusinessLogicManager.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/src/CommandAnalyzer.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/src/PacketHandler.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/src/ProtocolManager.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/network/src/connectionHandler.cpp">
+			<Option target="srv_fire"/>
+		</Unit>
+		<Unit filename="/Users/alexandrebouvier/Documents/srv_fire/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
