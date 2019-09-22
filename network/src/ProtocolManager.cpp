@@ -74,7 +74,7 @@ void ProtocolManager::emptyData() {
 }
 
 bool ProtocolManager::sendColor() {
-    static std::string path = "../imageAnalyzing/output/image/img";
+    static std::string path = "./imageAnalyzing/output/image/img";
     FILE*   file;
 
     Log.log("Saving color to path : " + path + name, std::to_string(_network.get_embeddedId()));
@@ -87,7 +87,7 @@ bool ProtocolManager::sendColor() {
 }
 
 bool ProtocolManager::sendImage() {
-    static std::string path = "../imageAnalyzing/output/image/img";
+    static std::string path = "./imageAnalyzing/output/image/img";
     FILE*   file;
 
     name += std::to_string(rand() % 10 + 48);
