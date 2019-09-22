@@ -25,7 +25,7 @@ connectionHandler::~connectionHandler()
 
 void connectionHandler::readProperties() {
 
-    std::ifstream    stream("../network/properties.txt");
+    std::ifstream    stream("./network/properties.txt");
     std::string      line;
     std::string      properties;
     std::size_t      pos;
