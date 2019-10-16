@@ -52,8 +52,8 @@ DebugManager::debugMode DebugManager::findDebugMode(const char **av)
             mode |= debugMode::NUMBER;
         if (*it == WATIKEY_ARG)
             mode |= debugMode::WAIT_KEY;
-        if (*it == OUTPUTPREDICTION_ARG)
-            mode |= debugMode::OUTPUT_PREDICTION;
+        if (*it == WEBCAM_ARG)
+            mode |= debugMode::WEBCAM;
         if (*it == NOORIGINALVIDEO_ARG)
             mode |= debugMode::NO_ORIGINAL_VIDEO;
         if (*it == HOTSPOT_ARG)

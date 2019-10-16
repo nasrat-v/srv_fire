@@ -21,13 +21,17 @@ ImageProvider::statusVideo ImageProvider::openVideo()
 {
     bool error = false;
 
-    _capVideo.open(_videoPath);
+    if (_debugMode & DebugManager::debugMode::WEBCAM)
+        _capVideo.open(0);
+    else
+        _capVideo.open(_videoPath);
     if (!_capVideo.isOpened())
     {
         Error::logError(Error::ErrorType::OPEN_VID, _videoPath);
         error = true;
     }
-    else if (_capVideo.get(CV_CAP_PROP_FRAME_COUNT) < MIN_FRAME_VID)
+    else if (!(_debugMode & DebugManager::debugMode::WEBCAM) && 
+            (_capVideo.get(CV_CAP_PROP_FRAME_COUNT) < MIN_FRAME_VID))
     {
         Error::logError(Error::ErrorType::TRUNCATED_VID, _videoPath);
         error = true;
@@ -83,7 +87,8 @@ ImageProvider::statusVideo ImageProvider::initImgVideo(std::vector<cv::Mat> &img
 
 ImageProvider::statusVideo ImageProvider::incrementImgVideo(cv::Mat &nextImage)
 {
-    if ((_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
+    if ((_debugMode & DebugManager::debugMode::WEBCAM) ||
+        (_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
     {
         _capVideo.read(nextImage);
         return (statusVideo::CONTINUE);

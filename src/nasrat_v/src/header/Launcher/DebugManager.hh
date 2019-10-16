@@ -14,7 +14,7 @@
 # define TRACK_ARG              "--track"
 # define NUMBER_ARG             "--number"
 # define WATIKEY_ARG            "--waitkey"
-# define OUTPUTPREDICTION_ARG   "--output-prediction"
+# define WEBCAM_ARG             "--webcam"
 # define NOORIGINALVIDEO_ARG    "--no-video"
 # define HOTSPOT_ARG            "--hot-spot"
 # define PALETTE_ARG            "--palette"
@@ -41,7 +41,7 @@ public:
     enum    debugMode
     {
         NO_DEBUG = 0b0000'0000'0000'0000,
-        OUTPUT_PREDICTION = 0b0000'0000'0000'0001,
+        WEBCAM = 0b0000'0000'0000'0001,
         THRESH = 0b0000'0000'0000'0010,
         CONTOUR = 0b0000'0000'0000'0100,
         CONVEXHULLS = 0b0000'0000'0000'1000,

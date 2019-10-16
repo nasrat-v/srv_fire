@@ -1,0 +1,7 @@
+todo =>
+
+Chaque Entity contient des MicroEntity (hot, very hot etc...)
+Se qui fait que l'on a un gros carré blanc pour l'entity et des carrés de couleurs pour chaque micro entity appartenant à l'entity
+On retrouve a quelle entity appartiennent les micro entity en regardant vers quel centerPosition d'entity leur CenterPosition est le plus proche
+
+Possibilité de rajouter autant de micro entity que l'on veut grace a une map (temp, rangecolor) ?
