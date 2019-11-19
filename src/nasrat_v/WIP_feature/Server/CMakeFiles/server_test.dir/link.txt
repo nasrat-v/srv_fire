@@ -1,0 +1,1 @@
+/usr/bin/c++   -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread   CMakeFiles/server_test.dir/source/ServerNetwork.cpp.o CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o CMakeFiles/server_test.dir/source/Log/LogNetwork.cpp.o CMakeFiles/server_test.dir/source/Main.cpp.o  -o server_test 
