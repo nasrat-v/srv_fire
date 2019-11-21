@@ -23,16 +23,17 @@ const ServerNetwork::t_serverParam ProcessCommunication::initConfigurationServer
     ServerNetwork::t_serverParam srvParam;
 
     memset(&srvParam, 0, sizeof(srvParam));
-    srvParam.ipType = AF_INET;
-    srvParam.socketType = SOCK_STREAM;
-    srvParam.protocol = IPPROTO_TCP;
-    srvParam.ipAddrClient = INADDR_ANY;
-    srvParam.port = PORT;
+    srvParam._ip_type = AF_INET;
+    srvParam._socket_type = SOCK_STREAM;
+    srvParam._protocol = IPPROTO_TCP;
+    srvParam._ip_addr_client = INADDR_ANY;
+    srvParam._port = PORT;
     return (srvParam);
 }
 
 ERR ProcessCommunication::communicateWithServer()
 {
+    std::ofstream file;
     static int count = 0;
     ServerNetwork::t_clientData data;
 
@@ -43,13 +44,14 @@ ERR ProcessCommunication::communicateWithServer()
     {
         if (_network.isNewDataReceived())
         {
+            std::cout << "toto" << std::endl;
+            file.open (PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
             data = _network.getLastDataReceived();
-            std::cout << "[Received from " << data.clientId << "]: " << data.data << std::endl;
+            std::cout << "[Received from " << data._client_id << "]: " << data._data << std::endl;
+            file << data._data;
+            file.close();
             count++;
-            _network.sendData("caca", data.clientId);
         }
-        if (count == 3)
-            break;
     }
     _network.stopServer();
     return (SUCCESS);

@@ -46,7 +46,7 @@ ERR ServerNetwork::initSocket()
     int enable = 1;
 
     errno = 0;
-    if ((_sock = socket(_srvParam.ipType, _srvParam.socketType, _srvParam.protocol)) == NET_ERROR)
+    if ((_sock = socket(_srvParam._ip_type, _srvParam._socket_type, _srvParam._protocol)) == NET_ERROR)
 	{
 		LogNetwork::logFailureMsg("Error socket initialization: " + errno);
 		return (NET_ERROR);
@@ -60,9 +60,9 @@ ERR ServerNetwork::bindSocket()
 {
     errno = 0;
 	memset(&_sin, 0, sizeof(_sin));
-	_sin.sin_family = _srvParam.ipType;
-	_sin.sin_port = htons(_srvParam.port);
-    _sin.sin_addr.s_addr = _srvParam.ipAddrClient;
+	_sin.sin_family = _srvParam._ip_type;
+	_sin.sin_port = htons(_srvParam._port);
+    _sin.sin_addr.s_addr = _srvParam._ip_addr_client;
     if ((bind(_sock, (__sockaddr*)(&_sin), sizeof(__sockaddr))) == NET_ERROR)
     {
         LogNetwork::logFailureMsg("Error bind failed: " + errno);
@@ -102,7 +102,7 @@ void ServerNetwork::resetFdSet()
     FD_ZERO(&_readf);
     FD_SET(_sock, &_readf);
     for (const ServerNetwork::t_client &client : _clients)
-        FD_SET(client.sock, &_readf);
+        FD_SET(client._sock, &_readf);
 }
 
 ERR ServerNetwork::handleClient(__timeval *timeval)
@@ -129,7 +129,7 @@ ERR ServerNetwork::receiveNewConnection()
         if (acceptNewClient() == NET_ERROR)
             return (NET_ERROR);
         // update sockLast to the last socket accepted
-        _sockLast = (_sockLast > getLastClient().sock) ? _sockLast : getLastClient().sock;
+        _sockLast = (_sockLast > getLastClient()._sock) ? _sockLast : getLastClient()._sock;
     }
     return (SUCCESS);
 }
@@ -145,9 +145,9 @@ ERR ServerNetwork::acceptNewClient()
     static __client_id id = 0;
 
     errno = 0;
-    newClient.id = id++;
-    newClient.sinSize = sizeof(newClient.sin);
-    if ((newClient.sock = accept(_sock, (__sockaddr*)(&newClient.sin), &newClient.sinSize)) == NET_ERROR)
+    newClient._id = id++;
+    newClient._sin_size = sizeof(newClient._sin);
+    if ((newClient._sock = accept(_sock, (__sockaddr*)(&newClient._sin), &newClient._sin_size)) == NET_ERROR)
 	{
         LogNetwork::logFailureMsg("Error accept failed: " + errno);
 		return (NET_ERROR);
@@ -162,7 +162,7 @@ ERR ServerNetwork::receiveDataFromClient()
   
     for (const ServerNetwork::t_client &client : _clients)
     {
-        if (isDataOnSocket(client.sock))
+        if (isDataOnSocket(client._sock))
         {
             if (readData(client) == NET_ERROR)
                 return (NET_ERROR);
@@ -180,7 +180,7 @@ const ServerNetwork::t_client &ServerNetwork::getClient(__client_id clientId) co
 {
     for (const ServerNetwork::t_client &client : _clients)
     {
-        if (client.id == clientId)
+        if (client._id == clientId)
             return (client);
     }
     return (_emptyClient);
@@ -193,15 +193,18 @@ ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
 	char buff[(SIZE_BUFF + sizeof(char))] = { 0 };
 
     errno = 0;
-	while ((ret = __read_socket(client.sock, buff, SIZE_BUFF, 0)) == SIZE_BUFF)
+    LogNetwork::logSomething("Read Data");
+	while ((ret = __read_socket(client._sock, buff, SIZE_BUFF, 0)) == SIZE_BUFF)
 	{
 		data.append(buff, SIZE_BUFF);
 		memset(buff, 0, (SIZE_BUFF + sizeof(char)));
+        LogNetwork::logSomething("Loop packet");
 	}
 	if (ret > 0)
 	{
 		buff[ret] = '\0'; // to be sure
 		data.append(buff, static_cast<unsigned long>(ret));
+        LogNetwork::logSomething("Loop last");
 	}
 	else if (ret < 0)
 	{
@@ -211,10 +214,12 @@ ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
 	else
 	{
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
-        exitConnection(client.sock); // PAS BON
+        exitConnection(client._sock);
+        eraseClientById(client._id);
 		return (SUCCESS);
 	}
-    addNewDataReceived(data, client.id);
+    //LogNetwork::logSomething(data);
+    addNewDataReceived(data, client._id);
 	return (SUCCESS);
 }
 
@@ -254,7 +259,7 @@ const ServerNetwork::t_clientData &ServerNetwork::getLastDataReceived()
 
 ERR ServerNetwork::sendData(const std::string &data, __client_id clientId)
 {
-    __socket clientSocket = getClient(clientId).sock;
+    __socket clientSocket = getClient(clientId)._sock;
     
     if (writeData(data, clientSocket) == NET_ERROR)
         return (NET_ERROR);
@@ -274,7 +279,7 @@ bool ServerNetwork::isSocketValid(__socket sock)
 void ServerNetwork::exitAllClientConnection()
 {
     for (const ServerNetwork::t_client &client : _clients)
-        exitConnection(client.sock);
+        exitConnection(client._sock);
 }
 
 void ServerNetwork::exitConnection(__socket sock)
@@ -284,4 +289,24 @@ void ServerNetwork::exitConnection(__socket sock)
         shutdown(sock, SHUT_RDWR);
         close(sock);
     }
+}
+
+void ServerNetwork::eraseClientById(__client_id clientId)
+{
+    std::vector<ServerNetwork::t_client>::const_iterator it;
+
+    if ((it = getIteratorClientById(clientId)) != _clients.end())
+        _clients.erase(it);
+}
+
+const std::vector<ServerNetwork::t_client>::const_iterator ServerNetwork::getIteratorClientById(__client_id clientId)
+{
+    std::vector<ServerNetwork::t_client>::const_iterator it;
+
+    for (it = _clients.begin(); it != _clients.end(); it++)
+    {
+        if (it->_id == clientId)
+            return (it);
+    }
+    return (_clients.end());
 }

@@ -24,6 +24,7 @@
 #include <mutex>                                                                                         
 #include <thread>
 #include <future>
+#include <algorithm>
 #include <errno.h>
 
 #include "Log/LogNetwork.hh"
@@ -59,9 +60,9 @@
 	typedef int                 __socket;
     typedef struct sockaddr     __sockaddr;
 	typedef struct sockaddr_in  __sockaddr_in;
+#endif
     typedef struct timeval      __timeval;
     typedef uint_fast16_t       __client_id;
-#endif
     
 
 class ServerNetwork
@@ -72,29 +73,29 @@ public:
 
     typedef struct		s_serverParam
 	{
-        in_addr_t       ipAddrClient; // ip address of client in network byte order - ex: INADDR_ANY
-		uint16_t		port; // port of server - ex: 6667 - can't be NULL
-		int				socketType; // socket type used by server - ex: SOCK_STREAM - can't be NULL
-		int				protocol; // ip protocol used by server - ex: IPPROTO_TCP for TCP protocol - can't be NULL
+        in_addr_t       _ip_addr_client; // ip address of client in network byte order - ex: INADDR_ANY
+		uint16_t		_port; // port of server - ex: 6667 - can't be NULL
+		int				_socket_type; // socket type used by server - ex: SOCK_STREAM - can't be NULL
+		int				_protocol; // ip protocol used by server - ex: IPPROTO_TCP for TCP protocol - can't be NULL
 #ifdef _WIN32
-        int				ipType; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6 - can't be NULL
+        int				_ip_type; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6 - can't be NULL
 #elif __linux__ || __unix__ || __unix || unix || __APPLE__ || __MACH__
-        sa_family_t     ipType; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6 - can't be NULL
+        sa_family_t     _ip_type; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6 - can't be NULL
 #endif
 	}					t_serverParam;
 
     typedef struct      s_clientData
     {
-        __client_id     clientId;
-        std::string     data;
+        __client_id     _client_id;
+        std::string     _data;
     }                   t_clientData;
 
     typedef struct      s_client
     {
-        __client_id     id;
-        __socket        sock;
-        __sockaddr_in   sin;
-        uint32_t        sinSize;
+        __client_id     _id;
+        __socket        _sock;
+        __sockaddr_in   _sin;
+        uint32_t        _sin_size;
     }                   t_client;
 
     ERR                 initServer(const t_serverParam &srvParam);
@@ -136,6 +137,8 @@ protected:
     bool                isSocketValid(__socket sock);
     void                exitAllClientConnection();
     void                exitConnection(__socket sock);
+    void                eraseClientById(__client_id clientId); // va disparaitre grace a la map
+    const std::vector<t_client>::const_iterator getIteratorClientById(__client_id clientId);
 };
 
 #endif /* !__SERVERNETWORK_HH__ */
