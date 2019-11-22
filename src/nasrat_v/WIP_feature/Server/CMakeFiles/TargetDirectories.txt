@@ -1,3 +1,0 @@
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/CMakeFiles/rebuild_cache.dir
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/CMakeFiles/server_test.dir
-/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/CMakeFiles/edit_cache.dir

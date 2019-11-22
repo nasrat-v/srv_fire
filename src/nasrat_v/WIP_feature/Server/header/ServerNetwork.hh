@@ -11,13 +11,10 @@
     #include <sys/select.h>
     #include <sys/socket.h>
     #include <netinet/in.h>
-    #include <netdb.h>
-    #include <unistd.h>
     #include <stdio.h>
 	#include <cstring>
 #endif
 
-#include <iostream>
 #include <string>
 #include <map>
 #include <stack>
@@ -27,6 +24,7 @@
 #include <algorithm>
 #include <errno.h>
 
+#include "Client.hh"
 #include "Log/LogNetwork.hh"
 
 # define NET_ERROR		(ERR)~0
@@ -34,7 +32,7 @@
 # define MAX_CLIENT	    10
 # define UWAIT_STOP     1
 
-#ifdef _WIN32s
+#ifdef _WIN32
     # define __read_socket(a, b, c, d)  recv(a, b, c, d)
     # define __write_socket(a, b, c, d) send(a, b, c, d)
     # define __close_socket             closesocket
@@ -84,12 +82,6 @@ public:
 #endif
 	}					t_serverParam;
 
-    typedef struct      s_clientData
-    {
-        __client_id     _client_id;
-        std::string     _data;
-    }                   t_clientData;
-
     typedef struct      s_client
     {
         __client_id     _id;
@@ -97,6 +89,12 @@ public:
         __sockaddr_in   _sin;
         uint32_t        _sin_size;
     }                   t_client;
+
+    typedef struct      s_clientData
+    {
+        __client_id     _client_id;
+        std::string     _data;
+    }                   t_clientData;
 
     ERR                 initServer(const t_serverParam &srvParam);
     void                startServer();
@@ -114,7 +112,7 @@ protected:
     std::vector<t_client>       _clients;
     std::stack<t_clientData>    _dataStack;
     t_clientData                _tmpDataTopStack;
-    std::mutex                  _mutex;                                                           
+    std::mutex                  _mutex;
     std::thread                 _netThread;
     std::promise<void>          _exitSignal;
     const t_client              _emptyClient;
