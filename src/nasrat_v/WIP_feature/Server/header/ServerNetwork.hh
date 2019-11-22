@@ -30,8 +30,8 @@
 #include "Log/LogNetwork.hh"
 
 # define NET_ERROR		(ERR)~0
-# define SIZE_BUFF		4096
-# define MAX_CLIENT	    1
+# define SIZE_BUFF		2
+# define MAX_CLIENT	    10
 # define UWAIT_STOP     1
 
 #ifdef _WIN32s

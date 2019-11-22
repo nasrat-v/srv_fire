@@ -44,7 +44,6 @@ ERR ProcessCommunication::communicateWithServer()
     {
         if (_network.isNewDataReceived())
         {
-            std::cout << "toto" << std::endl;
             file.open (PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
             data = _network.getLastDataReceived();
             std::cout << "[Received from " << data._client_id << "]: " << data._data << std::endl;

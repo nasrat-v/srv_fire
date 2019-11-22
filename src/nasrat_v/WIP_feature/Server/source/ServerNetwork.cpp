@@ -190,6 +190,7 @@ ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
 {
     __ret ret;
     std::string data;
+    static int count = 0;
 	char buff[(SIZE_BUFF + sizeof(char))] = { 0 };
 
     errno = 0;
@@ -198,7 +199,7 @@ ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
 	{
 		data.append(buff, SIZE_BUFF);
 		memset(buff, 0, (SIZE_BUFF + sizeof(char)));
-        LogNetwork::logSomething("Loop packet");
+        LogNetwork::logSomething("Loop packet " + std::to_string(count++));
 	}
 	if (ret > 0)
 	{
@@ -216,9 +217,7 @@ ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
         exitConnection(client._sock);
         eraseClientById(client._id);
-		return (SUCCESS);
 	}
-    //LogNetwork::logSomething(data);
     addNewDataReceived(data, client._id);
 	return (SUCCESS);
 }
@@ -240,6 +239,7 @@ void ServerNetwork::addNewDataReceived(const std::string &data, __client_id clie
 {
     _mutex.lock();
     _dataStack.push( { clientId , data } );
+    LogNetwork::logSomething("add");
     _mutex.unlock();
 }
 
@@ -251,6 +251,7 @@ bool ServerNetwork::isNewDataReceived()
 const ServerNetwork::t_clientData &ServerNetwork::getLastDataReceived()
 {
     _mutex.lock();
+    LogNetwork::logSomething("get");
     _tmpDataTopStack = _dataStack.top();
     _dataStack.pop();
     _mutex.unlock();
