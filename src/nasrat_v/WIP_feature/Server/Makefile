@@ -123,6 +123,33 @@ server_test/fast:
 	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/build
 .PHONY : server_test/fast
 
+source/Client.o: source/Client.cpp.o
+
+.PHONY : source/Client.o
+
+# target to build an object file
+source/Client.cpp.o:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/Client.cpp.o
+.PHONY : source/Client.cpp.o
+
+source/Client.i: source/Client.cpp.i
+
+.PHONY : source/Client.i
+
+# target to preprocess a source file
+source/Client.cpp.i:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/Client.cpp.i
+.PHONY : source/Client.cpp.i
+
+source/Client.s: source/Client.cpp.s
+
+.PHONY : source/Client.s
+
+# target to generate assembly for a file
+source/Client.cpp.s:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/Client.cpp.s
+.PHONY : source/Client.cpp.s
+
 source/Log/LogNetwork.o: source/Log/LogNetwork.cpp.o
 
 .PHONY : source/Log/LogNetwork.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... server_test"
 	@echo "... edit_cache"
+	@echo "... source/Client.o"
+	@echo "... source/Client.i"
+	@echo "... source/Client.s"
 	@echo "... source/Log/LogNetwork.o"
 	@echo "... source/Log/LogNetwork.i"
 	@echo "... source/Log/LogNetwork.s"

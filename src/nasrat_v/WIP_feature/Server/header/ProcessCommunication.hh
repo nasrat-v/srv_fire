@@ -17,18 +17,18 @@ public:
     ProcessCommunication();
     ~ProcessCommunication();
 
-    ERR                                 communicateWithServer();
+    ERR                                     communicateWithServer();
 
 private:
     /* Attributes */
-    ServerNetwork                       _network;
-    std::promise<void>                  _serverExitSignal;
+    ServerNetwork                           m_network;
+    std::promise<void>                      m_serverExitSignal;
 
     /* Methods */
-    ERR                                 initServer();
-    const ServerNetwork::t_serverParam  initConfigurationServer();
-    void                                resetString(std::string &str);
-    void                                formatData(std::string &data);
+    ERR                                     initServer();
+    const ServerNetwork::__t_server_param   initConfigurationServer();
+    void                                    resetString(std::string &str);
+    void                                    formatData(std::string &data);
 };
 
 #endif /* !__PROCESSCOMMUNICATION_HH__ */

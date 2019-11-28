@@ -1,43 +1,40 @@
 
 #include "../header/ServerNetwork.hh"
 
-ServerNetwork::ServerNetwork() : _emptyClient({ 0 })
-{
-    _tmpDataTopStack = { 0, "" };
-}
+ServerNetwork::ServerNetwork() : m_packetsManager(m_freshPackets, m_processedPackets) {}
 
 ServerNetwork::~ServerNetwork()
 {
-    if (_netThread.joinable())
-        _netThread.join();
+    if (m_netThread.joinable())
+        m_netThread.join();
 }
 
 void ServerNetwork::startServer()
 {
-    std::future<void> serverExitSignal = _exitSignal.get_future();
+    std::future<void> serverExitSignal = m_exitSignal.get_future();
     
-    _netThread = std::thread(&ServerNetwork::serverLoop, this, std::move(serverExitSignal));
-    _netThread.detach();
+    m_netThread = std::thread(&ServerNetwork::serverLoop, this, std::move(serverExitSignal));
+    m_netThread.detach();
 }
 
 void ServerNetwork::stopServer()
 {
     LogNetwork::logInfoMsg("Server stop...");
     exitAllClientConnection();
-    exitConnection(_sock);
-    _exitSignal.set_value();
+    exitConnection(m_srvSock);
+    m_exitSignal.set_value();
 }
 
-ERR ServerNetwork::initServer(const ServerNetwork::t_serverParam &srvParam)
+ERR ServerNetwork::initServer(const ServerNetwork::__t_server_param &srvParam)
 {
-    _srvParam = srvParam;
+    m_srvParam = srvParam;
     if (initSocket() == NET_ERROR)
 		return (NET_ERROR);
     if (bindSocket() == NET_ERROR)
         return (NET_ERROR);
     if (listenSocket() == NET_ERROR)
         return (NET_ERROR);
-    _sockLast = _sock;
+    m_lastSockAdded = m_srvSock;
 	return (SUCCESS);
 }
 
@@ -46,24 +43,24 @@ ERR ServerNetwork::initSocket()
     int enable = 1;
 
     errno = 0;
-    if ((_sock = socket(_srvParam._ip_type, _srvParam._socket_type, _srvParam._protocol)) == NET_ERROR)
+    if ((m_srvSock = socket(m_srvParam.srv_ip_type, m_srvParam.srv_socket_type, m_srvParam.srv_protocol)) == NET_ERROR)
 	{
-		LogNetwork::logFailureMsg("Error socket initialization: " + errno);
+		LogNetwork::logFailureMsg("Error on server socket initialization: " + errno);
 		return (NET_ERROR);
 	}
-    setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)); // allow kill
-	LogNetwork::logSuccessMsg("Successfully initialize socket: " + std::to_string(_sock));
+    setsockopt(m_srvSock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)); // allow kill
+	LogNetwork::logSuccessMsg("Successfully initialize server socket: " + std::to_string(m_srvSock));
 	return (SUCCESS);
 }
 
 ERR ServerNetwork::bindSocket()
 {
     errno = 0;
-	memset(&_sin, 0, sizeof(_sin));
-	_sin.sin_family = _srvParam._ip_type;
-	_sin.sin_port = htons(_srvParam._port);
-    _sin.sin_addr.s_addr = _srvParam._ip_addr_client;
-    if ((bind(_sock, (__sockaddr*)(&_sin), sizeof(__sockaddr))) == NET_ERROR)
+	memset(&m_srvSin, 0, sizeof(m_srvSin));
+	m_srvSin.sin_family = m_srvParam.srv_ip_type;
+	m_srvSin.sin_port = htons(m_srvParam.srv_port);
+    m_srvSin.sin_addr.s_addr = m_srvParam.srv_ip_addr_cl;
+    if ((bind(m_srvSock, (__sockaddr*)(&m_srvSin), sizeof(__sockaddr))) == NET_ERROR)
     {
         LogNetwork::logFailureMsg("Error bind failed: " + errno);
 		return (NET_ERROR);
@@ -75,7 +72,7 @@ ERR ServerNetwork::bindSocket()
 ERR ServerNetwork::listenSocket()
 {
     errno = 0;
-    if ((listen(_sock, MAX_CLIENT)) == NET_ERROR)
+    if ((listen(m_srvSock, MAX_CLIENT)) == NET_ERROR)
     {
         LogNetwork::logFailureMsg("Error listen failed: " + errno);
 		return (NET_ERROR);
@@ -92,133 +89,132 @@ ERR ServerNetwork::serverLoop(std::future<void> serverExitSignal)
     while (serverExitSignal.wait_for(std::chrono::milliseconds(UWAIT_STOP)) == std::future_status::timeout)
     {
         if (handleClient(&timeval) == NET_ERROR)
+        {
+            stopServer();
             return (NET_ERROR);
+        }
     }
+    stopServer();
     return (SUCCESS);
 }
 
 void ServerNetwork::resetFdSet()
 {
-    FD_ZERO(&_readf);
-    FD_SET(_sock, &_readf);
-    for (const ServerNetwork::t_client &client : _clients)
-        FD_SET(client._sock, &_readf);
+    __clients_iterator it = m_clients.begin();
+
+    FD_ZERO(&m_readf);
+    FD_SET(m_srvSock, &m_readf);
+    for (; it != m_clients.end(); it++)
+        FD_SET(it->second->getSock(), &m_readf);
 }
 
 ERR ServerNetwork::handleClient(__timeval *timeval)
 {
     errno = 0;
     resetFdSet();
-    if (select((_sockLast + 1), &_readf, NULL, NULL, timeval) == NET_ERROR)
+    if (select((m_lastSockAdded + 1), &m_readf, NULL, NULL, timeval) == NET_ERROR)
     {
-        LogNetwork::logFailureMsg("Error select failed: " + errno);
+        LogNetwork::logFailureMsg("Error select failed: " + std::to_string(errno));
 		return (NET_ERROR);
     }
     if (receiveNewConnection() == NET_ERROR)
         return (NET_ERROR);
     if (receiveDataFromClient() == NET_ERROR)
         return (NET_ERROR);
-    return (SUCCESS);
-}
-
-ERR ServerNetwork::receiveNewConnection()
-{
-    if (isDataOnSocket(_sock))
-    {
-        LogNetwork::logInfoMsg("New client connection");
-        if (acceptNewClient() == NET_ERROR)
-            return (NET_ERROR);
-        // update sockLast to the last socket accepted
-        _sockLast = (_sockLast > getLastClient()._sock) ? _sockLast : getLastClient()._sock;
-    }
+    if (eraseDecoClients() == NET_ERROR)
+        return (NET_ERROR);
     return (SUCCESS);
 }
 
 bool ServerNetwork::isDataOnSocket(__socket sock)
 {
-    return (FD_ISSET(sock, &_readf));
+    return (FD_ISSET(sock, &m_readf));
+}
+
+ERR ServerNetwork::receiveNewConnection()
+{
+    if (isDataOnSocket(m_srvSock))
+    {
+        if (acceptNewClient() == NET_ERROR)
+            return (NET_ERROR);
+    }
+    return (SUCCESS);
 }
 
 ERR ServerNetwork::acceptNewClient()
 {
-    ServerNetwork::t_client newClient;
-    static __client_id id = 0;
+    __client_ptr newClient(new Client);
+    __socket clientSock;
+    __sockaddr_in clientSin;
+    __sockaddr_in_size clientSinSize;
+    static __client_id clientId = 0;
 
     errno = 0;
-    newClient._id = id++;
-    newClient._sin_size = sizeof(newClient._sin);
-    if ((newClient._sock = accept(_sock, (__sockaddr*)(&newClient._sin), &newClient._sin_size)) == NET_ERROR)
+    clientSinSize = sizeof(clientSin);
+    if ((clientSock = accept(m_srvSock, (__sockaddr*)(&clientSin), &clientSinSize)) == NET_ERROR)
 	{
-        LogNetwork::logFailureMsg("Error accept failed: " + errno);
+        LogNetwork::logFailureMsg("Error accept failed: " + std::to_string(errno));
 		return (NET_ERROR);
     }
-    _clients.push_back(newClient);
+    newClient->setId(clientId++);
+    newClient->setSock(clientSock);
+    newClient->setSin(clientSin);
+    newClient->setSinSize(clientSinSize);
+    addNewClient(newClient);
+    // update lastSockAdded to the last socket accepted
+    m_lastSockAdded = (m_lastSockAdded > newClient->getSock()) ? m_lastSockAdded : newClient->getSock();
+    LogNetwork::logInfoMsg("New client connection -> id: " + std::to_string(newClient->getId()));
     return (SUCCESS);
+}
+
+void ServerNetwork::addNewClient(__client_ptr client)
+{
+    m_clients.insert(std::make_pair(client->getId(), client));
 }
 
 ERR ServerNetwork::receiveDataFromClient()
 {
     std::string data;
-  
-    for (const ServerNetwork::t_client &client : _clients)
+    __clients_iterator it = m_clients.begin();
+
+    for (; it != m_clients.end(); it++)
     {
-        if (isDataOnSocket(client._sock))
+        if (isDataOnSocket(it->second->getSock()))
         {
-            if (readData(client) == NET_ERROR)
+            if (readData(it->second) == NET_ERROR)
                 return (NET_ERROR);
         }
     }
     return (SUCCESS);
 }
 
-const ServerNetwork::t_client &ServerNetwork::getLastClient() const
+void ServerNetwork::addNewDataReceived(__client_ptr client, const std::string &data)
 {
-    return (_clients.back());
+    m_mutex.lock();
+    client->pushData(data);
+    // -------------->> add type enum UNKNOWN to packet when create
+    m_mutex.unlock();
 }
 
-const ServerNetwork::t_client &ServerNetwork::getClient(__client_id clientId) const
-{
-    for (const ServerNetwork::t_client &client : _clients)
-    {
-        if (client._id == clientId)
-            return (client);
-    }
-    return (_emptyClient);
-}
-
-ERR	ServerNetwork::readData(const ServerNetwork::t_client &client)
+ERR	ServerNetwork::readData(__client_ptr client)
 {
     __ret ret;
-    std::string data;
-    static int count = 0;
 	char buff[(SIZE_BUFF + sizeof(char))] = { 0 };
 
     errno = 0;
-    LogNetwork::logSomething("Read Data");
-	while ((ret = __read_socket(client._sock, buff, SIZE_BUFF, 0)) == SIZE_BUFF)
-	{
-		data.append(buff, SIZE_BUFF);
-		memset(buff, 0, (SIZE_BUFF + sizeof(char)));
-        LogNetwork::logSomething("Loop packet " + std::to_string(count++));
-	}
-	if (ret > 0)
-	{
-		buff[ret] = '\0'; // to be sure
-		data.append(buff, static_cast<unsigned long>(ret));
-        LogNetwork::logSomething("Loop last");
-	}
+	if ((ret = read(client->getSock(), buff, SIZE_BUFF)) > 0)
+		addNewDataReceived(client, buff);
 	else if (ret < 0)
 	{
-		LogNetwork::logFailureMsg("Error failed to read data from socket: " + errno);
+		LogNetwork::logFailureMsg("Error failed to read data from socket: " + std::to_string(errno));
 		return (NET_ERROR);
 	}
 	else
 	{
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
-        exitConnection(client._sock);
-        eraseClientById(client._id);
+        exitConnection(client->getSock());
+        addNewClientDeco(client->getId());
 	}
-    addNewDataReceived(data, client._id);
 	return (SUCCESS);
 }
 
@@ -227,7 +223,7 @@ ERR ServerNetwork::writeData(const std::string &data, __socket clientSocket)
     auto size = (__size)data.size();
 	const char *dataToSend = data.c_str();
 
-	if ((__write_socket(clientSocket, dataToSend, size, 0)) == NET_ERROR)
+	if ((write(clientSocket, dataToSend, size)) == NET_ERROR)
 	{
 		LogNetwork::logFailureMsg("Error failed to write data to socket");
 		return (NET_ERROR);
@@ -235,79 +231,74 @@ ERR ServerNetwork::writeData(const std::string &data, __socket clientSocket)
 	return (SUCCESS);
 }
 
-void ServerNetwork::addNewDataReceived(const std::string &data, __client_id clientId)
-{
-    _mutex.lock();
-    _dataStack.push( { clientId , data } );
-    LogNetwork::logSomething("add");
-    _mutex.unlock();
-}
-
-bool ServerNetwork::isNewDataReceived()
-{
-    return (!_dataStack.empty());
-}
-
-const ServerNetwork::t_clientData &ServerNetwork::getLastDataReceived()
-{
-    _mutex.lock();
-    LogNetwork::logSomething("get");
-    _tmpDataTopStack = _dataStack.top();
-    _dataStack.pop();
-    _mutex.unlock();
-    return (_tmpDataTopStack);
-}
-
 ERR ServerNetwork::sendData(const std::string &data, __client_id clientId)
 {
-    __socket clientSocket = getClient(clientId)._sock;
-    
-    if (writeData(data, clientSocket) == NET_ERROR)
+    __clients_iterator it;
+
+    if ((it = m_clients.find(clientId)) == m_clients.end())
+        return (NET_ERROR);
+    if (writeData(data, it->second->getSock()) == NET_ERROR)
         return (NET_ERROR);
     return (SUCCESS);
 }
 
 bool ServerNetwork::isSocketValid(__socket sock)
 {
-    __socket copy_fd;
+    __socket copyFd;
     
     errno = 0;
-    copy_fd = dup(sock);
-    close(copy_fd);
+    copyFd = dup(sock);
+    close(copyFd);
     return (!(errno == EBADF));
 }
 
 void ServerNetwork::exitAllClientConnection()
 {
-    for (const ServerNetwork::t_client &client : _clients)
-        exitConnection(client._sock);
+    __clients_iterator it = m_clients.begin();
+
+    for (; it != m_clients.end(); it++)
+        exitConnection(it->second->getSock());
 }
 
-void ServerNetwork::exitConnection(__socket sock)
+ERR ServerNetwork::exitConnection(__socket sock)
 {
-    if (isSocketValid(sock))
+    if (!isSocketValid(sock))
     {
-        shutdown(sock, SHUT_RDWR);
-        close(sock);
+        LogNetwork::logFailureMsg("Error: could not shutdown client connection");
+        return (NET_ERROR);
     }
+    shutdown(sock, SHUT_RDWR);
+    close(sock);
+    LogNetwork::logSuccessMsg("Successfully shutdown client connection");
+    return (SUCCESS);
 }
 
-void ServerNetwork::eraseClientById(__client_id clientId)
+void ServerNetwork::addNewClientDeco(__client_id clientId)
 {
-    std::vector<ServerNetwork::t_client>::const_iterator it;
-
-    if ((it = getIteratorClientById(clientId)) != _clients.end())
-        _clients.erase(it);
+    m_clientsDecoToErase.push_back(clientId);
 }
 
-const std::vector<ServerNetwork::t_client>::const_iterator ServerNetwork::getIteratorClientById(__client_id clientId)
+ERR ServerNetwork::eraseDecoClients() 
 {
-    std::vector<ServerNetwork::t_client>::const_iterator it;
-
-    for (it = _clients.begin(); it != _clients.end(); it++)
+    for (int id : m_clientsDecoToErase)
     {
-        if (it->_id == clientId)
-            return (it);
+        if (eraseClientById(id) == NET_ERROR)
+            return (NET_ERROR);
     }
-    return (_clients.end());
+    m_clientsDecoToErase.clear();
+    return (SUCCESS);
+}
+
+ERR ServerNetwork::eraseClientById(__client_id clientId)
+{
+    __clients_iterator it;
+
+    if ((it = m_clients.find(clientId)) == m_clients.end())
+    {
+        LogNetwork::logFailureMsg("Error could not erase client from map -> id: " + std::to_string(clientId));
+        return (NET_ERROR);
+    }
+    m_clients.erase(it);
+    LogNetwork::logSuccessMsg("Successfully erase client from map -> id: " + std::to_string(clientId));
+    return (SUCCESS);
 }
