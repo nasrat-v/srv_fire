@@ -16,7 +16,7 @@ public:
     void                        setSock(__socket socket);
     void                        setSin(const __sockaddr_in &sin);
     void                        setSinSize(__sockaddr_in_size sinSize);
-    void                        pushData(const __client_data &data);
+    void                        pushData(const __packet_data &data);
 
     __client_id                 getId() const;
     __socket                    getSock() const;
@@ -28,7 +28,7 @@ private:
     __socket                    m_sock;
     __sockaddr_in               m_sin;
     __sockaddr_in_size          m_sinSize;
-    std::stack<__client_data>   m_dataStack;
+    std::stack<__packet_data>   m_dataStack;
 };
 
 #endif /* !__CLIENT_HH__ */

@@ -2,6 +2,8 @@
 #ifndef __NETWORK_TYPES_HH__
 #define __NETWORK_TYPES_HH__
 
+# define NET_ERROR  (ERR)~0
+
 #include <unistd.h>
 #include <netdb.h>
 #include <iostream>

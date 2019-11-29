@@ -201,6 +201,9 @@ ERR	ServerNetwork::readData(__client_ptr client)
     __ret ret;
 	char buff[(SIZE_BUFF + sizeof(char))] = { 0 };
 
+    // faire un read de la taille du header dabord pour pouvoir lire la taille
+    // puis faire read de la taille recu
+    // pour eviter de réallouer faire un buffer circulaire (ou une string ?)
     errno = 0;
 	if ((ret = read(client->getSock(), buff, SIZE_BUFF)) > 0)
 		addNewDataReceived(client, buff);

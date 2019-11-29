@@ -16,9 +16,7 @@
 #include <errno.h>
 
 #include "PacketsManager.hh"
-#include "Log/LogNetwork.hh"
 
-# define NET_ERROR		(ERR)~0
 # define SIZE_BUFF		4096
 # define MAX_CLIENT	    10
 # define UWAIT_STOP     1
@@ -58,8 +56,8 @@ protected:
     std::mutex                  m_mutex;
     std::thread                 m_netThread;
     std::promise<void>          m_exitSignal;
-    __packets_stack_ptr         m_freshPackets;
-    __packets_map_ptr           m_processedPackets;
+    __packets_stk_ptr           m_freshPackets;
+    __packets_map_stk_ptr       m_processedPackets;
     PacketsManager              m_packetsManager;
 
 

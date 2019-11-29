@@ -2,9 +2,6 @@
 #ifndef __PACKETS_MANAGER_HH__
 #define __PACKETS_MANAGER_HH__
 
-#define HEADER_BUFF_SIZE    8
-#define HEADER_READ_SIZE    1
-
 #include <stack>
 #include <map>
 #include <memory>
@@ -26,7 +23,7 @@ public:
                    __packets_map_stk_ptr processedPackets);
     ~PacketsManager();
 
-    void                    readHeader(__socket sock);
+    ERR                     processPackets();
 
 private:
     __packets_stk_ptr       m_freshPackets;
@@ -34,6 +31,12 @@ private:
     __packets_map_vec       m_fragmentedPackets;
     __t_client_packet       m_tmpPacket;   
     PacketParser            m_pckParser;
+
+    const __t_client_packet     &getTopPacket();
+    void                        addPacketInProcessedMap(const __t_client_packet &packet);
+    ERR                         addStartPacketInHalfVector(const __t_client_packet &packet);
+    ERR                         addMiddlePacketInHalfVector(const __t_client_packet &packet);
+    ERR                         concatFragmentedPackets(const __t_client_packet &endPck, __t_client_packet &fullPck);
 };
 
 #endif /* !__PACKETS_MANAGER_HH__ */

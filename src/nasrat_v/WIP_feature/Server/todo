@@ -29,7 +29,41 @@ le thread du server peut contenir un sous-thread
 lui permettant de concaténer les packet en asynchrone
 (voir si on a le temps, overkill ?)
 
-la classe PacketManager fonctionne avec trois stack
+------------------------------------------------------------------------------------------------
+Packets Manager -> 1er test === pas concluant
+------------------------------------------------------------------------------------------------
+
+la classe PacketsManager fonctionne avec trois stack
 une stack<__t_client_packet> pour les paquets fresh non traité
 une map<__client_id, stack<__t_client_packet>> pour les paquets traité
-une map<__client_id, stack<__t_client_packet>> pour les paquets en cours de traitement (partie manquante)
+une map<__client_id, vector<__t_client_packet>> pour les paquets en cours de traitement
+(cad avec une partie manquante)
+
+------------------------------------------------------------------------------------------------
+Packets Manager -> 2eme test === a implementer
+------------------------------------------------------------------------------------------------
+
+la classe PacketsManager read de 1 à 1 une taille fixe (la taille du header)
+afin de récupérer dans le header la taille du paquet qui est envoyé
+
+ensuite elle read de la taille du paquet envoyé :
+
+-> si elle a bien lu cette taille -> paquet validé on le push dans la map de stack
+
+-> si elle a lu moins -> elle stock ce qu'elle a lu,
+puis elle relis en comptant le nb de caractere lu jusqua se quelle ai lu la taille
+et concatene au fur et a mesure
+une fois qu'elle a bien lu la taille -> paquet validé on le push dans la map de stack
+
+si la taille du dernier buffer a lire est > au nb de caracteres manquant du packet
+alors on substr le reste de la chaine a la position nb caracteres lu du buffer
+
+si le substr renvoie une taille >= a la taille du header
+alors on recommence le processus
+
+si le substr renvoie une taille < a la taille du header
+alors on read le prochain buffer de la taille du header manquant
+et on recommence le processus
+
+voir buffer circulaire
+
