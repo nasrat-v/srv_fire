@@ -27,7 +27,6 @@ void Client::setSinSize(__sockaddr_in_size sinSize)
 
 void Client::pushData(const __packet_data &data)
 {
-    std::cout << data << std::endl;
     m_dataStack.push(data);
 }
 

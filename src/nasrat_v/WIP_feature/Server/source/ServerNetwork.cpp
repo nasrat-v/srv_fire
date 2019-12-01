@@ -1,7 +1,7 @@
 
 #include "../header/ServerNetwork.hh"
 
-ServerNetwork::ServerNetwork() : m_packetsManager(m_freshPackets, m_processedPackets) {}
+ServerNetwork::ServerNetwork() = default;
 
 ServerNetwork::~ServerNetwork()
 {
@@ -198,26 +198,18 @@ void ServerNetwork::addNewDataReceived(__client_ptr client, const std::string &d
 
 ERR	ServerNetwork::readData(__client_ptr client)
 {
-    __ret ret;
-	char buff[(SIZE_BUFF + sizeof(char))] = { 0 };
+    ERR status;
+    __t_packet packet;
 
-    // faire un read de la taille du header dabord pour pouvoir lire la taille
-    // puis faire read de la taille recu
-    // pour eviter de réallouer faire un buffer circulaire (ou une string ?)
-    errno = 0;
-	if ((ret = read(client->getSock(), buff, SIZE_BUFF)) > 0)
-		addNewDataReceived(client, buff);
-	else if (ret < 0)
-	{
-		LogNetwork::logFailureMsg("Error failed to read data from socket: " + std::to_string(errno));
-		return (NET_ERROR);
-	}
-	else
-	{
-		LogNetwork::logInfoMsg("Received deconnection notification from client");
+    if ((status = m_packetsManager.receivePacket(client->getSock(), packet)) == NET_DECO)
+    {
         exitConnection(client->getSock());
         addNewClientDeco(client->getId());
-	}
+    }
+    else if (status == NET_ERROR)
+        return (NET_ERROR);
+    client->pushData(packet.pk_data);
+    std::cout << "data: " << packet.pk_data << std::endl; 
 	return (SUCCESS);
 }
 

@@ -1,26 +1,36 @@
 
 #include "../header/PacketsManager.hh"
 
-PacketsManager::PacketsManager(__packets_stk_ptr freshPackets, 
-                               __packets_map_stk_ptr processedPackets) : m_freshPackets(std::move(freshPackets)), 
-                                                                         m_processedPackets(std::move(processedPackets)) 
-{
-    m_tmpPacket = { 0, "" };
-}
+PacketsManager::PacketsManager() = default;
 
 PacketsManager::~PacketsManager() = default;
 
-void PacketsManager::readHeader(__socket sock)
+ERR PacketsManager::receivePacket(__socket sock, __t_packet &packet)
+{
+	ERR status;
+
+    if ((status = readHeader(sock, packet.pk_header)) != SUCCESS)
+		return (status);
+    if (packet.pk_header.pk_size > 0)
+    {
+        if ((status = readPacket(sock, packet)) != SUCCESS)
+            return (status);
+    }
+	return (SUCCESS);
+}
+
+ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
 {
     __ret ret;
 	char buff[(HEADER_BUFF_SIZE + sizeof(char))] = { 0 };
 
-    // faire un read de la taille du header dabord pour pouvoir lire la taille
-    // puis faire read de la taille recu
-    // pour eviter de réallouer faire un buffer circulaire (ou une string ?)
     errno = 0;
-	if ((ret = read(sock, buff, HEADER_READ_SIZE)) > 0)
-		
+	if ((ret = read(sock, buff, HEADER_BUFF_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		header.read_size = 0;
+		header.pk_size = atoi(buff);
+	}
 	else if (ret < 0)
 	{
 		LogNetwork::logFailureMsg("Error failed to read data from socket: " + std::to_string(errno));
@@ -29,8 +39,35 @@ void PacketsManager::readHeader(__socket sock)
 	else
 	{
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
-        exitConnection(client->getSock());
-        addNewClientDeco(client->getId());
+		return (NET_DECO);
 	}
+	return (SUCCESS);
+}
+
+ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
+{
+	__ret ret;
+	ssize_t sizeToRead = (packet.pk_header.pk_size - packet.pk_header.read_size);
+	char *buff = new char[(sizeToRead + sizeof(char))]();
+
+    errno = 0;
+	if ((ret = read(sock, buff, sizeToRead)) > 0)
+	{
+		buff[ret] = '\0';
+		packet.pk_data.append(buff);
+		packet.pk_header.read_size += ret;
+	}
+	else if (ret < 0)
+	{
+		LogNetwork::logFailureMsg("Error failed to read data from socket: " + std::to_string(errno));
+		return (NET_ERROR);
+	}
+	else
+	{
+		LogNetwork::logInfoMsg("Received deconnection notification from client");
+		return (NET_DECO);
+	}
+	if (ret < sizeToRead)
+		return (readPacket(sock, packet));
 	return (SUCCESS);
 }

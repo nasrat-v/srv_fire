@@ -3,6 +3,7 @@
 #define __NETWORK_TYPES_HH__
 
 # define NET_ERROR  (ERR)~0
+# define NET_DECO   84
 
 #include <unistd.h>
 #include <netdb.h>

@@ -12,6 +12,7 @@ set(SOURCE_FILES
 	header/ServerNetwork.hh
 	source/Client.cpp
 	header/Client.hh
+	header/Packet.hh
 	source/PacketsManager.cpp
 	header/PacketsManager.hh
 	source/ProcessCommunication.cpp

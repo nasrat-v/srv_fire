@@ -4,27 +4,27 @@
 
 #include "Client.hh"
 
-enum                e_type_packet
+enum e_type_packet
 {
     UNKNOWN,
     START,
-    END,
-    
+    END,  
     MIDDLE,
     FULL
 };
 
-typedef struct      s_client_packet
+typedef struct          s_packet_header
 {
-    __client_id     cl_id;
-    __packet_data   pk_data;
-    e_type_packet   pk_type;
-}                   __t_client_packet;
+    size_t              pk_size;
+    size_t              read_size;
+}                       __t_packet_header;
 
-typedef struct      s_packet_header_pos
+typedef struct          s_packet
 {
-    size_t          start_pos;
-    size_t          end_pos;
-}                   __t_packet_header_pos;
+    __client_id         cl_id;
+    __packet_data       pk_data;
+    e_type_packet       pk_type;
+    __t_packet_header   pk_header;
+}                       __t_packet;
 
 #endif /* !__PACKET_HH__ */

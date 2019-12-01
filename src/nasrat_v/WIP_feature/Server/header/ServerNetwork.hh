@@ -56,8 +56,6 @@ protected:
     std::mutex                  m_mutex;
     std::thread                 m_netThread;
     std::promise<void>          m_exitSignal;
-    __packets_stk_ptr           m_freshPackets;
-    __packets_map_stk_ptr       m_processedPackets;
     PacketsManager              m_packetsManager;
 
 

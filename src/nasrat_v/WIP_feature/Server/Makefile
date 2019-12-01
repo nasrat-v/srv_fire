@@ -204,6 +204,33 @@ source/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/Main.cpp.s
 .PHONY : source/Main.cpp.s
 
+source/PacketsManager.o: source/PacketsManager.cpp.o
+
+.PHONY : source/PacketsManager.o
+
+# target to build an object file
+source/PacketsManager.cpp.o:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/PacketsManager.cpp.o
+.PHONY : source/PacketsManager.cpp.o
+
+source/PacketsManager.i: source/PacketsManager.cpp.i
+
+.PHONY : source/PacketsManager.i
+
+# target to preprocess a source file
+source/PacketsManager.cpp.i:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/PacketsManager.cpp.i
+.PHONY : source/PacketsManager.cpp.i
+
+source/PacketsManager.s: source/PacketsManager.cpp.s
+
+.PHONY : source/PacketsManager.s
+
+# target to generate assembly for a file
+source/PacketsManager.cpp.s:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/PacketsManager.cpp.s
+.PHONY : source/PacketsManager.cpp.s
+
 source/ProcessCommunication.o: source/ProcessCommunication.cpp.o
 
 .PHONY : source/ProcessCommunication.o
@@ -276,6 +303,9 @@ help:
 	@echo "... source/Main.o"
 	@echo "... source/Main.i"
 	@echo "... source/Main.s"
+	@echo "... source/PacketsManager.o"
+	@echo "... source/PacketsManager.i"
+	@echo "... source/PacketsManager.s"
 	@echo "... source/ProcessCommunication.o"
 	@echo "... source/ProcessCommunication.i"
 	@echo "... source/ProcessCommunication.s"
