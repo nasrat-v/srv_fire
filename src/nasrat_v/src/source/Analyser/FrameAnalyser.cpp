@@ -4,8 +4,9 @@
 
 #include "../../header/Analyser/FrameAnalyser.hh"
 
-FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode) : _debugMode(mode),
-                                                                    _imageService(DEFAULT_VIDEO_PATH, mode)
+FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode,
+                            std::shared_ptr<ImageProvider> imageProvider) : _debugMode(mode),
+                                                                            _imageService(mode, std::move(imageProvider))
 {
     _firstFrameBlob = true;
     _firstFrameEntity = true;
@@ -27,7 +28,7 @@ Error::ErrorType FrameAnalyser::initAnalyser(bool openVideo)
             return (Error::ErrorType::OPEN_VID);
     }
     _isInit = true;
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 Error::ErrorType FrameAnalyser::checkInitialisation(bool &end)
@@ -43,7 +44,7 @@ Error::ErrorType FrameAnalyser::checkInitialisation(bool &end)
         end = true;
     else if (status == ImageProvider::statusVideo::ERROR)
         return (Error::ErrorType::OPEN_VID);
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 Error::ErrorType FrameAnalyser::analyseFrame()
@@ -51,14 +52,14 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     bool                end = false;
     Error::ErrorType    status;
 
-    if ((status = checkInitialisation(end)) != Error::ErrorType::NO_ERROR)
+    if ((status = checkInitialisation(end)) != Error::ErrorType::NOPE)
         return (status);
     while (!end)
     {
         logicForEachFrame(end);
         cv::waitKey(1);
     }
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 void FrameAnalyser::logicForEachFrame(bool &end)

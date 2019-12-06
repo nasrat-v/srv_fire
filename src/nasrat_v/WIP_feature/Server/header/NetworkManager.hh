@@ -17,12 +17,12 @@ public:
     NetworkManager();
     ~NetworkManager();
 
-    ERR                             startNetwork();
-    void                            stopNetwork();
-    bool                            isNewClientConnected();
-    const std::vector<__client_id>  &getNewClientConnected();
-    bool                            isNewDataReceived(__client_id clientId);
-    const __data_vector             &getNewDataReceived(__client_id clientId);
+    ERR                       startNetwork();
+    void                      stopNetwork();
+    bool                      isNewClientConnected();
+    std::vector<__client_id>  getNewClientConnected();
+    bool                      isNewDataReceived(__client_id clientId);
+    __data_vector             getNewDataReceived(__client_id clientId);
 
 private:
     /* Attributes */

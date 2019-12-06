@@ -17,18 +17,18 @@ public:
     NetworkManager();
     ~NetworkManager();
 
-    ERR                         startAsyncNetwork();
-    void                        stopAsyncNetwork();
-    std::vector<__client_id>    getNewClientConnected();
-    __data_vector               getNewDataReceived(__client_id clientId);
+    ERR                 startAsyncNetwork();
+    void                stopAsyncNetwork();
+    bool                isNewClientConnected();
+    __client_id_vector  getNewClientConnected();
+    bool                isNewDataReceived(__client_id clientId);
+    __data_vector       getNewDataReceived(__client_id clientId);
 
 private:
-    /* Attributes */
-    AsyncServer                 m_server;
-    std::promise<void>          m_serverExitSignal;
-    std::vector<__client_id>    m_newClients;
+    AsyncServer         m_server;
+    std::promise<void>  m_serverExitSignal;
+    __client_id_vector  m_newClients;
 
-    /* Methods */
     ERR                                 initServer();
     const AsyncServer::__t_server_param initConfigurationServer();
     void                                resetString(std::string &str);

@@ -24,6 +24,7 @@
 typedef std::shared_ptr<Client>                 __client_ptr;
 typedef std::map<__client_id, __client_ptr>     __clients_map;
 typedef __clients_map::iterator                 __clients_iterator;
+typedef std::vector<__client_id>                __client_id_vector;
 
 class AsyncServer
 {
@@ -40,28 +41,28 @@ public:
         __sa_family_t   srv_ip_type; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6
 	}					__t_server_param;
 
-    ERR                             initServer(const __t_server_param &srvParam);
-    void                            startServer();
-    void                            stopServer();
-    bool                            isNewClientConnected();
-    std::vector<__client_id>        getNewClientConnected();
-    bool                            isNewDataReceived(__client_id clientId);
-    __data_vector                   getNewDataReceived(__client_id clientId);
-    ERR		                        sendData(const std::string &data, __client_id clientId);
+    ERR                 initServer(const __t_server_param &srvParam);
+    void                startServer();
+    void                stopServer();
+    bool                isNewClientConnected();
+    __client_id_vector  getNewClientConnected();
+    bool                isNewDataReceived(__client_id clientId);
+    __data_vector       getNewDataReceived(__client_id clientId);
+    ERR		            sendData(const std::string &data, __client_id clientId);
 
 protected:
-    __socket                    m_srvSock;
-    __socket                    m_lastSockAdded;
-    __sockaddr_in               m_srvSin;
-    __t_server_param		    m_srvParam;
-    __fd_set		            m_readf;
-    __clients_map               m_clients;
-    std::vector<__client_id>    m_clientsDecoToErase;
-    std::vector<__client_id>    m_clientsNewForIa;
-    std::mutex                  m_mutex;
-    std::thread                 m_netThread;
-    std::promise<void>          m_exitSignal;
-    PacketsManager              m_packetsManager;
+    __socket            m_srvSock;
+    __socket            m_lastSockAdded;
+    __sockaddr_in       m_srvSin;
+    __t_server_param    m_srvParam;
+    __fd_set		    m_readf;
+    __clients_map       m_clients;
+    __client_id_vector  m_clientsDecoToErase;
+    __client_id_vector  m_clientsNewForIa;
+    std::mutex          m_mutex;
+    std::thread         m_netThread;
+    std::promise<void>  m_exitSignal;
+    PacketsManager      m_packetsManager;
 
 
     ERR	                initSocket();

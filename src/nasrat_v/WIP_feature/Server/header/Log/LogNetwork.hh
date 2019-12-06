@@ -9,7 +9,7 @@
 
 # define SUCCESS			(ERR)1
 # define FILE_ERROR			(ERR)~0
-# define LOGFILE_NAME		"Log/log-network.txt"
+# define LOGFILE_NAME		"../Log/log-network.txt"
 
 typedef short			ERR;
 static bool				__attribute__((unused))_tryStatus = false;

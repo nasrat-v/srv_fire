@@ -24,7 +24,7 @@ void LogNetwork::closeLogFile()
  */
  void LogNetwork::logSomething(const std::string &msg)
 {
-     if (!_logActive)
+    if (!_logActive)
          return;
 	if (!_logFile.is_open())
 		openLogFile(LOGFILE_NAME);

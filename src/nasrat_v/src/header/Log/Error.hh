@@ -15,15 +15,16 @@ class Error
 public:
     enum class      ErrorType
     {
-        NO_ERROR,
-        UNKNOWN_ERROR,
+        NOPE,
+        UNKNOWN,
         OPEN_IMG,
         OPEN_VID,
         TRUNCATED_VID,
         MISSING_FRAME_INFOS,
         MISSING_INIT,
         NO_CONTOUR,
-        THREAD_ERROR,
+        THREAD,
+        NETWORK,
         DEBUG_STOP,
         TRUNCATED_IMG_NETWORK
     };

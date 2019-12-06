@@ -197,6 +197,8 @@ ERR	AsyncServer::readData(__client_ptr client)
         addNewClientDeco(client->getId());
         return (SUCCESS);
     }
+    else if (status == IGNORE_PACKET)
+        return (SUCCESS);
     else if (status == NET_ERROR)
         return (NET_ERROR);
     client->pushData(packet.pk_data);

@@ -28,17 +28,24 @@ const AsyncServer::__t_server_param NetworkManager::initConfigurationServer()
     return (srvParam);
 }
 
-std::vector<__client_id> NetworkManager::getNewClientConnected()
+bool NetworkManager::isNewClientConnected()
 {
-    if (m_server.isNewClientConnected())
-        return (m_server.getNewClientConnected());
-    return (std::vector<__client_id>());
+    return (m_server.isNewClientConnected());
+}
+
+__client_id_vector NetworkManager::getNewClientConnected()
+{
+    return (m_server.getNewClientConnected());
+}
+
+bool NetworkManager::isNewDataReceived(__client_id clientId)
+{
+    return (m_server.isNewDataReceived(clientId));
 }
 
 __data_vector NetworkManager::getNewDataReceived(__client_id clientId)
 {
-    if (m_server.isNewDataReceived(clientId))
-        return (m_server.getNewDataReceived(clientId));
+    return (m_server.getNewDataReceived(clientId));
 }
 
 ERR NetworkManager::startAsyncNetwork()

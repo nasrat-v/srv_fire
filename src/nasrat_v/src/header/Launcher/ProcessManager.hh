@@ -5,18 +5,32 @@
 #include "../Analyser/FrameAnalyser.hh"
 #include "../Network/NetworkManager.hh"
 
+typedef std::shared_ptr<ImageProvider>              __img_provider_ptr;
+typedef std::shared_ptr<FrameAnalyser>              __frame_analyser_ptr;
+typedef std::map<__client_id, __img_provider_ptr>   __process_map;
+
 class ProcessManager
 {
 public:
-    ProcessManager();
+    ProcessManager(const DebugManager::debugMode &debugMode,
+                            const ParamManager::paramMode &paramMode);
     ~ProcessManager();
 
-    Error::ErrorType    run(const DebugManager::debugMode &debugMode);
+    Error::ErrorType    run();
+    Error::ErrorType    launchAnalyse();
 
 private:
-    NetworkManager      m_network;
+    NetworkManager          m_network;
+    __process_map           m_processMap;
+    DebugManager::debugMode m_debugMode;
+    ParamManager::paramMode m_paramMode;
 
-    ERR                 networkLoop();
+    Error::ErrorType    networkLoop();
+    Error::ErrorType    handleNewClients();
+    Error::ErrorType    mapNewClients(const __client_id_vector &clients);
+    Error::ErrorType    linkClientToAnalyser(__client_id clientId);
+    void                handleNewDataReceived();
+    void                sendDataToAnalyser(__client_id clientId);
 };
 
 #endif /* !__PROCESS_MANAGER_HH__ */

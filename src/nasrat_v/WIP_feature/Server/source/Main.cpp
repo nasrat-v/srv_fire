@@ -1,31 +1,20 @@
 
-#include "../header/ProcessCommunication.hh"
+#include "../header/NetworkManager.hh"
 
 int main()
 {
-    ProcessCommunication com;
-    
-    if (com.communicateWithServer() == NET_ERROR)
-        return (1);
-    return (0);
-}
-
-
-ERR NetworkManager::communicateWithServer()
-{
+    NetworkManager network;
     std::ofstream file;
     static int count = 0;
     __data_vector data;
     std::vector<__client_id> newClients;
 
-    if (initServer() == NET_ERROR)
-        return (NET_ERROR);
-    m_server.startServer();
+    network.startNetwork();
     while (42)
     {
-        if (m_server.isNewDataReceived(0))
+        if (network.isNewDataReceived(0))
         {
-            data = m_server.getNewDataReceived(0);
+            data = network.getNewDataReceived(0);
             for (__packet_data packet : data)
             {
                 file.open(PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
@@ -36,6 +25,5 @@ ERR NetworkManager::communicateWithServer()
         }
         usleep(1);
     }
-    m_server.stopServer();
-    return (SUCCESS);
+    network.stopNetwork();
 }

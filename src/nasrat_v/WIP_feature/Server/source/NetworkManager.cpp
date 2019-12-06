@@ -33,7 +33,7 @@ bool NetworkManager::isNewClientConnected()
     return (m_server.isNewClientConnected());
 }
 
-const std::vector<__client_id> &NetworkManager::getNewClientConnected()
+std::vector<__client_id> NetworkManager::getNewClientConnected()
 {
     return (m_server.getNewClientConnected());
 }
@@ -43,7 +43,7 @@ bool NetworkManager::isNewDataReceived(__client_id clientId)
     return (m_server.isNewDataReceived(clientId));
 }
 
-const __data_vector &NetworkManager::getNewDataReceived(__client_id clientId)
+__data_vector NetworkManager::getNewDataReceived(__client_id clientId)
 {
     return (m_server.getNewDataReceived(clientId));
 }

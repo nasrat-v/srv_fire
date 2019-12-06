@@ -10,14 +10,17 @@
 class Launcher
 {
 public:
-    Launcher();
+    Launcher(const DebugManager::debugMode &debugMode,
+                        const ParamManager::paramMode &paramMode);
     ~Launcher();
 
-    Error::ErrorType        launchAnalyse(const DebugManager::debugMode &debugMode);
-    Error::ErrorType        launchAnalyseNetwork(const DebugManager::debugMode &debugMode);
+    Error::ErrorType        launchAnalyse();
+    Error::ErrorType        launchAnalyseNetwork();
 
 private:
     ProcessManager          m_proccess;
+    DebugManager::debugMode m_debugMode;
+    ParamManager::paramMode m_paramMode;
 };
 
 

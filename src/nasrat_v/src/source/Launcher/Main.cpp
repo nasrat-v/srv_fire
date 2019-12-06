@@ -6,29 +6,38 @@
 #include "../../header/Launcher/ParamManager.hh"
 #include "../../header/Launcher/Launcher.hh"
 
+int runLauncher(const DebugManager::debugMode &debugMode,
+                const ParamManager::paramMode &paramMode)
+{
+    Launcher launcher(debugMode, paramMode);
+
+    if (paramMode & ParamManager::paramMode::NETWORK_MODE)
+    {
+        if (launcher.launchAnalyseNetwork() != Error::ErrorType::NOPE)
+            return (1);
+    }
+    else
+    {
+        if (launcher.launchAnalyse() != Error::ErrorType::NOPE)
+            return (1);
+    }
+    return (0);
+}
+
 int main(int ac, const char **av)
 {
     ParamManager paramManager;
     ParamManager::paramMode paramMode;
     DebugManager debugManager;
     DebugManager::debugMode debugMode = DebugManager::debugMode::NO_DEBUG;
-    Launcher launcher;
 
     if (ac > 1)
     {
         paramMode = paramManager.findParams(av);
         if (paramMode & ParamManager::paramMode::DEBUG_MODE)
             debugMode = debugManager.findDebugMode(av);
-        if (paramMode & ParamManager::paramMode::NETWORK_MODE)
-        {
-            if (launcher.launchAnalyseNetwork(debugMode, paramMode) != Error::ErrorType::NO_ERROR)
-                return (1);
-        }
-        else
-        {
-            if (launcher.launchAnalyse(debugMode, paramMode) != Error::ErrorType::NO_ERROR)
-                return (1);
-        }
+        if (runLauncher(debugMode, paramMode) == 1)
+            return (1);
     }
     return (0);
 }

@@ -27,7 +27,8 @@ static std::vector<ScalarColor::t_colorRange> colorToAnalyse = { YELLOW_RANGE, O
 class FrameAnalyser
 {
 public:
-    FrameAnalyser(const DebugManager::debugMode &mode);
+    FrameAnalyser(const DebugManager::debugMode &mode,
+                            std::shared_ptr<ImageProvider> imageProvider);
     ~FrameAnalyser();
 
     Error::ErrorType        initAnalyser(bool openVideo);

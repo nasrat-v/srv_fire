@@ -2,8 +2,9 @@
 #ifndef __PACKETS_MANAGER_HH__
 #define __PACKETS_MANAGER_HH__
 
-#define HEADER_BUFF_SIZE    8
+#define HEADER_BUFF_SIZE    4
 #define TIMEOUT_TRUNCATED   1
+#define IGNORE_PACKET       (ERR)-1
 
 #include <stack>
 #include <map>

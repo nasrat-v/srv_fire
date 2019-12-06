@@ -4,9 +4,9 @@
 
 #include "../../header/Analyser/ImageService.hh"
 
-ImageService::ImageService(const char *defaukltVideoPath, 
-                            const DebugManager::debugMode &mode) :  _debugMode(mode), 
-                                                                    _imageProvider(defaukltVideoPath, mode)
+ImageService::ImageService(const DebugManager::debugMode &debugMode,
+                            std::shared_ptr<ImageProvider> imageProvider) : _debugMode(debugMode), 
+                                                                            _imageProvider(std::move(imageProvider))
 {
     _firstTime = true;
 }
@@ -172,7 +172,7 @@ void ImageService::findConvexHullsMergedFrame(const cv::Size &imageSize,
 
 ImageProvider::statusVideo ImageService::openVideo()
 {
-    return (_imageProvider.openVideo());
+    return (_imageProvider->openVideo());
 }
 
 ImageProvider::statusVideo ImageService::getNextImg(Frame &frame)
@@ -190,7 +190,7 @@ ImageProvider::statusVideo ImageService::initImg(Frame &frame)
     std::vector<cv::Mat> imgs;
     ImageProvider::statusVideo status;
 
-    status = _imageProvider.initImg(imgs, NB_IMG_INCR);
+    status = _imageProvider->initImg(imgs, NB_IMG_INCR);
     for (const cv::Mat &img : imgs)
         frame.addImage(img);
     return (status);
@@ -202,7 +202,7 @@ ImageProvider::statusVideo ImageService::incrementImg(Frame &frame)
     cv::Mat nextImage;
     ImageProvider::statusVideo status;
 
-    status = _imageProvider.incrementImg(nextImage, NB_IMG_INCR);
+    status = _imageProvider->incrementImg(nextImage, NB_IMG_INCR);
     while (i < (frame.getImages().size() - 1))
     {
         frame.setImage(frame.getImages()[i + 1], i);
@@ -216,12 +216,12 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
 {
     ImageProvider::statusVideo status;
 
-    if ((status =_imageProvider.openVideo()) != ImageProvider::statusVideo::OPEN)
+    if ((status =_imageProvider->openVideo()) != ImageProvider::statusVideo::OPEN)
     {
         Error::logError(Error::ErrorType::OPEN_VID, "Cannot create sample IMG");
         return (status);
     }
-    _imageProvider.createSampleImgFromVideo();
+    _imageProvider->createSampleImgFromVideo();
 }
 
 /////////////////////// Image Addition //////////////////////////
