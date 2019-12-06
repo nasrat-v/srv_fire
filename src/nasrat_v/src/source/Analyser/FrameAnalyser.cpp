@@ -4,8 +4,8 @@
 
 #include "../../header/Analyser/FrameAnalyser.hh"
 
-FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider) :    _debugMode(mode),
-                                                                                                     _imageService(mode, imageProvider)
+FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode) : _debugMode(mode),
+                                                                    _imageService(DEFAULT_VIDEO_PATH, mode)
 {
     _firstFrameBlob = true;
     _firstFrameEntity = true;

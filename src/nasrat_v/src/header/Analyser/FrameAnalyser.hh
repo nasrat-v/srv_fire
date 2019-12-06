@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_STREAMANALYSER_H
 # define OPENCV_SRV_STREAMANALYSER_H
 
-# define VIDEO_PATH                     "../input/video/video-flamme.mp4"
+# define DEFAULT_VIDEO_PATH             "../input/video/video-flamme.mp4"
 # define MAX_FRAME_WITHOUT_MATCH_BLOB   20
 # define MAX_FRAME_WITHOUT_MATCH_ENTITY 10
 # define INDEX_SAVED_BLOB_NOT_FOUND     (size_t)-1
@@ -27,7 +27,7 @@ static std::vector<ScalarColor::t_colorRange> colorToAnalyse = { YELLOW_RANGE, O
 class FrameAnalyser
 {
 public:
-    FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider);
+    FrameAnalyser(const DebugManager::debugMode &mode);
     ~FrameAnalyser();
 
     Error::ErrorType        initAnalyser(bool openVideo);

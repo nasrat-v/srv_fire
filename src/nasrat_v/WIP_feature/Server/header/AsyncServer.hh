@@ -1,6 +1,6 @@
 
-#ifndef __SERVERNETWORK_HH__
-#define __SERVERNETWORK_HH__
+#ifndef __ASYNC_SERVER_HH__
+#define __ASYNC_SERVER_HH__
 
 #include <arpa/inet.h>
 #include <sys/select.h>
@@ -25,11 +25,11 @@ typedef std::shared_ptr<Client>                 __client_ptr;
 typedef std::map<__client_id, __client_ptr>     __clients_map;
 typedef __clients_map::iterator                 __clients_iterator;
 
-class ServerNetwork
+class AsyncServer
 {
 public:
-    ServerNetwork();
-    ~ServerNetwork();
+    AsyncServer();
+    ~AsyncServer();
 
     typedef struct		s_server_param
 	{
@@ -40,12 +40,14 @@ public:
         __sa_family_t   srv_ip_type; // ip type used by server - ex:: AF_INET for IPV4 or AF_INET6 for IPV6
 	}					__t_server_param;
 
-    ERR                 initServer(const __t_server_param &srvParam);
-    void                startServer();
-    void                stopServer();
-	ERR		            sendData(const std::string &data, __client_id clientId);
-    bool                isNewDataReceived(__client_id clientId);
-    __data_vector       getLastDataReceived(__client_id clientId);
+    ERR                             initServer(const __t_server_param &srvParam);
+    void                            startServer();
+    void                            stopServer();
+    bool                            isNewClientConnected();
+    std::vector<__client_id>        getNewClientConnected();
+    bool                            isNewDataReceived(__client_id clientId);
+    __data_vector                   getNewDataReceived(__client_id clientId);
+    ERR		                        sendData(const std::string &data, __client_id clientId);
 
 protected:
     __socket                    m_srvSock;
@@ -55,6 +57,7 @@ protected:
     __fd_set		            m_readf;
     __clients_map               m_clients;
     std::vector<__client_id>    m_clientsDecoToErase;
+    std::vector<__client_id>    m_clientsNewForIa;
     std::mutex                  m_mutex;
     std::thread                 m_netThread;
     std::promise<void>          m_exitSignal;
@@ -83,4 +86,4 @@ protected:
     ERR                 eraseClientById(__client_id clientId);
 };
 
-#endif /* !__SERVERNETWORK_HH__ */
+#endif /* !__ASYNC_SERVER_HH__ */

@@ -15,7 +15,7 @@
 class ImageService
 {
 public:
-    ImageService(const DebugManager::debugMode &mode, ImageProvider *imageProvider);
+    ImageService(const char *defaukltVideoPath, const DebugManager::debugMode &mode);
     ~ImageService();
 
     void                        substractInfosPossibleBlobs(Frame &frame,
@@ -64,7 +64,7 @@ private:
     /* Attributes */
     bool                        _firstTime;
     DebugManager::debugMode     _debugMode;
-    ImageProvider               *_imageProvider;
+    ImageProvider               _imageProvider;
     ImageProcesser              _imageProcesser;
     ImageAdditionner            _imageAdditionner;
 };

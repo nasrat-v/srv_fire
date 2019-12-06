@@ -21,9 +21,8 @@
 class ImageProvider
 {
 public:
-    ImageProvider(std::string videoPath,
-                            const DebugManager::debugMode &debugMode,
-                            const ParamManager::paramMode &paramMode);
+    ImageProvider(const char *defaultVideoPath,
+                            const DebugManager::debugMode &debugMode);
     ~ImageProvider();
 
     enum class statusVideo
@@ -41,8 +40,8 @@ public:
     statusVideo         incrementImg(cv::Mat &nextImage, size_t nbImgIncr);
     statusVideo         videoContinues();
     void                createSampleImgFromVideo();
-    void                setCanReadImage(bool status);
-    void                setImageNetworkPath(const std::string &path);
+    //void                setCanReadImage(bool status);
+    //void                setImageNetworkPath(const std::string &path);
 
 private:
     /* Methods */
@@ -51,17 +50,14 @@ private:
     statusVideo         incrementImgVideo(cv::Mat &nextImage); // default
     statusVideo         initImgPng(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
     statusVideo         incrementImgPng(cv::Mat &nextImage, size_t nbImgIncr);
-    statusVideo         initImgNetwork(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
-    statusVideo         incrementImgNetwork(cv::Mat &nextImage);
-    void                resetImageNetworkPath();
+    //statusVideo         initImgNetwork(std::vector<cv::Mat> &imgs, size_t nbImgIncr);
+    //statusVideo         incrementImgNetwork(cv::Mat &nextImage);
+    //void                resetImageNetworkPath();
 
     /* Attributes */
     DebugManager::debugMode _debugMode;
-    ParamManager::paramMode _paramMode;
     cv::VideoCapture        _capVideo;
-    std::string             _videoPath;
-    bool                    _canReadImage{};
-    std::string             _imageNetworkPath;
+    const char              *_videoPath;
 };
 
 

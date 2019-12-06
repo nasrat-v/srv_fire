@@ -5,6 +5,7 @@
         "valarray": "cpp",
         "*.tcc": "cpp",
         "string": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "iosfwd": "cpp"
     }
 }

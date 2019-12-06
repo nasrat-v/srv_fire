@@ -6,13 +6,11 @@
 
 #include "../../header/Analyser/ImageProvider.hh"
 
-ImageProvider::ImageProvider(std::string videoPath,
-                            const DebugManager::debugMode &debugMode,
-                            const ParamManager::paramMode &paramMode) :   _videoPath(std::move(videoPath)),
-                                                                          _debugMode(debugMode),
-                                                                          _paramMode(paramMode)
+ImageProvider::ImageProvider(const char *defaultVideoPath,
+                            const DebugManager::debugMode &debugMode) :   _videoPath(defaultVideoPath),
+                                                                          _debugMode(debugMode)
 {
-    resetImageNetworkPath();
+    //resetImageNetworkPath();
 }
 
 ImageProvider::~ImageProvider() = default;
@@ -44,8 +42,8 @@ ImageProvider::statusVideo ImageProvider::openVideo()
 
 ImageProvider::statusVideo ImageProvider::initImg(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
 {
-    if (_paramMode & ParamManager::paramMode::NETWORK_MODE)
-        return (initImgNetwork(imgs, nbImgIncr));
+    //if (_paramMode & ParamManager::paramMode::NETWORK_MODE)
+    //    return (initImgNetwork(imgs, nbImgIncr));
     if (_debugMode & DebugManager::debugMode::SRC_AS_IMG)
         return (initImgPng(imgs, nbImgIncr));
     return (initImgVideo(imgs, nbImgIncr));
@@ -55,11 +53,11 @@ ImageProvider::statusVideo ImageProvider::incrementImg(cv::Mat &nextImage, size_
 {
     statusVideo status;
 
-    if (_paramMode & ParamManager::paramMode::NETWORK_MODE)
+    /*if (_paramMode & ParamManager::paramMode::NETWORK_MODE)
     {
         while ((status = incrementImgNetwork(nextImage)) == statusVideo::IGNORE_WAIT);
         return (status);
-    }
+    }*/
     if (_debugMode & DebugManager::debugMode::SRC_AS_IMG)
         return (incrementImgPng(nextImage, nbImgIncr));
     return (incrementImgVideo(nextImage));
@@ -145,7 +143,7 @@ void ImageProvider::createSampleImgFromVideo()
     }
 }
 
-ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
+/*ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &imgs, size_t nbImgIncr)
 {
     size_t i = 0;
     cv::Mat imgRead;
@@ -193,4 +191,4 @@ void ImageProvider::setImageNetworkPath(const std::string &path)
 void ImageProvider::setCanReadImage(bool status)
 {
     _canReadImage = status;
-}
+}*/

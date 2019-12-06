@@ -123,6 +123,33 @@ server_test/fast:
 	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/build
 .PHONY : server_test/fast
 
+source/AsyncServer.o: source/AsyncServer.cpp.o
+
+.PHONY : source/AsyncServer.o
+
+# target to build an object file
+source/AsyncServer.cpp.o:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/AsyncServer.cpp.o
+.PHONY : source/AsyncServer.cpp.o
+
+source/AsyncServer.i: source/AsyncServer.cpp.i
+
+.PHONY : source/AsyncServer.i
+
+# target to preprocess a source file
+source/AsyncServer.cpp.i:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/AsyncServer.cpp.i
+.PHONY : source/AsyncServer.cpp.i
+
+source/AsyncServer.s: source/AsyncServer.cpp.s
+
+.PHONY : source/AsyncServer.s
+
+# target to generate assembly for a file
+source/AsyncServer.cpp.s:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/AsyncServer.cpp.s
+.PHONY : source/AsyncServer.cpp.s
+
 source/Client.o: source/Client.cpp.o
 
 .PHONY : source/Client.o
@@ -204,6 +231,33 @@ source/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/Main.cpp.s
 .PHONY : source/Main.cpp.s
 
+source/NetworkManager.o: source/NetworkManager.cpp.o
+
+.PHONY : source/NetworkManager.o
+
+# target to build an object file
+source/NetworkManager.cpp.o:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/NetworkManager.cpp.o
+.PHONY : source/NetworkManager.cpp.o
+
+source/NetworkManager.i: source/NetworkManager.cpp.i
+
+.PHONY : source/NetworkManager.i
+
+# target to preprocess a source file
+source/NetworkManager.cpp.i:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/NetworkManager.cpp.i
+.PHONY : source/NetworkManager.cpp.i
+
+source/NetworkManager.s: source/NetworkManager.cpp.s
+
+.PHONY : source/NetworkManager.s
+
+# target to generate assembly for a file
+source/NetworkManager.cpp.s:
+	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/NetworkManager.cpp.s
+.PHONY : source/NetworkManager.cpp.s
+
 source/PacketsManager.o: source/PacketsManager.cpp.o
 
 .PHONY : source/PacketsManager.o
@@ -231,60 +285,6 @@ source/PacketsManager.cpp.s:
 	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/PacketsManager.cpp.s
 .PHONY : source/PacketsManager.cpp.s
 
-source/ProcessCommunication.o: source/ProcessCommunication.cpp.o
-
-.PHONY : source/ProcessCommunication.o
-
-# target to build an object file
-source/ProcessCommunication.cpp.o:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o
-.PHONY : source/ProcessCommunication.cpp.o
-
-source/ProcessCommunication.i: source/ProcessCommunication.cpp.i
-
-.PHONY : source/ProcessCommunication.i
-
-# target to preprocess a source file
-source/ProcessCommunication.cpp.i:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.i
-.PHONY : source/ProcessCommunication.cpp.i
-
-source/ProcessCommunication.s: source/ProcessCommunication.cpp.s
-
-.PHONY : source/ProcessCommunication.s
-
-# target to generate assembly for a file
-source/ProcessCommunication.cpp.s:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.s
-.PHONY : source/ProcessCommunication.cpp.s
-
-source/ServerNetwork.o: source/ServerNetwork.cpp.o
-
-.PHONY : source/ServerNetwork.o
-
-# target to build an object file
-source/ServerNetwork.cpp.o:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ServerNetwork.cpp.o
-.PHONY : source/ServerNetwork.cpp.o
-
-source/ServerNetwork.i: source/ServerNetwork.cpp.i
-
-.PHONY : source/ServerNetwork.i
-
-# target to preprocess a source file
-source/ServerNetwork.cpp.i:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ServerNetwork.cpp.i
-.PHONY : source/ServerNetwork.cpp.i
-
-source/ServerNetwork.s: source/ServerNetwork.cpp.s
-
-.PHONY : source/ServerNetwork.s
-
-# target to generate assembly for a file
-source/ServerNetwork.cpp.s:
-	$(MAKE) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/source/ServerNetwork.cpp.s
-.PHONY : source/ServerNetwork.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -294,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... server_test"
 	@echo "... edit_cache"
+	@echo "... source/AsyncServer.o"
+	@echo "... source/AsyncServer.i"
+	@echo "... source/AsyncServer.s"
 	@echo "... source/Client.o"
 	@echo "... source/Client.i"
 	@echo "... source/Client.s"
@@ -303,15 +306,12 @@ help:
 	@echo "... source/Main.o"
 	@echo "... source/Main.i"
 	@echo "... source/Main.s"
+	@echo "... source/NetworkManager.o"
+	@echo "... source/NetworkManager.i"
+	@echo "... source/NetworkManager.s"
 	@echo "... source/PacketsManager.o"
 	@echo "... source/PacketsManager.i"
 	@echo "... source/PacketsManager.s"
-	@echo "... source/ProcessCommunication.o"
-	@echo "... source/ProcessCommunication.i"
-	@echo "... source/ProcessCommunication.s"
-	@echo "... source/ServerNetwork.o"
-	@echo "... source/ServerNetwork.i"
-	@echo "... source/ServerNetwork.s"
 .PHONY : help
 
 

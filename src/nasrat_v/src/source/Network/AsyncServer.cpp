@@ -1,23 +1,23 @@
 
-#include "../header/ServerNetwork.hh"
+#include "../../header/Network/AsyncServer.hh"
 
-ServerNetwork::ServerNetwork() = default;
+AsyncServer::AsyncServer() = default;
 
-ServerNetwork::~ServerNetwork()
+AsyncServer::~AsyncServer()
 {
     if (m_netThread.joinable())
         m_netThread.join();
 }
 
-void ServerNetwork::startServer()
+void AsyncServer::startServer()
 {
     std::future<void> serverExitSignal = m_exitSignal.get_future();
     
-    m_netThread = std::thread(&ServerNetwork::serverLoop, this, std::move(serverExitSignal));
+    m_netThread = std::thread(&AsyncServer::serverLoop, this, std::move(serverExitSignal));
     m_netThread.detach();
 }
 
-void ServerNetwork::stopServer()
+void AsyncServer::stopServer()
 {
     LogNetwork::logInfoMsg("Server stop...");
     exitAllClientConnection();
@@ -25,7 +25,7 @@ void ServerNetwork::stopServer()
     m_exitSignal.set_value();
 }
 
-ERR ServerNetwork::initServer(const ServerNetwork::__t_server_param &srvParam)
+ERR AsyncServer::initServer(const AsyncServer::__t_server_param &srvParam)
 {
     m_srvParam = srvParam;
     if (initSocket() == NET_ERROR)
@@ -38,7 +38,7 @@ ERR ServerNetwork::initServer(const ServerNetwork::__t_server_param &srvParam)
 	return (SUCCESS);
 }
 
-ERR ServerNetwork::initSocket()
+ERR AsyncServer::initSocket()
 {
     int enable = 1;
 
@@ -53,7 +53,7 @@ ERR ServerNetwork::initSocket()
 	return (SUCCESS);
 }
 
-ERR ServerNetwork::bindSocket()
+ERR AsyncServer::bindSocket()
 {
     errno = 0;
 	memset(&m_srvSin, 0, sizeof(m_srvSin));
@@ -69,7 +69,7 @@ ERR ServerNetwork::bindSocket()
     return (SUCCESS);
 }
 
-ERR ServerNetwork::listenSocket()
+ERR AsyncServer::listenSocket()
 {
     errno = 0;
     if ((listen(m_srvSock, MAX_CLIENT)) == NET_ERROR)
@@ -81,7 +81,7 @@ ERR ServerNetwork::listenSocket()
     return (SUCCESS);
 }
 
-ERR ServerNetwork::serverLoop(std::future<void> serverExitSignal)
+ERR AsyncServer::serverLoop(std::future<void> serverExitSignal)
 {
     __timeval timeval;
 
@@ -98,7 +98,7 @@ ERR ServerNetwork::serverLoop(std::future<void> serverExitSignal)
     return (SUCCESS);
 }
 
-void ServerNetwork::resetFdSet()
+void AsyncServer::resetFdSet()
 {
     __clients_iterator it = m_clients.begin();
 
@@ -108,7 +108,7 @@ void ServerNetwork::resetFdSet()
         FD_SET(it->second->getSock(), &m_readf);
 }
 
-ERR ServerNetwork::handleClient(__timeval *timeval)
+ERR AsyncServer::handleClient(__timeval *timeval)
 {
     errno = 0;
     resetFdSet();
@@ -126,22 +126,12 @@ ERR ServerNetwork::handleClient(__timeval *timeval)
     return (SUCCESS);
 }
 
-bool ServerNetwork::isDataOnSocket(__socket sock)
+bool AsyncServer::isDataOnSocket(__socket sock)
 {
     return (FD_ISSET(sock, &m_readf));
 }
 
-ERR ServerNetwork::receiveNewConnection()
-{
-    if (isDataOnSocket(m_srvSock))
-    {
-        if (acceptNewClient() == NET_ERROR)
-            return (NET_ERROR);
-    }
-    return (SUCCESS);
-}
-
-ERR ServerNetwork::acceptNewClient()
+ERR AsyncServer::acceptNewClient()
 {
     __client_ptr newClient(new Client);
     __socket clientSock;
@@ -167,12 +157,13 @@ ERR ServerNetwork::acceptNewClient()
     return (SUCCESS);
 }
 
-void ServerNetwork::addNewClient(__client_ptr client)
+void AsyncServer::addNewClient(__client_ptr client)
 {
     m_clients.insert(std::make_pair(client->getId(), client));
+    m_clientsNewForIa.push_back(client->getId());
 }
 
-ERR ServerNetwork::receiveDataFromClient()
+ERR AsyncServer::receiveDataFromClient()
 {
     std::string data;
     __clients_iterator it = m_clients.begin();
@@ -188,14 +179,14 @@ ERR ServerNetwork::receiveDataFromClient()
     return (SUCCESS);
 }
 
-void ServerNetwork::addNewDataReceived(__client_ptr client, const std::string &data)
+void AsyncServer::addNewDataReceived(__client_ptr client, const std::string &data)
 {
     m_mutex.lock();
     client->pushData(data);
     m_mutex.unlock();
 }
 
-ERR	ServerNetwork::readData(__client_ptr client)
+ERR	AsyncServer::readData(__client_ptr client)
 {
     ERR status;
     __t_packet packet;
@@ -212,31 +203,30 @@ ERR	ServerNetwork::readData(__client_ptr client)
 	return (SUCCESS);
 }
 
-ERR ServerNetwork::writeData(const std::string &data, __socket clientSocket)
+bool AsyncServer::isNewClientConnected()
 {
-    auto size = (__size)data.size();
-	const char *dataToSend = data.c_str();
-
-	if ((write(clientSocket, dataToSend, size)) == NET_ERROR)
-	{
-		LogNetwork::logFailureMsg("Error failed to write data to socket");
-		return (NET_ERROR);
-	}
-	return (SUCCESS);
+    return (!m_clientsNewForIa.empty());
 }
 
-ERR ServerNetwork::sendData(const std::string &data, __client_id clientId)
+std::vector<__client_id> AsyncServer::getNewClientConnected()
 {
-    __clients_iterator it;
+    std::vector<__client_id> tmpVec = m_clientsNewForIa;
+    
+    m_clientsNewForIa.clear();
+    return (tmpVec);
+}
 
-    if ((it = m_clients.find(clientId)) == m_clients.end())
-        return (NET_ERROR);
-    if (writeData(data, it->second->getSock()) == NET_ERROR)
-        return (NET_ERROR);
+ERR AsyncServer::receiveNewConnection()
+{
+    if (isDataOnSocket(m_srvSock))
+    {
+        if (acceptNewClient() == NET_ERROR)
+            return (NET_ERROR);
+    }
     return (SUCCESS);
 }
 
-bool ServerNetwork::isNewDataReceived(__client_id clientId)
+bool AsyncServer::isNewDataReceived(__client_id clientId)
 {
     bool status = false;
      __clients_iterator it;
@@ -246,7 +236,7 @@ bool ServerNetwork::isNewDataReceived(__client_id clientId)
     return (status);
 }
 
-__data_vector ServerNetwork::getLastDataReceived(__client_id clientId)
+__data_vector AsyncServer::getNewDataReceived(__client_id clientId)
 {
     __data_vector tmpVec;
     __clients_iterator it;
@@ -259,7 +249,31 @@ __data_vector ServerNetwork::getLastDataReceived(__client_id clientId)
     return (tmpVec);
 }
 
-bool ServerNetwork::isSocketValid(__socket sock)
+ERR AsyncServer::sendData(const std::string &data, __client_id clientId)
+{
+    __clients_iterator it;
+
+    if ((it = m_clients.find(clientId)) == m_clients.end())
+        return (NET_ERROR);
+    if (writeData(data, it->second->getSock()) == NET_ERROR)
+        return (NET_ERROR);
+    return (SUCCESS);
+}
+
+ERR AsyncServer::writeData(const std::string &data, __socket clientSocket)
+{
+    auto size = (__size)data.size();
+	const char *dataToSend = data.c_str();
+
+	if ((write(clientSocket, dataToSend, size)) == NET_ERROR)
+	{
+		LogNetwork::logFailureMsg("Error failed to write data to socket");
+		return (NET_ERROR);
+	}
+	return (SUCCESS);
+}
+
+bool AsyncServer::isSocketValid(__socket sock)
 {
     __socket copyFd;
     
@@ -269,7 +283,7 @@ bool ServerNetwork::isSocketValid(__socket sock)
     return (!(errno == EBADF));
 }
 
-void ServerNetwork::exitAllClientConnection()
+void AsyncServer::exitAllClientConnection()
 {
     __clients_iterator it = m_clients.begin();
 
@@ -277,7 +291,7 @@ void ServerNetwork::exitAllClientConnection()
         exitConnection(it->second->getSock());
 }
 
-ERR ServerNetwork::exitConnection(__socket sock)
+ERR AsyncServer::exitConnection(__socket sock)
 {
     if (!isSocketValid(sock))
     {
@@ -290,12 +304,12 @@ ERR ServerNetwork::exitConnection(__socket sock)
     return (SUCCESS);
 }
 
-void ServerNetwork::addNewClientDeco(__client_id clientId)
+void AsyncServer::addNewClientDeco(__client_id clientId)
 {
     m_clientsDecoToErase.push_back(clientId);
 }
 
-ERR ServerNetwork::eraseDecoClients() 
+ERR AsyncServer::eraseDecoClients() 
 {
     for (int id : m_clientsDecoToErase)
     {
@@ -306,7 +320,7 @@ ERR ServerNetwork::eraseDecoClients()
     return (SUCCESS);
 }
 
-ERR ServerNetwork::eraseClientById(__client_id clientId)
+ERR AsyncServer::eraseClientById(__client_id clientId)
 {
     __clients_iterator it;
 

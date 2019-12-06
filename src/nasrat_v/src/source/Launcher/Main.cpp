@@ -21,8 +21,7 @@ int main(int ac, const char **av)
             debugMode = debugManager.findDebugMode(av);
         if (paramMode & ParamManager::paramMode::NETWORK_MODE)
         {
-            if (launcher.launchAnalyseNetwork(debugMode, paramMode,
-                    paramManager.getIdNetwork()) != Error::ErrorType::NO_ERROR)
+            if (launcher.launchAnalyseNetwork(debugMode, paramMode) != Error::ErrorType::NO_ERROR)
                 return (1);
         }
         else
