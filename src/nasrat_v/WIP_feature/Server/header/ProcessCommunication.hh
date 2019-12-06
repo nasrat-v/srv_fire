@@ -6,7 +6,7 @@
 #define __PROCESSCOMMUNICATION_HH__
 
 # define PORT               5050
-# define PATH_RCV_FILE      "files_received/file"
+# define PATH_RCV_FILE      "../files_received/file"
 # define FORMAT_RCV_FILE    ".png"
 
 #include "ServerNetwork.hh"

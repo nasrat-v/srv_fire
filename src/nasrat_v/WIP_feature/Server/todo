@@ -67,3 +67,24 @@ et on recommence le processus
 
 voir buffer circulaire
 
+---------------------------------------------------------------------------------------------
+TODO
+---------------------------------------------------------------------------------------------
+faire remonter id d'un nouveau client au thread principal pour qu'il le lie avec un thread IA
+
+probleme pour le mutli-client -->
+si un paquet arrive tronqué le read va bloquer
+tant qu'un paquet n'est pas reçu en entier le thread va bloquer sur le read
+et ne pourra donc pas recevoir de paquet d'autres clients
+
+solution ===>
+read une seule fois (pas de recursive), enregistrer dans le packet le nb de byte lus
+enregistrer le packet tronqué m_packetsTruncated
+liberé le read puis rebloquer sur le select
+faire select avec un timeout afin de ne pas bloquer indefiniment ???
+lorsque l'on recoit un nouveau paquet
+on check si m_packetsTruncated n'est pas vide, si il est plein
+on append() le nb de byte manquant
+dans la structure paquet on rajoute une clock
+qui permet de savoir depuis combien de temps un paquet est tronqué
+si clock >= TIMEOUT_TRUNCATED on supprime le paquet et on s'attend a recevoir un header

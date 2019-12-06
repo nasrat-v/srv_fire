@@ -27,7 +27,12 @@ void Client::setSinSize(__sockaddr_in_size sinSize)
 
 void Client::pushData(const __packet_data &data)
 {
-    m_dataStack.push(data);
+    m_dataVector.push_back(data);
+}
+
+void Client::resetData()
+{
+    m_dataVector.clear();
 }
 
 __client_id Client::getId() const
@@ -48,4 +53,14 @@ const __sockaddr_in &Client::getSin() const
 __sockaddr_in_size Client::getSinSize() const
 {
     return (m_sinSize);
+}
+
+const __data_vector &Client::getData() const
+{
+    return (m_dataVector);
+}
+
+bool Client::isData()
+{
+    return (!m_dataVector.empty());
 }

@@ -33,24 +33,26 @@ const ServerNetwork::__t_server_param ProcessCommunication::initConfigurationSer
 
 ERR ProcessCommunication::communicateWithServer()
 {
-    //std::ofstream file;
-    //static int count = 0;
-    //ServerNetwork::__t_client_data data;
+    std::ofstream file;
+    static int count = 0;
+    __data_vector data;
 
     if (initServer() == NET_ERROR)
         return (NET_ERROR);
     m_network.startServer();
     while (42)
     {
-        /*if (m_network.isNewDataReceived())
-        {   
-            //file.open(PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
-            data = m_network.getLastDataReceived();
-            std::cout << "[Received from " << data.cl_id << "]: " << data.cl_data << std::endl;
-            //file << data.cl_data;
-            //file.close();
-            count++;
-        }*/
+        if (m_network.isNewDataReceived(0))
+        {
+            data = m_network.getLastDataReceived(0);
+            for (__packet_data packet : data)
+            {
+                file.open(PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
+                file << packet;
+                file.close();
+                count++;
+            }
+        }
         usleep(1);
     }
     m_network.stopServer();

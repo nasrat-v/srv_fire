@@ -7,6 +7,18 @@
 
 {
   "directory": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/build",
+  "command": "/usr/bin/c++     -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17 -o CMakeFiles/server_test.dir/source/Client.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/Client.cpp",
+  "file": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/Client.cpp"
+},
+
+{
+  "directory": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/build",
+  "command": "/usr/bin/c++     -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17 -o CMakeFiles/server_test.dir/source/PacketsManager.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/PacketsManager.cpp",
+  "file": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/PacketsManager.cpp"
+},
+
+{
+  "directory": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/build",
   "command": "/usr/bin/c++     -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17 -o CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o -c /home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/ProcessCommunication.cpp",
   "file": "/home/nasrat_v/Dev/srv_fire/src/nasrat_v/WIP_feature/Server/source/ProcessCommunication.cpp"
 },

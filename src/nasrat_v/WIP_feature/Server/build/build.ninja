@@ -56,6 +56,18 @@ build CMakeFiles/server_test.dir/source/ServerNetwork.cpp.o: CXX_COMPILER__serve
   OBJECT_DIR = CMakeFiles/server_test.dir
   OBJECT_FILE_DIR = CMakeFiles/server_test.dir/source
 
+build CMakeFiles/server_test.dir/source/Client.cpp.o: CXX_COMPILER__server_test ../source/Client.cpp || cmake_object_order_depends_target_server_test
+  DEP_FILE = CMakeFiles/server_test.dir/source/Client.cpp.o.d
+  FLAGS = -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17
+  OBJECT_DIR = CMakeFiles/server_test.dir
+  OBJECT_FILE_DIR = CMakeFiles/server_test.dir/source
+
+build CMakeFiles/server_test.dir/source/PacketsManager.cpp.o: CXX_COMPILER__server_test ../source/PacketsManager.cpp || cmake_object_order_depends_target_server_test
+  DEP_FILE = CMakeFiles/server_test.dir/source/PacketsManager.cpp.o.d
+  FLAGS = -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17
+  OBJECT_DIR = CMakeFiles/server_test.dir
+  OBJECT_FILE_DIR = CMakeFiles/server_test.dir/source
+
 build CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o: CXX_COMPILER__server_test ../source/ProcessCommunication.cpp || cmake_object_order_depends_target_server_test
   DEP_FILE = CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o.d
   FLAGS = -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g   -std=gnu++17
@@ -82,7 +94,7 @@ build CMakeFiles/server_test.dir/source/Main.cpp.o: CXX_COMPILER__server_test ..
 #############################################
 # Link the executable server_test
 
-build server_test: CXX_EXECUTABLE_LINKER__server_test CMakeFiles/server_test.dir/source/ServerNetwork.cpp.o CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o CMakeFiles/server_test.dir/source/Log/LogNetwork.cpp.o CMakeFiles/server_test.dir/source/Main.cpp.o
+build server_test: CXX_EXECUTABLE_LINKER__server_test CMakeFiles/server_test.dir/source/ServerNetwork.cpp.o CMakeFiles/server_test.dir/source/Client.cpp.o CMakeFiles/server_test.dir/source/PacketsManager.cpp.o CMakeFiles/server_test.dir/source/ProcessCommunication.cpp.o CMakeFiles/server_test.dir/source/Log/LogNetwork.cpp.o CMakeFiles/server_test.dir/source/Main.cpp.o
   FLAGS = -W -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align -Wcast-qual -Wunreachable-code -pthread -g
   OBJECT_DIR = CMakeFiles/server_test.dir
   POST_BUILD = :

@@ -192,7 +192,6 @@ void ServerNetwork::addNewDataReceived(__client_ptr client, const std::string &d
 {
     m_mutex.lock();
     client->pushData(data);
-    // -------------->> add type enum UNKNOWN to packet when create
     m_mutex.unlock();
 }
 
@@ -205,11 +204,11 @@ ERR	ServerNetwork::readData(__client_ptr client)
     {
         exitConnection(client->getSock());
         addNewClientDeco(client->getId());
+        return (SUCCESS);
     }
     else if (status == NET_ERROR)
         return (NET_ERROR);
     client->pushData(packet.pk_data);
-    std::cout << "data: " << packet.pk_data << std::endl; 
 	return (SUCCESS);
 }
 
@@ -235,6 +234,29 @@ ERR ServerNetwork::sendData(const std::string &data, __client_id clientId)
     if (writeData(data, it->second->getSock()) == NET_ERROR)
         return (NET_ERROR);
     return (SUCCESS);
+}
+
+bool ServerNetwork::isNewDataReceived(__client_id clientId)
+{
+    bool status = false;
+     __clients_iterator it;
+
+    if ((it = m_clients.find(clientId)) != m_clients.end())
+        status = it->second->isData();
+    return (status);
+}
+
+__data_vector ServerNetwork::getLastDataReceived(__client_id clientId)
+{
+    __data_vector tmpVec;
+    __clients_iterator it;
+
+    if ((it = m_clients.find(clientId)) != m_clients.end())
+    {
+        tmpVec = it->second->getData();
+        it->second->resetData();
+    }
+    return (tmpVec);
 }
 
 bool ServerNetwork::isSocketValid(__socket sock)

@@ -3,10 +3,13 @@
 #define __PACKETS_MANAGER_HH__
 
 #define HEADER_BUFF_SIZE    8
+#define TIMEOUT_TRUNCATED   1
 
 #include <stack>
 #include <map>
 #include <memory>
+#include <cstring>
+#include <ctime>
 
 #include "Packet.hh"
 #include "Log/LogNetwork.hh"
