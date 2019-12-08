@@ -8,7 +8,8 @@
 
 ImageProvider::ImageProvider(const char *defaultVideoPath,
                             const DebugManager::debugMode &debugMode,
-                            const ParamManager::paramMode &paramMode) : _debugMode(debugMode),
+                            const ParamManager::paramMode &paramMode) : _videoPath(defaultVideoPath),
+                                                                        _debugMode(debugMode),
                                                                         _paramMode(paramMode)
 {
     resetImageNetworkPath();

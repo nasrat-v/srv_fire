@@ -11,6 +11,17 @@ ProcessManager::~ProcessManager() = default;
 
 Error::ErrorType ProcessManager::run()
 {
+    if (m_network.startAsyncNetwork() == NET_ERROR)
+        return (Error::ErrorType::NETWORK);
+    while (42)
+    {
+        if (handleNewClients() != Error::ErrorType::NOPE)
+            return (Error::ErrorType::NETWORK);
+        handleNewDataReceived();
+        usleep(1);
+    }
+    m_network.stopAsyncNetwork();
+    return (Error::ErrorType::NOPE);
 }
 
 Error::ErrorType ProcessManager::handleNewClients()
@@ -50,7 +61,9 @@ Error::ErrorType ProcessManager::linkClientToAnalyser(__client_id clientId)
     if ((error = frameAnalyser->initAnalyser(false)) != Error::ErrorType::NOPE)
         return (error);
     m_processMap.insert(std::make_pair(clientId, imgProvider));
-    std::thread(&FrameAnalyser::analyseFrame, frameAnalyser);
+    m_analyseThread = std::thread(&FrameAnalyser::analyseFrame, frameAnalyser);
+    m_analyseThread.detach();
+    return (Error::ErrorType::NOPE);
 }
 
 void ProcessManager::handleNewDataReceived()
@@ -60,37 +73,32 @@ void ProcessManager::handleNewDataReceived()
     for (; mapIt != m_processMap.end(); mapIt++)
     {
         if (m_network.isNewDataReceived(mapIt->first))
-            sendDataToAnalyser(mapIt->first);
+            sendDataToAnalyser(mapIt);
     }
 }
 
-void ProcessManager::sendDataToAnalyser(__client_id clientId)
+void ProcessManager::sendDataToAnalyser(const __process_map::iterator &mapIt)
+{
+    std::string path;
+    __data_vector data;
+    static size_t count = 0;
+
+    data = m_network.getNewDataReceived(mapIt->first);
+    for (__packet_data packet : data)
+    {
+        path = (PATH_RCV_FILE + std::to_string(count) + FORMAT_RCV_FILE);
+        createImageWithData(path, packet);
+        mapIt->second->setImageNetworkPath(path);
+        mapIt->second->setCanReadImage(true);
+        count++;
+    }
+}
+
+void ProcessManager::createImageWithData(const std::string &filePath, const __packet_data &packet)
 {
     std::ofstream file;
-    static size_t count = 0;
-    __data_vector data;
-    __process_map::iterator mapIt;
 
-    data = m_network.getNewDataReceived(clientId);
-    if ((mapIt = m_processMap.find(clientId)) != m_processMap.end())
-    {
-        file.open(""); //create file
-        mapIt->second->setImageNetworkPath();
-        mapIt->second->setCanReadImage(true);
-    }
-}
-
-Error::ErrorType ProcessManager::networkLoop()
-{
-    if (m_network.startAsyncNetwork() == NET_ERROR)
-        return (Error::ErrorType::NETWORK);
-    while (42)
-    {
-        if (handleNewClients() != Error::ErrorType::NOPE)
-            return (Error::ErrorType::NETWORK);
-        handleNewDataReceived();
-        usleep(1);
-    }
-    m_network.stopAsyncNetwork();
-    return (Error::ErrorType::NOPE);
+    file.open(filePath);
+    file << packet;
+    file.close();
 }

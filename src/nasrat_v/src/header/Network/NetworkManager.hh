@@ -5,9 +5,7 @@
 #ifndef __NETWORK_MANAGER_HH__
 #define __NETWORK_MANAGER_HH__
 
-# define PORT               5050
-# define PATH_RCV_FILE      "../files_received/file"
-# define FORMAT_RCV_FILE    ".png"
+# define PORT   5050
 
 #include "AsyncServer.hh"
 

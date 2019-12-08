@@ -30,6 +30,7 @@ void LogNetwork::closeLogFile()
 		openLogFile(LOGFILE_NAME);
 	_logFile << msg.c_str() << std::endl;
 	_logFile.flush();
+    std::cout << msg << std::endl;
 }
 
  void LogNetwork::logSuccessMsg(const std::string &msg)

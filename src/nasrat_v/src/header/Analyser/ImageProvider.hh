@@ -56,10 +56,10 @@ private:
     void                resetImageNetworkPath();
 
     /* Attributes */
+    const char              *_videoPath;
     DebugManager::debugMode _debugMode;
     ParamManager::paramMode _paramMode;
     cv::VideoCapture        _capVideo;
-    const char              *_videoPath;
     bool                    _canReadImage;
     std::string             _imageNetworkPath;
 };

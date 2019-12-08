@@ -18,9 +18,9 @@ public:
     Error::ErrorType        launchAnalyseNetwork();
 
 private:
-    ProcessManager          m_proccess;
     DebugManager::debugMode m_debugMode;
     ParamManager::paramMode m_paramMode;
+    ProcessManager          m_proccess;
 };
 
 

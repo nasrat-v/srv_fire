@@ -159,10 +159,8 @@ ERR AsyncServer::acceptNewClient()
 
 void AsyncServer::addNewClient(__client_ptr client)
 {
-    m_mutex.lock();
     m_clients.insert(std::make_pair(client->getId(), client));
     m_clientsNewForIa.push_back(client->getId());
-    m_mutex.unlock();
 }
 
 ERR AsyncServer::receiveDataFromClient()
@@ -199,6 +197,8 @@ ERR	AsyncServer::readData(__client_ptr client)
         addNewClientDeco(client->getId());
         return (SUCCESS);
     }
+    else if (status == IGNORE_PACKET)
+        return (SUCCESS);
     else if (status == NET_ERROR)
         return (NET_ERROR);
     client->pushData(packet.pk_data);
@@ -207,22 +207,14 @@ ERR	AsyncServer::readData(__client_ptr client)
 
 bool AsyncServer::isNewClientConnected()
 {
-    bool status;
-    
-    m_mutex.lock();
-    status = !m_clientsNewForIa.empty();
-    m_mutex.unlock();
-    return (status);
+    return (!m_clientsNewForIa.empty());
 }
 
-__client_id_vector AsyncServer::getNewClientConnected()
+std::vector<__client_id> AsyncServer::getNewClientConnected()
 {
-    __client_id_vector tmpVec;
+    std::vector<__client_id> tmpVec = m_clientsNewForIa;
     
-    m_mutex.lock();
-    tmpVec = m_clientsNewForIa;
     m_clientsNewForIa.clear();
-    m_mutex.unlock();
     return (tmpVec);
 }
 
@@ -241,10 +233,8 @@ bool AsyncServer::isNewDataReceived(__client_id clientId)
     bool status = false;
      __clients_iterator it;
 
-    m_mutex.lock();
     if ((it = m_clients.find(clientId)) != m_clients.end())
         status = it->second->isData();
-    m_mutex.unlock();
     return (status);
 }
 
@@ -253,13 +243,11 @@ __data_vector AsyncServer::getNewDataReceived(__client_id clientId)
     __data_vector tmpVec;
     __clients_iterator it;
 
-    m_mutex.lock();
     if ((it = m_clients.find(clientId)) != m_clients.end())
     {
         tmpVec = it->second->getData();
         it->second->resetData();
     }
-    m_mutex.unlock();
     return (tmpVec);
 }
 

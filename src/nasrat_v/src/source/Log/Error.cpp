@@ -13,9 +13,9 @@ const std::string   Error::getMessage(const ErrorType &type)
 {
     switch (type)
     {
-        case (ErrorType::NO_ERROR):
+        case (ErrorType::NOPE):
             return ("No error");
-        case (ErrorType::UNKNOWN_ERROR):
+        case (ErrorType::UNKNOWN):
             return ("Unknown error");
         case (ErrorType::OPEN_IMG):
             return ("Could not open image");
@@ -31,10 +31,12 @@ const std::string   Error::getMessage(const ErrorType &type)
             return ("Missing contour");
         case (ErrorType::DEBUG_STOP):
             return ("Stop debug");
-        case (ErrorType::THREAD_ERROR):
-            return ("Error in network thread");
+        case (ErrorType::THREAD):
+            return ("Error in thread - network or analyse");
         case (ErrorType::TRUNCATED_IMG_NETWORK):
             return ("Truncated Image from network");
+        case (ErrorType::NETWORK):
+            return ("Error during network process");
     };
     return ("");
 }

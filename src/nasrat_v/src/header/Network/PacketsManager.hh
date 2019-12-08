@@ -2,8 +2,9 @@
 #ifndef __PACKETS_MANAGER_HH__
 #define __PACKETS_MANAGER_HH__
 
-#define HEADER_BUFF_SIZE    8
+#define HEADER_BUFF_SIZE    4
 #define TIMEOUT_TRUNCATED   1
+#define IGNORE_PACKET       (ERR)-1
 
 #include <stack>
 #include <map>
@@ -25,6 +26,7 @@ public:
 private:
     ERR     readHeader(__socket sock, __t_packet_header &header);
     ERR     readPacket(__socket sock, __t_packet &packet);
+    int     convertBytesBufferToInt(char *bytesBuff);
 };
 
 #endif /* !__PACKETS_MANAGER_HH__ */

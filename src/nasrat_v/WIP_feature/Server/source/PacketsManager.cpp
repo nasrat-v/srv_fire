@@ -24,15 +24,8 @@ ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
     errno = 0;
 	if ((ret = read(sock, buff, HEADER_BUFF_SIZE)) > 0)
 	{
-		std::cout << "ret: " << ret << std::endl;
-		unsigned int size = (((unsigned int)buff[0] << 24) | ((unsigned int)buff[1] << 16) | ((unsigned int)buff[2] << 8) | ((unsigned int)buff[3] << 0));
-		unsigned int size_little = (((unsigned int)buff[3] << 24) | ((unsigned int)buff[2] << 16) | ((unsigned int)buff[1] << 8) | ((unsigned int)buff[0] << 0));
-		std::cout << "size big: " << size << std::endl;
-		std::cout << "size little: " << size_little << std::endl;
-		for (int i = 0; i < ret; i++)
-			printf("%d\n", (unsigned int)buff[i]);
 		header.read_size = 0;
-		header.pk_size = size;
+		header.pk_size = convertBytesBufferToInt(buff);
 		LogNetwork::logInfoMsg("Packet received");
 		LogNetwork::logSomething("Header size: " + std::to_string(header.pk_size));
 	}
@@ -78,4 +71,19 @@ ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
 		return (readPacket(sock, packet));
 	delete (buff);
 	return (SUCCESS);
+}
+
+int PacketsManager::convertBytesBufferToInt(const char *bytesBuff)
+{
+	int intArray[HEADER_BUFF_SIZE] = { 0 };
+
+	if ((intArray[0] = (bytesBuff[0] << 24)) < 0)
+		intArray[0] += (UINT8_MAX + 1);
+	if ((intArray[1] = (bytesBuff[1] << 16)) < 0)
+		intArray[1] += (UINT8_MAX + 1);
+	if ((intArray[2] = (bytesBuff[2] << 8)) < 0)
+		intArray[2] += (UINT8_MAX + 1);
+	if ((intArray[3] = (bytesBuff[3] << 0)) < 0)
+		intArray[3] += (UINT8_MAX + 1);
+	return (intArray[0] | intArray[1] | intArray[2] | intArray[3]);
 }

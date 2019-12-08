@@ -2,6 +2,9 @@
 #ifndef __PROCESS_MANAGER_HH__
 #define __PROCESS_MANAGER_HH__
 
+# define PATH_RCV_FILE      "../output/image/image"
+# define FORMAT_RCV_FILE    ".png"
+
 #include "../Analyser/FrameAnalyser.hh"
 #include "../Network/NetworkManager.hh"
 
@@ -24,13 +27,16 @@ private:
     __process_map           m_processMap;
     DebugManager::debugMode m_debugMode;
     ParamManager::paramMode m_paramMode;
+    std::thread             m_analyseThread;
 
     Error::ErrorType    networkLoop();
     Error::ErrorType    handleNewClients();
     Error::ErrorType    mapNewClients(const __client_id_vector &clients);
     Error::ErrorType    linkClientToAnalyser(__client_id clientId);
     void                handleNewDataReceived();
-    void                sendDataToAnalyser(__client_id clientId);
+    void                sendDataToAnalyser(const __process_map::iterator &mapIt);
+    void                createImageWithData(const std::string &filePath, 
+                                           const __packet_data &packet);
 };
 
 #endif /* !__PROCESS_MANAGER_HH__ */

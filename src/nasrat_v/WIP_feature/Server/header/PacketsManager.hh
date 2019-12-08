@@ -26,6 +26,7 @@ public:
 private:
     ERR     readHeader(__socket sock, __t_packet_header &header);
     ERR     readPacket(__socket sock, __t_packet &packet);
+    int     convertBytesBufferToInt(const char *bytesBuff);
 };
 
 #endif /* !__PACKETS_MANAGER_HH__ */

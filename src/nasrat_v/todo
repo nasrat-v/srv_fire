@@ -1,0 +1,98 @@
+
+TODO=
+
+un thread principal qui lance
+deux thread secondaire
+
+un qui soccupe du réseau
+et un par ia
+
+on lance un thread secondaire server depuis le thread principal
+et on attend de recevoir une connection client
+
+lors d'une connection client
+on lance un thread secondaire ia depuis le thread principal
+on lui passe en parametre l'id du client connecté
+
+le thread ia va (sleep) tant qu'il n'a pas d'image a analyser
+
+a chaque image recu le thread du server va l'empiler dans une map de stack
+avec comme key l'id du client et dans la stack les packet recu
+
+le thread de l'ia va récupérer l'image grâce à l'id du client quelle a
+elle va ainsi deplier la stack et analyser image par image au fur et a mesure
+
+pour chaque packet recu le thread server va l'analyser
+et le concatener avec d'autres si il n'est pas entier
+
+le thread du server peut contenir un sous-thread
+lui permettant de concaténer les packet en asynchrone
+(voir si on a le temps, overkill ?)
+
+------------------------------------------------------------------------------------------------
+Packets Manager -> 1er test === pas concluant
+------------------------------------------------------------------------------------------------
+
+la classe PacketsManager fonctionne avec trois stack
+une stack<__t_client_packet> pour les paquets fresh non traité
+une map<__client_id, stack<__t_client_packet>> pour les paquets traité
+une map<__client_id, vector<__t_client_packet>> pour les paquets en cours de traitement
+(cad avec une partie manquante)
+
+------------------------------------------------------------------------------------------------
+Packets Manager -> 2eme test === a implementer
+------------------------------------------------------------------------------------------------
+
+la classe PacketsManager read de 1 à 1 une taille fixe (la taille du header)
+afin de récupérer dans le header la taille du paquet qui est envoyé
+
+ensuite elle read de la taille du paquet envoyé :
+
+-> si elle a bien lu cette taille -> paquet validé on le push dans la map de stack
+
+-> si elle a lu moins -> elle stock ce qu'elle a lu,
+puis elle relis en comptant le nb de caractere lu jusqua se quelle ai lu la taille
+et concatene au fur et a mesure
+une fois qu'elle a bien lu la taille -> paquet validé on le push dans la map de stack
+
+si la taille du dernier buffer a lire est > au nb de caracteres manquant du packet
+alors on substr le reste de la chaine a la position nb caracteres lu du buffer
+
+si le substr renvoie une taille >= a la taille du header
+alors on recommence le processus
+
+si le substr renvoie une taille < a la taille du header
+alors on read le prochain buffer de la taille du header manquant
+et on recommence le processus
+
+voir buffer circulaire
+
+---------------------------------------------------------------------------------------------
+TODO
+---------------------------------------------------------------------------------------------
+faire remonter id d'un nouveau client au thread principal pour qu'il le lie avec un thread IA
+
+probleme pour le mutli-client -->
+si un paquet arrive tronqué le read va bloquer
+tant qu'un paquet n'est pas reçu en entier le thread va bloquer sur le read
+et ne pourra donc pas recevoir de paquet d'autres clients
+
+solution ===>
+read une seule fois (pas de recursive), enregistrer dans le packet le nb de byte lus
+enregistrer le packet tronqué m_packetsTruncated
+liberé le read puis rebloquer sur le select
+faire select avec un timeout afin de ne pas bloquer indefiniment ???
+lorsque l'on recoit un nouveau paquet
+on check si m_packetsTruncated n'est pas vide, si il est plein
+on append() le nb de byte manquant
+dans la structure paquet on rajoute une clock
+qui permet de savoir depuis combien de temps un paquet est tronqué
+si clock >= TIMEOUT_TRUNCATED on supprime le paquet et on s'attend a recevoir un header
+
+
+-----
+todo
+----
+
+tester le multi-clients avec thread dans ProcessManager
+faut-il fork ?

@@ -28,5 +28,5 @@ Error::ErrorType Launcher::launchAnalyse()
 
 Error::ErrorType Launcher::launchAnalyseNetwork()
 {
-    m_proccess.run();
+    return (m_proccess.run());
 }

@@ -222,6 +222,7 @@ ImageProvider::statusVideo ImageService::createSampleImgFromVideo()
         return (status);
     }
     _imageProvider->createSampleImgFromVideo();
+    return (ImageProvider::statusVideo::OPEN);
 }
 
 /////////////////////// Image Addition //////////////////////////
