@@ -5,27 +5,22 @@
 #ifndef OPENCV_SRV_LAUNCHER_HH
 #define OPENCV_SRV_LAUNCHER_HH
 
-#include "../Analyser/FrameAnalyser.hh"
-#include "../Network/ProcessCommunication.hh"
+#include "ProcessManager.hh"
 
 class Launcher
 {
 public:
-    Launcher();
+    Launcher(const DebugManager::debugMode &debugMode,
+                        const ParamManager::paramMode &paramMode);
     ~Launcher();
 
-    Error::ErrorType        launchAnalyse(const DebugManager::debugMode &debugMode,
-                                            const ParamManager::paramMode &paramMode);
-    Error::ErrorType        launchAnalyseNetwork(const DebugManager::debugMode &debugMode,
-                                                const ParamManager::paramMode &paramMode,
-                                                const std::string &idNetwork);
-private:
-    /* Attributes */
-    ProcessCommunication    _processComm;
+    Error::ErrorType        launchAnalyse();
+    Error::ErrorType        launchAnalyseNetwork();
 
-    /* Methods */
-    ERR                     launchThreadNetwork(const std::string &idNetwork,
-                                                ImageProvider *imageProvider, bool log);
+private:
+    DebugManager::debugMode m_debugMode;
+    ParamManager::paramMode m_paramMode;
+    ProcessManager          m_proccess;
 };
 
 

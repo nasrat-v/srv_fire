@@ -6,7 +6,6 @@
 
 ParamManager::ParamManager()
 {
-    _idNetwork = "no_id";
 }
 
 ParamManager::~ParamManager() = default;
@@ -33,18 +32,10 @@ ParamManager::paramMode ParamManager::findParams(const char **av)
     while (it != args.end())
     {
         if (*it == NETWORK_ARG)
-        {
             mode |= paramMode::NETWORK_MODE;
-            _idNetwork = *(++it);
-        }
         if (*it == DEBUG_ARG)
             mode |= paramMode::DEBUG_MODE;
         it++;
     }
     return ((paramMode)mode);
-}
-
-const std::string &ParamManager::getIdNetwork() const
-{
-    return (_idNetwork);
 }

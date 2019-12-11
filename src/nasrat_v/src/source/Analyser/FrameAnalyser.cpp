@@ -4,8 +4,9 @@
 
 #include "../../header/Analyser/FrameAnalyser.hh"
 
-FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode, ImageProvider *imageProvider) :    _debugMode(mode),
-                                                                                                     _imageService(mode, imageProvider)
+FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode,
+                            std::shared_ptr<ImageProvider> imageProvider) : _debugMode(mode),
+                                                                            _imageService(mode, std::move(imageProvider))
 {
     _firstFrameBlob = true;
     _firstFrameEntity = true;
@@ -16,9 +17,12 @@ FrameAnalyser::~FrameAnalyser() = default;
 
 Error::ErrorType FrameAnalyser::initAnalyser(bool openVideo)
 {
+    ImageProvider::statusVideo status;
+
     if (_debugMode & DebugManager::debugMode::CREATE_SAMPLE_IMG)
     {
-        _imageService.createSampleImgFromVideo();
+        if ((status = _imageService.createSampleImgFromVideo()) != ImageProvider::statusVideo::OPEN)
+            return (Error::ErrorType::OPEN_VID);
         return (Error::ErrorType::DEBUG_STOP);
     }
     if (openVideo)
@@ -27,7 +31,7 @@ Error::ErrorType FrameAnalyser::initAnalyser(bool openVideo)
             return (Error::ErrorType::OPEN_VID);
     }
     _isInit = true;
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 Error::ErrorType FrameAnalyser::checkInitialisation(bool &end)
@@ -43,7 +47,7 @@ Error::ErrorType FrameAnalyser::checkInitialisation(bool &end)
         end = true;
     else if (status == ImageProvider::statusVideo::ERROR)
         return (Error::ErrorType::OPEN_VID);
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 Error::ErrorType FrameAnalyser::analyseFrame()
@@ -51,14 +55,14 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     bool                end = false;
     Error::ErrorType    status;
 
-    if ((status = checkInitialisation(end)) != Error::ErrorType::NO_ERROR)
+    if ((status = checkInitialisation(end)) != Error::ErrorType::NOPE)
         return (status);
     while (!end)
     {
         logicForEachFrame(end);
         cv::waitKey(1);
     }
-    return (Error::ErrorType::NO_ERROR);
+    return (Error::ErrorType::NOPE);
 }
 
 void FrameAnalyser::logicForEachFrame(bool &end)
@@ -67,8 +71,8 @@ void FrameAnalyser::logicForEachFrame(bool &end)
     findEntities();
     if (_debugMode & DebugManager::HOT_SPOT)
         matchSavedBlobsToSavedEntities();
-    _imageService.displayImg(_frame.getImages().front(), _savedBlobs,
-                             _frame.getBlobs(), _savedEntities, _frame.getEntities());
+    _imageService.displayImg(_frame.getImages().front(), _savedBlobs, _frame.getBlobs(),
+                             _savedEntities, _frame.getEntities(), colorToAnalyse);
     _frame.clearAllBlobs();
     if (_imageService.getNextImg(_frame) == ImageProvider::statusVideo::END)
         end = true;
@@ -215,7 +219,7 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
         findClosestSavedBlob(frameBlob, &distance);
         if ((distance.leastDistance < (frameBlob.getDiagonalSize() * 1.15)) &&
              distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
-            setNewValueSavedBlob(frameBlob, distance.indexSavedBlob);
+            mergeSavedBlobAndFrameBlob(frameBlob, distance.indexSavedBlob);
         else
             addNewSavedBlob(frameBlob);
     }
@@ -232,7 +236,7 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
         findClosestSavedEntity(frameEntity, &distance);
         if ((distance.leastDistance < (frameEntity.getDiagonalSize() * 1.15)) &&
              distance.indexSavedBlob != INDEX_SAVED_BLOB_NOT_FOUND)
-            setNewValueSavedEntity(frameEntity, distance.indexSavedBlob);
+            mergeSavedEntityAndFrameEntity(frameEntity, distance.indexSavedBlob);
         else
             addNewSavedEntity(frameEntity);
     }
@@ -251,19 +255,32 @@ void FrameAnalyser::matchSavedBlobsToSavedEntities()
     }
 }
 
-void FrameAnalyser::setNewValueSavedBlob(const Blob &frameBlob, size_t index)
+void FrameAnalyser::mergeSavedBlobAndFrameBlob(const Blob &frameBlob, size_t index)
 {
     _savedBlobs[index].clone(frameBlob);
+    //_savedBlobs[index].clone(mergeBlobs(_savedBlobs[index], frameBlob));
+    //
+    // il faut trouver une solution pour merger les deux blobs ensemble
+    // dilatation ? créer des lignes pour les relier puis trouver les contours ??
+    // car en clonant seulement une des deux entités disparait (aspiré par l'autre) si elles ne sont pas exactement les memes
+    //
     _savedBlobs[index].setMatchFoundOrNewBlob(true);
 }
 
-void FrameAnalyser::setNewValueSavedEntity(const Entity &frameEntity, size_t index)
+void FrameAnalyser::mergeSavedEntityAndFrameEntity(const Entity &frameEntity, size_t index)
 {
     int id = _savedEntities[index].getId();
 
-    _savedEntities[index].clone(frameEntity);
+    _savedBlobs[index].clone(frameEntity);
+    //_savedEntities[index].clone(mergeBlobs(_savedEntities[index], frameEntity));
     _savedEntities[index].setMatchFoundOrNewBlob(true);
     _savedEntities[index].setId(id);
+}
+
+Blob FrameAnalyser::mergeBlobs(const Blob &savedBlob, const Blob &frameBlob)
+{
+    return (Blob(_imageService.mergeContour(
+            _frame.getImages().front().size(), savedBlob.getContour(), frameBlob.getContour())));
 }
 
 void FrameAnalyser::addNewSavedBlob(const Blob &frameBlob)

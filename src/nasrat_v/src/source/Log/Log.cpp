@@ -26,6 +26,13 @@ const std::string   Log::getTime()
  */
 void                Log::logSomething(const std::string &complementary_msg, const std::string &file_path, bool error)
 {
+    if (!_logActive)
+        return;
+    logMsg(complementary_msg, file_path, error);
+}
+
+void                Log::logMsg(const std::string &complementary_msg, const std::string &file_path, bool error)
+{
     std::fstream    file(file_path, std::fstream::out | std::fstream::app);
 
     file << ("[" + getTime() + "\t" + complementary_msg + "]") << std::endl << std::endl;

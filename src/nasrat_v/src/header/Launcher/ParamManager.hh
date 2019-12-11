@@ -5,7 +5,7 @@
 #ifndef OPENCV_SRV_PARAMMANAGER_HH
 #define OPENCV_SRV_PARAMMANAGER_HH
 
-# define NETWORK_ARG    "--network-id"
+# define NETWORK_ARG    "--network"
 # define DEBUG_ARG      "--debug"
 
 #include <iostream>
@@ -27,12 +27,10 @@ public:
     };
 
     ParamManager::paramMode         findParams(const char **av);
-    const std::string               &getIdNetwork() const;
 
 private:
     int                             strlenTab(const char **array);
     const std::vector<std::string>  convertCharStarToVectorOfString(const char **array);
-    std::string                     _idNetwork;
 };
 
 #endif //OPENCV_SRV_PARAMMANAGER_HH

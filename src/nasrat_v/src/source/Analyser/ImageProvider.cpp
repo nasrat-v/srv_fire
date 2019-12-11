@@ -6,11 +6,11 @@
 
 #include "../../header/Analyser/ImageProvider.hh"
 
-ImageProvider::ImageProvider(std::string videoPath,
+ImageProvider::ImageProvider(const char *defaultVideoPath,
                             const DebugManager::debugMode &debugMode,
-                            const ParamManager::paramMode &paramMode) :   _videoPath(std::move(videoPath)),
-                                                                          _debugMode(debugMode),
-                                                                          _paramMode(paramMode)
+                            const ParamManager::paramMode &paramMode) : _videoPath(defaultVideoPath),
+                                                                        _debugMode(debugMode),
+                                                                        _paramMode(paramMode)
 {
     resetImageNetworkPath();
 }
@@ -21,13 +21,17 @@ ImageProvider::statusVideo ImageProvider::openVideo()
 {
     bool error = false;
 
-    _capVideo.open(_videoPath);
+    if (_debugMode & DebugManager::debugMode::WEBCAM)
+        _capVideo.open(0);
+    else
+        _capVideo.open(_videoPath);
     if (!_capVideo.isOpened())
     {
         Error::logError(Error::ErrorType::OPEN_VID, _videoPath);
         error = true;
     }
-    else if (_capVideo.get(CV_CAP_PROP_FRAME_COUNT) < MIN_FRAME_VID)
+    else if (!(_debugMode & DebugManager::debugMode::WEBCAM) && 
+            (_capVideo.get(CV_CAP_PROP_FRAME_COUNT) < MIN_FRAME_VID))
     {
         Error::logError(Error::ErrorType::TRUNCATED_VID, _videoPath);
         error = true;
@@ -83,7 +87,8 @@ ImageProvider::statusVideo ImageProvider::initImgVideo(std::vector<cv::Mat> &img
 
 ImageProvider::statusVideo ImageProvider::incrementImgVideo(cv::Mat &nextImage)
 {
-    if ((_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
+    if ((_debugMode & DebugManager::debugMode::WEBCAM) ||
+        (_capVideo.get(CV_CAP_PROP_POS_FRAMES) + 1) < _capVideo.get(CV_CAP_PROP_FRAME_COUNT))
     {
         _capVideo.read(nextImage);
         return (statusVideo::CONTINUE);
@@ -112,7 +117,9 @@ ImageProvider::statusVideo ImageProvider::incrementImgPng(cv::Mat &nextImage, si
 {
     static size_t idPath = nbImgIncr;
 
-    Log::logSomething(("Read source as IMG number: " + std::to_string(idPath)));
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething(("Read source as IMG number: " + std::to_string(idPath)));
+    #endif
     return (openImg((IMG_PATH +  std::to_string(idPath++) + IMG_FORMAT), nextImage));
 }
 
@@ -160,10 +167,17 @@ ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &i
 
 ImageProvider::statusVideo ImageProvider::incrementImgNetwork(cv::Mat &nextImage)
 {
-    Log::logSomething("Wait for image from network");
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething("Wait for image from network");
+    #endif
     while (!_canReadImage)
+    {
         std::this_thread::yield(); // WAIT FOR PATH FROM NETWORK
-    Log::logSomething(("Read source from network: " + _imageNetworkPath));
+        usleep(1);
+    }
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething(("Read source from network: " + _imageNetworkPath));
+    #endif
     if (openImg(_imageNetworkPath, nextImage) == statusVideo::ERROR)
     {
         Error::logError(Error::ErrorType::TRUNCATED_IMG_NETWORK, "- Ignore image");

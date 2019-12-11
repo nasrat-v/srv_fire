@@ -7,6 +7,7 @@
 
 #include <thread>
 #include <iostream>
+#include <unistd.h>
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
 
@@ -15,13 +16,13 @@
 #include "../Launcher/DebugManager.hh"
 #include "../Launcher/ParamManager.hh"
 
-# define IMG_PATH "../input/image/sample-image"
-# define IMG_FORMAT ".jpg"
+# define IMG_PATH           "../input/image/sample-image"
+# define IMG_FORMAT         ".jpg"
 
 class ImageProvider
 {
 public:
-    ImageProvider(std::string videoPath,
+    ImageProvider(const char *defaultVideoPath,
                             const DebugManager::debugMode &debugMode,
                             const ParamManager::paramMode &paramMode);
     ~ImageProvider();
@@ -56,11 +57,11 @@ private:
     void                resetImageNetworkPath();
 
     /* Attributes */
+    const char              *_videoPath;
     DebugManager::debugMode _debugMode;
     ParamManager::paramMode _paramMode;
     cv::VideoCapture        _capVideo;
-    std::string             _videoPath;
-    bool                    _canReadImage{};
+    bool                    _canReadImage;
     std::string             _imageNetworkPath;
 };
 

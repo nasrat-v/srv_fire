@@ -7,13 +7,14 @@
 #include <vector>
 #include <string>
 
+# define DEBUGNET_ACTIVE	false
 # define SUCCESS			(ERR)1
 # define FILE_ERROR			(ERR)~0
 # define LOGFILE_NAME		"../output/log/log-network.txt"
 
 typedef short			ERR;
 static bool				__attribute__((unused))_tryStatus = false;
-static bool             __attribute__((unused))_logActive = true;
+static bool             __attribute__((unused))_logNetActive = false;
 static std::fstream		_logFile;
 
 class LogNetwork

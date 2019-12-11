@@ -9,21 +9,44 @@ ImageAdditionner::ImageAdditionner() = default;
 
 ImageAdditionner::~ImageAdditionner() = default;
 
-void ImageAdditionner::drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours)
+void ImageAdditionner::drawContours(cv::Mat &img, const std::vector<std::vector<cv::Point>> &contours,
+                                    const ScalarColor::t_colorRange &colorRange)
 {
-    cv::drawContours(img, contours, -1, SCALAR_WHITE, -1);
+    cv::drawContours(img, contours, -1, colorRange._displayColor, -1);
 }
 
 void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize, const std::vector<Blob> &blobs,
-                                            const std::string &strImageName)
+                                           const std::string &strImageName)
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
-    std::vector<std::vector<cv::Point> > contours;
+    std::vector<std::vector<cv::Point>> contours;
 
     for (auto &blob : blobs)
         contours.push_back(blob.getContour());
-    cv::drawContours(image, contours, -1, SCALAR_WHITE, -1);
+    drawContours(image, contours, WHITE_RANGE);
     imshow(strImageName, image);
+}
+
+void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize, const std::vector<Blob> &blobs,
+                                            const std::string &strImageName,
+                                            const std::vector<ScalarColor::t_colorRange> &colorToAnalyse)
+{
+    cv::Mat tmpImg;
+    cv::Mat clearImg(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
+    std::vector<std::vector<cv::Point>> contours;
+
+    for (auto &colorRange : colorToAnalyse)
+    {
+        tmpImg = clearImg.clone();
+        for (auto &blob : blobs)
+        {
+            if (blob.getColorRange()._nameRange == colorRange._nameRange)
+                contours.push_back(blob.getContour());
+        }
+        drawContours(tmpImg, contours, colorRange);
+        imshow((strImageName + " " + colorRange._nameRange), tmpImg);
+        contours.clear();
+    }
 }
 
 void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize,
@@ -33,7 +56,7 @@ void ImageAdditionner::drawAndShowContours(const cv::Size &imageSize,
 {
     cv::Mat image(std::move(imageSize), CV_8UC3, SCALAR_BLACK);
 
-    cv::drawContours(image, contours, -1, colorRange._displayColor, -1);
+    drawContours(image, contours, colorRange);
     imshow(strImageName, image);
 }
 
@@ -42,11 +65,8 @@ void ImageAdditionner::drawTrackBlobsOnImage(cv::Mat &img, const std::vector<Blo
 {
     for (auto &savedBlob : savedBlobs)
     {
-        for (auto &frameBlob : frameBlobs)
-        {
-            if (savedBlob.isSame(frameBlob) && savedBlob.isStillBeingTracked())
-                drawRectangleForBlobs(img, savedBlob);
-        }
+        if (savedBlobIsOnScreen(savedBlob, frameBlobs))
+            drawRectangleForBlobs(img, savedBlob);
     }
 }
 
@@ -55,11 +75,8 @@ void ImageAdditionner::drawTrackEntitiesOnImage(cv::Mat &img, const std::vector<
 {
     for (auto &savedEntity : savedEntities)
     {
-        for (auto &frameEntity : frameEntities)
-        {
-            if (savedEntity.isSame(frameEntity) && savedEntity.isStillBeingTracked())
-                drawRectangleForBlobs(img, savedEntity);
-        }
+        if (savedEntityIsOnScreen(savedEntity, frameEntities))
+            drawRectangleForBlobs(img, savedEntity);
     }
 }
 
@@ -88,4 +105,24 @@ void ImageAdditionner::drawNumberEntitiesOnImage(cv::Mat &img, const std::vector
 void ImageAdditionner::drawRectangleForBlobs(cv::Mat &img, const Blob &blob)
 {
     cv::rectangle(img, blob.getBoundingRect(), blob.getColorRange()._displayColor, 2);
+}
+
+bool ImageAdditionner::savedBlobIsOnScreen(const Blob &savedBlob, const std::vector<Blob> &frameBlobs)
+{
+    for (auto &frameBlob : frameBlobs)
+    {
+        if (savedBlob.isSame(frameBlob) && savedBlob.isStillBeingTracked())
+            return (true);
+    }
+    return (false);
+}
+
+bool ImageAdditionner::savedEntityIsOnScreen(const Entity &savedEntity, const std::vector<Entity> &frameEntities)
+{
+    for (auto &framEntity : frameEntities)
+    {
+        if (savedEntity.isSame(framEntity) && savedEntity.isStillBeingTracked())
+            return (true);
+    }
+    return (false);
 }

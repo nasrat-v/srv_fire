@@ -4,41 +4,29 @@
 
 #include "../../header/Launcher/Launcher.hh"
 
-Launcher::Launcher() = default;
+Launcher::Launcher(const DebugManager::debugMode &debugMode,
+                   const ParamManager::paramMode &paramMode) : m_debugMode(debugMode),
+                                                               m_paramMode(paramMode),
+                                                               m_proccess(debugMode, paramMode)
+{
+}
 
 Launcher::~Launcher() = default;
 
-Error::ErrorType Launcher::launchAnalyse(const DebugManager::debugMode &debugMode,
-                                        const ParamManager::paramMode &paramMode)
+Error::ErrorType Launcher::launchAnalyse()
 {
     Error::ErrorType error;
-    ImageProvider imageProvider(VIDEO_PATH, debugMode, paramMode);
-    FrameAnalyser core(debugMode, &imageProvider);
+    __img_provider_ptr imageProvider(
+        new ImageProvider(DEFAULT_VIDEO_PATH, m_debugMode, m_paramMode)
+    );
+    FrameAnalyser analyser(m_debugMode, imageProvider);
 
-    if ((error = core.initAnalyser(true)) != Error::ErrorType::NO_ERROR)
+    if ((error = analyser.initAnalyser(true)) != Error::ErrorType::NOPE)
         return (error);
-    return (core.analyseFrame());
+    return (analyser.analyseFrame());
 }
 
-Error::ErrorType Launcher::launchAnalyseNetwork(const DebugManager::debugMode &debugMode,
-                                        const ParamManager::paramMode &paramMode,
-                                        const std::string &idNetwork)
+Error::ErrorType Launcher::launchAnalyseNetwork()
 {
-    Error::ErrorType error;
-    ImageProvider imageProvider(VIDEO_PATH, debugMode, paramMode);
-    FrameAnalyser core(debugMode, &imageProvider);
-
-    if (launchThreadNetwork(idNetwork, &imageProvider, (debugMode & DebugManager::LOG_NETWORK)) == NET_ERROR)
-        return (Error::ErrorType::THREAD_ERROR);
-    if ((error = core.initAnalyser(false)) != Error::ErrorType::NO_ERROR)
-        return (error);
-    return (core.analyseFrame());
-}
-
-ERR Launcher::launchThreadNetwork(const std::string &idNetwork, ImageProvider *imageProvider, bool log)
-{
-    if (_processComm.initClient(log) == NET_ERROR)
-        return (NET_ERROR);
-    _processComm.startThread(idNetwork, imageProvider);
-    return (SUCCESS);
+    return (m_proccess.run());
 }
