@@ -9,14 +9,21 @@ ERR PacketsManager::receivePacket(__socket sock, __t_packet &packet)
 {
 	ERR status;
 
-    if ((status = readHeader(sock, packet.pk_header)) != SUCCESS)
-		return (status);
-    if ((packet.pk_header.pk_size <= 0) || (packet.pk_header.pk_size >= MAX_ALLOC_PACKET))
+	if (!isPacketTruncated(packet.cl_id))
 	{
-		LogNetwork::logFailureMsg("Error bad header size: " 
+    	if ((status = readHeader(sock, packet.pk_header)) == DECO_NOTIF)
+			removeClientAndTruncPacket(packet.cl_id);
+		if (status != SUCCESS)
+			return (status);
+    	if ((packet.pk_header.pk_size <= 0) || (packet.pk_header.pk_size >= MAX_ALLOC_PACKET))
+		{
+			LogNetwork::logFailureMsg("Error bad header size: " 
 												+ std::to_string(packet.pk_header.pk_size));		
-		return (IGNORE_PACKET);
+			return (IGNORE_PACKET);
+		}
 	}
+	else
+		packet = getTruncPacket(packet.cl_id);
 	return (readPacket(sock, packet));
 }
 
@@ -45,7 +52,7 @@ ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
 	else
 	{
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
-		return (NET_DECO);
+		return (DECO_NOTIF);
 	}
 	return (SUCCESS);
 }
@@ -54,9 +61,10 @@ ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
 {
 	__ret ret;
 	ssize_t sizeToRead = (packet.pk_header.pk_size - packet.pk_header.read_size);
-	char *buff = new char[(sizeToRead * sizeof(char))]();
+	char buff[(sizeToRead * sizeof(char))];
 
     errno = 0;
+	memset(buff, 0, sizeToRead);
 	if ((ret = read(sock, buff, sizeToRead)) > 0)
 	{
 		packet.pk_data.append(buff, ret);
@@ -68,21 +76,20 @@ ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
 	else if (ret < 0)
 	{
 		LogNetwork::logFailureMsg("Error failed to read data from socket: " + std::to_string(errno));
-		delete (buff);
 		return (NET_ERROR);
 	}
 	else
 	{
+		removeClientAndTruncPacket(packet.cl_id);
 		LogNetwork::logInfoMsg("Received deconnection notification from client");
-		delete (buff);
-		return (NET_DECO);
+		return (DECO_NOTIF);
 	}
 	if (ret < sizeToRead)
 	{
-		delete (buff);
-		return (readPacket(sock, packet));
+		addTruncPacket(packet);
+		return (TRUNCATED_PACKET);
 	}
-	delete (buff);
+	removeTruncPacket(packet.cl_id);
 	return (sendResponse(RESPONSE_SUCCESS, sock));
 }
 
@@ -115,4 +122,41 @@ int PacketsManager::convertBytesBufferToInt(char *bytesBuff)
 	if ((intArray[3] = ((bytesBuff[3] & 0xFF) << 0)) < 0)
 		intArray[3] += (UINT8_MAX + 1);
 	return (intArray[0] | intArray[1] | intArray[2] | intArray[3]);
+}
+
+bool PacketsManager::isPacketTruncated(__client_id clientId) const
+{
+	__client_pckptr_map::const_iterator mapIt;
+
+	if ((mapIt = m_truncPackets.find(clientId)) != m_truncPackets.end())
+		return (mapIt->second != nullptr);
+	return (false);
+}
+
+__t_packet PacketsManager::getTruncPacket(__client_id clientId) const
+{
+	return (*(m_truncPackets.at(clientId)));
+}
+
+void PacketsManager::addTruncPacket(const __t_packet &packet)
+{
+	__client_pckptr_map::iterator mapIt;
+
+	if ((mapIt = m_truncPackets.find(packet.cl_id)) != m_truncPackets.end())
+		mapIt->second = std::make_shared<__t_packet>(packet);
+	else
+		m_truncPackets.insert(std::make_pair(packet.cl_id, std::make_shared<__t_packet>(packet)));
+}
+
+void PacketsManager::removeTruncPacket(__client_id clientId)
+{
+	__client_pckptr_map::iterator mapIt;
+
+	if ((mapIt = m_truncPackets.find(clientId)) != m_truncPackets.end())
+		mapIt->second = nullptr;
+}
+
+void PacketsManager::removeClientAndTruncPacket(__client_id clientId)
+{
+	m_truncPackets.erase(clientId);
 }

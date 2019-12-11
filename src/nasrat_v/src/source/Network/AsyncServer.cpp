@@ -85,7 +85,6 @@ ERR AsyncServer::serverLoop(std::future<void> serverExitSignal)
 {
     __timeval timeval;
 
-    
     LogNetwork::logInfoMsg("Server start...");
     while (serverExitSignal.wait_for(std::chrono::milliseconds(UWAIT_STOP)) == std::future_status::timeout)
     {
@@ -191,19 +190,18 @@ ERR	AsyncServer::readData(__client_ptr client)
     ERR status;
     __t_packet packet;
 
-    if ((status = m_packetsManager.receivePacket(client->getSock(), packet)) == NET_DECO)
+    packet.cl_id = client->getId();
+    if ((status = m_packetsManager.receivePacket(client->getSock(), packet)) == DECO_NOTIF)
     {
         exitConnection(client->getSock());
         addNewClientDeco(client->getId());
         return (SUCCESS);
     }
-    else if (status == IGNORE_PACKET)
-        return (SUCCESS);
-    else if (status == NET_ERROR)
-        return (NET_ERROR);
+    else if (status != SUCCESS)
+        return (status);
     client->pushData(packet.pk_data);
     #if (DEBUGNET_ACTIVE)
-        LogNetwork::logInfoMsg("Packet completed !");
+        LogNetwork::logInfoMsg("Packet completed : " + packet.pk_data);
     #endif
 	return (SUCCESS);
 }
