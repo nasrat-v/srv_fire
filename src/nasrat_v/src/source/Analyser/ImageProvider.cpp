@@ -13,6 +13,7 @@ ImageProvider::ImageProvider(const char *defaultVideoPath,
                                                                         _paramMode(paramMode)
 {
     resetImageNetworkPath();
+    _terminateThread = false;
 }
 
 ImageProvider::~ImageProvider() = default;
@@ -156,8 +157,8 @@ ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &i
     while (i < nbImgIncr)
     {
         while ((status = incrementImgNetwork(imgRead)) == statusVideo::IGNORE_WAIT);
-        if (status == statusVideo::ERROR)
-            return (statusVideo::ERROR);
+        if ((status == statusVideo::ERROR) || (status == statusVideo::END))
+            return (status);
         imgs.push_back(imgRead);
         i++;
     }
@@ -172,6 +173,8 @@ ImageProvider::statusVideo ImageProvider::incrementImgNetwork(cv::Mat &nextImage
     #endif
     while (!_canReadImage)
     {
+        if (_terminateThread)
+            return (statusVideo::END);
         std::this_thread::yield(); // WAIT FOR PATH FROM NETWORK
         usleep(1);
     }
@@ -186,6 +189,11 @@ ImageProvider::statusVideo ImageProvider::incrementImgNetwork(cv::Mat &nextImage
     }
     resetImageNetworkPath();
     return (statusVideo::OPEN);
+}
+
+void ImageProvider::terminateAnalyserThread()
+{
+    _terminateThread = true;
 }
 
 void ImageProvider::resetImageNetworkPath()

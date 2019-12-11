@@ -60,7 +60,7 @@ const __data_vector &Client::getData() const
     return (m_dataVector);
 }
 
-bool Client::isData()
+bool Client::isData() const
 {
     return (!m_dataVector.empty());
 }

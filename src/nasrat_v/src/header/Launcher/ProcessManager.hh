@@ -23,6 +23,7 @@ public:
     {
         e_newClient,
         e_newData,
+        e_newDeco,
         e_nothing
     };
 
@@ -47,6 +48,8 @@ private:
     Error::ErrorType    handleNewClients();
     Error::ErrorType    mapNewClients(const __client_id_vector &clients);
     Error::ErrorType    linkClientToAnalyser(__client_id clientId);
+    void                handleNewDeco();
+    void                terminateAnalyserProcess(const __client_id &clientId);
     void                handleNewDataReceived(const __client_id &clientId);
     void                sendDataToAnalyser(const __process_map::iterator &mapIt);
     void                createImageWithData(const std::string &filePath, 

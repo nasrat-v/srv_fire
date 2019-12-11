@@ -122,8 +122,6 @@ ERR AsyncServer::handleClient(__timeval *timeval)
         return (NET_ERROR);
     if (receiveDataFromClient() == NET_ERROR)
         return (NET_ERROR);
-    if (eraseDecoClients() == NET_ERROR)
-        return (NET_ERROR);
     return (SUCCESS);
 }
 
@@ -275,6 +273,20 @@ bool AsyncServer::isSocketValid(__socket sock)
     copyFd = dup(sock);
     close(copyFd);
     return (!(errno == EBADF));
+}
+
+bool AsyncServer::isNewClientDeconnected()
+{
+    return (!m_clientsDecoToErase.empty());
+}
+
+__client_id_vector AsyncServer::getNewClientDeconnected()
+{
+    __client_id_vector tmpVec = m_clientsDecoToErase;
+
+    if (eraseDecoClients() == NET_ERROR)
+        return (__client_id_vector());
+    return (tmpVec);
 }
 
 void AsyncServer::exitAllClientConnection()

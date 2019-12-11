@@ -43,6 +43,16 @@ bool NetworkManager::isNewDataReceived(__client_id clientId)
     return (m_server.isNewDataReceived(clientId));
 }
 
+bool NetworkManager::isNewClientDeconnected()
+{
+    return (m_server.isNewClientDeconnected());
+}
+
+__client_id_vector NetworkManager::getNewClientDeconnected()
+{
+    return (m_server.getNewClientDeconnected());
+}
+
 __data_vector NetworkManager::getNewDataReceived(__client_id clientId)
 {
     return (m_server.getNewDataReceived(clientId));

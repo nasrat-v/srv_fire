@@ -27,6 +27,8 @@ Error::ErrorType ProcessManager::run()
             if (handleNewClients() != Error::ErrorType::NOPE)
                 return (Error::ErrorType::NETWORK);
         }
+        else if (event.type == ProcessManager::pEventType::e_newDeco)
+            handleNewDeco();
         else if (event.type == ProcessManager::pEventType::e_newData)
             handleNewDataReceived(event.client_id);
     }
@@ -42,6 +44,11 @@ ProcessManager::__t_proc_event ProcessManager::isEvent()
     if (m_network.isNewClientConnected())
     {
         event.type = ProcessManager::pEventType::e_newClient;
+        return (event);
+    }
+    if (m_network.isNewClientDeconnected())
+    {
+        event.type = ProcessManager::pEventType::e_newDeco;
         return (event);
     }
     for (; mapIt != m_processMap.end(); mapIt++)
@@ -94,6 +101,23 @@ Error::ErrorType ProcessManager::linkClientToAnalyser(__client_id clientId)
     m_analyseThread = std::thread(&FrameAnalyser::analyseFrame, frameAnalyser);
     m_analyseThread.detach();
     return (Error::ErrorType::NOPE);
+}
+
+void ProcessManager::handleNewDeco()
+{
+    std::vector<__client_id> clientsDeco;
+
+    clientsDeco = m_network.getNewClientDeconnected();
+    for (__client_id clientId : clientsDeco)
+        terminateAnalyserProcess(clientId);
+}
+
+void ProcessManager::terminateAnalyserProcess(const __client_id &clientId)
+{
+    __process_map::iterator mapIt;
+
+    if ((mapIt = m_processMap.find(clientId)) != m_processMap.end())
+        mapIt->second->terminateAnalyserThread();
 }
 
 void ProcessManager::handleNewDataReceived(const __client_id &clientId)

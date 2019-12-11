@@ -49,6 +49,8 @@ public:
     bool                isNewDataReceived(__client_id clientId);
     __data_vector       getNewDataReceived(__client_id clientId);
     ERR		            sendData(const std::string &data, __client_id clientId);
+    bool                isNewClientDeconnected();
+    __client_id_vector  getNewClientDeconnected();
 
 protected:
     __socket            m_srvSock;

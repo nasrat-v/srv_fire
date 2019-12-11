@@ -44,6 +44,7 @@ public:
     void                createSampleImgFromVideo();
     void                setCanReadImage(bool status);
     void                setImageNetworkPath(const std::string &path);
+    void                terminateAnalyserThread();
 
 private:
     /* Methods */
@@ -57,6 +58,7 @@ private:
     void                resetImageNetworkPath();
 
     /* Attributes */
+    bool                    _terminateThread;
     const char              *_videoPath;
     DebugManager::debugMode _debugMode;
     ParamManager::paramMode _paramMode;

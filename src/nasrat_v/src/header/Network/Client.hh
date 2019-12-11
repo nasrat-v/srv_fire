@@ -26,7 +26,7 @@ public:
     const __sockaddr_in         &getSin() const;
     __sockaddr_in_size          getSinSize() const;
     const __data_vector         &getData() const;
-    bool                        isData();
+    bool                        isData() const;
 
 private:
     __client_id                 m_id;

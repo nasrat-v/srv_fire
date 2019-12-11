@@ -88,13 +88,3 @@ on append() le nb de byte manquant
 dans la structure paquet on rajoute une clock
 qui permet de savoir depuis combien de temps un paquet est tronqué
 si clock >= TIMEOUT_TRUNCATED on supprime le paquet et on s'attend a recevoir un header
-
-
------
-todo
-----
-
-tester le multi-clients avec thread dans ProcessManager
-faut-il fork ?
-
-il faut join le thread frameAnalyser quand un client se deco (std::terminate ??)

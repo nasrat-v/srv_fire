@@ -21,6 +21,8 @@ public:
     __client_id_vector  getNewClientConnected();
     bool                isNewDataReceived(__client_id clientId);
     __data_vector       getNewDataReceived(__client_id clientId);
+    bool                isNewClientDeconnected();
+    __client_id_vector  getNewClientDeconnected();
 
 private:
     AsyncServer         m_server;

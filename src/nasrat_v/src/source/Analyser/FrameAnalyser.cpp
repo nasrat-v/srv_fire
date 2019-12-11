@@ -62,6 +62,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
         logicForEachFrame(end);
         cv::waitKey(1);
     }
+    Log::logSomething("Analyser process terminated");
     return (Error::ErrorType::NOPE);
 }
 
@@ -128,7 +129,7 @@ void FrameAnalyser::findContoursAllBlobs(std::vector<std::vector<cv::Point>> &al
         allContours.push_back(blob.getContour());
 }
 
-void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
+void FrameAnalyser::findClosestSavedBlob(const Blob &blob, FrameAnalyser::t_distance *distance)
 {
     size_t i = 0;
     double dist = 0;
@@ -150,7 +151,7 @@ void FrameAnalyser::findClosestSavedBlob(const Blob &blob, t_distance *distance)
     }
 }
 
-void FrameAnalyser::findClosestSavedEntity(const Blob &blob, t_distance *distance)
+void FrameAnalyser::findClosestSavedEntity(const Blob &blob, FrameAnalyser::t_distance *distance)
 {
     size_t i = 0;
     double dist = 0;
@@ -211,7 +212,7 @@ void FrameAnalyser::initSavedEntities()
 
 void FrameAnalyser::matchFrameBlobsToSavedBlobs()
 {
-    t_distance distance;
+    FrameAnalyser::t_distance distance;
 
     //predictNextPositionSavedBlobs();
     for (auto &frameBlob : _frame.getBlobs())
@@ -228,7 +229,7 @@ void FrameAnalyser::matchFrameBlobsToSavedBlobs()
 
 void FrameAnalyser::matchFrameEntitiesToSavedEntities()
 {
-    t_distance distance;
+    FrameAnalyser::t_distance distance;
 
     //predictNextPositionSavedEntities();
     for (auto &frameEntity : _frame.getEntities())
@@ -245,7 +246,7 @@ void FrameAnalyser::matchFrameEntitiesToSavedEntities()
 
 void FrameAnalyser::matchSavedBlobsToSavedEntities()
 {
-    t_distance distance;
+    FrameAnalyser::t_distance distance;
 
     for (auto &blob : _savedBlobs)
     {
