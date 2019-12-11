@@ -11,9 +11,13 @@ ERR PacketsManager::receivePacket(__socket sock, __t_packet &packet)
 
     if ((status = readHeader(sock, packet.pk_header)) != SUCCESS)
 		return (status);
-    if (packet.pk_header.pk_size > 0)
-		return (readPacket(sock, packet));
-	return (IGNORE_PACKET);
+    if ((packet.pk_header.pk_size <= 0) || (packet.pk_header.pk_size >= MAX_ALLOC_PACKET))
+	{
+		LogNetwork::logFailureMsg("Error bad header size: " 
+												+ std::to_string(packet.pk_header.pk_size));		
+		return (IGNORE_PACKET);
+	}
+	return (readPacket(sock, packet));
 }
 
 ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
@@ -24,14 +28,14 @@ ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
     errno = 0;
 	if ((ret = read(sock, buff, HEADER_BUFF_SIZE)) > 0)
 	{
-		for (int i = 0; i < ret; i++)
-			printf("%d\n", buff[i]);
 		header.read_size = 0;
-		header.pk_size = convertBytesBufferToInt(buff);//atoi(buff);
-		/*if (buff[0] == '\n')
-			return (SUCCESS);*/
-		LogNetwork::logInfoMsg("Packet received");
-		LogNetwork::logSomething("Header size: " + std::to_string(header.pk_size));
+		header.pk_size = convertBytesBufferToInt(buff);
+		#if (DEBUGNET_ACTIVE)
+			LogNetwork::logInfoMsg("Packet received");
+			for (int i = 0; i < ret; i++)
+				printf("%d\n", buff[i]);
+			LogNetwork::logSomething("Header size: " + std::to_string(header.pk_size));
+		#endif
 	}
 	else if (ret < 0)
 	{
@@ -57,7 +61,9 @@ ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
 	{
 		packet.pk_data.append(buff, ret);
 		packet.pk_header.read_size += ret;
-		LogNetwork::logSomething("Read size: " + std::to_string(packet.pk_header.read_size));
+		#if (DEBUGNET_ACTIVE)
+			LogNetwork::logSomething("Read size: " + std::to_string(packet.pk_header.read_size));
+		#endif
 	}
 	else if (ret < 0)
 	{
@@ -72,8 +78,27 @@ ERR PacketsManager::readPacket(__socket sock, __t_packet &packet)
 		return (NET_DECO);
 	}
 	if (ret < sizeToRead)
+	{
+		delete (buff);
 		return (readPacket(sock, packet));
+	}
 	delete (buff);
+	return (sendResponse(RESPONSE_SUCCESS, sock));
+}
+
+ERR PacketsManager::sendResponse(const std::string &data, __socket clientSocket)
+{
+    size_t size = data.size();
+	const char *dataToSend = data.c_str();
+
+	#if (DEBUGNET_ACTIVE)
+		LogNetwork::logSomething("Send response: " + data);
+	#endif
+	if ((write(clientSocket, dataToSend, size)) == NET_ERROR)
+	{
+		LogNetwork::logFailureMsg("Error failed to write data to socket");
+		return (NET_ERROR);
+	}
 	return (SUCCESS);
 }
 

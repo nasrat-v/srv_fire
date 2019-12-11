@@ -64,7 +64,7 @@ ERR AsyncServer::bindSocket()
     {
         LogNetwork::logFailureMsg("Error bind failed: " + errno);
 		return (NET_ERROR);
-    }   
+    }
     LogNetwork::logSuccessMsg("Successfully bind socket");
     return (SUCCESS);
 }
@@ -85,6 +85,7 @@ ERR AsyncServer::serverLoop(std::future<void> serverExitSignal)
 {
     __timeval timeval;
 
+    
     LogNetwork::logInfoMsg("Server start...");
     while (serverExitSignal.wait_for(std::chrono::milliseconds(UWAIT_STOP)) == std::future_status::timeout)
     {
@@ -154,6 +155,7 @@ ERR AsyncServer::acceptNewClient()
     // update lastSockAdded to the last socket accepted
     m_lastSockAdded = (m_lastSockAdded > newClient->getSock()) ? m_lastSockAdded : newClient->getSock();
     LogNetwork::logInfoMsg("New client connection -> id: " + std::to_string(newClient->getId()));
+    m_packetsManager.sendResponse(RESPONSE_SUCCESS, clientSock);
     return (SUCCESS);
 }
 
@@ -202,6 +204,9 @@ ERR	AsyncServer::readData(__client_ptr client)
     else if (status == NET_ERROR)
         return (NET_ERROR);
     client->pushData(packet.pk_data);
+    #if (DEBUGNET_ACTIVE)
+        LogNetwork::logInfoMsg("Packet completed !");
+    #endif
 	return (SUCCESS);
 }
 
@@ -257,22 +262,9 @@ ERR AsyncServer::sendData(const std::string &data, __client_id clientId)
 
     if ((it = m_clients.find(clientId)) == m_clients.end())
         return (NET_ERROR);
-    if (writeData(data, it->second->getSock()) == NET_ERROR)
+    if (m_packetsManager.sendResponse(data, it->second->getSock()) == NET_ERROR)
         return (NET_ERROR);
     return (SUCCESS);
-}
-
-ERR AsyncServer::writeData(const std::string &data, __socket clientSocket)
-{
-    auto size = (__size)data.size();
-	const char *dataToSend = data.c_str();
-
-	if ((write(clientSocket, dataToSend, size)) == NET_ERROR)
-	{
-		LogNetwork::logFailureMsg("Error failed to write data to socket");
-		return (NET_ERROR);
-	}
-	return (SUCCESS);
 }
 
 bool AsyncServer::isSocketValid(__socket sock)

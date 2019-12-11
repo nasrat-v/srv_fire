@@ -24,7 +24,7 @@ void LogNetwork::closeLogFile()
  */
  void LogNetwork::logSomething(const std::string &msg)
 {
-     if (!_logActive)
+     if (!_logNetActive)
          return;
 	if (!_logFile.is_open())
 		openLogFile(LOGFILE_NAME);
@@ -35,7 +35,7 @@ void LogNetwork::closeLogFile()
 
  void LogNetwork::logSuccessMsg(const std::string &msg)
  {
-     if (_logActive)
+     if (_logNetActive)
      {
          if (_tryStatus)
          {
@@ -49,7 +49,7 @@ void LogNetwork::closeLogFile()
 
  void LogNetwork::logFailureMsg(const std::string &msg)
  {
-     if (_logActive)
+     if (_logNetActive)
      {
          if (_tryStatus)
          {
@@ -63,13 +63,13 @@ void LogNetwork::closeLogFile()
 
  void LogNetwork::logInfoMsg(const std::string &msg)
  {
-     if (_logActive)
+     if (_logNetActive)
 	    logSomething("[info] " + msg + '\n');
  }
 
  void LogNetwork::logTryMsg(const std::string &msg)
  {
-     if (_logActive)
+     if (_logNetActive)
      {
          logSomething("\t[try] " + msg);
          _tryStatus = true;
@@ -78,5 +78,5 @@ void LogNetwork::closeLogFile()
 
  void LogNetwork::setLogActive(bool log)
  {
-     _logActive = log;
+     _logNetActive = log;
  }

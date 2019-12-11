@@ -78,7 +78,6 @@ protected:
     ERR                 receiveDataFromClient();
     void                addNewDataReceived(__client_ptr client, const std::string &data);
     ERR		            readData(__client_ptr newClient);
-    ERR		            writeData(const std::string &data, __socket clientSocket);
     bool                isSocketValid(__socket sock);
     void                exitAllClientConnection();
     ERR                 exitConnection(__socket sock);

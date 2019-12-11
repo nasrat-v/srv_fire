@@ -7,6 +7,7 @@
 
 #include <thread>
 #include <iostream>
+#include <unistd.h>
 #include <opencv2/videoio.hpp>
 #include <opencv2/videoio/videoio_c.h>
 
@@ -15,8 +16,8 @@
 #include "../Launcher/DebugManager.hh"
 #include "../Launcher/ParamManager.hh"
 
-# define IMG_PATH "../input/image/sample-image"
-# define IMG_FORMAT ".jpg"
+# define IMG_PATH           "../input/image/sample-image"
+# define IMG_FORMAT         ".jpg"
 
 class ImageProvider
 {

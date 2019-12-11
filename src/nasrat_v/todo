@@ -96,3 +96,5 @@ todo
 
 tester le multi-clients avec thread dans ProcessManager
 faut-il fork ?
+
+il faut join le thread frameAnalyser quand un client se deco (std::terminate ??)

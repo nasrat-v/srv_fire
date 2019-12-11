@@ -117,7 +117,9 @@ ImageProvider::statusVideo ImageProvider::incrementImgPng(cv::Mat &nextImage, si
 {
     static size_t idPath = nbImgIncr;
 
-    Log::logSomething(("Read source as IMG number: " + std::to_string(idPath)));
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething(("Read source as IMG number: " + std::to_string(idPath)));
+    #endif
     return (openImg((IMG_PATH +  std::to_string(idPath++) + IMG_FORMAT), nextImage));
 }
 
@@ -165,10 +167,17 @@ ImageProvider::statusVideo ImageProvider::initImgNetwork(std::vector<cv::Mat> &i
 
 ImageProvider::statusVideo ImageProvider::incrementImgNetwork(cv::Mat &nextImage)
 {
-    Log::logSomething("Wait for image from network");
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething("Wait for image from network");
+    #endif
     while (!_canReadImage)
+    {
         std::this_thread::yield(); // WAIT FOR PATH FROM NETWORK
-    Log::logSomething(("Read source from network: " + _imageNetworkPath));
+        usleep(1);
+    }
+    #if (DEBUGANAL_ACTIVE)
+        Log::logSomething(("Read source from network: " + _imageNetworkPath));
+    #endif
     if (openImg(_imageNetworkPath, nextImage) == statusVideo::ERROR)
     {
         Error::logError(Error::ErrorType::TRUNCATED_IMG_NETWORK, "- Ignore image");
