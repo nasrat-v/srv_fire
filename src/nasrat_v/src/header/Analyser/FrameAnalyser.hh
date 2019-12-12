@@ -6,6 +6,7 @@
 # define OPENCV_SRV_STREAMANALYSER_H
 
 # define DEFAULT_VIDEO_PATH             "../input/video/video-flamme.mp4"
+# define WINDOW_PREFIX                  "Frame"
 # define MAX_FRAME_WITHOUT_MATCH_BLOB   20
 # define MAX_FRAME_WITHOUT_MATCH_ENTITY 10
 # define INDEX_SAVED_BLOB_NOT_FOUND     (size_t)-1
@@ -28,7 +29,9 @@ class FrameAnalyser
 {
 public:
     FrameAnalyser(const DebugManager::debugMode &mode,
-                            std::shared_ptr<ImageProvider> imageProvider);
+                            std::shared_ptr<ImageProvider> imageProvider,
+                            size_t clientId,
+                            void (*callbackDisplay)(size_t clientId, const cv::Mat &img));
     ~FrameAnalyser();
 
     Error::ErrorType        initAnalyser(bool openVideo);
@@ -46,6 +49,7 @@ private:
     ImageService            _imageService;
     BlobFilter              _blobFilter;
     EntityFilter            _entityFilter;
+    size_t                  _clientId;
 
     typedef struct          s_distance
     {

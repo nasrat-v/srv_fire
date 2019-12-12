@@ -5,10 +5,14 @@
 #include "../../header/Analyser/ImageService.hh"
 
 ImageService::ImageService(const DebugManager::debugMode &debugMode,
-                            std::shared_ptr<ImageProvider> imageProvider) : _debugMode(debugMode), 
-                                                                            _imageProvider(std::move(imageProvider))
+                            std::shared_ptr<ImageProvider> imageProvider, 
+                            size_t clientId,
+                            void (*callbackDisplay)(size_t clientId, const cv::Mat &img)) : _debugMode(debugMode),
+                                                                                            _imageProvider(std::move(imageProvider))
 {
     _firstTime = true;
+    _clientId = clientId;
+    _callbackDisplay = callbackDisplay;
 }
 
 ImageService::~ImageService() = default;
@@ -138,7 +142,6 @@ std::vector<cv::Point> ImageService::mergeContour(const cv::Size &imgSize,
     _imageAdditionner.drawContours(image, tmpContours, WHITE_RANGE);
     _imageProcesser.imgToGray(image);
     _imageProcesser.threshImg(image);
-    imshow("toto", image);
     return (_imageProcesser.findContoursFromImg(image).front());
 }
 
@@ -253,7 +256,7 @@ void ImageService::displayImg(cv::Mat img, const std::vector<Blob> &savedBlobs,
     if (_debugMode & DebugManager::debugMode::NUMBER)
         _imageAdditionner.drawNumberEntitiesOnImage(trackImg, savedEntities, frameEntities);
     if (!(_debugMode & DebugManager::debugMode::NO_ORIGINAL_VIDEO))
-        cv::imshow("Frame", trackImg);
+        _callbackDisplay(_clientId, trackImg);
     if (_debugMode & DebugManager::debugMode::WAIT_KEY)
         cv::waitKey(0);
 }

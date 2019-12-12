@@ -20,7 +20,7 @@ typedef in_addr_t               __in_addr_t;
 typedef fd_set                  __fd_set;
 typedef uint32_t                __sockaddr_in_size;
 typedef struct timeval          __timeval;
-typedef uint_fast16_t           __client_id;
+typedef size_t                  __client_id;
 typedef std::string             __packet_data;
 
 #endif /* !__NETWORK_TYPES_HH__ */

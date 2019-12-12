@@ -5,12 +5,15 @@
 #include "../../header/Analyser/FrameAnalyser.hh"
 
 FrameAnalyser::FrameAnalyser(const DebugManager::debugMode &mode,
-                            std::shared_ptr<ImageProvider> imageProvider) : _debugMode(mode),
-                                                                            _imageService(mode, std::move(imageProvider))
+                            std::shared_ptr<ImageProvider> imageProvider,
+                            size_t clientId,
+                            void (*callbackDisplay)(size_t clientId, const cv::Mat &img)) : _debugMode(mode),
+                                                                                            _imageService(mode, std::move(imageProvider), clientId, callbackDisplay)
 {
     _firstFrameBlob = true;
     _firstFrameEntity = true;
     _isInit = false;
+    _clientId = clientId;
 }
 
 FrameAnalyser::~FrameAnalyser() = default;
@@ -54,14 +57,21 @@ Error::ErrorType FrameAnalyser::analyseFrame()
 {
     bool                end = false;
     Error::ErrorType    status;
+    std::string windowName = (WINDOW_PREFIX + std::to_string(_clientId));
 
+    Log::logSomething("Analyser process launched");
     if ((status = checkInitialisation(end)) != Error::ErrorType::NOPE)
         return (status);
     while (!end)
     {
         logicForEachFrame(end);
-        cv::waitKey(1);
+        //cv::waitKey(0);
     }
+    /*if (cv::getWindowProperty(windowName, CV_WND_PROP_AUTOSIZE) != -1)
+    {
+        Log::logSomething("Destroy window: " + windowName);
+        cv::destroyWindow(windowName);
+    }*/
     Log::logSomething("Analyser process terminated");
     return (Error::ErrorType::NOPE);
 }

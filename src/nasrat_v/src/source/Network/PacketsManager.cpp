@@ -36,7 +36,7 @@ ERR PacketsManager::readHeader(__socket sock, __t_packet_header &header)
 	if ((ret = read(sock, buff, HEADER_BUFF_SIZE)) > 0)
 	{
 		header.read_size = 0;
-		header.pk_size = convertBytesBufferToInt(buff);
+		header.pk_size = atoi(buff);//convertBytesBufferToInt(buff);
 		#if (DEBUGNET_ACTIVE)
 			LogNetwork::logInfoMsg("Packet received");
 			for (int i = 0; i < ret; i++)

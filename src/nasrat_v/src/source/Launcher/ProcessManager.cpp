@@ -91,13 +91,12 @@ Error::ErrorType ProcessManager::linkClientToAnalyser(__client_id clientId)
         new ImageProvider(DEFAULT_VIDEO_PATH, m_debugMode, m_paramMode)
     );
     __frame_analyser_ptr frameAnalyser(
-        new FrameAnalyser(m_debugMode, imgProvider)
+        new FrameAnalyser(m_debugMode, imgProvider, clientId, &displayWindowMainProcess)
     );
 
     if ((error = frameAnalyser->initAnalyser(false)) != Error::ErrorType::NOPE)
         return (error);
-    m_processMap.insert(std::make_pair(clientId, imgProvider)); 
-    // il faut join le thread quand un client se deco (std::terminate ??)
+    m_processMap.insert(std::make_pair(clientId, imgProvider));
     m_analyseThread = std::thread(&FrameAnalyser::analyseFrame, frameAnalyser);
     m_analyseThread.detach();
     return (Error::ErrorType::NOPE);
@@ -153,4 +152,11 @@ void ProcessManager::createImageWithData(const std::string &filePath, const __pa
     file.open(filePath);
     file << packet;
     file.close();
+}
+
+void displayWindowMainProcess(__client_id clientId, const cv::Mat &img)
+{
+    std::cout << "DISPLAY CALLBACK" << std::endl;
+    cv::imshow(WINDOW_PREFIX + std::to_string(clientId), img);
+    cv::waitKey(0);
 }

@@ -15,11 +15,12 @@ Launcher::~Launcher() = default;
 
 Error::ErrorType Launcher::launchAnalyse()
 {
+    static size_t clientId = 0;
     Error::ErrorType error;
     __img_provider_ptr imageProvider(
         new ImageProvider(DEFAULT_VIDEO_PATH, m_debugMode, m_paramMode)
     );
-    FrameAnalyser analyser(m_debugMode, imageProvider);
+    FrameAnalyser analyser(m_debugMode, imageProvider, clientId, &displayWindowMainProcess);
 
     if ((error = analyser.initAnalyser(true)) != Error::ErrorType::NOPE)
         return (error);

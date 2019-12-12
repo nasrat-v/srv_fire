@@ -12,6 +12,8 @@ typedef std::shared_ptr<ImageProvider>              __img_provider_ptr;
 typedef std::shared_ptr<FrameAnalyser>              __frame_analyser_ptr;
 typedef std::map<__client_id, __img_provider_ptr>   __process_map;
 
+void displayWindowMainProcess(__client_id clientId, const cv::Mat &img);
+
 class ProcessManager
 {
 public:

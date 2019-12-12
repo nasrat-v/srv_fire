@@ -5,14 +5,14 @@
 #ifndef __OPENCV_SRV_LOG_HH__
 # define __OPENCV_SRV_LOG_HH__
 
-# define DEBUGANAL_ACTIVE   false
+# define DEBUGANAL_ACTIVE   true
 # define LOGFILE_PATH       "../output/log/log.txt"
 
 #include <iostream>
 #include <fstream>
 #include <chrono>
 
-static bool                     __attribute__((unused))_logActive = false;
+static bool                     __attribute__((unused))_logActive = true;
 
 class Log
 {

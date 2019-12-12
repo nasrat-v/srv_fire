@@ -16,7 +16,9 @@ class ImageService
 {
 public:
     ImageService(const DebugManager::debugMode &debugMode,
-                        std::shared_ptr<ImageProvider> imageProvider);
+                        std::shared_ptr<ImageProvider> imageProvider,
+                        size_t clientId,
+                        void (*callbackDisplay)(size_t clientId, const cv::Mat &img));
     ~ImageService();
 
     void                        substractInfosPossibleBlobs(Frame &frame,
@@ -66,8 +68,10 @@ private:
     bool                            _firstTime;
     DebugManager::debugMode         _debugMode;
     std::shared_ptr<ImageProvider>  _imageProvider;
+    size_t                          _clientId;
     ImageProcesser                  _imageProcesser;
     ImageAdditionner                _imageAdditionner;
+    void                            (*_callbackDisplay)(size_t clientId, const cv::Mat &img);
 };
 
 
