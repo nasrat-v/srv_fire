@@ -156,7 +156,7 @@ void ProcessManager::createImageWithData(const std::string &filePath, const __pa
 
 void displayWindowMainProcess(__client_id clientId, const cv::Mat &img)
 {
-    std::cout << "DISPLAY CALLBACK" << std::endl;
+    //std::cout << "DISPLAY CALLBACK" << std::endl;
     cv::imshow(WINDOW_PREFIX + std::to_string(clientId), img);
-    cv::waitKey(0);
+    //cv::waitKey(0);
 }

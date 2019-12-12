@@ -65,7 +65,7 @@ Error::ErrorType FrameAnalyser::analyseFrame()
     while (!end)
     {
         logicForEachFrame(end);
-        //cv::waitKey(0);
+        cv::waitKey(1);
     }
     /*if (cv::getWindowProperty(windowName, CV_WND_PROP_AUTOSIZE) != -1)
     {

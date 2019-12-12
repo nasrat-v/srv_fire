@@ -5,7 +5,7 @@
 #ifndef __OPENCV_SRV_LOG_HH__
 # define __OPENCV_SRV_LOG_HH__
 
-# define DEBUGANAL_ACTIVE   true
+# define DEBUGANAL_ACTIVE   false
 # define LOGFILE_PATH       "../output/log/log.txt"
 
 #include <iostream>

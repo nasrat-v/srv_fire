@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 
-# define DEBUGNET_ACTIVE	true
+# define DEBUGNET_ACTIVE	false
 # define SUCCESS			(ERR)1
 # define FILE_ERROR			(ERR)~0
 # define LOGFILE_NAME		"../output/log/log-network.txt"
